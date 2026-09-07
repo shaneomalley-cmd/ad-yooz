@@ -1,0 +1,334 @@
+[
+  {
+    "key": "group_sea_landing_shared_stats",
+    "title": "Shared Stats (Source of Truth)",
+    "fields": [
+      {
+        "key": "field_shared_customer_count_value",
+        "label": "Customer/user count (display value)",
+        "name": "global_customer_count_value",
+        "type": "text",
+        "instructions": "e.g. \"600,000+\". Update this ONE field when the number changes — every 'sea' page and (recommended) the ad-copy generation process should read from here instead of hardcoding the number.",
+        "required": 1,
+        "default_value": "600,000+"
+      },
+      {
+        "key": "field_shared_customer_count_unit",
+        "label": "Unit",
+        "name": "global_customer_count_unit",
+        "type": "text",
+        "default_value": "users"
+      },
+      {
+        "key": "field_shared_customer_count_supporting_fact",
+        "label": "Supporting trust fact",
+        "name": "global_customer_count_supporting_fact",
+        "type": "text",
+        "instructions": "e.g. \"9 of the 10 biggest audit firms\"",
+        "default_value": "9 of the 10 biggest audit firms"
+      },
+      {
+        "key": "field_shared_erp_count",
+        "label": "ERP integration count (display value)",
+        "name": "global_erp_count",
+        "type": "text",
+        "default_value": "250+"
+      },
+      {
+        "key": "field_shared_cost_reduction_stat",
+        "label": "Headline cost-reduction stat",
+        "name": "global_cost_reduction_stat",
+        "type": "text",
+        "instructions": "e.g. \"Up to 80%\". This is the single source for hero_stat across pages that don't override it.",
+        "default_value": "Up to 80%"
+      },
+      {
+        "key": "field_shared_problem_stats",
+        "label": "Problem-section stats (shared, page-agnostic)",
+        "name": "global_problem_stats",
+        "type": "repeater",
+        "instructions": "The 3-5 sourced pain-point stats reused across every 'sea' page per brief requirement 4. Edit here once.",
+        "min": 3,
+        "max": 5,
+        "layout": "table",
+        "sub_fields": [
+          { "key": "field_pstat_value", "label": "Value", "name": "value", "type": "text" },
+          { "key": "field_pstat_label", "label": "Label", "name": "label", "type": "text" }
+        ]
+      },
+      {
+        "key": "field_shared_stat_citation",
+        "label": "Stat citation",
+        "name": "global_stat_citation",
+        "type": "text",
+        "default_value": "Aberdeen, Arthur D. Little, BVA, IOFM, Levvel"
+      },
+      {
+        "key": "field_shared_compliance_badges",
+        "label": "Compliance / security badges",
+        "name": "global_compliance_badges",
+        "type": "repeater",
+        "instructions": "SOC 2, GDPR, etc. Leave empty until Legal/Security confirms current certification status and provides the badge asset — do NOT publish a placeholder badge as if it were verified.",
+        "layout": "table",
+        "sub_fields": [
+          { "key": "field_cbadge_label", "label": "Label", "name": "label", "type": "text" },
+          { "key": "field_cbadge_image", "label": "Badge image", "name": "image", "type": "image", "return_format": "url" },
+          { "key": "field_cbadge_link", "label": "Link (e.g. trust center page)", "name": "link", "type": "url" }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "options_page",
+          "operator": "==",
+          "value": "acf-options-shared-stats"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "show_in_rest": 1,
+    "_comment": "Register the options page itself with acf_add_options_page(['page_title' => 'Shared Landing Page Stats', 'menu_slug' => 'acf-options-shared-stats']) in the theme's functions.php (or a small must-use plugin) before importing this group."
+  },
+  {
+    "key": "group_sea_landing_page_content",
+    "title": "SEA Landing Page Content",
+    "fields": [
+      {
+        "key": "field_primary_keyword_main",
+        "label": "Primary keyword phrase",
+        "name": "primary_keyword_phrase",
+        "type": "text",
+        "instructions": "e.g. \"AP Automation\", \"Sage AP Automation\", \"Accounts Payable Automation\". Must appear literally in the H1 (enforced by template, not by this field).",
+        "required": 1
+      },
+      {
+        "key": "field_primary_keyword_secondary",
+        "label": "Secondary keyword phrase (optional)",
+        "name": "primary_keyword_phrase_secondary",
+        "type": "text",
+        "instructions": "Only used on the general/brand page, which must cover both \"AP Automation\" and \"Accounts Payable Automation\" phrasing per brief requirement 1."
+      },
+      {
+        "key": "field_segment_name",
+        "label": "Segment name",
+        "name": "segment_name",
+        "type": "text",
+        "instructions": "ERP name (Sage, Epicor, Dynamics, CDK, Karmak, ProcedeSoftware) or industry vertical (Construction, Automotive, Trucking). Leave empty for the general/brand page."
+      },
+      {
+        "key": "field_segment_type",
+        "label": "Segment type",
+        "name": "segment_type",
+        "type": "select",
+        "choices": { "erp": "ERP", "vertical": "Industry vertical", "": "None (general/brand page)" },
+        "default_value": ""
+      },
+      {
+        "key": "field_hero_eyebrow",
+        "label": "Hero eyebrow",
+        "name": "hero_eyebrow",
+        "type": "text",
+        "instructions": "Small pink line above the H1, per brand refresh hero pattern."
+      },
+      {
+        "key": "field_h1_setup",
+        "label": "H1 — setup phrase (Rich Blue)",
+        "name": "h1_setup",
+        "type": "text",
+        "required": 1
+      },
+      {
+        "key": "field_h1_payoff",
+        "label": "H1 — payoff phrase (Pink)",
+        "name": "h1_payoff",
+        "type": "text",
+        "required": 1
+      },
+      {
+        "key": "field_subhead",
+        "label": "Subhead",
+        "name": "subhead",
+        "type": "text",
+        "instructions": "Carries the free-demo / no-risk promise. Never mention a free trial — only a free demo exists.",
+        "required": 1
+      },
+      {
+        "key": "field_hero_stat_value",
+        "label": "Hero stat — value",
+        "name": "hero_stat_value",
+        "type": "text",
+        "instructions": "Defaults to global_cost_reduction_stat from Shared Stats; override only with a verified page-specific number."
+      },
+      {
+        "key": "field_hero_stat_label",
+        "label": "Hero stat — label",
+        "name": "hero_stat_label",
+        "type": "text"
+      },
+      {
+        "key": "field_hubspot_portal_id",
+        "label": "HubSpot portal ID",
+        "name": "hubspot_portal_id",
+        "type": "text",
+        "default_value": "2205679"
+      },
+      {
+        "key": "field_hubspot_form_id",
+        "label": "HubSpot form ID",
+        "name": "hubspot_form_id",
+        "type": "text",
+        "instructions": "e.g. 1b3ffee0-1aa1-4f18-9073-db1d433a3dff. Verify whether segment pages route to a dedicated form before assuming the general page's form ID."
+      },
+      {
+        "key": "field_cta_after_submit_microcopy",
+        "label": "Post-submit microcopy",
+        "name": "cta_after_submit_microcopy",
+        "type": "text",
+        "default_value": "A specialist reaches out within one business day to schedule your live demo."
+      },
+      {
+        "key": "field_problem_heading",
+        "label": "Problem section heading",
+        "name": "problem_heading",
+        "type": "text",
+        "default_value": "The Real Cost of Manual AP"
+      },
+      {
+        "key": "field_problem_intro",
+        "label": "Problem section intro",
+        "name": "problem_intro",
+        "type": "textarea"
+      },
+      {
+        "key": "field_problem_stats_override",
+        "label": "Problem stats override (optional)",
+        "name": "problem_stats_override",
+        "type": "repeater",
+        "instructions": "Leave empty to inherit global_problem_stats from Shared Stats. Only fill in if this specific segment has its own validated stats.",
+        "layout": "table",
+        "sub_fields": [
+          { "key": "field_pso_value", "label": "Value", "name": "value", "type": "text" },
+          { "key": "field_pso_label", "label": "Label", "name": "label", "type": "text" }
+        ]
+      },
+      {
+        "key": "field_integration_logos",
+        "label": "Integration / ERP logos",
+        "name": "integration_logos",
+        "type": "relationship",
+        "instructions": "Segment-aware: when segment_name is an ERP, feature that ERP's logo first/larger via field_integration_logo_featured below rather than relying on grid order alone.",
+        "post_type": ["attachment"],
+        "filters": ["search"]
+      },
+      {
+        "key": "field_integration_logo_featured",
+        "label": "Featured ERP logo (if segment is an ERP)",
+        "name": "integration_logo_featured",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_benefit_statements",
+        "label": "Benefit statements",
+        "name": "benefit_statements",
+        "type": "repeater",
+        "instructions": "Each must tie to a fact established elsewhere on the page or in Shared Stats — no unsupported superlatives (no \"#1\", \"most powerful\", \"only\") without a citable source in the linked_fact field.",
+        "min": 3,
+        "max": 6,
+        "layout": "block",
+        "sub_fields": [
+          { "key": "field_bs_heading", "label": "Heading", "name": "heading", "type": "text" },
+          { "key": "field_bs_body", "label": "Body", "name": "body", "type": "textarea" },
+          { "key": "field_bs_icon", "label": "Material Symbol icon name", "name": "icon", "type": "text" },
+          { "key": "field_bs_linked_fact", "label": "Linked fact / source", "name": "linked_fact", "type": "text", "instructions": "Which stat elsewhere on this page (or in Shared Stats) backs this claim?" }
+        ]
+      },
+      {
+        "key": "field_fraud_module",
+        "label": "Fraud-prevention module",
+        "name": "fraud_module",
+        "type": "group",
+        "sub_fields": [
+          { "key": "field_fm_heading", "label": "Heading", "name": "heading", "type": "text", "default_value": "Is Your AP Process Fraud-Proof?" },
+          { "key": "field_fm_body", "label": "Body", "name": "body", "type": "wysiwyg" },
+          { "key": "field_fm_bullets", "label": "Bullets", "name": "bullets", "type": "repeater", "sub_fields": [ { "key": "field_fm_bullet", "label": "Bullet", "name": "bullet", "type": "text" } ] },
+          { "key": "field_fm_cta_label", "label": "CTA label", "name": "cta_label", "type": "text", "default_value": "Download Now" },
+          { "key": "field_fm_cta_href", "label": "CTA URL", "name": "cta_href", "type": "url", "default_value": "https://www.getyooz.com/resource/whitepaper/mitigating-ap-fraud-risk-guide" }
+        ]
+      },
+      {
+        "key": "field_proof_testimonial",
+        "label": "Proof testimonial",
+        "name": "proof_testimonial",
+        "type": "group",
+        "sub_fields": [
+          { "key": "field_pt_quote", "label": "Quote", "name": "quote", "type": "textarea" },
+          { "key": "field_pt_name", "label": "Name", "name": "name", "type": "text" },
+          { "key": "field_pt_title", "label": "Title", "name": "title", "type": "text" },
+          { "key": "field_pt_company", "label": "Company", "name": "company", "type": "text" }
+        ]
+      },
+      {
+        "key": "field_client_logos_heading",
+        "label": "Client logos band heading",
+        "name": "client_logos_heading",
+        "type": "text",
+        "instructions": "No unsupported ranking superlatives (see brief WHAT NOT TO DO) unless a citable source is attached."
+      },
+      {
+        "key": "field_client_logos_image",
+        "label": "Client logos image",
+        "name": "client_logos_image",
+        "type": "image",
+        "return_format": "url"
+      },
+      {
+        "key": "field_final_cta_line_1",
+        "label": "Final CTA — line 1",
+        "name": "final_cta_line_1",
+        "type": "text"
+      },
+      {
+        "key": "field_final_cta_line_2",
+        "label": "Final CTA — line 2",
+        "name": "final_cta_line_2",
+        "type": "text"
+      },
+      {
+        "key": "field_meta_title",
+        "label": "SEO title",
+        "name": "meta_title",
+        "type": "text"
+      },
+      {
+        "key": "field_meta_description",
+        "label": "Meta description",
+        "name": "meta_description",
+        "type": "textarea",
+        "instructions": "No unsupported superlatives. Should contain the primary_keyword_phrase and the verified cost-reduction stat."
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "sea"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "show_in_rest": 1
+  }
+]

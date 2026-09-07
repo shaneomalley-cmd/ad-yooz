@@ -1,0 +1,690 @@
+<title>Yooz AP Automation</title>
+<style>
+  /* ============================================================
+     TOKENS — Yooz Brand Refresh, Sept 2025.
+     Deliberately single-theme: this is a locked paid-media brand
+     system (same colors must render identically in every ad
+     click-through regardless of OS theme), so background and
+     color are painted explicitly rather than remapped for
+     prefers-color-scheme. See README "Design decisions" for why.
+     Hex values match the live site's own CSS custom properties
+     (bricks-color-palettes-css) so this drops into Bricks cleanly.
+     ============================================================ */
+  :root{
+    --rich-blue:#14354E;
+    --pink:#E0185E;
+    --pink-dark:#C70045;
+    --teal:#00BFA5;
+    --blue:#006AFF;
+    --grey-10:#FEFEFE;
+    --grey-20:#F5F5F5;
+    --grey-30:#EAEAEA;
+    --grey-40:#E6E6E6;
+    --border:#DDDEDF;
+    --ink-on-blue:#FEFEFE;
+    --font-display:"Noto Sans", -apple-system, "Segoe UI", sans-serif;
+    --font-body:"Noto Sans", -apple-system, "Segoe UI", sans-serif;
+    --max:1140px;
+    --radius-card:16px;
+    --radius-pill:999px;
+    --space-section: clamp(56px, 8vw, 96px);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--grey-10);
+    color:var(--rich-blue);
+    font-family:var(--font-body);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--font-display);font-weight:300;margin:0;text-wrap:balance;color:var(--rich-blue)}
+  p{margin:0}
+  .container{max-width:var(--max);margin-inline:auto;padding-inline:24px}
+  @media (max-width:600px){ .container{padding-inline:20px} }
+  section{padding-block:var(--space-section)}
+  .bg-grey20{background:var(--grey-20)}
+  .bg-blue{background:var(--rich-blue);color:var(--grey-10)}
+  .bg-blue h2, .bg-blue p, .bg-blue h1{color:var(--grey-10)}
+  .eyebrow{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:14px;
+  }
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--rich-blue);color:var(--grey-10);padding:10px 16px;border-radius:0 0 8px 0;z-index:200}
+  .skip-link:focus{left:0}
+
+  /* ---------- Buttons (brand rules: primary = solid pink pill, ONE style only; tertiary = pink text + arrow) ---------- */
+  .btn-primary{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--pink);color:#fff;
+    font-family:var(--font-display);font-weight:600;font-size:16px;
+    padding:16px 32px;border-radius:var(--radius-pill);border:none;
+    text-decoration:none;cursor:pointer;
+    transition:background-color .15s ease, transform .05s ease;
+    min-height:52px;
+  }
+  .btn-primary:hover{background:var(--pink-dark)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-primary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+  .link-tertiary{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--pink);font-family:var(--font-display);font-weight:600;
+    text-decoration:none;font-size:16px;
+  }
+  .link-tertiary .material-symbols-rounded{font-size:20px;transition:transform .15s ease}
+  .link-tertiary:hover .material-symbols-rounded{transform:translateX(3px)}
+  .link-tertiary:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+  /* ---------- Header: logo only, no competing nav CTA ---------- */
+  header.site-header{
+    padding-block:20px;
+    border-bottom:1px solid var(--border);
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--rich-blue);text-decoration:none;width:fit-content}
+  .logo-mark{
+    width:34px;height:34px;border-radius:8px;
+    background:linear-gradient(135deg, var(--pink), var(--rich-blue) 65%);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .logo-mark .material-symbols-rounded{color:#fff;font-size:20px}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding-block:44px var(--space-section)}
+  .hero::before{
+    /* signature "Z" device — inline gradient shape, zero image weight, anchored bottom-left per brand spec */
+    content:"";position:absolute;left:-8%;bottom:-18%;width:56%;aspect-ratio:1/1;
+    background:linear-gradient(135deg, var(--pink) 0%, var(--rich-blue) 55%, var(--teal) 100%);
+    clip-path:polygon(0 0, 100% 0, 0 100%, 0 45%, 55% 45%, 0 100%);
+    opacity:.08;pointer-events:none;
+  }
+  .hero .container{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:36px} }
+
+  .hero h1{font-size:clamp(2.5rem, 4.4vw, 3.7rem);line-height:1.12;letter-spacing:-0.01em}
+  .hero h1 .setup{color:var(--rich-blue);font-weight:300}
+  .hero h1 .payoff{color:var(--pink);font-weight:600}
+  .hero .subhead{font-size:1.2rem;line-height:1.5;margin-top:20px;color:var(--rich-blue);max-width:46ch}
+
+  .hero-stat-row{display:flex;align-items:baseline;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .hero-stat-value{font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,4vw,3rem);color:var(--pink);line-height:1}
+  .hero-stat-label{font-size:1.05rem;color:var(--rich-blue);max-width:22ch}
+
+  .award-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:36px}
+  .award-badge{
+    width:56px;height:56px;border-radius:12px;background:var(--grey-20);
+    display:flex;align-items:center;justify-content:center;flex:none;
+    border:1px solid var(--border);
+  }
+  .award-badge .material-symbols-rounded{color:var(--rich-blue);font-size:26px}
+  .award-caption{font-size:12px;color:var(--rich-blue);opacity:.75;line-height:1.3}
+
+  /* ---------- Hero form card — CLS-safe: fixed min-height reserved before HubSpot JS renders ---------- */
+  .form-card{
+    background:var(--grey-20);
+    border:1px solid var(--border);
+    border-radius:var(--radius-card);
+    padding:28px;
+    min-height:520px; /* reserved space — matches/exceeds live-site's own 400px reservation, sized for this field set */
+    display:flex;flex-direction:column;
+  }
+  .form-card h2{font-size:1.3rem;font-weight:600;margin-bottom:6px}
+  .form-card .form-sub{font-size:.95rem;color:var(--rich-blue);opacity:.8;margin-bottom:20px}
+  .form-skeleton{display:flex;flex-direction:column;gap:14px;flex:1}
+  .field-skel{height:50px;border-radius:10px;background:var(--grey-10);border:1px solid var(--border)}
+  .field-skel.label::before{content:attr(data-label);display:block;font-size:12px;color:var(--rich-blue);opacity:.55;padding:8px 14px 0}
+  .field-skel-row{display:flex;gap:12px}
+  .field-skel-row .field-skel{flex:1}
+  .submit-skel{margin-top:6px}
+  .hs-live-mount{ /* in production: hbspt.forms.create() targets this id, replacing the static skeleton above */ }
+  .form-microcopy{font-size:.85rem;color:var(--rich-blue);opacity:.7;margin-top:14px;display:flex;gap:8px;align-items:flex-start}
+  .form-microcopy .material-symbols-rounded{font-size:18px;color:var(--teal);flex:none;margin-top:1px}
+
+  /* ---------- Video facade (LCP-safe: static thumbnail, iframe injected only on click) ---------- */
+  .video-wrap{
+    position:relative;aspect-ratio:16/9;border-radius:var(--radius-card);overflow:hidden;
+    background:linear-gradient(120deg, var(--rich-blue), var(--pink) 70%);
+    cursor:pointer;border:none;width:100%;padding:0;
+  }
+  .video-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,53,78,.35), rgba(20,53,78,0) 45%)}
+  .video-label{position:absolute;left:20px;bottom:18px;color:#fff;font-family:var(--font-display);font-weight:600;font-size:15px;z-index:2;text-align:left}
+  .play-btn{
+    position:absolute;inset:0;margin:auto;width:68px;height:68px;border-radius:50%;
+    background:var(--grey-10);display:flex;align-items:center;justify-content:center;z-index:2;
+    box-shadow:0 8px 24px rgba(20,53,78,.35);
+  }
+  .play-btn .material-symbols-rounded{font-size:32px;color:var(--pink);margin-left:3px}
+  .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* ---------- Problem section ---------- */
+  .section-head{max-width:62ch;margin-bottom:40px}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem)}
+  .section-head .intro{margin-top:14px;font-size:1.1rem;color:var(--rich-blue);opacity:.85}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media (max-width:900px){ .stat-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .stat-grid{grid-template-columns:1fr} }
+  .stat-card{background:var(--grey-10);border:1px solid var(--border);border-radius:var(--radius-card);padding:24px}
+  .stat-card .val{font-family:var(--font-display);font-weight:600;font-size:1.8rem;color:var(--pink)}
+  .stat-card .lbl{margin-top:8px;font-size:.95rem;color:var(--rich-blue);opacity:.85}
+  .stat-citation{margin-top:24px;font-size:.8rem;opacity:.6}
+
+  /* ---------- Calculator ---------- */
+  .calc-card{background:var(--grey-10);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(24px,4vw,48px)}
+  .calc-title{font-size:1.1rem;font-weight:600;margin-bottom:16px}
+  .radio-row{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:32px}
+  .radio-opt{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:1rem}
+  .radio-opt input{accent-color:var(--pink);width:20px;height:20px}
+  .radio-opt strong{color:var(--pink)}
+  .slider-graduation{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;color:var(--rich-blue);margin-bottom:10px}
+  input[type="range"]{width:100%;accent-color:var(--pink);height:6px}
+  .calc-results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  @media (max-width:700px){ .calc-results{grid-template-columns:1fr} }
+  .calc-result{padding:18px;border-radius:12px;background:var(--grey-20);text-align:center}
+  .calc-result.highlight{background:var(--pink);color:#fff}
+  .calc-result .amount{font-family:var(--font-display);font-weight:600;font-size:1.5rem;font-variant-numeric:tabular-nums}
+  .calc-result .cap{font-size:.8rem;margin-top:6px;opacity:.85}
+  .calc-footnote{margin-top:20px;font-size:.8rem;opacity:.65}
+
+  /* ---------- Integration logos ---------- */
+  .logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  @media (max-width:700px){ .logo-grid{grid-template-columns:repeat(2,1fr)} }
+  .logo-chip{
+    height:84px;border:1px solid var(--border);border-radius:12px;background:var(--grey-10);
+    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+    font-weight:600;color:var(--rich-blue);font-size:.95rem;text-align:center;padding:8px;
+  }
+  .logo-chip.featured{border-color:var(--pink);border-width:2px;background:#fff;box-shadow:0 4px 16px rgba(224,24,94,.12)}
+
+  /* ---------- Benefit statements ---------- */
+  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media (max-width:900px){ .benefit-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:600px){ .benefit-grid{grid-template-columns:1fr} }
+  .benefit-card{display:flex;flex-direction:column;gap:14px}
+  .icon-tile{width:52px;height:52px;border-radius:12px;background:var(--grey-20);display:flex;align-items:center;justify-content:center}
+  .icon-tile .material-symbols-rounded{font-size:26px;color:var(--rich-blue)}
+  .benefit-card h3{font-size:1.15rem;font-weight:600}
+  .benefit-card p{font-size:.98rem;opacity:.85;line-height:1.55}
+  .benefit-card .linked-fact{font-size:.78rem;color:var(--teal);font-weight:600;display:flex;align-items:center;gap:6px}
+  .benefit-card .linked-fact .material-symbols-rounded{font-size:16px}
+
+  /* ---------- Fraud module ---------- */
+  .fraud-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  @media (max-width:900px){ .fraud-grid{grid-template-columns:1fr} }
+  .fraud-visual{aspect-ratio:4/3;border-radius:var(--radius-card);background:linear-gradient(160deg,var(--grey-20),var(--grey-30));display:flex;align-items:center;justify-content:center;border:1px dashed var(--border)}
+  .fraud-visual .material-symbols-rounded{font-size:72px;color:var(--rich-blue);opacity:.3}
+  .fraud-list{list-style:none;padding:0;margin:20px 0 28px;display:flex;flex-direction:column;gap:10px}
+  .fraud-list li{display:flex;gap:10px;font-size:.98rem}
+  .fraud-list .material-symbols-rounded{color:var(--pink);font-size:20px;flex:none;margin-top:2px}
+
+  /* ---------- Social proof ---------- */
+  .testimonial-card{background:var(--grey-10);border:1px solid var(--border);border-radius:var(--radius-card);padding:clamp(28px,4vw,44px);max-width:820px;margin-inline:auto}
+  .testimonial-card .material-symbols-rounded.quote-mark{font-size:36px;color:var(--pink);opacity:.5}
+  .testimonial-card blockquote{margin:12px 0 20px;font-size:1.2rem;line-height:1.5;font-weight:300}
+  .testimonial-attr{font-size:.95rem;font-weight:600}
+  .testimonial-attr span{font-weight:400;opacity:.7}
+
+  .badge-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:44px}
+  .badge-chip{
+    display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);
+    background:var(--grey-20);border:1px solid var(--border);font-size:.85rem;font-weight:600;
+  }
+  .badge-chip .material-symbols-rounded{font-size:18px;color:var(--rich-blue)}
+
+  .badge-row.compliance{margin-top:16px}
+  .badge-chip.verify{
+    background:repeating-linear-gradient(135deg, var(--grey-10), var(--grey-10) 6px, var(--grey-20) 6px, var(--grey-20) 12px);
+    border:1px dashed var(--pink);color:var(--pink-dark);
+  }
+  .badge-chip.verify .material-symbols-rounded{color:var(--pink)}
+
+  .client-band{text-align:center}
+  .client-band .logo-grid{grid-template-columns:repeat(6,1fr);margin-top:32px}
+  @media (max-width:900px){ .client-band .logo-grid{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width:520px){ .client-band .logo-grid{grid-template-columns:repeat(2,1fr)} }
+  .client-band .logo-chip{height:64px;font-size:.8rem;color:var(--rich-blue);opacity:.7}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{text-align:center}
+  .final-cta .line1{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:300}
+  .final-cta .line2{font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--pink);margin-top:6px}
+  .final-cta .btn-primary{margin-top:32px}
+  .final-cta .form-microcopy{justify-content:center;margin-top:16px;color:var(--grey-10);opacity:.85}
+  .final-cta .form-microcopy .material-symbols-rounded{color:var(--teal)}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--border);padding-block:32px;font-size:.9rem}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+  .footer-links a{text-decoration:none;opacity:.8}
+  .footer-links a:hover{text-decoration:underline}
+  .social-row{display:flex;gap:14px}
+  .social-row a{width:34px;height:34px;border-radius:50%;background:var(--grey-20);display:flex;align-items:center;justify-content:center}
+  .social-row .material-symbols-rounded{font-size:18px}
+
+  /* ---------- Mobile cookie-banner safety demo ---------- */
+  .cookie-demo{
+    position:fixed;left:0;right:0;bottom:0;z-index:150;
+    background:var(--rich-blue);color:var(--grey-10);
+    padding:14px 20px;padding-bottom:calc(14px + env(safe-area-inset-bottom));
+    display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    font-size:.82rem;box-shadow:0 -4px 20px rgba(0,0,0,.15);
+    transform:translateY(0);transition:transform .3s ease;
+  }
+  .cookie-demo.dismissed{transform:translateY(110%)}
+  .cookie-demo button{
+    background:var(--pink);color:#fff;border:none;border-radius:var(--radius-pill);
+    padding:8px 16px;font-family:var(--font-display);font-weight:600;font-size:.8rem;cursor:pointer;flex:none;
+  }
+  .cookie-demo .txt{max-width:70ch;opacity:.9}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..600,0,0&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.getyooz.com/#organization",
+      "name": "Yooz",
+      "url": "https://www.getyooz.com/",
+      "logo": "https://www.getyooz.com/wp-content/uploads/Yooz-logo-update.svg",
+      "sameAs": [
+        "https://www.facebook.com/GetYoozOfficial",
+        "https://instagram.com/GetYooz",
+        "https://x.com/WhyYooz/",
+        "https://linkedin.com/company/yooz",
+        "https://www.youtube.com/@Why_Yooz/"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yooz AP Automation",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "url": "https://www.getyooz.com/en-us/ad-yooz",
+      "publisher": { "@id": "https://www.getyooz.com/#organization" },
+      "description": "Cloud-based accounts payable automation software: invoice capture, matching, approval routing, and fraud detection, natively integrated with 250+ ERPs.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.getyooz.com/en-us/ad-yooz",
+        "category": "Free demo available"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.getyooz.com/" },
+        { "@type": "ListItem", "position": 2, "name": "en-us", "item": "https://www.getyooz.com/en-us" },
+        { "@type": "ListItem", "position": 3, "name": "AP Automation", "item": "https://www.getyooz.com/en-us/ad-yooz" }
+      ]
+    }
+  ]
+}
+</script>
+<!--
+  NOTE: no aggregateRating / review Rating schema included. The live page shows
+  G2/TrustRadius/Capterra/Software Advice award badges but no numeric rating was
+  confirmed in the fetched source — do not add review/rating structured data
+  without the exact current score from each review platform (see CHECKLIST.md).
+-->
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container">
+    <!-- Full lockup / wordmark, Rich Blue on light bg, per brand logo rules. Safezone preserved by header padding. -->
+    <a class="logo" href="https://www.getyooz.com/" aria-label="Yooz home">
+      <span class="logo-mark" aria-hidden="true"><span class="material-symbols-rounded">receipt_long</span></span>
+      Yooz
+    </a>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- ============ 1–3: H1 / Subhead / Above-the-fold single CTA ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <!-- ACF: {{hero_eyebrow}} -->
+        <span class="eyebrow">AP Automation, Simplified</span>
+        <!-- ACF: {{h1_setup}} / {{h1_payoff}} — must literally contain primary_keyword_phrase.
+             General page covers both "AP Automation" and "Accounts Payable Automation" per brief §1. -->
+        <h1>
+          <span class="setup">AP Automation That Cuts</span>
+          <span class="payoff">Accounts Payable Costs by Up to 80%</span>
+        </h1>
+        <!-- ACF: {{subhead}} — free-demo / no-risk framing, matches ad promise. Never "free trial." -->
+        <p class="subhead">See it in a free, no-obligation demo. No software to install, no risk to try.</p>
+
+        <div class="hero-stat-row">
+          <span class="hero-stat-value">Up to 80%</span>
+          <span class="hero-stat-label">lower AP processing costs vs. manual AP</span>
+        </div>
+
+        <div class="award-row" aria-label="Industry recognition">
+          <div class="award-badge" title="G2 Best ROI, Spring 2026"><span class="material-symbols-rounded" aria-hidden="true">military_tech</span></div>
+          <div class="award-badge" title="TrustRadius Top Rated 2025"><span class="material-symbols-rounded" aria-hidden="true">workspace_premium</span></div>
+          <div class="award-badge" title="Software Advice FrontRunners 2026"><span class="material-symbols-rounded" aria-hidden="true">verified</span></div>
+          <div class="award-badge" title="Capterra Shortlist 2026"><span class="material-symbols-rounded" aria-hidden="true">stars</span></div>
+          <span class="award-caption">G2 Best ROI &middot; TrustRadius Top Rated &middot; Software Advice FrontRunners &middot; Capterra Shortlist</span>
+        </div>
+      </div>
+
+      <!-- The ONE primary CTA action on the page: the demo-request form itself.
+           min-height reserved on .form-card below so nothing shifts when HubSpot's JS renders (CLS). -->
+      <div class="form-card" id="demo-form">
+        <h2>Request a Demo</h2>
+        <p class="form-sub">Free, no-obligation. See your own numbers in the meeting.</p>
+
+        <!-- PRODUCTION: replace .form-skeleton with
+             <div id="hubspot-form-XXXX" class="hs-live-mount"></div>
+             and call hbspt.forms.create({ portalId:"2205679", formId:"{{hubspot_form_id}}", target:"#hubspot-form-XXXX" })
+             from js.hsforms.net/forms/embed/v2.js (loaded async/defer, same as live page).
+             The skeleton below exists ONLY to size this artifact preview — it is not a working form. -->
+        <div class="form-skeleton" aria-hidden="true">
+          <div class="field-skel-row">
+            <div class="field-skel label" data-label="First name"></div>
+            <div class="field-skel label" data-label="Last name"></div>
+          </div>
+          <div class="field-skel label" data-label="Work email"></div>
+          <div class="field-skel label" data-label="Company"></div>
+          <div class="field-skel label" data-label="Phone"></div>
+          <div class="field-skel label" data-label="Country"></div>
+          <div class="field-skel submit-skel" style="background:var(--pink);opacity:.9"></div>
+        </div>
+        <p class="form-microcopy">
+          <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+          A specialist reaches out within one business day to schedule your live demo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Demo video — lazy facade, never blocks LCP ============ -->
+  <section class="bg-grey20">
+    <div class="container">
+      <div class="section-head">
+        <h2>The Accounts Payable Automation Platform 600,000+ Users Trust</h2>
+      </div>
+      <button class="video-wrap" id="demoVideoFacade" aria-label="Play: 2-minute Yooz product overview">
+        <span class="video-label">2-min product overview</span>
+        <span class="play-btn"><span class="material-symbols-rounded" aria-hidden="true">play_arrow</span></span>
+      </button>
+      <script>
+        document.getElementById('demoVideoFacade').addEventListener('click', function loadVideo(e){
+          var el = e.currentTarget;
+          var iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube.com/embed/-hUlvSZJTd8?autoplay=1&rel=0';
+          iframe.title = 'Yooz product overview';
+          iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+          iframe.allowFullscreen = true;
+          el.innerHTML = '';
+          el.appendChild(iframe);
+          el.removeEventListener('click', loadVideo);
+          el.style.cursor = 'default';
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- ============ 4: Problem section — sourced pain-point stats, reused verbatim from live page ============ -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>The Real Cost of Manual AP</h2>
+        <p class="intro">Manual AP costs $4–$16 per invoice, and 31% of invoices still get paid late. Yooz automates capture, matching, and approval. See your numbers in a 2-minute demo.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="val">$4–$16</div><div class="lbl">per invoice processed manually, plus ~$3.90 in archiving costs</div></div>
+        <div class="stat-card"><div class="val">3.5%</div><div class="lbl">payment error rate driven by poor visibility and manual keying</div></div>
+        <div class="stat-card"><div class="val">31%</div><div class="lbl">of invoices paid late, triggering fees and straining supplier relationships</div></div>
+        <div class="stat-card"><div class="val">22–35 days</div><div class="lbl">average invoice cycle time while your close waits</div></div>
+      </div>
+      <p class="stat-citation">Sources: Aberdeen, Arthur D. Little, BVA, IOFM, Levvel.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5: Savings calculator — kept, ported faithfully from live #calculator-yooz ============ -->
+  <section id="savings" class="bg-grey20">
+    <div class="container">
+      <div class="section-head" style="text-align:center;max-width:none">
+        <h2>Calculate Your Savings and Improve Your Cash Flow Management With Yooz</h2>
+      </div>
+      <div class="calc-card">
+        <p class="calc-title">Estimate unit cost of processing an invoice*</p>
+        <div class="radio-row">
+          <label class="radio-opt"><input type="radio" name="estimation" id="est-avg" value="avg"> Average Estimate <strong>&nbsp;$9.12</strong></label>
+          <label class="radio-opt"><input type="radio" name="estimation" id="est-high" value="high" checked> High Estimate <strong>&nbsp;$15.29</strong></label>
+        </div>
+
+        <p class="calc-title">Select the number of monthly invoices processed</p>
+        <div class="slider-graduation">
+          <span>100</span><span>1K</span><span>5K</span><span>20K</span><span>100K</span>
+        </div>
+        <input type="range" id="invoiceSlider" min="0" max="13" step="1" value="0" aria-label="Monthly invoice volume">
+
+        <div class="calc-results">
+          <div class="calc-result"><div class="amount" id="costManual">$0</div><div class="cap">Annual cost, manual processing</div></div>
+          <div class="calc-result"><div class="amount" id="costYooz">$0</div><div class="cap">Annual cost with AP automation*</div></div>
+          <div class="calc-result highlight"><div class="amount" id="savingsAmt">$0</div><div class="cap">Estimated annual savings</div></div>
+        </div>
+        <p class="calc-footnote">*The unit costs of processing an invoice are based on studies carried out by recognized analyst firms such as Aberdeen, Arthur D. Little, BVA, IOFM or Levvel. *Based on average industry solution costs.</p>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        var invoiceCounts = [100,250,500,750,1000,1500,2000,3000,4000,5000,10000,20000,50000,100000];
+        var yoozUnitCost  = [1.99,1.82,1.70,1.63,1.58,1.52,1.48,1.42,1.38,1.35,1.26,1.17,1.07,1.00];
+        var slider = document.getElementById('invoiceSlider');
+        var estAvg = document.getElementById('est-avg');
+        var estHigh = document.getElementById('est-high');
+        var fmt = new Intl.NumberFormat('en-US', {style:'currency', currency:'USD', maximumFractionDigits:0});
+        function recalc(){
+          var idx = parseInt(slider.value, 10);
+          var count = invoiceCounts[idx];
+          var manualUnit = estHigh.checked ? 15.29 : 9.12;
+          var manual = count * manualUnit * 12;
+          var yooz = count * yoozUnitCost[idx] * 12;
+          var savings = manual - yooz;
+          document.getElementById('costManual').textContent = fmt.format(manual);
+          document.getElementById('costYooz').textContent = fmt.format(yooz);
+          document.getElementById('savingsAmt').textContent = fmt.format(savings);
+        }
+        slider.addEventListener('input', recalc);
+        estAvg.addEventListener('change', recalc);
+        estHigh.addEventListener('change', recalc);
+        recalc();
+      })();
+    </script>
+  </section>
+
+  <!-- ============ 6: Integration / ERP logos — segment-aware ============ -->
+  <section>
+    <div class="container">
+      <div class="section-head" style="text-align:center;max-width:none">
+        <!-- ACF: heading built from "{{segment_name|Yooz}}" template string; when segment_name is set,
+             that ERP's chip below gets class="logo-chip featured" and moves first. -->
+        <h2>Quickly Integrate Yooz With Over 250 ERPs</h2>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-chip">Sage</div>
+        <div class="logo-chip">CDK Global</div>
+        <div class="logo-chip">QuickBooks</div>
+        <div class="logo-chip">Microsoft Dynamics 365</div>
+        <div class="logo-chip">Oracle NetSuite</div>
+        <div class="logo-chip">SAP</div>
+        <div class="logo-chip">Infor</div>
+        <div class="logo-chip">Acumatica</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7: Concrete benefit statements — rewritten to tie to facts already on this page ============ -->
+  <section class="bg-grey20">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why Finance Teams Move to Yooz</h2>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">trending_down</span></div>
+          <h3>Up to 80% Lower Processing Costs</h3>
+          <p>Automated capture, matching, and approval cut per-invoice cost from the $4–$16 manual range shown above down to a fraction of that.</p>
+          <span class="linked-fact"><span class="material-symbols-rounded" aria-hidden="true">link</span>See calculator above</span>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">hub</span></div>
+          <h3>250+ ERPs, Natively Integrated</h3>
+          <p>Yooz connects directly to your existing ERP — no middleware, no rip-and-replace — so automation goes live without disrupting systems your team already runs.</p>
+          <span class="linked-fact"><span class="material-symbols-rounded" aria-hidden="true">link</span>See integrations above</span>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">shield_with_heart</span></div>
+          <h3>Built-In Fraud &amp; Duplicate-Payment Detection</h3>
+          <p>Every invoice is screened for duplicate submissions, vendor-detail changes, and other fraud signals automatically, before it reaches approval.</p>
+          <span class="linked-fact"><span class="material-symbols-rounded" aria-hidden="true">link</span>See fraud guide below</span>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">bolt</span></div>
+          <h3>Capture-to-Approval, Fully Automated</h3>
+          <p>From invoice receipt through matching, routing, and approval, Yooz removes the manual keying and email-thread approvals behind the 22–35 day cycle times above.</p>
+          <span class="linked-fact"><span class="material-symbols-rounded" aria-hidden="true">link</span>See problem stats above</span>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">groups</span></div>
+          <h3>Trusted by 600,000+ Users</h3>
+          <p>Including 9 of the 10 biggest audit firms — one shared customer-count figure, used across every Yooz page and in ad copy.</p>
+          <span class="linked-fact"><span class="material-symbols-rounded" aria-hidden="true">link</span>customer_count_stat (shared source)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8: Fraud-prevention mid-funnel module — tertiary CTA (lower-commitment path) ============ -->
+  <section>
+    <div class="container fraud-grid">
+      <div class="fraud-visual" aria-hidden="true"><span class="material-symbols-rounded">encrypted</span></div>
+      <div>
+        <h2 style="font-size:1.9rem">Is Your AP Process Fraud-Proof?</h2>
+        <p style="margin-top:16px;opacity:.85">Manual processes and poor visibility don't just cost you money — they're the openings behind business email compromise, fake invoices, vendor impersonation, and fraudulent bank account changes. AI has made these attacks more convincing than ever. This guide shows finance leaders how to spot the red flags early and close the gaps before someone finds them.</p>
+        <ul class="fraud-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span>Spot the red flags of BEC, fake invoice, and vendor impersonation fraud</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span>See where traditional AP processes leave you exposed</li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span>Get proven prevention strategies using AI and automation</li>
+        </ul>
+        <a class="link-tertiary" href="https://www.getyooz.com/resource/whitepaper/mitigating-ap-fraud-risk-guide">
+          Download the fraud-prevention guide <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9: Social proof — testimonial, review badges, NEW compliance badges ============ -->
+  <section class="bg-grey20">
+    <div class="container">
+      <div class="testimonial-card">
+        <span class="material-symbols-rounded quote-mark" aria-hidden="true">format_quote</span>
+        <blockquote>“Yooz has given us the ability to provide new offerings to our clients — who all process large volumes of invoices — allowing them to improve their efficiencies. Previously we struggled with this, and now we're rolling out Yooz as a standard processing tool to support all of our large clients and help them achieve their business goals.”</blockquote>
+        <p class="testimonial-attr">James Smalley <span>&middot; Financial Outsourcing Specialist, MAZARS</span></p>
+      </div>
+
+      <div class="badge-row" aria-label="Review site recognition">
+        <div class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>G2</div>
+        <div class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>TrustRadius</div>
+        <div class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>Capterra</div>
+        <div class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>Software Advice</div>
+      </div>
+
+      <!-- NEW: security/compliance badge row — brief requirement 9. No SOC 2 / GDPR asset
+           was found anywhere on the live page or in the fetched source, so this renders
+           as an explicit [VERIFY] state rather than a fabricated badge. -->
+      <div class="badge-row compliance" aria-label="Security and compliance">
+        <div class="badge-chip verify"><span class="material-symbols-rounded" aria-hidden="true">gpp_maybe</span>[VERIFY: SOC 2 report type]</div>
+        <div class="badge-chip verify"><span class="material-symbols-rounded" aria-hidden="true">gpp_maybe</span>[VERIFY: GDPR compliance statement]</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="client-band">
+    <div class="container">
+      <!-- Rewritten from live page's "the #1 AP Automation Service Provider" — unsupported
+           superlative, no citation found. See README/CHECKLIST for the swap rationale. -->
+      <h2 style="font-size:1.6rem">Join Clients Across Construction, Automotive, Trucking, and Beyond Who Run AP on Yooz</h2>
+      <div class="logo-grid">
+        <div class="logo-chip">Client</div><div class="logo-chip">Client</div><div class="logo-chip">Client</div>
+        <div class="logo-chip">Client</div><div class="logo-chip">Client</div><div class="logo-chip">Client</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10: Final CTA — second and last "Request a Demo" instance on the page ============ -->
+  <section class="bg-blue final-cta">
+    <div class="container">
+      <p class="line1">600,000+ Users and 9/10 of the Biggest Audit Firms Already Use Yooz</p>
+      <p class="line2">Why Aren't You?</p>
+      <a class="btn-primary" href="#demo-form">Request a Demo</a>
+      <p class="form-microcopy">
+        <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+        A specialist reaches out within one business day to schedule your live demo.
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 11: Standard footer ============ -->
+<footer>
+  <div class="container footer-row">
+    <div class="footer-row" style="gap:20px">
+      <span>© 2026 Yooz. All rights reserved.</span>
+      <ul class="footer-links">
+        <li><a href="https://www.getyooz.com/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://www.getyooz.com/terms-of-use">Legal</a></li>
+        <li><a href="javascript:void(0)" onclick="if(window.Didomi){Didomi.preferences.show()}">Cookie settings</a></li>
+      </ul>
+    </div>
+    <div class="social-row" aria-label="Yooz on social media">
+      <a href="https://www.facebook.com/GetYoozOfficial" aria-label="Facebook"><span class="material-symbols-rounded" aria-hidden="true">thumb_up</span></a>
+      <a href="https://instagram.com/GetYooz" aria-label="Instagram"><span class="material-symbols-rounded" aria-hidden="true">photo_camera</span></a>
+      <a href="https://linkedin.com/company/yooz" aria-label="LinkedIn"><span class="material-symbols-rounded" aria-hidden="true">work</span></a>
+      <a href="https://www.youtube.com/@Why_Yooz/" aria-label="YouTube"><span class="material-symbols-rounded" aria-hidden="true">smart_display</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Mobile cookie-consent safety demo (Didomi in production) ============ -->
+<!-- Illustrates brief requirement: banner must dock at bottom, never cover H1/CTA on mobile load.
+     Real Didomi config is server-side (not visible in fetched source) — verify live on a real device. -->
+<div class="cookie-demo" id="cookieDemo" role="region" aria-label="Cookie consent">
+  <span class="txt">We use cookies to improve your experience. See our <a href="https://www.getyooz.com/privacy-policy" style="color:#fff;text-decoration:underline">Privacy Policy</a>.</span>
+  <button id="cookieDismiss">Accept</button>
+</div>
+<script>
+  document.getElementById('cookieDismiss').addEventListener('click', function(){
+    document.getElementById('cookieDemo').classList.add('dismissed');
+  });
+</script>

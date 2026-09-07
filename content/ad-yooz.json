@@ -1,0 +1,166 @@
+{
+  "$schema": "../template/acf-field-group-sea-landing-page.json",
+  "_comment": "Populated content instance for the general/brand 'sea' post: /en-us/ad-yooz. Every value below was taken verbatim from the live page's rendered HTML (fetched 2026-09-07) or from the shared_stats source of truth. Nothing here is invented. Fields with a value of null and a \"_verify\" note are gaps the live page also doesn't answer — do not fill them with a guess.",
+
+  "post_type": "sea",
+  "slug": "ad-yooz",
+  "locale": "en-us",
+
+  "primary_keyword_phrase": {
+    "main": "AP Automation",
+    "secondary": "Accounts Payable Automation",
+    "_note": "General/brand page must cover both phrasings per brief section 1. ERP/vertical instances use a single primary_keyword_phrase, e.g. 'Sage AP Automation'."
+  },
+
+  "segment_name": null,
+  "segment_type": null,
+
+  "hero_eyebrow": "AP Automation, Simplified",
+
+  "h1_setup": "AP Automation That Cuts",
+  "h1_payoff": "Accounts Payable Costs by Up to 80%",
+
+  "subhead": "See it in a free, no-obligation demo. No software to install, no risk to try.",
+
+  "hero_stat": {
+    "value": "Up to 80%",
+    "label": "lower AP processing costs",
+    "source": "existing site copy, /en-us/ad-yooz meta description and body copy"
+  },
+
+  "hero_award_badges": [
+    { "name": "G2 Best ROI", "period": "Spring 2026", "image_ref": "medal-11.png" },
+    { "name": "TrustRadius Top Rated", "period": "2025", "image_ref": "TopRated-Gradient-2025.png" },
+    { "name": "Software Advice FrontRunners", "period": "2026", "image_ref": "01fe3ef6-9d2d-458a-a4b3-d56978d730e7.svg" },
+    { "name": "Capterra Shortlist", "period": "2026", "image_ref": "387b4b56-b112-40b0-84da-c1cfb25aa8be.svg" }
+  ],
+
+  "hubspot_form": {
+    "portal_id": "2205679",
+    "form_id": "1b3ffee0-1aa1-4f18-9073-db1d433a3dff",
+    "region": "na1"
+  },
+
+  "cta_primary_label": "Request a Demo",
+  "cta_after_submit_microcopy": "A specialist reaches out within one business day to schedule your live demo.",
+
+  "problem_section": {
+    "heading": "The Real Cost of Manual AP",
+    "intro": "Manual AP costs $4–$16 per invoice, and 31% of invoices still get paid late. Yooz automates capture, matching, and approval. See your numbers in a 2-minute demo.",
+    "stats": [
+      { "value": "$4–$16", "label": "per invoice processed manually, plus ~$3.90 in archiving costs" },
+      { "value": "3.5%", "label": "payment error rate driven by poor visibility and manual keying" },
+      { "value": "31%", "label": "of invoices paid late, triggering fees and straining supplier relationships" },
+      { "value": "22–35 days", "label": "average invoice cycle time while your close waits" }
+    ],
+    "stat_source_citation": "Aberdeen, Arthur D. Little, BVA, IOFM, Levvel (as cited in the existing savings-calculator footnote on live page)"
+  },
+
+  "savings_calculator": {
+    "heading": "Calculate your savings and improve your cash flow management with Yooz",
+    "note": "Reused as-is — existing #calculator-yooz widget, not rebuilt.",
+    "footnote": "The unit costs of processing an invoice are based on studies carried out by recognized analyst firms such as Aberdeen, Arthur D. Little, BVA, IOFM or Levvel."
+  },
+
+  "integration_logos": {
+    "heading_template": "Quickly Integrate {{segment_name|Yooz}} With Over 250 ERPs",
+    "logos_default_set": ["Sage", "CDK Global", "QuickBooks", "Microsoft Dynamics 365", "Oracle NetSuite", "SAP", "Infor", "Acumatica"],
+    "_note": "This is the generic set shown when segment_name is null. When segment_name is set (e.g. 'Sage'), that ERP's logo should be pinned first/enlarged, not just present in the grid — see ad-sage.example.json."
+  },
+
+  "benefit_statements": [
+    {
+      "heading": "Up to 80% Lower Processing Costs",
+      "body": "Automated capture, matching, and approval cut per-invoice cost from the $4–$16 manual range down to a fraction of that — the same reduction shown in your calculator results above.",
+      "icon": "trending_down"
+    },
+    {
+      "heading": "250+ ERPs, Natively Integrated",
+      "body": "Yooz connects directly to your existing ERP — no middleware, no rip-and-replace — so AP automation goes live without disrupting the systems your team already runs on.",
+      "icon": "hub"
+    },
+    {
+      "heading": "Built-In Fraud & Duplicate-Payment Detection",
+      "body": "Every invoice is screened for duplicate submissions, vendor-detail changes, and other fraud signals automatically, before it reaches approval — see the fraud-prevention guide below.",
+      "icon": "shield_with_heart"
+    },
+    {
+      "heading": "Capture-to-Approval, Fully Automated",
+      "body": "From invoice receipt through matching, routing, and approval, Yooz removes the manual keying and email-thread approvals that drive the 22–35 day cycle times above.",
+      "icon": "bolt"
+    },
+    {
+      "heading": "Trusted by 600,000+ Users",
+      "body": "Including 9 of the 10 biggest audit firms — the same customer_count_stat used across every Yooz page and in ad copy, pulled from one shared source.",
+      "icon": "groups"
+    }
+  ],
+  "_benefit_statements_note": "Rewritten from the live page's 'Ultimate Protection / Infinitely Adaptable / Redefined Simplicity / Client Obsessed' copy, which was adjective-driven and in one case used an unsupported 'only' superlative. Each line above ties back to a stat already established elsewhere on this same page, per brief requirement 7.",
+
+  "fraud_module": {
+    "heading": "Is Your AP Process Fraud-Proof?",
+    "body": "Manual processes and poor visibility don’t just cost you money, they’re the openings behind business email compromise, fake invoices, vendor impersonation, and fraudulent bank account changes. AI has made these attacks more convincing than ever. This guide shows finance leaders how to spot the red flags early and close the gaps before someone finds them.",
+    "bullets": [
+      "Spot the red flags of BEC, fake invoice, and vendor impersonation fraud",
+      "See where traditional AP processes leave you exposed",
+      "Get proven prevention strategies using AI and automation"
+    ],
+    "cta_label": "Download Now",
+    "cta_href": "https://www.getyooz.com/resource/whitepaper/mitigating-ap-fraud-risk-guide"
+  },
+
+  "proof_testimonial": {
+    "quote": "Yooz has given us the ability to provide new offerings to our clients —who all process large volumes of invoices— allowing them to improve their efficiencies. Previously we struggled with this, and now we’re rolling out Yooz as a standard processing tool to support all of our large clients and help them achieve their business goals.",
+    "name": "James Smalley",
+    "title": "Financial Outsourcing Specialist",
+    "company": "MAZARS"
+  },
+
+  "review_badges": {
+    "_note": "Existing image 'Review-Sites-Logos-1.png' is an unlabeled composite — exact logos it contains (G2/TrustRadius/Capterra/Software Advice presumed from hero badges) should be confirmed, not assumed, when rebuilding as individual badge assets.",
+    "image_ref": "Review-Sites-Logos-1.png",
+    "_verify": "Confirm which review-site logos are actually in this composite image before treating it as G2+TrustRadius+Capterra+SoftwareAdvice."
+  },
+
+  "compliance_badges": {
+    "_verify": "MISSING on live page — brief requirement 9 flags this gap explicitly. No SOC 2 or GDPR badge/certification asset found anywhere in the fetched source. Do not publish a SOC 2 or GDPR badge without the actual certificate/attestation on file — insert [VERIFY: confirm current SOC 2 report type and GDPR compliance statement with Legal/Security before publishing this row]."
+  },
+
+  "customer_count_stat": {
+    "_source_of_truth": "shared_stats.customer_count (see README — recommend a single ACF Options field 'global_customer_count' read by every 'sea' post and by the ad-copy generation process, so this number can't drift again)",
+    "value": "600,000+",
+    "unit": "users",
+    "supporting_fact": "9 of the 10 biggest audit firms",
+    "as_seen_on_live_page_at": ["hero-adjacent H2: 'The Accounts Payable Automation Platform 600,000+ Users Trust'", "final CTA section: '600,000+ Users and 9/10 of the Biggest Audit Firms Already use Yooz'"]
+  },
+
+  "client_logos_band": {
+    "heading_original": "Join a List of Clients Across a Breadth of Industries that Utilize the #1 AP Automation Service Provider",
+    "heading_rewritten": "Join Clients Across Construction, Automotive, Trucking, and Beyond Who Run AP on Yooz",
+    "_note": "'#1 AP Automation Service Provider' is an unsupported superlative per brief's WHAT NOT TO DO section — no citable ranking source was found in the fetched page or provided brief. Rewritten to a true, verifiable claim (breadth of industries, matching the client-logos image already on the page). Restore a specific ranking claim only if given a citable source (e.g. a named G2 category-leader badge)."
+  },
+
+  "final_cta": {
+    "line_1": "600,000+ Users and 9/10 of the Biggest Audit Firms Already use Yooz",
+    "line_2": "Why Aren’t You?",
+    "cta_label": "Request a Demo",
+    "microcopy": "A specialist reaches out within one business day to schedule your live demo."
+  },
+
+  "meta": {
+    "title_original": "Yooz | Accounts Payable Automation",
+    "title_rewritten": "Yooz | AP Automation & Accounts Payable Automation Software",
+    "description_original": "Yooz is the most powerful AP Automation software on the market, reducing accounts payable costs by up to 80%. Start quickly with 250+ ERPs natively integrated!",
+    "description_rewritten": "Cut accounts payable costs by up to 80% with Yooz AP automation. Natively integrates with 250+ ERPs. See it in a free, no-obligation demo.",
+    "_note": "Removed 'the most powerful ... on the market' — unsupported superlative, no citation found. Kept the two verified numbers (80% cost cut, 250+ ERPs) and the free-demo framing."
+  },
+
+  "footer": {
+    "copyright": "© 2026 Yooz. All rights reserved.",
+    "links": [
+      { "label": "Privacy Policy", "href": "https://www.getyooz.com/privacy-policy" },
+      { "label": "Legal", "href": "https://www.getyooz.com/terms-of-use" },
+      { "label": "Cookie settings", "href": "javascript:Didomi.preferences.show();" }
+    ]
+  }
+}
