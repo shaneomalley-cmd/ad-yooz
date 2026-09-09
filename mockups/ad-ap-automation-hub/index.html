@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  AD-TO-PAGE CONTINUITY — Campaign 02b CATEGORY HEAD, both ad groups. Copy
+  team: paste the live RSA headlines and descriptions below so the hero
+  copy is confirmed to keep restating the same promise the ad made. Head
+  keywords this page must echo: "ap automation", "accounts payable
+  automation", "payables automation", "ap automation solutions", "ap
+  automation tools", "accounts payable solutions". This is the highest-CPC
+  term in the dataset ($303.62) and its SERP is 7 of 12 glossary/explainer
+  pages — mixed intent, roughly 60% glossary-seekers / 40% buyers, and the
+  query cannot tell you which visitor you have. This page is priority 5,
+  the one untested bet in the plan: campaign 02b is ring-fenced against
+  campaign 02, and drops if the fork underperforms within a quarter.
+  {{AD_HEADLINE_1}}
+  {{AD_HEADLINE_2}}
+  {{AD_HEADLINE_3}}
+  {{AD_DESCRIPTION_1}}
+  {{AD_DESCRIPTION_2}}
+-->
+
+<title>AP Automation Solutions | Learn or Compare | Yooz</title>
+<meta name="description" content="Two ways to use this page: a plain-language AP automation explainer with a cost benchmark, or a side-by-side vendor comparison. You choose.">
+<link rel="canonical" href="https://getyooz.com/en-us/ad-ap-automation-hub">
+<meta property="og:title" content="AP Automation Solutions | Learn or Compare | Yooz">
+<meta property="og:description" content="Two ways to use this page: a plain-language AP automation explainer with a cost benchmark, or a side-by-side vendor comparison. You choose.">
+<meta property="og:url" content="https://getyooz.com/en-us/ad-ap-automation-hub">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+
+<style>
+  /* Page-specific layout — everything reusable lives in tokens.css.
+     Archetype 4's whole brief is structural: two co-equal paths, nothing
+     forced, in-page progressive disclosure on one URL. */
+  main { overflow-wrap: anywhere; }
+
+  /* ---- 1. Chooser — first screen, nothing above it ---- */
+  .chooser { padding-block: var(--space-8); }
+  .chooser__intro { max-width: 800px; margin-bottom: var(--space-7); }
+  .chooser__intro .text-para { margin-top: var(--space-4); max-width: 68ch; }
+
+  .chooser-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    align-items: stretch;
+  }
+  .chooser-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    min-width: 0;
+  }
+  .chooser-card__label { color: var(--grey-90); }
+  .chooser-card p.text-para { margin: 0; max-width: 46ch; }
+  .chooser-card__cta { margin-top: auto; padding-top: var(--space-2); }
+  .chooser-card[aria-current="true"] { outline: 2px solid var(--pink); outline-offset: -2px; }
+
+  @media (max-width: 767px) {
+    .chooser-grid { grid-template-columns: 1fr; }
+    /* Stacking order at mobile is randomised on load per the brief, so
+       neither path reads as the "default" just by being first — see the
+       inline script below. Both orders are declared here; JS decides
+       which applies by toggling .chooser-grid--flip. */
+    .chooser-grid--flip .chooser-card:first-child { order: 2; }
+    .chooser-grid--flip .chooser-card:last-child { order: 1; }
+  }
+
+  /* ---- Path panels — hidden until chosen ---- */
+  .path-panel[hidden] { display: none; }
+  .path-panel {
+    animation: path-in 450ms ease;
+  }
+  @keyframes path-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .path-panel { animation: none; }
+  }
+
+  .path-panel__header { padding-block: var(--space-7) 0; }
+  .path-panel__header .container { max-width: none; }
+  .path-panel__switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+  .path-panel__intro { max-width: 760px; }
+
+  /* ---- Path A: explainer ---- */
+  .explainer { padding-block: var(--space-7); }
+  .explainer__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .explainer__video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-3);
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--rich-blue), var(--pink));
+    border-radius: var(--radius-box);
+    color: var(--grey-10);
+    padding: var(--space-5);
+    text-align: center;
+  }
+  .explainer__video .icon { font-size: 44px; }
+  @media (max-width: 900px) {
+    .explainer__grid { grid-template-columns: 1fr; }
+  }
+
+  .process-steps {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5) var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .process-step { display: flex; align-items: center; gap: var(--space-3); }
+  .process-step:not(:last-child)::after {
+    content: '';
+    width: 14px;
+    height: 1px;
+    background: var(--grey-60);
+    display: inline-block;
+    margin-left: var(--space-5);
+  }
+  @media (max-width: 640px) {
+    .process-step:not(:last-child)::after { display: none; }
+  }
+
+  /* ---- Path A: calculator ---- */
+  .calc { padding-block: var(--space-7); }
+  .calc__grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .calc__grid { grid-template-columns: 1fr; }
+  }
+  .calc__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-4); }
+  @media (max-width: 500px) { .calc__fields { grid-template-columns: 1fr; } }
+  .calc__dont-know {
+    display: flex; align-items: center; gap: var(--space-2);
+    font-size: 14px; color: var(--grey-90); font-weight: var(--weight-regular);
+    margin-top: var(--space-1);
+  }
+  .calc__email-field { grid-column: 1 / -1; margin-top: var(--space-2); }
+
+  .calc__results {
+    background: var(--rich-blue);
+    border-radius: var(--radius-box);
+    padding: var(--space-6);
+    color: var(--grey-10);
+  }
+  .calc__results[hidden] { display: none; }
+  .calc__results-placeholder {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: var(--space-3); color: var(--grey-90); background: var(--grey-10);
+    border: 1px dashed var(--grey-60); border-radius: var(--radius-box);
+    padding: var(--space-6);
+  }
+  .calc__results-placeholder .icon { font-size: 36px; color: var(--grey-60); }
+  .calc__results-placeholder[hidden] { display: none; }
+  .calc__results-figure {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: var(--weight-light);
+    margin: var(--space-2) 0 0;
+  }
+  .calc__results dl { display: grid; gap: var(--space-2); margin-top: var(--space-5); }
+  .calc__results dl div { display: flex; justify-content: space-between; gap: var(--space-4); border-top: 1px solid rgba(254,254,254,0.16); padding-top: var(--space-2); }
+  .calc__results dt { color: var(--grey-60); font-size: 14px; }
+  .calc__results dd { margin: 0; font-weight: var(--weight-semibold); }
+  .calc__results-panel { animation: path-in 450ms ease; }
+  @media (prefers-reduced-motion: reduce) { .calc__results-panel { animation: none; } }
+
+  .assumptions { margin-top: var(--space-5); }
+  .assumptions summary {
+    cursor: pointer; color: var(--pink); font-weight: var(--weight-semibold);
+    font-size: 15px;
+  }
+  .assumptions-table { margin-top: var(--space-4); overflow-x: auto; }
+  .assumptions-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .assumptions-table th, .assumptions-table td {
+    text-align: left; padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--grey-40); vertical-align: top;
+  }
+  .assumptions-table .needs-source { color: var(--grey-80); font-style: italic; }
+
+  .path-a__secondary { margin-top: var(--space-6); }
+
+  /* ---- Path B: comparison table (reuses archetype 11's component) ---- */
+  .compare { padding-block: var(--space-7); }
+  .compare-table-wrap {
+    margin-top: var(--space-6);
+    overflow-x: auto;
+    border-radius: var(--radius-box);
+    background: var(--grey-10);
+    box-shadow: var(--shadow-float);
+    -webkit-overflow-scrolling: touch;
+  }
+  .compare-table-wrap:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+  .compare-table { width: 100%; min-width: 640px; border-collapse: collapse; }
+  .compare-table thead th {
+    background: var(--rich-blue); color: var(--grey-10);
+    font-weight: var(--weight-semibold); font-size: 16px;
+    padding: var(--space-4) var(--space-5); text-align: left;
+    vertical-align: middle; white-space: nowrap;
+  }
+  .compare-table thead th:first-child {
+    position: sticky; left: 0; z-index: 3; background: var(--rich-blue);
+    min-width: 200px; white-space: normal;
+  }
+  .compare-table__yooz-marker {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--pink); margin-right: var(--space-2); vertical-align: middle;
+  }
+  .compare-table tbody th[scope="row"] {
+    text-align: left; font-weight: var(--weight-semibold); font-size: 15px;
+    color: var(--rich-blue); padding: var(--space-4) var(--space-5);
+    position: sticky; left: 0; z-index: 2; min-width: 200px;
+  }
+  .compare-table td {
+    font-weight: var(--weight-regular); font-size: 15px; color: var(--rich-blue);
+    padding: var(--space-4) var(--space-5); min-width: 150px; max-width: 220px;
+    vertical-align: top; overflow-wrap: anywhere;
+  }
+  .compare-table tbody tr:nth-child(odd) { background: var(--grey-10); }
+  .compare-table tbody tr:nth-child(even) { background: var(--grey-20); }
+  .compare-table tbody tr:nth-child(odd) th[scope="row"] { background: var(--grey-10); }
+  .compare-table tbody tr:nth-child(even) th[scope="row"] { background: var(--grey-20); }
+  .compare-table tbody tr:not(:last-child) td,
+  .compare-table tbody tr:not(:last-child) th[scope="row"] { border-bottom: 1px solid var(--grey-40); }
+  .compare-table__yooz-col { border-left: 3px solid var(--pink); }
+  .compare-table__scroll-hint {
+    display: none; align-items: center; gap: var(--space-2);
+    margin-top: var(--space-3); color: var(--grey-90);
+  }
+  @media (max-width: 1023px) { .compare-table__scroll-hint { display: flex; } }
+  .compare__full-link { margin-top: var(--space-5); }
+
+  /* ---- Path B: demo form ---- */
+  .path-b__form { padding-block: var(--space-7); }
+  .path-b__form-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-7); align-items: center;
+  }
+  @media (max-width: 900px) { .path-b__form-grid { grid-template-columns: 1fr; } }
+  .path-b__fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-4); }
+  @media (max-width: 500px) { .path-b__fields { grid-template-columns: 1fr; } }
+  .path-b__fields .field--full { grid-column: 1 / -1; }
+  .path-b__form form .btn { width: 100%; margin-top: var(--space-2); }
+  .path-b__secondary { margin-top: var(--space-5); text-align: center; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_wordmark_click">Yooz</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+      <a href="https://getyooz.com/pricing" data-yooz-event="header_pricing_click">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. Two-path chooser — Inframe layout: Pattern BG ground, two Grey 10
+       boxes of identical size, Pink reserved for the CTA inside each box
+       so the two paths read as peers. No default selection, nothing above
+       this on the page. -->
+  <section class="chooser pattern-bg" id="chooser" aria-labelledby="chooser-heading">
+    <div class="container">
+      <div class="chooser__intro">
+        <p class="eyebrow">Two ways to use this page</p>
+        <h1 id="chooser-heading" class="text-h1">AP automation solutions</h1>
+        <p class="text-para-lg" style="margin-top: var(--space-4); max-width: 68ch;">
+          Whether you searched "AP automation," "accounts payable
+          automation," "payables automation," "AP automation tools," or
+          "accounts payable solutions" — that query alone doesn't say
+          whether you're new to the category or already sizing up
+          vendors. So this page asks instead of guessing.
+        </p>
+      </div>
+
+      <div class="chooser-grid" id="chooser-grid">
+        <div class="box-grey10 box-grey10--lg chooser-card" id="chooser-card-a">
+          <p class="text-para-sm-bold chooser-card__label">New to AP automation</p>
+          <h2 class="text-h4">What is AP automation, and what does it cost?</h2>
+          <p class="text-para">
+            A 90-second explainer of what it actually does, plus a cost
+            benchmark based on your own invoice volume. No forms until
+            you ask for one.
+          </p>
+          <div class="chooser-card__cta">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btn-path-a"
+              data-yooz-event="hub-path-explainer"
+              aria-expanded="false"
+              aria-controls="path-a"
+            >Show me the explainer</button>
+          </div>
+        </div>
+
+        <div class="box-grey10 box-grey10--lg chooser-card" id="chooser-card-b">
+          <p class="text-para-sm-bold chooser-card__label">Comparing vendors</p>
+          <h2 class="text-h4">See Yooz next to who you're already looking at</h2>
+          <p class="text-para">
+            A side-by-side table — ratings, integrations, price — sorted
+            neutrally, not ranked in Yooz's favor.
+          </p>
+          <div class="chooser-card__cta">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btn-path-b"
+              data-yooz-event="hub-path-compare"
+              aria-expanded="false"
+              aria-controls="path-b"
+            >Compare vendors</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Path A — short explainer, then a compact cost-per-invoice
+       calculator. Hidden until "Show me the explainer" is clicked. -->
+  <section class="path-panel" id="path-a" hidden aria-labelledby="path-a-heading">
+
+    <div class="path-panel__header pattern-bg">
+      <div class="container path-panel__intro">
+        <button type="button" class="btn btn-tertiary path-panel__switch" id="switch-to-b" data-yooz-event="hub-path-switch-to-compare">
+          <span class="icon" aria-hidden="true">swap_horiz</span> Actually, I'm comparing vendors
+        </button>
+        <p class="eyebrow">New to AP automation</p>
+        <h2 id="path-a-heading" class="text-h2">What AP automation actually does</h2>
+      </div>
+    </div>
+
+    <div class="explainer pattern-bg">
+      <div class="container explainer__grid">
+        <figure class="explainer__video" role="img" aria-label="Placeholder for a 90-second explainer video on what AP automation does">
+          <span class="icon" aria-hidden="true">play_circle</span>
+          <figcaption class="text-tagline">{{EXPLAINER_VIDEO}} — 90 seconds, what AP automation does</figcaption>
+        </figure>
+        <div>
+          <p class="text-para">
+            AP automation replaces manual invoice handling — routing PDFs
+            and paper by email or hand, chasing approvers, keying data
+            into your ERP — with a connected six-step flow:
+          </p>
+          <ul class="process-steps">
+            <li class="process-step"><span class="section-eyebrow__number">1</span><span class="text-list-item">Purchase</span></li>
+            <li class="process-step"><span class="section-eyebrow__number">2</span><span class="text-list-item">Capture</span></li>
+            <li class="process-step"><span class="section-eyebrow__number">3</span><span class="text-list-item">Review</span></li>
+            <li class="process-step"><span class="section-eyebrow__number">4</span><span class="text-list-item">Approve</span></li>
+            <li class="process-step"><span class="section-eyebrow__number">5</span><span class="text-list-item">Pay</span></li>
+            <li class="process-step"><span class="section-eyebrow__number">6</span><span class="text-list-item">Export</span></li>
+          </ul>
+          <p class="text-para" style="margin-top: var(--space-5);">
+            Capture alone spans email, drag &amp; drop, mobile, scan,
+            sFTP, e-invoicing, fetcher and API — whatever format an
+            invoice actually arrives in. Yooz exports to more than 250
+            financial systems, so "Export" connects to the ERP you
+            already run, not a new one.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc">
+      <div class="container">
+        <div class="box-grey10 box-grey10--lg calc__grid">
+          <div>
+            <p class="section-eyebrow"><span class="section-eyebrow__number">02</span><span class="section-eyebrow__label">Cost benchmark</span></p>
+            <h3 class="text-h3">What would this cost you?</h3>
+            <p class="text-para" style="margin-top: var(--space-3);">
+              Two numbers and an email — see a modelled monthly cost
+              benchmark, built from your own invoice volume.
+            </p>
+
+            <form id="hub-calculator" data-yooz-event="hub-patha-calculator-submit" style="margin-top: var(--space-5);">
+              <div class="calc__fields">
+                <div class="field">
+                  <label for="calc-invoices">Invoices per month</label>
+                  <input id="calc-invoices" name="invoices_per_month" type="number" inputmode="numeric" min="1" step="1" required>
+                </div>
+                <div class="field">
+                  <label for="calc-cost">Cost per invoice ($)</label>
+                  <input id="calc-cost" name="cost_per_invoice" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g. 12.50" required>
+                  <label class="calc__dont-know" for="calc-dont-know">
+                    <input type="checkbox" id="calc-dont-know" name="dont_know_cost" data-yooz-event="hub-patha-calculator-dont-know-toggle">
+                    <span>I don't know — use the published benchmark</span>
+                  </label>
+                </div>
+                <div class="field calc__email-field">
+                  <label for="calc-email">Work email</label>
+                  <input id="calc-email" name="email" type="email" autocomplete="email" required>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit" style="margin-top: var(--space-4);">Calculate your cost per invoice</button>
+            </form>
+
+            <details class="assumptions">
+              <summary>Show the assumptions behind this benchmark <span class="icon" aria-hidden="true">expand_more</span></summary>
+              <div class="assumptions-table">
+                <table>
+                  <thead><tr><th>Assumption</th><th>Value used here</th><th>Source</th></tr></thead>
+                  <tbody>
+                    <tr>
+                      <td><code>{{BENCHMARK_COST_PER_INVOICE_MANUAL}}</code></td>
+                      <td id="cfg-manual">—</td>
+                      <td class="needs-source">Illustrative placeholder — needs a citable published source</td>
+                    </tr>
+                    <tr>
+                      <td><code>{{ASSUMED_TIME_SAVING_PCT}}</code></td>
+                      <td id="cfg-saving">—</td>
+                      <td class="needs-source">Internal modelling assumption — needs product-marketing sign-off</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <p class="path-a__secondary">
+              <a class="btn btn-tertiary" href="{{BEGINNER_GUIDE_URL}}" data-yooz-event="hub-patha-guide-download-click">Or download the beginner's guide instead <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
+            </p>
+          </div>
+
+          <div>
+            <div class="calc__results-placeholder" id="calc-placeholder">
+              <span class="icon" aria-hidden="true">calculate</span>
+              <p class="text-para" style="margin:0;">Fill in the two numbers — your modelled benchmark appears here.</p>
+            </div>
+            <div class="calc__results" id="calc-results" hidden>
+              <div class="calc__results-panel">
+                <p class="text-tagline" style="color: var(--grey-60); margin:0;">Modelled monthly cost, automated</p>
+                <p class="calc__results-figure" id="calc-out-modelled">$0</p>
+                <p class="text-para" style="color: var(--grey-10); margin-top: var(--space-2);">
+                  vs. <strong id="calc-out-current">$0</strong> today, at your reported cost per invoice
+                </p>
+                <dl>
+                  <div><dt>Cost per invoice, today</dt><dd id="calc-out-cpi-before">—</dd></div>
+                  <div><dt>Modelled cost per invoice</dt><dd id="calc-out-cpi-after">—</dd></div>
+                  <div><dt>Modelled monthly saving</dt><dd id="calc-out-saving">—</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Path B — comparison table, then a demo request form. Hidden
+       until "Compare vendors" is clicked. Reuses archetype 11's table
+       component (same class names, condensed to five rows for the hub's
+       lighter footprint — see NOTES.md). -->
+  <section class="path-panel" id="path-b" hidden aria-labelledby="path-b-heading">
+
+    <div class="path-panel__header pattern-bg">
+      <div class="container path-panel__intro">
+        <button type="button" class="btn btn-tertiary path-panel__switch" id="switch-to-a" data-yooz-event="hub-path-switch-to-explainer">
+          <span class="icon" aria-hidden="true">swap_horiz</span> Actually, I'm new to this category
+        </button>
+        <p class="eyebrow">Comparing vendors</p>
+        <h2 id="path-b-heading" class="text-h2">How Yooz compares</h2>
+        <p class="text-para" style="margin-top: var(--space-4); max-width: 68ch;">
+          Sorted alphabetically, not by score, and it includes vendors
+          Yooz doesn't always win against.
+        </p>
+      </div>
+    </div>
+
+    <div class="compare pattern-bg">
+      <div class="container">
+        <div class="compare-table-wrap" tabindex="0" role="region" aria-label="Accounts payable automation vendor comparison table, scroll horizontally for more columns">
+          <table class="compare-table">
+            <caption class="visually-hidden">Accounts payable automation vendor comparison: Bill.com, Ramp, Tipalti, and Yooz, sorted alphabetically by vendor name, not by score</caption>
+            <thead>
+              <tr>
+                <th scope="col">Compare by</th>
+                <th scope="col">Bill.com</th>
+                <th scope="col">Ramp</th>
+                <th scope="col">Tipalti</th>
+                <th scope="col"><span class="compare-table__yooz-marker" aria-hidden="true"></span>Yooz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">G2 rating</th>
+                <td>{{BILLCOM_G2_RATING}}</td>
+                <td>{{RAMP_G2_RATING}}</td>
+                <td>{{TIPALTI_G2_RATING}}</td>
+                <td class="compare-table__yooz-col">{{G2_RATING}} ({{G2_REVIEW_COUNT}} reviews)</td>
+              </tr>
+              <tr>
+                <th scope="row">ERP / accounting integrations</th>
+                <td>{{BILLCOM_ERP_INTEGRATION_COUNT}}</td>
+                <td>{{RAMP_ERP_INTEGRATION_COUNT}}</td>
+                <td>{{TIPALTI_ERP_INTEGRATION_COUNT}}</td>
+                <td class="compare-table__yooz-col">250+ financial systems</td>
+              </tr>
+              <tr>
+                <th scope="row">Invoice capture channels</th>
+                <td>{{BILLCOM_CAPTURE_CHANNELS}}</td>
+                <td>{{RAMP_CAPTURE_CHANNELS}}</td>
+                <td>{{TIPALTI_CAPTURE_CHANNELS}}</td>
+                <td class="compare-table__yooz-col">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher, API</td>
+              </tr>
+              <tr>
+                <th scope="row">Primary category</th>
+                <td>{{BILLCOM_CATEGORY_FOCUS}}</td>
+                <td>{{RAMP_CATEGORY_FOCUS}}</td>
+                <td>{{TIPALTI_CATEGORY_FOCUS}}</td>
+                <td class="compare-table__yooz-col">AP automation (purchase-to-pay)</td>
+              </tr>
+              <tr>
+                <th scope="row">Starting price</th>
+                <td>{{BILLCOM_STARTING_PRICE}}</td>
+                <td>{{RAMP_STARTING_PRICE}}</td>
+                <td>{{TIPALTI_STARTING_PRICE}}</td>
+                <td class="compare-table__yooz-col">{{PRICE_PER_INVOICE_BENCHMARK}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare-table__scroll-hint text-tagline">
+          <span class="icon" aria-hidden="true">swipe</span> Scroll to see all four vendors
+        </p>
+        <p class="compare__full-link">
+          <a class="btn btn-tertiary" href="https://getyooz.com/en-us/ad-ap-comparison" data-yooz-event="hub-pathb-full-comparison-click">See the full comparison, with awards and analyst position <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
+        </p>
+      </div>
+    </div>
+
+    <div class="path-b__form">
+      <div class="container">
+        <div class="box-grey10 box-grey10--lg path-b__form-grid">
+          <div>
+            <p class="section-eyebrow"><span class="section-eyebrow__number">02</span><span class="section-eyebrow__label">Talk to us directly</span></p>
+            <h3 class="text-h3">Book a demo</h3>
+            <p class="text-para" style="margin-top: var(--space-3); max-width: 46ch;">
+              Bring the vendors you're weighing — we'll show you where
+              Yooz fits, and where it doesn't.
+            </p>
+          </div>
+          <div>
+            <form data-yooz-event="hub-pathb-demo-submit">
+              <div class="path-b__fields">
+                <div class="field">
+                  <label for="pb-first">First name</label>
+                  <input id="pb-first" name="first_name" type="text" autocomplete="given-name" required>
+                </div>
+                <div class="field">
+                  <label for="pb-last">Last name</label>
+                  <input id="pb-last" name="last_name" type="text" autocomplete="family-name" required>
+                </div>
+                <div class="field field--full">
+                  <label for="pb-email">Work email</label>
+                  <input id="pb-email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                  <label for="pb-company">Company</label>
+                  <input id="pb-company" name="company" type="text" autocomplete="organization" required>
+                </div>
+                <div class="field">
+                  <label for="pb-erp">ERP or invoice volume</label>
+                  <input id="pb-erp" name="erp_or_volume" type="text">
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit">Book a demo</button>
+            </form>
+            <p class="path-b__secondary">
+              <a class="btn btn-tertiary" href="{{COMPARISON_GUIDE_URL}}" data-yooz-event="hub-pathb-guide-download-click">Or download the comparison guide instead <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__row">
+    <div>
+      <a class="site-header__wordmark" href="https://getyooz.com" style="color: var(--grey-10);">Yooz</a>
+      <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
+    </div>
+    <div class="site-footer__links">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // -----------------------------------------------------------------
+  // Mobile stacking order: randomised on load rather than fixed, per
+  // the brief ("stacked at mobile with the order randomised or A/B'd
+  // rather than fixed") — so neither path reads as the default choice
+  // just by appearing first. Runs synchronously before paint.
+  // -----------------------------------------------------------------
+  if (Math.random() < 0.5) {
+    document.getElementById('chooser-grid').classList.add('chooser-grid--flip');
+  }
+
+  var chooser = document.getElementById('chooser');
+  var pathA = document.getElementById('path-a');
+  var pathB = document.getElementById('path-b');
+  var btnA = document.getElementById('btn-path-a');
+  var btnB = document.getElementById('btn-path-b');
+  var cardA = document.getElementById('chooser-card-a');
+  var cardB = document.getElementById('chooser-card-b');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function openPath(which) {
+    var showA = which === 'a';
+    pathA.hidden = !showA;
+    pathB.hidden = showA;
+    btnA.setAttribute('aria-expanded', String(showA));
+    btnB.setAttribute('aria-expanded', String(!showA));
+    cardA.setAttribute('aria-current', String(showA));
+    cardB.setAttribute('aria-current', String(!showA));
+    // Restart the entrance animation every time a path opens (including
+    // switching from the other path), not just on first reveal.
+    var panel = showA ? pathA : pathB;
+    if (!reduceMotion) {
+      panel.style.animation = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      panel.offsetHeight;
+      panel.style.animation = '';
+    }
+    panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  btnA.addEventListener('click', function () { openPath('a'); });
+  btnB.addEventListener('click', function () { openPath('b'); });
+  document.getElementById('switch-to-b').addEventListener('click', function () { openPath('b'); });
+  document.getElementById('switch-to-a').addEventListener('click', function () { openPath('a'); });
+
+  // -----------------------------------------------------------------
+  // Path A calculator — every coefficient below is an ILLUSTRATIVE
+  // PLACEHOLDER, not a published figure (see the visible "Show the
+  // assumptions" disclosure and PLACEHOLDERS.md/NOTES.md for the source
+  // gap and ownership). Same values as /ad-ap-roi's CONFIG so the two
+  // pages can't quietly disagree once real numbers replace them.
+  // -----------------------------------------------------------------
+  var CONFIG = {
+    benchmarkCostPerInvoiceManual: 15.00, // {{BENCHMARK_COST_PER_INVOICE_MANUAL}}
+    assumedTimeSavingPct: 0.60            // {{ASSUMED_TIME_SAVING_PCT}}
+  };
+
+  var currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var currencyCents = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  document.getElementById('cfg-manual').textContent = currencyCents.format(CONFIG.benchmarkCostPerInvoiceManual) + ' (illustrative placeholder)';
+  document.getElementById('cfg-saving').textContent = Math.round(CONFIG.assumedTimeSavingPct * 100) + '% (illustrative placeholder)';
+
+  var calcForm = document.getElementById('hub-calculator');
+  var dontKnow = document.getElementById('calc-dont-know');
+  var costInput = document.getElementById('calc-cost');
+
+  dontKnow.addEventListener('change', function () {
+    if (dontKnow.checked) {
+      costInput.value = '';
+      costInput.disabled = true;
+      costInput.required = false;
+      costInput.placeholder = 'Using benchmark: ' + currencyCents.format(CONFIG.benchmarkCostPerInvoiceManual);
+    } else {
+      costInput.disabled = false;
+      costInput.required = true;
+      costInput.placeholder = 'e.g. 12.50';
+    }
+  });
+
+  calcForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var invoices = Number(document.getElementById('calc-invoices').value);
+    var costBefore = dontKnow.checked ? CONFIG.benchmarkCostPerInvoiceManual : Number(costInput.value);
+    if (!(invoices > 0) || !(costBefore > 0)) return;
+
+    var costAfter = costBefore * (1 - CONFIG.assumedTimeSavingPct);
+    var currentMonthly = invoices * costBefore;
+    var modelledMonthly = invoices * costAfter;
+    var monthlySaving = currentMonthly - modelledMonthly;
+
+    document.getElementById('calc-placeholder').hidden = true;
+    var results = document.getElementById('calc-results');
+    results.hidden = false;
+    document.getElementById('calc-out-modelled').textContent = currency.format(modelledMonthly);
+    document.getElementById('calc-out-current').textContent = currency.format(currentMonthly);
+    document.getElementById('calc-out-cpi-before').textContent = currencyCents.format(costBefore);
+    document.getElementById('calc-out-cpi-after').textContent = currencyCents.format(costAfter);
+    document.getElementById('calc-out-saving').textContent = currency.format(monthlySaving);
+  });
+})();
+</script>
+
+</body>
+</html>
