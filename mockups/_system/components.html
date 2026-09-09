@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yooz — Landing page system specimen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal; font-style: normal; font-size: 24px;
+    line-height: 1; letter-spacing: normal; text-transform: none;
+    white-space: nowrap; word-wrap: normal; direction: ltr;
+    -webkit-font-feature-settings: 'liga'; font-feature-settings: 'liga';
+  }
+  .specimen-section { padding: var(--space-9) 0; border-bottom: 1px solid var(--grey-30); }
+  .specimen-label { font-size: var(--font-tagline); color: var(--grey-80); margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 0.08em; }
+  .swatch-row { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .swatch { width: 140px; }
+  .swatch__chip { height: 72px; border-radius: var(--radius-field); border: 1px solid var(--grey-30); margin-bottom: var(--space-2); }
+  .type-row { padding: var(--space-4) 0; border-bottom: 1px dashed var(--grey-40); }
+  .type-row code { font-size: var(--font-tagline); color: var(--grey-80); }
+  .pattern-swatch { height: 140px; border-radius: var(--radius-field); display: flex; align-items: flex-end; padding: var(--space-3); }
+  .pattern-swatch span { background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 4px; font-size: var(--font-tagline); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .box-scale { display: flex; gap: var(--space-5); align-items: flex-start; flex-wrap: wrap; }
+  .z-demo { width: 320px; height: 220px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="https://getyooz.com">y<span class="pink">ooz</span></a>
+    <nav aria-label="Primary"><span class="tagline">Header / footer specimen below</span></nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="specimen-section">
+    <h1 class="h1">Yooz landing page system</h1>
+    <p class="p mt-4">Live specimen sheet for archetype pages 01–13. Import
+    <code>tokens.css</code> and reuse these classes rather than re-deriving
+    type, color, patterns or components per page.</p>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Color — primary &amp; secondary</div>
+    <div class="swatch-row">
+      <div class="swatch"><div class="swatch__chip" style="background:var(--rich-blue)"></div><span class="tagline">Rich Blue</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--pink)"></div><span class="tagline">Pink</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--teal)"></div><span class="tagline">Teal</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--blue)"></div><span class="tagline">Blue</span></div>
+    </div>
+    <div class="specimen-label mt-6">Color — neutrals</div>
+    <div class="swatch-row">
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-100)"></div><span class="tagline">Grey 100</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-90)"></div><span class="tagline">Grey 90</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-80)"></div><span class="tagline">Grey 80</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-70)"></div><span class="tagline">Grey 70</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-60)"></div><span class="tagline">Grey 60</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-50)"></div><span class="tagline">Grey 50</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-40)"></div><span class="tagline">Grey 40</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-30);border:1px solid var(--grey-40)"></div><span class="tagline">Grey 30</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-20);border:1px solid var(--grey-40)"></div><span class="tagline">Grey 20</span></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--grey-10);border:1px solid var(--grey-40)"></div><span class="tagline">Grey 10</span></div>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Type scale</div>
+    <div class="type-row"><div class="display">Display 120→40</div><code>.display — Light, 90% lh, -2%</code></div>
+    <div class="type-row h1-split"><span class="h1 tone-blue">Heading one </span><span class="h1 tone-pink">two-tone</span><div><code>.h1 / .h1-split — Light, 110% lh, -2%</code></div></div>
+    <div class="type-row"><div class="h2">Heading two 64→32</div><code>.h2 — Light, 100% lh, -2%</code></div>
+    <div class="type-row"><div class="h3">Heading three 48→28</div><code>.h3 — Light, 110% lh, -2%</code></div>
+    <div class="type-row"><div class="h4">Heading four 32→24</div><code>.h4 — Light, 120% lh, -2%</code></div>
+    <div class="type-row"><div class="h5">Heading five 24→20</div><code>.h5 — Light, 120% lh, -2%</code></div>
+    <div class="type-row"><div class="p-lg">Paragraph large — used for hero support copy at 22px.</div><code>.p-lg — Light, 150% lh, -2%</code></div>
+    <div class="type-row"><p>Paragraph — body copy at 17px Regular, the default for running text and form helper copy.</p><code>p / .p — Regular, 150% lh, -1%</code></div>
+    <div class="type-row"><div class="list-item">List item — 16px Light on Grey 10/20 only</div><code>.list-item — Light, 150% lh, -2%</code></div>
+    <div class="type-row"><div class="list-item list-item--dense">List item, dense data variant — 16px Regular for tables/specs/timelines</div><code>.list-item--dense — Regular (legibility step-up)</code></div>
+    <div class="type-row"><div class="p-sm-bold">Paragraph small bold — labels, table headers</div><code>.p-sm-bold — SemiBold, 100% lh, -1%</code></div>
+    <div class="type-row"><div class="tagline">Tagline — captions, eyebrows on placeholders</div><code>.tagline — Light, 150% lh, -2%</code></div>
+    <div class="type-row"><div class="cta-text">Call to action</div><code>.cta-text — SemiBold, 150% lh, 0%</code></div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Eyebrows</div>
+    <span class="eyebrow">Discover Financial Operations Automation for ambitious companies</span><br>
+    <span class="eyebrow-numbered"><span class="num">04</span><span class="label">The breakthrough</span></span>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Dot patterns</div>
+    <div class="swatch-row">
+      <div class="pattern-swatch pattern-bg" style="flex:1;min-width:200px"><span>Pattern BG</span></div>
+      <div class="pattern-swatch pattern-pink" style="flex:1;min-width:200px"><span>Pattern Pink</span></div>
+      <div class="pattern-swatch pattern-blue" style="flex:1;min-width:200px"><span style="color:var(--grey-10);background:rgba(20,53,78,.7)">Pattern Blue</span></div>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Z geometry — image / screenshot placeholder</div>
+    <div class="image-slot image-slot--z z-demo">
+      <div class="image-slot__caption">HERO — graded cutout, subject facing inward, Z anchored bottom-left</div>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Buttons</div>
+    <div class="btn-row">
+      <button class="btn btn-primary">Book a demo</button>
+      <button class="btn btn-secondary">See the connector <span class="material-symbols-outlined">arrow_forward</span></button>
+      <a class="btn btn-tertiary" href="#">Read our growth-focussed mini-eBook <span class="material-symbols-outlined">arrow_forward</span></a>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Grey 10 bounding box — three scales</div>
+    <div class="box-scale">
+      <div class="box box--sm" style="width:200px"><span class="p-sm-bold">box--sm</span><p class="p mt-4">Callout, stat tile.</p></div>
+      <div class="box box--md" style="width:280px"><span class="p-sm-bold">box--md</span><p class="p mt-4">Default content card.</p></div>
+      <div class="box box--lg" style="width:360px"><span class="p-sm-bold">box--lg</span><p class="p mt-4">Section-level container, e.g. the form panel.</p></div>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Form field</div>
+    <div class="box box--md" style="max-width:360px">
+      <div class="field">
+        <label for="spec-email">Work email</label>
+        <input id="spec-email" type="email" placeholder="you@company.com">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center">Book a demo</button>
+    </div>
+  </section>
+
+  <section class="specimen-section">
+    <div class="specimen-label">Layout compositions</div>
+    <div class="stack gap-4">
+      <div class="layout-primary pattern-bg box--lg" style="border-radius:var(--radius-field);padding:var(--space-6)">
+        <div class="box box--sm" style="max-width:320px"><span class="p-sm-bold">Primary</span></div>
+      </div>
+      <div class="layout-blue pattern-blue" style="border-radius:var(--radius-field);padding:var(--space-6)">
+        <span class="p-sm-bold">Blue — Grey 10 type, Pink CTA</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <a class="wordmark" href="https://getyooz.com" style="color:var(--grey-10)">y<span class="pink">ooz</span></a>
+      <p class="site-footer__legal mt-4">{{BUSINESS_ADDRESS}}</p>
+    </div>
+    <nav aria-label="Footer" class="stack gap-2">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
