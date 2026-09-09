@@ -1,0 +1,234 @@
+/* =========================================================================
+   Yooz paid-search landing page system — shared design tokens
+   Source: Yooz Branding Guidelines (Sept 2025), via 00-FOUNDATION.md
+   Emitted alongside archetype 01 (Brand) per the foundation's Output
+   Specification; every later archetype links this file rather than
+   re-deriving the palette, type scale, patterns or components.
+
+   NOTE: archetype 01's own /mockups/_system/components.html specimen
+   sheet had not been built when this file was created (archetype 11
+   was built first, out of numbering order, per the working session).
+   This file is scoped to what 11 needed to prove out: colour, type,
+   dot patterns, buttons, forms, the Grey 10 bounding box, focus states
+   and the shared header/footer. Extend rather than replace when 01
+   is eventually built — see NOTES.md in ad-ap-comparison/ for detail.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap');
+
+:root {
+  /* ---- Colour: Primary ---- */
+  --rich-blue: #14354E;   /* Pantone 534c */
+  --pink:      #E0185E;   /* Pantone 205c */
+
+  /* ---- Colour: Secondary (rare, gradients only) ---- */
+  --teal: #00BFA5;
+  --blue: #006AFF;
+
+  /* ---- Colour: Neutrals ---- */
+  --grey-100: #3C4857;
+  --grey-90:  #46515E;
+  --grey-80:  #616C7A;
+  --grey-70:  #A0A7AF;
+  --grey-60:  #CCCDD2;
+  --grey-50:  #DEDEE0;
+  --grey-40:  #E6E6E6;
+  --grey-30:  #EAEAEA;
+  --grey-20:  #F5F5F5;
+  --grey-10:  #FEFEFE;
+
+  /* ---- Type family ---- */
+  --font: 'Noto Sans', Arial, Helvetica, sans-serif;
+
+  /* ---- Fluid type scale ----
+     clamp() derived per 00-FOUNDATION §Typography: 40px at a 390px
+     viewport ramping to the brand's full desktop size at 1440px+,
+     holding -2% tracking and the stated line-heights throughout.
+     H5 and smaller are small enough to hold their brand size at
+     every breakpoint, so they are not clamped. */
+  --fs-display: clamp(2.5rem, 0.643rem + 7.62vw, 7.5rem);
+  --fs-h1:      clamp(2.5rem, 1.479rem + 4.19vw, 5.25rem);
+  --fs-h2:      clamp(2rem,   1.257rem + 3.05vw, 4rem);
+  --fs-h3:      clamp(1.75rem,1.286rem + 1.90vw, 3rem);
+  --fs-h4:      clamp(1.5rem, 1.314rem + 0.76vw, 2rem);
+  --fs-h5:      1.5rem;     /* 24px */
+  --fs-p-lg:    1.375rem;   /* 22px */
+  --fs-p:       1.0625rem;  /* 17px */
+  --fs-list:    1rem;       /* 16px */
+  --fs-p-sm-b:  1rem;       /* 16px */
+  --fs-tagline: 0.875rem;   /* 14px */
+  --fs-cta:     1.0625rem;  /* 17px */
+
+  /* ---- Spacing / radius / shadow ---- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4.5rem;
+  --space-7: 6rem;
+  --radius-box: 12px;
+  --radius-pill: 999px;
+  --focus-ring: 0 0 0 2px var(--grey-10), 0 0 0 4px var(--pink);
+}
+
+* { box-sizing: border-box; }
+
+/* ---------------------------------------------------------------------
+   Type scale utility classes
+   --------------------------------------------------------------------- */
+.t-display { font: 300 var(--fs-display)/0.9 var(--font); letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-h1      { font: 300 var(--fs-h1)/1.1 var(--font);      letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-h2      { font: 300 var(--fs-h2)/1.0 var(--font);      letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-h3      { font: 300 var(--fs-h3)/1.1 var(--font);      letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-h4      { font: 300 var(--fs-h4)/1.2 var(--font);      letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-h5      { font: 300 var(--fs-h5)/1.2 var(--font);      letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-p-lg    { font: 300 var(--fs-p-lg)/1.5 var(--font);    letter-spacing: -0.02em; color: var(--rich-blue); }
+.t-p       { font: 400 var(--fs-p)/1.5 var(--font);       letter-spacing: -0.01em; color: var(--rich-blue); }
+.t-list    { font: 300 var(--fs-list)/1.5 var(--font);    letter-spacing: -0.02em; color: var(--rich-blue); }
+/* Departure (00-FOUNDATION §Typography): Light below 24px is a legibility
+   risk. Dense data — comparison tables, spec grids, timelines — steps up
+   to Regular 400 instead of the brand-default Light list item style. */
+.t-list--dense { font: 400 var(--fs-list)/1.5 var(--font); letter-spacing: -0.01em; color: var(--rich-blue); }
+.t-p-sm-b  { font: 600 var(--fs-p-sm-b)/1.0 var(--font);  letter-spacing: -0.01em; color: var(--rich-blue); }
+.t-tagline { font: 300 var(--fs-tagline)/1.5 var(--font); letter-spacing: -0.02em; color: var(--grey-90); }
+.t-cta     { font: 600 var(--fs-cta)/1.5 var(--font);     letter-spacing: 0; }
+.t-eyebrow { font: 600 var(--fs-p)/1.5 var(--font); letter-spacing: -0.01em; color: var(--pink); }
+
+/* Two-tone H1: first clause Rich Blue, continuation Pink (split on a
+   clause boundary — see per-page markup, not enforced here). */
+.t-h1 .accent { color: var(--pink); }
+
+/* ---------------------------------------------------------------------
+   Dot patterns — built as CSS radial-gradient fields, never a raster.
+   Spacing percentages in the guidelines (400% / 600%) aren't given in
+   absolute px; interpreted here as relative dot density (600% = sparse,
+   400% = denser) rather than literal percentages.
+   --------------------------------------------------------------------- */
+.pattern-bg {
+  background-color: var(--grey-20);
+  background-image: radial-gradient(rgba(224, 24, 94, 0.4) 1.6px, transparent 1.6px);
+  background-size: 42px 42px;
+}
+.pattern-pink {
+  background-color: var(--grey-10);
+  background-image: radial-gradient(var(--pink) 1.8px, transparent 1.8px);
+  background-size: 28px 28px;
+}
+.pattern-blue {
+  background-color: var(--rich-blue);
+  background-image: radial-gradient(var(--grey-80) 1.6px, transparent 1.6px);
+  background-size: 42px 42px;
+}
+
+/* ---------------------------------------------------------------------
+   Grey 10 bounding box — the brand's structural device on patterned
+   ground. Vary size/inset per content importance at the page level.
+   --------------------------------------------------------------------- */
+.box {
+  background: var(--grey-10);
+  border-radius: var(--radius-box);
+}
+.box--blue {
+  background: var(--rich-blue);
+  border-radius: var(--radius-box);
+  color: var(--grey-10);
+}
+.box--blue .t-h2, .box--blue .t-h3, .box--blue .t-h4, .box--blue .t-p, .box--blue .t-list, .box--blue .t-list--dense {
+  color: var(--grey-10);
+}
+
+/* ---------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary   { background: var(--pink); color: var(--grey-10); }
+.btn-primary:hover { background: #c11350; }
+.btn-secondary { background: var(--grey-10); color: var(--pink); border-color: var(--pink); }
+.btn-secondary:hover { background: #fdf0f4; }
+.btn-tertiary {
+  background: transparent; border: none; color: var(--pink); padding: 0;
+  font: 600 var(--fs-cta)/1.5 var(--font);
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.btn-tertiary .arrow, .btn-secondary .arrow { transition: transform 0.15s ease; }
+.btn-sm { padding: 0.55rem 1.25rem; font-size: 0.9375rem; }
+
+/* ---------------------------------------------------------------------
+   Forms
+   --------------------------------------------------------------------- */
+.field { display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
+.field label { font: 600 0.9375rem/1.3 var(--font); color: var(--rich-blue); }
+.field input, .field select {
+  font: 400 1rem/1.4 var(--font);
+  color: var(--rich-blue);
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--grey-60);
+  border-radius: 8px;
+  background: var(--grey-10);
+  min-height: 44px;
+}
+.field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+/* ---------------------------------------------------------------------
+   Accessibility floor
+   --------------------------------------------------------------------- */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0; background: var(--pink); color: var(--grey-10);
+  padding: 0.75rem 1.25rem; z-index: 100; border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------------------------------------------------------------------
+   Header / footer — shared shell, present on every archetype page.
+   --------------------------------------------------------------------- */
+.site-header {
+  background: var(--grey-10);
+  border-bottom: 1px solid var(--grey-40);
+  position: sticky; top: 0; z-index: 50;
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0;
+}
+.wordmark {
+  font: 600 1.375rem/1 var(--font);
+  color: var(--rich-blue);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.site-footer { background: var(--grey-100); padding: var(--space-4) 0; }
+.footer-inner {
+  display: flex; flex-wrap: wrap; gap: var(--space-3);
+  align-items: center; justify-content: space-between;
+}
+.site-footer .t-tagline { color: var(--grey-60); }
+.footer-nav { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.footer-nav a { color: var(--grey-40); font: 400 0.9375rem/1.5 var(--font); text-decoration: none; }
+.footer-nav a:hover { color: var(--grey-10); text-decoration: underline; }
+
+/* ---------------------------------------------------------------------
+   Layout helpers
+   --------------------------------------------------------------------- */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }

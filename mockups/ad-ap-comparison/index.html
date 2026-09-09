@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  AD HEADLINES THIS PAGE MUST STAY CONSISTENT WITH (copy team: fill in
+  from the live Google Ads account for ad groups 09>Ramp & Bill.com,
+  09>Competitor research, 09>Head-to-head, 10>Best-of & Reviews,
+  10>Conversational evaluation, 10>Comparison & Selection,
+  10>AP Vendors & Providers, 10>Analyst Validation):
+  - [ ] Headline 1: ____
+  - [ ] Headline 2: ____
+  - [ ] Description: ____
+  Ad-to-page continuity check: the H1 below echoes "best accounts
+  payable automation software" verbatim; the subhead promises the same
+  neutral, multi-vendor comparison the ad copy should be promising.
+-->
+
+<title>Best Accounts Payable Automation Software, Compared | Yooz</title>
+<meta name="description" content="Compare the best accounts payable automation software — Yooz, Bill.com, Ramp, Tipalti, Airbase and Stampli — side by side, including where Yooz isn't the fit.">
+<link rel="stylesheet" href="../_system/tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" media="print" onload="this.media='all'">
+
+<style>
+  body { margin: 0; background: var(--grey-20); }
+  main { display: block; }
+  section { padding: var(--space-6) 0; }
+
+  /* ---------------- Hero / first screen ---------------- */
+  .compare-hero { padding-top: var(--space-5); padding-bottom: var(--space-4); }
+  .compare-hero .wrap { max-width: 1240px; }
+  .eyebrow-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: var(--space-2); }
+  .eyebrow-row .material-symbols-outlined { font-size: 20px; color: var(--pink); }
+  .compare-hero .t-h1 { margin: 0 0 var(--space-2); max-width: 20ch; }
+  .compare-hero .t-p-lg { margin: 0 0 var(--space-4); max-width: 62ch; color: var(--grey-100); }
+
+  /* ---------------- Comparison table ---------------- */
+  .table-card.wrap { max-width: 1400px; }
+  .table-card { padding: var(--space-3); }
+  .table-card-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-2);
+    padding: 0 var(--space-1);
+  }
+  .sort-disclosure { display: flex; align-items: center; gap: 0.4rem; color: var(--grey-90); }
+  .sort-disclosure .material-symbols-outlined { font-size: 18px; }
+
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--grey-40);
+    position: relative;
+  }
+  table.compare {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 1360px;
+  }
+  table.compare thead th {
+    background: var(--rich-blue);
+    color: var(--grey-10);
+    font: 600 0.9375rem/1.3 var(--font);
+    text-align: left;
+    padding: 1.1rem 1.25rem;
+    white-space: nowrap;
+    position: sticky; top: 0; z-index: 3;
+  }
+  table.compare tbody td {
+    padding: 1.25rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--grey-40);
+  }
+  table.compare tbody tr:nth-child(even) td { background: var(--grey-20); }
+  table.compare tbody tr:nth-child(odd) td { background: var(--grey-10); }
+  table.compare thead th:first-child,
+  table.compare tbody td:first-child {
+    position: sticky; left: 0; z-index: 2;
+    min-width: 168px;
+    box-shadow: 2px 0 0 var(--grey-40);
+  }
+  table.compare thead th:first-child { z-index: 4; background: var(--rich-blue); }
+  table.compare tbody tr:nth-child(even) td:first-child { background: var(--grey-20); }
+  table.compare tbody tr:nth-child(odd) td:first-child { background: var(--grey-10); }
+
+  .vendor-name { display: flex; align-items: center; gap: 0.5rem; }
+  .vendor-row--yooz td:first-child { border-left: 4px solid var(--pink); }
+  .pill-you-are-here {
+    display: inline-block; background: var(--pink); color: var(--grey-10);
+    font: 600 0.6875rem/1 var(--font); letter-spacing: 0.02em;
+    padding: 0.3rem 0.55rem; border-radius: var(--radius-pill);
+  }
+  .rating-cell { display: flex; align-items: center; gap: 0.35rem; white-space: nowrap; }
+  .rating-cell .material-symbols-outlined { font-size: 16px; color: var(--pink); }
+  .check-yes { color: var(--rich-blue); }
+  .check-yes .material-symbols-outlined { color: var(--teal); font-size: 18px; vertical-align: -4px; margin-right: 0.25rem; }
+  .check-partial .material-symbols-outlined { color: var(--grey-70); font-size: 18px; vertical-align: -4px; margin-right: 0.25rem; }
+
+  .scroll-affordance {
+    display: flex;
+    align-items: center; gap: 0.4rem;
+    color: var(--grey-90); margin-top: 0.75rem; padding: 0 var(--space-1);
+  }
+  .scroll-affordance .material-symbols-outlined { font-size: 18px; color: var(--pink); }
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-affordance .material-symbols-outlined { animation: nudge 1.6s ease-in-out infinite; }
+  }
+  @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+
+  .table-footnote { margin-top: var(--space-2); padding: 0 var(--space-1); display: flex; flex-wrap: wrap; gap: var(--space-2); justify-content: space-between; align-items: center; }
+
+  /* ---------------- Recognition strip ---------------- */
+  .recognition { }
+  .recognition .box { padding: var(--space-4); }
+  .recognition-head { max-width: 68ch; margin-bottom: var(--space-3); }
+  .badge-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .badge-card {
+    background: var(--grey-10);
+    border: 1px solid var(--grey-40);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    min-height: 108px;
+  }
+  .badge-card .badge-mark {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--grey-10);
+  }
+  .badge-card .badge-mark .material-symbols-outlined { font-size: 18px; }
+  .badge-year {
+    display: inline-block; align-self: flex-start;
+    font: 600 0.6875rem/1 var(--font); color: var(--grey-90);
+    background: var(--grey-30); padding: 0.25rem 0.5rem; border-radius: var(--radius-pill);
+  }
+  .rating-row { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-3); }
+  .rating-stat { display: flex; align-items: baseline; gap: 0.5rem; }
+  .rating-stat .material-symbols-outlined { color: var(--pink); }
+
+  /* ---------------- Fit / not-fit ---------------- */
+  .fit-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);
+  }
+  .fit-col { padding: var(--space-4); }
+  .fit-list { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .fit-list li { display: flex; gap: 0.75rem; }
+  .fit-list .material-symbols-outlined { flex: none; font-size: 20px; margin-top: 2px; }
+  .fit-col--yes .material-symbols-outlined { color: var(--pink); }
+  .fit-col--no .material-symbols-outlined { color: var(--grey-70); }
+
+  /* ---------------- Analyst position ---------------- */
+  .analyst-card { padding: var(--space-4); max-width: 78ch; }
+  .analyst-held { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-3); }
+  .analyst-held .badge-card { flex: 1 1 200px; min-height: auto; }
+
+  /* ---------------- Form ---------------- */
+  .form-section .wrap { display: flex; justify-content: center; }
+  .form-card { padding: var(--space-4); max-width: 560px; width: 100%; text-align: center; }
+  .form-card form { display: flex; flex-direction: column; gap: 1rem; margin-top: var(--space-3); text-align: left; }
+  .form-card .btn-primary { justify-content: center; margin-top: 0.5rem; }
+  .form-secondary { margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--grey-40); }
+
+  @media (max-width: 1024px) {
+    .fit-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    section { padding: var(--space-5) 0; }
+  }
+  @media (max-width: 640px) {
+    .badge-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="https://getyooz.com" data-yooz-event="header_logo_home">yooz</a>
+    <a class="btn btn-secondary btn-sm" href="#form" data-yooz-event="header_book_demo">
+      Book a demo
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ SECTION 1: Comparison table — the first screen ============ -->
+  <section class="compare-hero pattern-bg">
+    <div class="wrap">
+      <div class="eyebrow-row">
+        <span class="material-symbols-outlined" aria-hidden="true">table_view</span>
+        <span class="t-eyebrow">AP automation vendor comparison</span>
+      </div>
+      <h1 class="t-h1">Best accounts payable automation software, compared</h1>
+      <p class="t-p-lg">
+        Six vendors, one table, sorted alphabetically — not by who's paying
+        for this ad. Yooz is in row six, wins and losses both, so you can
+        shortlist honestly instead of taking our word for it.
+      </p>
+    </div>
+
+    <div class="wrap table-card">
+      <div class="box">
+        <div style="padding: var(--space-3) var(--space-3) 0;">
+          <div class="table-card-head">
+            <h2 class="t-h4" style="margin:0;">Compare accounts payable automation software</h2>
+            <div class="sort-disclosure t-tagline">
+              <span class="material-symbols-outlined" aria-hidden="true">sort_by_alpha</span>
+              Sorted alphabetically — Yooz is not ranked #1 by default
+            </div>
+          </div>
+        </div>
+        <div style="padding: 0 var(--space-3) var(--space-3);">
+          <div class="table-scroll" tabindex="0" role="group" aria-label="Accounts payable automation software comparison table, scrollable">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th scope="col">Vendor</th>
+                  <th scope="col">G2 rating</th>
+                  <th scope="col">Capterra rating</th>
+                  <th scope="col">ERP / financial system integrations</th>
+                  <th scope="col">Invoice capture channels</th>
+                  <th scope="col">Dedicated AP focus</th>
+                  <th scope="col">Best for</th>
+                  <th scope="col">Starting price model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="t-list--dense"><div class="vendor-name">Airbase</div></td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{VENDOR_AIRBASE_G2_RATING}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_AIRBASE_CAPTERRA_RATING}}</td>
+                  <td class="t-list--dense">{{VENDOR_AIRBASE_ERP_INTEGRATIONS}}</td>
+                  <td class="t-list--dense">{{VENDOR_AIRBASE_CAPTURE_CHANNELS}}</td>
+                  <td class="t-list--dense"><span class="check-partial"><span class="material-symbols-outlined" aria-hidden="true">remove</span>{{VENDOR_AIRBASE_DEDICATED_AP_FOCUS}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_AIRBASE_BEST_FOR}}</td>
+                  <td class="t-list--dense">{{VENDOR_AIRBASE_STARTING_PRICE}}</td>
+                </tr>
+                <tr>
+                  <td class="t-list--dense"><div class="vendor-name">Bill.com</div></td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{VENDOR_BILLCOM_G2_RATING}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_BILLCOM_CAPTERRA_RATING}}</td>
+                  <td class="t-list--dense">{{VENDOR_BILLCOM_ERP_INTEGRATIONS}}</td>
+                  <td class="t-list--dense">{{VENDOR_BILLCOM_CAPTURE_CHANNELS}}</td>
+                  <td class="t-list--dense"><span class="check-partial"><span class="material-symbols-outlined" aria-hidden="true">remove</span>{{VENDOR_BILLCOM_DEDICATED_AP_FOCUS}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_BILLCOM_BEST_FOR}}</td>
+                  <td class="t-list--dense">{{VENDOR_BILLCOM_STARTING_PRICE}}</td>
+                </tr>
+                <tr>
+                  <td class="t-list--dense"><div class="vendor-name">Ramp</div></td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{VENDOR_RAMP_G2_RATING}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_RAMP_CAPTERRA_RATING}}</td>
+                  <td class="t-list--dense">{{VENDOR_RAMP_ERP_INTEGRATIONS}}</td>
+                  <td class="t-list--dense">{{VENDOR_RAMP_CAPTURE_CHANNELS}}</td>
+                  <td class="t-list--dense"><span class="check-partial"><span class="material-symbols-outlined" aria-hidden="true">remove</span>{{VENDOR_RAMP_DEDICATED_AP_FOCUS}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_RAMP_BEST_FOR}}</td>
+                  <td class="t-list--dense">{{VENDOR_RAMP_STARTING_PRICE}}</td>
+                </tr>
+                <tr>
+                  <td class="t-list--dense"><div class="vendor-name">Stampli</div></td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{VENDOR_STAMPLI_G2_RATING}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_STAMPLI_CAPTERRA_RATING}}</td>
+                  <td class="t-list--dense">{{VENDOR_STAMPLI_ERP_INTEGRATIONS}}</td>
+                  <td class="t-list--dense">{{VENDOR_STAMPLI_CAPTURE_CHANNELS}}</td>
+                  <td class="t-list--dense"><span class="check-yes"><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>{{VENDOR_STAMPLI_DEDICATED_AP_FOCUS}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_STAMPLI_BEST_FOR}}</td>
+                  <td class="t-list--dense">{{VENDOR_STAMPLI_STARTING_PRICE}}</td>
+                </tr>
+                <tr>
+                  <td class="t-list--dense"><div class="vendor-name">Tipalti</div></td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{VENDOR_TIPALTI_G2_RATING}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_TIPALTI_CAPTERRA_RATING}}</td>
+                  <td class="t-list--dense">{{VENDOR_TIPALTI_ERP_INTEGRATIONS}}</td>
+                  <td class="t-list--dense">{{VENDOR_TIPALTI_CAPTURE_CHANNELS}}</td>
+                  <td class="t-list--dense"><span class="check-yes"><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>{{VENDOR_TIPALTI_DEDICATED_AP_FOCUS}}</span></td>
+                  <td class="t-list--dense">{{VENDOR_TIPALTI_BEST_FOR}}</td>
+                  <td class="t-list--dense">{{VENDOR_TIPALTI_STARTING_PRICE}}</td>
+                </tr>
+                <tr class="vendor-row--yooz">
+                  <td class="t-list--dense">
+                    <div class="vendor-name">Yooz <span class="pill-you-are-here">This one's us</span></div>
+                  </td>
+                  <td class="t-list--dense"><span class="rating-cell"><span class="material-symbols-outlined" aria-hidden="true">star</span>{{G2_RATING}} ({{G2_REVIEW_COUNT}})</span></td>
+                  <td class="t-list--dense">{{CAPTERRA_RATING}} ({{CAPTERRA_REVIEW_COUNT}})</td>
+                  <td class="t-list--dense">250+ financial systems</td>
+                  <td class="t-list--dense">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher, API</td>
+                  <td class="t-list--dense"><span class="check-yes"><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Dedicated AP automation</span></td>
+                  <td class="t-list--dense">Multi-entity finance teams standardizing capture-to-pay across several ERPs</td>
+                  <td class="t-list--dense">{{YOOZ_STARTING_PRICE_MODEL}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="scroll-affordance t-tagline" aria-hidden="true">
+            Swipe to see all columns <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+          <div class="table-footnote">
+            <p class="t-tagline" style="margin:0;">
+              Ratings and vendor data last checked {{TABLE_LAST_UPDATED_DATE}}. Figures vary by plan and review-site snapshot date — verify current numbers before you decide.
+            </p>
+            <a class="btn-tertiary" href="#form" data-yooz-event="table_get_full_guide">
+              Get the full comparison guide <span class="arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: Third-party validation ============ -->
+  <section class="recognition pattern-pink">
+    <div class="wrap">
+      <div class="box">
+        <div class="recognition-head">
+          <h2 class="t-h3">Recognition, not a ranking claim</h2>
+          <p class="t-p">
+            None of this is a Gartner Magic Quadrant placement — see the
+            next section for that, stated plainly. This is the third-party
+            validation Yooz has actually earned, dated where the award
+            itself is dated, current where it's an ongoing standing.
+          </p>
+        </div>
+        <div class="badge-grid">
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">2022</span>
+            <span class="t-p-sm-b">CFO Tech Outlook — Top Accounts Payable Solutions Provider</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">2024</span>
+            <span class="t-p-sm-b">Capterra Shortlist</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">Summer 2024</span>
+            <span class="t-p-sm-b">SourceForge Leader</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">2023</span>
+            <span class="t-p-sm-b">SpendMatters — 50 to Watch</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">2022</span>
+            <span class="t-p-sm-b">SpendMatters SolutionMap — Validated</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">Current standing</span>
+            <span class="t-p-sm-b">SoftwareReviews — Gold Medal, AP Automation</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">Summer 2024</span>
+            <span class="t-p-sm-b">G2 — Easiest Admin, Enterprise</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span></div>
+            <span class="badge-year">Current standing</span>
+            <span class="t-p-sm-b">Top Performer, AP automation software</span>
+          </div>
+          <div class="badge-card">
+            <div class="badge-mark"><span class="material-symbols-outlined" aria-hidden="true">military_tech</span></div>
+            <span class="badge-year">4 years running</span>
+            <span class="t-p-sm-b">Great Place to Work Certified</span>
+          </div>
+        </div>
+        <p class="t-tagline" style="margin-top: var(--space-3);">
+          Also displayed as partner marks: CIMA and BDO.
+          <span aria-hidden="true">·</span>
+          Placeholder note: render each mark in full original colour, no gradient map, no Z frame — awards and partner logos are an explicit exception to the standard image treatment.
+        </p>
+        <div class="rating-row">
+          <div class="rating-stat">
+            <span class="material-symbols-outlined" aria-hidden="true">star</span>
+            <span class="t-p-sm-b">{{G2_RATING}} on G2</span>
+            <span class="t-tagline">({{G2_REVIEW_COUNT}} reviews)</span>
+          </div>
+          <div class="rating-stat">
+            <span class="material-symbols-outlined" aria-hidden="true">star</span>
+            <span class="t-p-sm-b">{{CAPTERRA_RATING}} on Capterra</span>
+            <span class="t-tagline">({{CAPTERRA_REVIEW_COUNT}} reviews)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: Where Yooz fits — and where it doesn't ============ -->
+  <section class="fit pattern-bg">
+    <div class="wrap">
+      <h2 class="t-h3" style="max-width: 32ch;">Where Yooz fits — and where it doesn't</h2>
+      <p class="t-p" style="max-width: 68ch; margin-top: 0.5rem;">
+        A shortlist built on a page that only tells you where a vendor
+        wins isn't a shortlist. Here's the other half.
+      </p>
+
+      <div class="fit-grid" style="margin-top: var(--space-3);">
+        <div class="box fit-col fit-col--yes">
+          <h3 class="t-h5">Yooz is a strong fit if</h3>
+          <ul class="fit-list t-list--dense">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>You run more than one ERP or financial system — or expect to after an acquisition — and don't want a rebuild per entity. Yooz exports to more than 250 financial systems.</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Invoices arrive through more channels than one inbox can handle — email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API all land in one queue.</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>You need the full cycle in one workflow: Purchase → Capture → Review → Approve → Pay → Export, with parallel approvals rather than a single-file chain.</li>
+          </ul>
+        </div>
+        <div class="box box--blue fit-col fit-col--no">
+          <h3 class="t-h5">Choose someone else if</h3>
+          <ul class="fit-list t-list--dense">
+            <li><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>You need full procure-to-pay — sourcing, contract management and supplier catalogs as one system, not just AP. Yooz automates capture-to-pay, not upstream sourcing.</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>You're processing under {{MIN_INVOICE_VOLUME_THRESHOLD}} invoices a month, where a lighter-weight bill-pay tool may cost less overall for your volume.</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>You need corporate card issuing and spend management built in alongside AP — that's the category Ramp and Airbase are built around first.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: Analyst position ============ -->
+  <section class="analyst pattern-pink">
+    <div class="wrap">
+      <div class="box analyst-card">
+        <h2 class="t-h4">On the Gartner Magic Quadrant</h2>
+        <p class="t-p">
+          Yooz is not currently positioned in Gartner's Magic Quadrant for
+          {{GARTNER_MQ_CATEGORY_NAME}}. {{GARTNER_POSITION_STATEMENT}}
+        </p>
+        <p class="t-p">
+          Where Yooz does hold third-party validation today:
+        </p>
+        <div class="analyst-held">
+          <div class="badge-card">
+            <span class="badge-year">2022</span>
+            <span class="t-p-sm-b">SpendMatters SolutionMap — Validated</span>
+          </div>
+          <div class="badge-card">
+            <span class="badge-year">Current standing</span>
+            <span class="t-p-sm-b">SoftwareReviews Gold Medal, AP Automation</span>
+          </div>
+          <div class="badge-card">
+            <span class="badge-year">Summer 2024</span>
+            <span class="t-p-sm-b">G2 Easiest Admin, Enterprise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: Form ============ -->
+  <section class="form-section pattern-bg" id="form">
+    <div class="wrap">
+      <div class="box form-card">
+        <h2 class="t-h4">Download the full comparison guide</h2>
+        <p class="t-p">
+          Every vendor in the table above, plus the columns that didn't
+          fit on screen — implementation time, contract terms, support
+          model. One email, no sales call required.
+        </p>
+        <form data-yooz-event="guide_download_form">
+          <div class="field">
+            <label for="guide-email">Work email</label>
+            <input id="guide-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <button class="btn btn-primary" type="submit" data-yooz-event="guide_download_submit">
+            Download the comparison guide
+          </button>
+        </form>
+        <div class="form-secondary">
+          <p class="t-tagline" style="margin: 0 0 0.5rem;">Already comparing seriously?</p>
+          <a class="btn-tertiary" href="#" data-yooz-event="form_book_demo_instead">
+            Book a demo instead <span class="arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="t-tagline" style="margin:0;">© Yooz. {{BUSINESS_ADDRESS}}</p>
+    <nav class="footer-nav" aria-label="Legal">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
