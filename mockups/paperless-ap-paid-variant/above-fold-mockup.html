@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital accounts payable software | Yooz</title>
+<meta name="description" content="Move accounts payable off paper and into the cloud. Digital accounts payable software from Yooz — see what changes on day one.">
+<!--
+  AD-TO-PAGE CONTINUITY — headlines this above-fold treatment must stay
+  consistent with (fill with live copy from campaigns 04 / 04b):
+  {{AD_HEADLINE_04_1}}
+  {{AD_HEADLINE_04_2}}
+  {{AD_HEADLINE_04B_1}}
+  {{AD_HEADLINE_04B_2}}
+
+  SCOPE: this file is a mockup of the recommended ABOVE-FOLD treatment
+  only, for /paperless-accounts-payable — an existing page that ranks #1
+  organically and is NOT being rebuilt. Everything below the fold (proof,
+  product detail, form, footer) is the current live page, unchanged, and
+  is represented here only as a placeholder continuation strip. See
+  SPEC.md for the full recommendation and PLACEHOLDERS.md for every
+  {{TOKEN}} used below.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+<style>
+  /* Page-specific layout only — all tokens/colour/type from tokens.css */
+
+  .callout-note {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6) 0;
+    font-size: var(--fs-tag);
+    line-height: var(--lh-tag);
+    color: var(--grey-80);
+  }
+  .callout-note strong { color: var(--rich-blue); }
+
+  header.site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-6);
+  }
+  .wordmark {
+    font-size: 1.25rem;
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--ls-tight);
+    color: var(--rich-blue);
+    text-decoration: none;
+  }
+  nav.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+  nav.site-nav a {
+    font-size: var(--fs-para);
+    font-weight: var(--weight-regular);
+    color: var(--rich-blue);
+    text-decoration: none;
+  }
+  nav.site-nav a:hover { color: var(--pink); }
+  nav.site-nav .btn { margin-left: var(--space-2); }
+
+  main.hero-wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--space-6) var(--space-16);
+  }
+
+  .hero-box {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-16);
+    align-items: center;
+    padding: var(--space-16);
+  }
+
+  .hero-copy .h1-two-tone { display: block; }
+
+  .hero-copy h4 {
+    margin-top: var(--space-6);
+    color: var(--rich-blue);
+  }
+
+  .hero-copy p {
+    margin-top: var(--space-4);
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+    flex-wrap: wrap;
+  }
+
+  .hero-visual.img-placeholder {
+    height: 100%;
+    min-height: 420px;
+    border-radius: var(--radius-box);
+  }
+
+  /* Annotation panel marking what changed vs. the current live page —
+     see SPEC.md; the live page source wasn't available to this session
+     for a literal diff, so these describe the recommendation directly.
+     A single static list rather than pins tied to element positions,
+     so it can't drift out of bounds or overlap real content at any
+     breakpoint. */
+  .annotations {
+    max-width: 1440px;
+    margin: 0 auto var(--space-6);
+    padding: 0 var(--space-6);
+  }
+  .annotations ul {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-4) var(--space-6);
+    display: grid;
+    gap: var(--space-2);
+    background: var(--rich-blue);
+    border-radius: var(--radius-box);
+    color: var(--grey-10);
+  }
+  .annotations li {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+  .annotations strong {
+    color: var(--pink);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.04em;
+    font-size: 0.6875rem;
+    margin-right: var(--space-2);
+  }
+
+  .continuation-strip {
+    max-width: 1440px;
+    margin: 0 auto var(--space-16);
+    padding: 0 var(--space-6);
+  }
+  .continuation-strip .box {
+    border: 2px dashed var(--grey-60);
+    text-align: center;
+    color: var(--grey-80);
+  }
+
+  @media (max-width: 1024px) {
+    .hero-box { grid-template-columns: 1fr; padding: var(--space-8); }
+    nav.site-nav a:not(.btn) { display: none; }
+  }
+
+  @media (max-width: 390px) {
+    header.site { flex-wrap: wrap; gap: var(--space-3); }
+    .hero-box { padding: var(--space-6); }
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .btn-primary { text-align: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<p class="callout-note">
+  <strong>Mockup scope:</strong> above-the-fold only, for the existing
+  <code>/paperless-accounts-payable</code> page. Dark labels mark the
+  three changes this variant proposes; nothing else on the live page
+  changes. See <code>SPEC.md</code>.
+</p>
+
+<header class="site pattern-bg" role="banner">
+  <a class="wordmark" href="https://getyooz.com" data-yooz-event="header-logo-home">yooz</a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="#">Product</a>
+    <a href="#">Pricing</a>
+    <a href="#">The Lean Advantage</a>
+    <a class="btn btn-primary" href="#demo-form" data-yooz-event="header-book-demo">Book a demo</a>
+  </nav>
+</header>
+
+<div class="annotations">
+  <ul>
+    <li><strong>CHANGED — eyebrow</strong>renamed to the visitor's own trigger ("still on paper"), not automation vocabulary.</li>
+    <li><strong>CHANGED — H1</strong>echoes "accounts payable" + "digital"/"cloud" head terms; "automation" avoided entirely per brief.</li>
+    <li><strong>CHANGED — CTA</strong>anchors down to the existing demo form; no duplicate form added above the fold.</li>
+  </ul>
+</div>
+
+<main class="hero-wrap pattern-bg">
+  <div class="hero-box box">
+    <div class="hero-copy">
+      <p class="eyebrow">Still running accounts payable on paper?</p>
+      <h1>
+        <span class="h1-two-tone">Accounts payable, off paper</span><span class="h1-two-tone h1-accent">and fully digital</span>
+      </h1>
+      <h4>See what changes on day one — same team, same approvals, no new habits to learn.</h4>
+      <p class="para-lg">
+        Purchase, capture, review and approve — the same steps your team
+        already runs, just off the filing cabinet and out of the shared
+        mailbox.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#demo-form" data-yooz-event="hero-book-demo-primary">Book a demo</a>
+        <a class="btn btn-tertiary" href="#guide" data-yooz-event="hero-download-guide-secondary">
+          Download the paperless AP guide <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <figure class="hero-visual img-placeholder" role="img" aria-label="Before and after: paper invoice tray next to a digital approval queue, Z device anchored bottom-left">
+      <figcaption class="tagline">
+        BEFORE/AFTER — paper in-tray vs. digital approval queue, graded
+        cutout, Z anchored bottom-left, facing inward toward the copy
+      </figcaption>
+    </figure>
+
+  </div>
+</main>
+
+<div class="continuation-strip">
+  <div class="box">
+    <p class="tagline">
+      ↓ Page continues unchanged below this point: before/after detail,
+      what-changes-on-day-one, product, proof, and the existing demo
+      form (<code>#demo-form</code>). Not mocked up here — see SPEC.md.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
