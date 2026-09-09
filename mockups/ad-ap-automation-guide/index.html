@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!--
+  Ad-to-page continuity — copy team, fill in the live ad group headlines
+  this page must stay consistent with:
+  Headline 1: {{AD_HEADLINE_1}}
+  Headline 2: {{AD_HEADLINE_2}}
+  Headline 3: {{AD_HEADLINE_3}}
+  Description line: {{AD_DESCRIPTION_1}}
+  Campaign: 11 — EDUCATION. Ad group head term: "what is accounts payable automation"
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Accounts Payable Automation? | Yooz</title>
+<meta name="description" content="Accounts payable automation explained: what it is, how AP automation software works, and the six-stage process from purchase to export.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+<style>
+  /* ---- Page-local: long-form reading layout (brand composition:
+     Primary layout, reading treatment — single column, sticky TOC) ---- */
+  main{ background:var(--grey-10); }
+
+  .hero-answer{ padding-block:40px var(--space-section); background:var(--grey-10); border-bottom:1px solid var(--grey-40); }
+  .hero-answer .container{ max-width:var(--max-width-reading); }
+  .hero-answer h1{ margin-top:4px; }
+  .answer-lede{ margin-top:24px; }
+
+  .guide-layout{ display:grid; grid-template-columns:220px minmax(0,1fr); gap:64px; align-items:start; padding-block:var(--space-section); }
+  .guide-layout > *{ min-width:0; }
+  @media (max-width:1023px){ .guide-layout{ grid-template-columns:minmax(0,1fr); gap:32px; } }
+
+  .toc-desktop{ position:sticky; top:32px; display:flex; flex-direction:column; gap:12px; }
+  .toc-desktop .toc-title{ font-size:var(--tagline); font-weight:600; color:var(--grey-90); letter-spacing:.02em; text-transform:uppercase; }
+  .toc-desktop a{ font-size:15px; color:var(--rich-blue); text-decoration:none; line-height:1.4; padding-block:2px; }
+  .toc-desktop a:hover{ color:var(--pink); }
+  @media (max-width:1023px){ .toc-desktop{ display:none; } }
+
+  .toc-mobile{ margin-bottom:8px; border:1px solid var(--grey-40); border-radius:var(--radius-box); }
+  .toc-mobile summary{ cursor:pointer; padding:14px 18px; font-weight:600; font-size:var(--p-sm-bold); list-style:none; display:flex; align-items:center; justify-content:space-between; }
+  .toc-mobile summary::-webkit-details-marker{ display:none; }
+  .toc-mobile summary::after{ content:"▾"; color:var(--pink); }
+  .toc-mobile[open] summary::after{ content:"▴"; }
+  .toc-mobile ul{ padding:0 18px 16px; display:flex; flex-direction:column; gap:10px; }
+  .toc-mobile a{ font-size:15px; color:var(--rich-blue); text-decoration:none; }
+  @media (min-width:1024px){ .toc-mobile{ display:none; } }
+
+  .guide-body{ max-width:var(--max-width-reading); display:flex; flex-direction:column; gap:var(--space-section); }
+  .guide-body section > * + *{ margin-top:20px; }
+  .guide-body h2{ scroll-margin-top:24px; }
+  .guide-body h3{ scroll-margin-top:24px; margin-top:8px; }
+  .guide-body p{ line-height:1.65; }
+  .guide-body ul.styled{ display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+  .guide-body ul.styled li{ position:relative; padding-left:22px; font-size:var(--list); line-height:1.5; font-weight:400; }
+  .guide-body ul.styled li::before{ content:"•"; position:absolute; left:0; color:var(--pink); font-weight:700; }
+
+  .subsection{ padding-top:8px; border-top:1px solid var(--grey-30); }
+
+  /* ---- process diagram ---- */
+  .process-wrap{ margin-top:28px; }
+  .process-diagram{ display:flex; align-items:center; list-style:none; margin:0; padding:20px 0; overflow-x:auto; gap:2px; }
+  .process-step{ display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; flex:1 1 110px; min-width:96px; }
+  .step-num{ width:36px; height:36px; border-radius:50%; background:var(--rich-blue); color:var(--grey-10); display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; flex:none; }
+  .step-label{ font-weight:600; font-size:var(--p-sm-bold); color:var(--rich-blue); }
+  .process-arrow{ color:var(--pink); font-size:18px; flex:0 0 auto; }
+  @media (max-width:600px){
+    .process-diagram{ flex-direction:column; align-items:flex-start; overflow-x:visible; gap:10px; }
+    .process-step{ flex-direction:row; text-align:left; width:100%; gap:14px; }
+    .process-arrow{ transform:rotate(90deg); align-self:center; margin-left:17px; }
+  }
+
+  /* ---- related concepts ---- */
+  .concepts-band{ background:var(--grey-20); padding-block:var(--space-section); }
+  .concepts-band .container{ max-width:var(--max-width-content); }
+
+  /* ---- gated asset ---- */
+  .gated-band{ padding-block:var(--space-section); }
+  .gated-card{ max-width:640px; margin-inline:auto; padding:48px; text-align:left; }
+  .gated-card .eyebrow-pill{ margin-bottom:16px; }
+  .gated-card .p-large{ margin-top:14px; }
+  .gated-card form{ margin-top:28px; }
+  .gated-card .form-inline{ align-items:stretch; }
+  .gated-card .form-field{ flex:1 1 auto; }
+  .gated-card .btn-primary{ white-space:nowrap; }
+
+  /* ---- newsletter ---- */
+  .newsletter-band{ padding-block:56px; }
+  .newsletter-card{ max-width:var(--max-width-content); margin-inline:auto; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:32px 40px; }
+  .newsletter-card .form-inline{ flex:1 1 320px; max-width:420px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="https://getyooz.com" data-yooz-event="header-logo-click">
+      <span class="mark" aria-hidden="true"></span>
+      Yooz
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="https://getyooz.com/en-us/accounts-payable-automation" data-yooz-event="header-nav-product">Product</a>
+      <a href="https://getyooz.com/en-us/resources" data-yooz-event="header-nav-resources">Resources</a>
+      <a href="https://getyooz.com/en-us/pricing" data-yooz-event="header-nav-pricing">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. ANSWER — the question is answered before any framing, per archetype 13 brief -->
+  <section class="hero-answer">
+    <div class="container">
+      <span class="eyebrow">Accounts payable, explained</span>
+      <h1 class="tone-blue">What Is Accounts Payable Automation?</h1>
+      <p class="p-large answer-lede">
+        Accounts payable automation is software that replaces the manual
+        steps of paying a business's bills — receiving invoices, checking
+        them against a purchase order, routing them for sign-off, and
+        paying the vendor — with a digital, rules-driven process. Instead of
+        a person keying invoice data by hand and walking a paper approval
+        form around an office, the software captures the invoice, reads its
+        data automatically, matches it to what was ordered, and sends it to
+        the right approver — with a full audit trail attached to every
+        invoice from receipt to payment.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="guide-layout">
+
+      <!-- Mobile TOC -->
+      <details class="toc-mobile">
+        <summary>On this page</summary>
+        <ul>
+          <li><a href="#how-it-works">How AP automation software works</a></li>
+          <li><a href="#ap-software">What is AP software, specifically?</a></li>
+          <li><a href="#agentic-ai">Agentic AI and autonomous AP</a></li>
+          <li><a href="#related-concepts">Related concepts</a></li>
+          <li><a href="#guide-download">Download the guide</a></li>
+        </ul>
+      </details>
+
+      <!-- Desktop sticky TOC -->
+      <nav class="toc-desktop" aria-label="On this page">
+        <span class="toc-title">On this page</span>
+        <a href="#how-it-works">How AP automation software works</a>
+        <a href="#ap-software">What is AP software, specifically?</a>
+        <a href="#agentic-ai">Agentic AI and autonomous AP</a>
+        <a href="#related-concepts">Related concepts</a>
+        <a href="#guide-download">Download the guide</a>
+      </nav>
+
+      <div class="guide-body">
+
+        <!-- 2. DETAIL -->
+        <section id="how-it-works">
+          <h2>How AP automation software works</h2>
+          <p>
+            Every AP automation platform is organized around the same
+            underlying sequence, whichever vendor builds it. Yooz names the
+            six stages plainly:
+          </p>
+
+          <div class="process-wrap" role="img" aria-label="Six-stage process: Purchase, Capture, Review, Approve, Pay, Export">
+            <ol class="process-diagram">
+              <li class="process-step"><span class="step-num">1</span><span class="step-label">Purchase</span></li>
+              <li class="process-arrow" aria-hidden="true">→</li>
+              <li class="process-step"><span class="step-num">2</span><span class="step-label">Capture</span></li>
+              <li class="process-arrow" aria-hidden="true">→</li>
+              <li class="process-step"><span class="step-num">3</span><span class="step-label">Review</span></li>
+              <li class="process-arrow" aria-hidden="true">→</li>
+              <li class="process-step"><span class="step-num">4</span><span class="step-label">Approve</span></li>
+              <li class="process-arrow" aria-hidden="true">→</li>
+              <li class="process-step"><span class="step-num">5</span><span class="step-label">Pay</span></li>
+              <li class="process-arrow" aria-hidden="true">→</li>
+              <li class="process-step"><span class="step-num">6</span><span class="step-label">Export</span></li>
+            </ol>
+          </div>
+
+          <ul class="styled">
+            <li><strong>Purchase</strong> — a purchase order is raised and approved before the spend happens, so there's something for the invoice to be checked against later.</li>
+            <li><strong>Capture</strong> — the invoice arrives and its data is pulled out automatically, however it shows up: email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher or API.</li>
+            <li><strong>Review</strong> — the software checks the invoice against the purchase order and receipt (a "3-way match") and flags anything that doesn't line up.</li>
+            <li><strong>Approve</strong> — the invoice routes itself to the right approver based on rules — amount, department, vendor — instead of a person deciding where it goes next.</li>
+            <li><strong>Pay</strong> — payment is scheduled and released on the terms agreed with the vendor.</li>
+            <li><strong>Export</strong> — the transaction posts back into the company's accounting or ERP system, so the general ledger stays current without a second manual entry.</li>
+          </ul>
+
+          <p>
+            The point of automating this sequence isn't to remove people
+            from AP — it's to remove the manual, repetitive parts of it
+            (typing, filing, chasing a paper form) so the humans left in the
+            process are making judgment calls, not data entry.
+          </p>
+        </section>
+
+        <!-- "what is ap software" query variant answered directly -->
+        <section id="ap-software" class="subsection">
+          <h3>What is AP software, specifically?</h3>
+          <p>
+            "AP software" and "accounts payable automation software" are
+            the same category of product, described two ways. It's the
+            application a finance team logs into to see every invoice's
+            status, approve or query one, and check what's scheduled to be
+            paid — rather than the automation running invisibly in the
+            background. In practice, the two are one piece of software: the
+            interface and the automation behind it.
+          </p>
+          <div class="img-placeholder" style="margin-top:20px;">
+            <span class="caption">SCREENSHOT — invoice approval queue, parallel approval visible</span>
+          </div>
+        </section>
+
+        <!-- "agentic ai accounts payable" / "autonomous accounts payable" -->
+        <section id="agentic-ai" class="subsection">
+          <h3>Agentic AI and autonomous AP</h3>
+          <p>
+            "Agentic AI accounts payable" and "autonomous accounts payable"
+            describe the newest layer on top of the process above: software
+            that doesn't just route work to a person, but takes some of the
+            Review and Approve decisions itself, within rules a finance
+            team sets — matching an invoice, resolving a small discrepancy,
+            or approving a payment under a defined threshold without a
+            human touching it.
+          </p>
+          <p>
+            It's a matter of degree, not a different process. The same six
+            stages still run; autonomous AP simply narrows how much of
+            Review and Approve still needs a human, and widens what the
+            software is trusted to decide on its own.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. RELATED CONCEPTS -->
+  <section class="concepts-band" id="related-concepts">
+    <div class="container">
+      <h2 style="max-width:var(--max-width-reading);">Related concepts</h2>
+      <p class="p-large" style="max-width:var(--max-width-reading); margin-top:16px;">
+        Accounts payable automation is a broad category. These are the
+        specific pieces worth understanding next.
+      </p>
+      <div class="grid-2" style="margin-top:36px;">
+        <a class="link-card" href="/ad-touchless-invoice-processing" data-yooz-event="related-concept-touchless">
+          <span class="card-eyebrow">Glossary</span>
+          <h5>What is touchless invoice processing?</h5>
+          <p>The specific capability inside AP automation where an invoice moves from receipt to payment with no manual keying at all.</p>
+        </a>
+        <a class="link-card" href="/accounts-payable-fraud" data-yooz-event="related-concept-fraud">
+          <span class="card-eyebrow">Guide</span>
+          <h5>Accounts payable fraud</h5>
+          <p>How AP fraud happens, and where automation closes the gaps a manual process leaves open — includes the full AP fraud whitepaper.</p>
+        </a>
+        <div class="link-card" aria-disabled="true">
+          <span class="card-eyebrow">Glossary</span>
+          <h5>3-way matching</h5>
+          <p>The check that compares a purchase order, a receipt, and an invoice before a payment is allowed to go out. {{PAGE_LINK_3WAY_MATCHING}}</p>
+        </div>
+        <div class="link-card" aria-disabled="true">
+          <span class="card-eyebrow">Glossary</span>
+          <h5>ERP integration for AP</h5>
+          <p>How AP automation software exports finished transactions into an accounting or ERP system — Yooz exports to more than 250 financial systems. {{PAGE_LINK_ERP_INTEGRATION}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. GATED DEEPER ASSET — email only, no vendor claims until here -->
+  <section class="gated-band pattern-pink" id="guide-download">
+    <div class="container">
+      <div class="box box-lg gated-card">
+        <span class="eyebrow-pill"><span class="num" aria-hidden="true">↓</span>Free download</span>
+        <h3>The Accounts Payable Automation Guide</h3>
+        <p class="p-large">
+          Every stage of the process above, in more depth — plus a
+          worksheet for mapping your own AP workflow against it. No sales
+          call required to read it.
+        </p>
+        <form data-yooz-event="guide-download-submit">
+          <div class="form-inline">
+            <div class="form-field">
+              <label for="guide-email">Work email</label>
+              <input id="guide-email" type="email" name="email" autocomplete="email" required placeholder="you@company.com">
+            </div>
+            <button class="btn btn-primary" type="submit">Download the guide</button>
+          </div>
+          <p class="form-note">We'll also send occasional AP automation resources. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. NEWSLETTER — secondary, lighter-weight than the gated asset -->
+  <section class="newsletter-band">
+    <div class="container">
+      <div class="box newsletter-card" style="border:1px solid var(--grey-40);">
+        <div>
+          <h5 style="margin:0 0 6px;">Stay ahead of AP automation</h5>
+          <p style="font-size:15px; color:var(--grey-90);">One email a month — no pitch, just what's changing in accounts payable.</p>
+        </div>
+        <form class="form-inline" data-yooz-event="newsletter-signup-submit">
+          <div class="form-field" style="flex:1 1 220px;">
+            <label class="sr-only" for="newsletter-email">Email</label>
+            <input id="newsletter-email" type="email" name="email" autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <button class="btn btn-secondary" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <a class="wordmark" href="https://getyooz.com" style="color:var(--grey-10);">
+      <span class="mark" aria-hidden="true"></span>
+      Yooz
+    </a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://getyooz.com/en-us/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/en-us/terms">Terms</a>
+      <a href="https://getyooz.com/en-us/contact">Contact</a>
+    </nav>
+    <p class="footer-legal">{{YOOZ_BUSINESS_ADDRESS}} · © Yooz. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
