@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  AD-TO-PAGE CONTINUITY — Campaign 10 (Pricing & ROI, Benchmarks & KPIs ad
+  groups). Also the secondary CTA target from archetype 3. Copy team: paste
+  the live RSA headlines/descriptions below so the on-page copy is confirmed
+  to keep restating the ad's promise. Head keywords this page must echo:
+  "accounts payable roi calculator", "ap automation cost", "ap automation
+  pricing", "cost per invoice", "cost per invoice benchmark", "average
+  invoice processing time", "how many invoices is considered high volume".
+  {{AD_HEADLINE_1}}
+  {{AD_HEADLINE_2}}
+  {{AD_HEADLINE_3}}
+  {{AD_DESCRIPTION_1}}
+  {{AD_DESCRIPTION_2}}
+-->
+
+<title>Accounts Payable ROI Calculator | Yooz</title>
+<meta name="description" content="Free accounts payable ROI calculator. Model your AP automation cost savings and cost per invoice against published benchmarks — instantly.">
+<link rel="canonical" href="https://getyooz.com/en-us/ad-ap-roi">
+<meta property="og:title" content="Accounts Payable ROI Calculator | Yooz">
+<meta property="og:description" content="Free accounts payable ROI calculator. Model your AP automation cost savings and cost per invoice against published benchmarks — instantly.">
+<meta property="og:url" content="https://getyooz.com/en-us/ad-ap-roi">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+
+<style>
+  /* Page-specific layout — everything reusable lives in tokens.css.
+     No hero section on this page at all, per the brief: the calculator
+     itself is the first screen, not a pitch that precedes it. */
+
+  .calc-section { padding-block: var(--space-7); }
+  .calc-intro { max-width: 68ch; margin-bottom: var(--space-6); }
+  .calc-intro .eyebrow { margin-bottom: var(--space-2); }
+
+  /* Sized down from the brand's full 84px H1 scale specifically on this
+     page — see NOTES.md "Departures." Getting every input field into the
+     first mobile screen outranks matching the display size here. */
+  .calc-intro h1 { font-size: clamp(1.75rem, calc(1.75rem + (100vw - 390px) * 0.1143), 3rem); }
+
+  .calc-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+  .calc-grid > * { min-width: 0; }
+
+  @media (max-width: 1023px) {
+    .calc-grid { grid-template-columns: 1fr; }
+  }
+
+  .calc__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4) var(--space-5);
+  }
+  @media (max-width: 640px) {
+    .calc__fields { grid-template-columns: 1fr; }
+  }
+  .calc__cost-field { grid-column: 1 / -1; }
+  .calc__dont-know {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: 14px;
+    color: var(--grey-90);
+    cursor: pointer;
+  }
+  .calc__dont-know input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--pink); }
+
+  .calc__submit-row { margin-top: var(--space-6); }
+
+  /* Output column: an empty-state placeholder swaps for the Blue results
+     panel on calculate — the one motion moment this page earns. */
+  .results-placeholder {
+    height: 100%;
+    min-height: 280px;
+    border: 1px dashed var(--grey-70);
+    border-radius: var(--radius-box);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    color: var(--grey-90);
+  }
+  .results-placeholder .icon { font-size: 36px; color: var(--grey-70); }
+  /* The [hidden] attribute is how the script toggles this, but an author
+     rule setting `display` always beats the UA stylesheet's [hidden]
+     rule regardless of specificity or source order — so without this,
+     "hidden" silently stops working the moment .results-placeholder sets
+     display:flex above. */
+  .results-placeholder[hidden] { display: none; }
+
+  .results-panel {
+    animation: results-in 500ms ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .results-panel { animation: none; }
+  }
+  @keyframes results-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .results-panel__figure {
+    font-weight: var(--weight-light);
+    color: var(--pink);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, calc(2.5rem + (100vw - 390px) * 0.2857), 5rem);
+    margin: var(--space-2) 0 0;
+  }
+  .results-panel__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4) var(--space-5);
+    margin: var(--space-6) 0 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(254, 254, 254, 0.2);
+  }
+  .results-panel__grid dt { font-size: 14px; color: var(--grey-60); }
+  .results-panel__grid dd { margin: var(--space-1) 0 0; font-size: 22px; font-weight: var(--weight-light); }
+
+  /* Assumptions disclosure */
+  .assumptions { margin-top: var(--space-6); }
+  .assumptions summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--weight-semibold);
+    font-size: 16px;
+    color: var(--pink);
+  }
+  .assumptions summary::-webkit-details-marker { display: none; }
+  .assumptions summary .icon { transition: transform var(--transition-fast); }
+  .assumptions[open] summary .icon { transform: rotate(180deg); }
+  .assumptions-table { margin-top: var(--space-5); overflow-x: auto; }
+  .assumptions-table table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
+  .assumptions-table th, .assumptions-table td {
+    text-align: left;
+    padding: var(--space-3) var(--space-3);
+    border-bottom: 1px solid var(--grey-40);
+    vertical-align: top;
+  }
+  .assumptions-table th { font-weight: var(--weight-semibold); color: var(--grey-90); font-size: 14px; }
+  .assumptions-table .needs-source { color: var(--pink); font-weight: var(--weight-semibold); }
+
+  /* Section 2 — benchmark context */
+  .benchmarks { padding-block: var(--space-8); }
+  .benchmarks__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+  @media (max-width: 767px) { .benchmarks__grid { grid-template-columns: 1fr; } }
+  .benchmark-card { padding: var(--space-5); }
+  .benchmark-card__figure { font-size: 40px; font-weight: var(--weight-light); color: var(--rich-blue); margin: var(--space-2) 0; }
+  .benchmark-card__source { font-size: 13px; color: var(--grey-80); margin-top: var(--space-3); }
+  .compare-line {
+    margin-top: var(--space-6);
+    padding: var(--space-4) var(--space-5);
+  }
+
+  /* Section 3 — what the number means */
+  .meaning { padding-block: var(--space-8); }
+  .meaning__box { max-width: 900px; margin-inline: auto; }
+  .meaning__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+  }
+  @media (max-width: 767px) { .meaning__stats { grid-template-columns: 1fr; } }
+  .meaning__stat dt { font-size: 14px; color: var(--grey-90); }
+  .meaning__stat dd { margin: var(--space-1) 0 0; font-size: 24px; font-weight: var(--weight-light); color: var(--rich-blue); }
+  .meaning__aside { margin-top: var(--space-6); padding: var(--space-4) var(--space-5); border-left: 3px solid var(--pink); }
+
+  /* Section 4 — emailed report capture */
+  .report { padding-block: var(--space-8); }
+  .report__box { max-width: 640px; margin-inline: auto; text-align: center; }
+  .report__form { display: flex; gap: var(--space-3); align-items: flex-start; margin-top: var(--space-5); flex-wrap: wrap; justify-content: center; }
+  .report__form .field { margin-bottom: 0; min-width: 260px; flex: 1; }
+  .report__hint { margin-top: var(--space-4); }
+  .report__confirm { margin-top: var(--space-4); color: var(--rich-blue); font-weight: var(--weight-semibold); }
+
+  /* Section 5 — soft demo offer, never shown before a result exists */
+  .demo-offer { padding-block: var(--space-7); }
+  .demo-offer__box { max-width: 720px; margin-inline: auto; text-align: center; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_wordmark_click">Yooz</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+      <a href="https://getyooz.com/pricing" data-yooz-event="header_pricing_click">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. Calculator — Inframe layout: large Grey 10 box on Pattern BG.
+       No hero above this. The title block sits inside the top of the box
+       itself so the whole first screen reads as one tool, not a pitch
+       followed by a widget. -->
+  <section class="calc-section pattern-bg" aria-labelledby="calc-heading">
+    <div class="container">
+      <div class="box-grey10 box-grey10--lg">
+
+        <div class="calc-intro">
+          <p class="eyebrow">Free, five-minute AP automation cost calculator</p>
+          <h1 id="calc-heading" class="text-h1">Accounts Payable ROI Calculator</h1>
+          <p class="text-para" style="margin-top: var(--space-3);">
+            Model your AP automation cost against published cost-per-invoice
+            benchmarks — no email required to see your result.
+          </p>
+        </div>
+
+        <div class="calc-grid">
+          <div>
+            <form id="roi-calculator" data-yooz-event="calculator_submit">
+              <div class="calc__fields">
+                <div class="field">
+                  <label for="invoices-per-month">Invoices per month</label>
+                  <input id="invoices-per-month" name="invoices_per_month" type="number" inputmode="numeric" min="1" step="1" required>
+                </div>
+                <div class="field">
+                  <label for="people-in-ap">People involved in AP</label>
+                  <input id="people-in-ap" name="people_in_ap" type="number" inputmode="numeric" min="1" step="1" required>
+                </div>
+                <div class="field">
+                  <label for="cycle-days">Average approval cycle time (days)</label>
+                  <input id="cycle-days" name="cycle_days" type="number" inputmode="decimal" min="0.5" step="0.5" required>
+                </div>
+                <div class="field calc__cost-field">
+                  <label for="cost-per-invoice">Current cost per invoice ($)</label>
+                  <input id="cost-per-invoice" name="cost_per_invoice" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g. 12.50" required>
+                  <label class="calc__dont-know" for="dont-know-cost">
+                    <input type="checkbox" id="dont-know-cost" name="dont_know_cost" data-yooz-event="calculator_dont_know_toggle">
+                    <span>I don't know — use the published benchmark instead</span>
+                  </label>
+                </div>
+              </div>
+              <div class="calc__submit-row">
+                <button class="btn btn-primary" type="submit">Calculate your savings</button>
+              </div>
+            </form>
+          </div>
+
+          <div aria-live="polite">
+            <div id="results-placeholder" class="results-placeholder">
+              <span class="icon" aria-hidden="true">calculate</span>
+              <p class="text-para" style="margin:0;">Fill in the calculator — your modelled annual saving will appear here.</p>
+            </div>
+            <div id="results-panel" class="box-blue box-blue--md results-panel" hidden>
+              <p class="text-tagline" style="color: var(--grey-60); margin: 0;">Your modelled annual saving</p>
+              <p class="results-panel__figure" id="out-annual-saving">$0</p>
+              <p class="text-para" style="color: var(--grey-10); margin-top: var(--space-2);">
+                Paying back in <strong id="out-payback">—</strong>
+              </p>
+              <dl class="results-panel__grid">
+                <div><dt>Current annual cost</dt><dd id="out-current-cost">—</dd></div>
+                <div><dt>Modelled cost with automation</dt><dd id="out-modelled-cost">—</dd></div>
+                <div><dt>Cost per invoice, before</dt><dd id="out-cpi-before">—</dd></div>
+                <div><dt>Cost per invoice, after</dt><dd id="out-cpi-after">—</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <details class="assumptions" data-yooz-event="assumptions_disclosure_toggle">
+          <summary>Show the assumptions behind this calculator <span class="icon" aria-hidden="true">expand_more</span></summary>
+          <div class="assumptions-table">
+            <table>
+              <thead>
+                <tr><th>Assumption</th><th>Value used here</th><th>Used for</th><th>Source</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>{{BENCHMARK_COST_PER_INVOICE_MANUAL}}</code></td>
+                  <td id="cfg-manual-cost">—</td>
+                  <td>Substituted when you check "I don't know," and shown as a comparison benchmark below.</td>
+                  <td class="needs-source">Illustrative placeholder — needs a citable published source</td>
+                </tr>
+                <tr>
+                  <td><code>{{BENCHMARK_COST_PER_INVOICE_AUTOMATED}}</code></td>
+                  <td id="cfg-automated-cost">—</td>
+                  <td>Shown as a comparison benchmark against your modelled "after" cost per invoice.</td>
+                  <td class="needs-source">Illustrative placeholder — needs a citable published source</td>
+                </tr>
+                <tr>
+                  <td><code>{{BENCHMARK_TOUCHES_PER_INVOICE}}</code></td>
+                  <td id="cfg-touches">—</td>
+                  <td>Cited as context for why manual processing costs what it does. Not used in the arithmetic.</td>
+                  <td class="needs-source">Illustrative placeholder — needs a citable published source</td>
+                </tr>
+                <tr>
+                  <td><code>{{ASSUMED_TIME_SAVING_PCT}}</code></td>
+                  <td id="cfg-saving-pct">—</td>
+                  <td>Applied to your reported (or benchmark) cost per invoice, and to your approval cycle time, to model every "after" figure.</td>
+                  <td class="needs-source">Internal modelling assumption — needs product-marketing sign-off against real customer outcomes</td>
+                </tr>
+                <tr>
+                  <td><code>{{ASSUMED_IMPLEMENTATION_COST}}</code></td>
+                  <td id="cfg-impl-cost">—</td>
+                  <td>One-time switching cost used only to model payback period.</td>
+                  <td class="needs-source">Illustrative placeholder, added beyond the brief's four named coefficients — see NOTES.md</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Benchmark context for the output -->
+  <section class="benchmarks" aria-labelledby="benchmarks-heading">
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow__number">02</span>
+        <span class="section-eyebrow__label">Cost per invoice benchmark</span>
+      </div>
+      <h2 id="benchmarks-heading" class="text-h2">How your number compares</h2>
+      <p class="text-para" style="max-width: 68ch; margin-top: var(--space-4);">
+        Average invoice processing time and cost per invoice vary a lot by
+        volume and industry. These are the two reference points this
+        calculator uses — cite them, or swap in your own once sourced.
+      </p>
+
+      <div class="benchmarks__grid">
+        <div class="box-grey10 benchmark-card">
+          <p class="text-para-sm-bold">Published manual cost per invoice</p>
+          <p class="benchmark-card__figure" id="bm-manual-figure">$0.00</p>
+          <p class="text-para" style="margin:0;">Average touches per invoice: <span id="bm-touches">0</span></p>
+          <p class="benchmark-card__source">{{BENCHMARK_COST_PER_INVOICE_MANUAL}} / {{BENCHMARK_TOUCHES_PER_INVOICE}} — needs a citable published source</p>
+        </div>
+        <div class="box-grey10 benchmark-card">
+          <p class="text-para-sm-bold">Published automated cost per invoice</p>
+          <p class="benchmark-card__figure" id="bm-automated-figure">$0.00</p>
+          <p class="text-para" style="margin:0;">Modelled from a {{ASSUMED_TIME_SAVING_PCT}} assumed reduction</p>
+          <p class="benchmark-card__source">{{BENCHMARK_COST_PER_INVOICE_AUTOMATED}} — needs a citable published source</p>
+        </div>
+        <div class="box-grey10 benchmark-card">
+          <p class="text-para-sm-bold">Is your volume "high volume"?</p>
+          <p class="text-para" style="margin-top: var(--space-2);">
+            AP benchmarking literature typically sets a threshold for what
+            counts as high invoice volume. Worth naming to whoever's asking
+            whether this business case even applies to you.
+          </p>
+          <p class="benchmark-card__source">{{BENCHMARK_HIGH_VOLUME_THRESHOLD_PER_MONTH}} — needs a citable published source</p>
+        </div>
+      </div>
+
+      <p class="box-grey10 compare-line text-para" id="compare-line">
+        Run the calculator above to see how your own numbers compare against these benchmarks.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. What the number means -->
+  <section class="meaning pattern-bg" aria-labelledby="meaning-heading">
+    <div class="container meaning__box">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow__number">03</span>
+        <span class="section-eyebrow__label">What this means for your business case</span>
+      </div>
+      <h2 id="meaning-heading" class="text-h2">What the number means</h2>
+      <p class="text-para" style="margin-top: var(--space-4);">
+        The saving above isn't just a smaller invoice-processing line item.
+        It shows up in three places a CFO will ask about directly:
+      </p>
+
+      <dl class="meaning__stats">
+        <div class="box-grey10 meaning__stat">
+          <dt>Invoices per person, per month</dt>
+          <dd id="meaning-per-person">—</dd>
+        </div>
+        <div class="box-grey10 meaning__stat">
+          <dt>Approval cycle time, before</dt>
+          <dd id="meaning-cycle-before">—</dd>
+        </div>
+        <div class="box-grey10 meaning__stat">
+          <dt>Modelled approval cycle time, after</dt>
+          <dd id="meaning-cycle-after">—</dd>
+        </div>
+      </dl>
+
+      <p class="box-grey10 meaning__aside text-para">
+        Every extra touch on an invoice — routing, chasing an approver,
+        re-keying a correction — adds both cost and time. The
+        {{BENCHMARK_TOUCHES_PER_INVOICE}} benchmark above is the published
+        reason manual cost per invoice runs as high as it does; automation's
+        saving comes from removing those touches, not from working faster
+        at the same touches.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Emailed report capture — gated. Email only, per Foundation §4's
+       low-awareness form-length rule and this brief's "Email only." -->
+  <section class="report" aria-labelledby="report-heading">
+    <div class="container report__box">
+      <h2 id="report-heading" class="text-h2">Get this as a report</h2>
+      <p class="text-para" style="margin-top: var(--space-3);">
+        Email yourself a copy of your numbers and the benchmarks above —
+        built to forward to whoever signs off on the business case.
+      </p>
+
+      <form id="report-form" data-yooz-event="report_email_submit">
+        <div class="field">
+          <label for="report-email" class="visually-hidden">Work email</label>
+          <input id="report-email" name="email" type="email" autocomplete="email" placeholder="Work email" required>
+        </div>
+        <button class="btn btn-primary" type="submit" id="report-submit" disabled>Email me this report</button>
+      </form>
+      <p class="text-tagline report__hint" id="report-hint">Run the calculator above first — your report will include your own numbers.</p>
+      <p class="report__confirm" id="report-confirm" hidden>Sent — check your inbox.</p>
+    </div>
+  </section>
+
+  <!-- 5. Soft demo offer — never shown before a result exists -->
+  <section class="demo-offer pattern-pink" id="demo-offer" aria-labelledby="demo-heading" hidden>
+    <div class="container demo-offer__box">
+      <div class="box-grey10 box-grey10--md" style="text-align: center;">
+        <h2 id="demo-heading" class="text-h3">Want us to model this against your own ERP?</h2>
+        <p class="text-para" style="margin-top: var(--space-3);">
+          Bring your numbers to a short walkthrough and we'll map the saving
+          above against your actual approval workflow.
+        </p>
+        <div style="margin-top: var(--space-5);">
+          <a class="btn btn-secondary" href="#book-a-demo" data-yooz-event="demo_request_click">Book a walkthrough</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__row">
+    <div>
+      <a class="site-header__wordmark" href="https://getyooz.com" style="color: var(--grey-10);">Yooz</a>
+      <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
+    </div>
+    <div class="site-footer__links">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------------------------------------------------------------------
+  // CONFIG — every coefficient this calculator uses, in one place, per
+  // the brief ("Every coefficient is a placeholder... put every
+  // assumption in a single clearly-marked CONFIG object"). All five
+  // values below are ILLUSTRATIVE PLACEHOLDERS, not published figures —
+  // they exist so the tool is demonstrable, and the visible "Show the
+  // assumptions" disclosure on the page says so explicitly. None of them
+  // should reach production before a real, citable source replaces them.
+  // See PLACEHOLDERS.md and NOTES.md for ownership and the source gap.
+  // ---------------------------------------------------------------------
+  var CONFIG = {
+    // {{BENCHMARK_COST_PER_INVOICE_MANUAL}}
+    benchmarkCostPerInvoiceManual: 15.00,
+    // {{BENCHMARK_COST_PER_INVOICE_AUTOMATED}}
+    benchmarkCostPerInvoiceAutomated: 3.50,
+    // {{BENCHMARK_TOUCHES_PER_INVOICE}}
+    benchmarkTouchesPerInvoice: 3,
+    // {{ASSUMED_TIME_SAVING_PCT}}
+    assumedTimeSavingPct: 0.60,
+    // {{ASSUMED_IMPLEMENTATION_COST}} — added beyond the brief's four
+    // named coefficients; payback period cannot be modelled without an
+    // assumed one-time switching cost. Flagged as a departure in NOTES.md.
+    assumedImplementationCost: 15000
+  };
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var currencyWhole = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+  var currencyCents = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function fmtWhole(n) { return currencyWhole.format(n); }
+  function fmtCents(n) { return currencyCents.format(n); }
+
+  function animateCountUp(el, endValue, formatFn, duration) {
+    duration = duration || 900;
+    if (reduceMotion) { el.textContent = formatFn(endValue); return; }
+    var start = null;
+    function tick(ts) {
+      if (start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatFn(endValue * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Populate the assumptions disclosure from the same CONFIG object the
+  // maths uses, so the visible table can never drift out of sync with it.
+  document.getElementById('cfg-manual-cost').textContent = fmtCents(CONFIG.benchmarkCostPerInvoiceManual) + ' (illustrative placeholder)';
+  document.getElementById('cfg-automated-cost').textContent = fmtCents(CONFIG.benchmarkCostPerInvoiceAutomated) + ' (illustrative placeholder)';
+  document.getElementById('cfg-touches').textContent = CONFIG.benchmarkTouchesPerInvoice + ' touches (illustrative placeholder)';
+  document.getElementById('cfg-saving-pct').textContent = Math.round(CONFIG.assumedTimeSavingPct * 100) + '%';
+  document.getElementById('cfg-impl-cost').textContent = fmtWhole(CONFIG.assumedImplementationCost) + ' (illustrative placeholder)';
+  document.getElementById('bm-manual-figure').textContent = fmtCents(CONFIG.benchmarkCostPerInvoiceManual);
+  document.getElementById('bm-automated-figure').textContent = fmtCents(CONFIG.benchmarkCostPerInvoiceAutomated);
+  document.getElementById('bm-touches').textContent = CONFIG.benchmarkTouchesPerInvoice;
+
+  var form = document.getElementById('roi-calculator');
+  var dontKnow = document.getElementById('dont-know-cost');
+  var costInput = document.getElementById('cost-per-invoice');
+
+  dontKnow.addEventListener('change', function () {
+    if (dontKnow.checked) {
+      costInput.value = '';
+      costInput.disabled = true;
+      costInput.required = false;
+      costInput.placeholder = 'Using benchmark: ' + fmtCents(CONFIG.benchmarkCostPerInvoiceManual);
+    } else {
+      costInput.disabled = false;
+      costInput.required = true;
+      costInput.placeholder = 'e.g. 12.50';
+    }
+  });
+
+  function currentCostPerInvoice() {
+    if (dontKnow.checked) return CONFIG.benchmarkCostPerInvoiceManual;
+    var v = Number(costInput.value);
+    return v > 0 ? v : null;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var invoicesPerMonth = Number(document.getElementById('invoices-per-month').value);
+    var peopleInAP = Number(document.getElementById('people-in-ap').value);
+    var cycleDays = Number(document.getElementById('cycle-days').value);
+    var costBefore = currentCostPerInvoice();
+
+    // Native HTML5 validation (required/min, with `required` toggled
+    // alongside the "I don't know" checkbox) already blocks the submit
+    // event from reaching here when a field is invalid — this is a
+    // belt-and-braces guard, not the primary validation path.
+    var valid = invoicesPerMonth > 0 && peopleInAP > 0 && cycleDays > 0 && costBefore !== null;
+    if (!valid) return;
+
+    // --- The model, in full, using only the CONFIG coefficients above ---
+    var annualInvoices = invoicesPerMonth * 12;
+    var costAfter = costBefore * (1 - CONFIG.assumedTimeSavingPct);
+    var currentAnnualCost = annualInvoices * costBefore;
+    var modelledAnnualCost = annualInvoices * costAfter;
+    var annualSaving = currentAnnualCost - modelledAnnualCost;
+    var monthlySaving = annualSaving / 12;
+    var paybackMonths = monthlySaving > 0 ? (CONFIG.assumedImplementationCost / monthlySaving) : null;
+    var cycleDaysAfter = cycleDays * (1 - CONFIG.assumedTimeSavingPct);
+    var invoicesPerPerson = invoicesPerMonth / peopleInAP;
+
+    // Results panel — the one motion moment this page earns.
+    document.getElementById('results-placeholder').hidden = true;
+    var panel = document.getElementById('results-panel');
+    panel.hidden = false;
+    // Restart the CSS entrance animation on every calculation, not just the first.
+    panel.style.animation = 'none';
+    // eslint-disable-next-line no-unused-expressions
+    panel.offsetHeight;
+    panel.style.animation = '';
+
+    animateCountUp(document.getElementById('out-annual-saving'), annualSaving, fmtWhole);
+    document.getElementById('out-payback').textContent = paybackMonths ? paybackMonths.toFixed(1) + ' months' : 'not modelled at $0 saving';
+    document.getElementById('out-current-cost').textContent = fmtWhole(currentAnnualCost);
+    document.getElementById('out-modelled-cost').textContent = fmtWhole(modelledAnnualCost);
+    document.getElementById('out-cpi-before').textContent = fmtCents(costBefore);
+    document.getElementById('out-cpi-after').textContent = fmtCents(costAfter);
+
+    // Section 2 — benchmark comparison line
+    var vsManual = ((costBefore - CONFIG.benchmarkCostPerInvoiceManual) / CONFIG.benchmarkCostPerInvoiceManual) * 100;
+    var direction = vsManual >= 0 ? 'above' : 'below';
+    document.getElementById('compare-line').textContent =
+      'Your reported cost of ' + fmtCents(costBefore) + ' per invoice is ' + Math.abs(vsManual).toFixed(0) + '% ' + direction +
+      ' the published manual benchmark, and your modelled ' + fmtCents(costAfter) + ' after automation lands close to the ' +
+      fmtCents(CONFIG.benchmarkCostPerInvoiceAutomated) + ' published automated benchmark.';
+
+    // Section 3 — what the number means, in your own terms
+    document.getElementById('meaning-per-person').textContent = invoicesPerPerson.toFixed(0) + ' invoices';
+    document.getElementById('meaning-cycle-before').textContent = cycleDays.toFixed(1) + ' days';
+    document.getElementById('meaning-cycle-after').textContent = cycleDaysAfter.toFixed(1) + ' days';
+
+    // Section 4 — unlock the (still gated) emailed report
+    document.getElementById('report-submit').disabled = false;
+    document.getElementById('report-hint').textContent = 'Your report will include the numbers above.';
+
+    // Section 5 — the demo offer only ever appears after a result exists
+    document.getElementById('demo-offer').hidden = false;
+  });
+
+  document.getElementById('report-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('report-submit').disabled) return;
+    // Mockup only — production wires this to the real email-capture endpoint.
+    document.getElementById('report-confirm').hidden = false;
+    document.getElementById('report-submit').disabled = true;
+    document.getElementById('report-submit').textContent = 'Sent';
+  });
+})();
+</script>
+
+</body>
+</html>

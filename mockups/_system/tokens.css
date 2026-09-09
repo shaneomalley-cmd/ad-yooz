@@ -393,6 +393,24 @@ ul { margin: 0; padding: 0; }
   .box-grey10--lg { padding: var(--space-6) var(--space-5); }
 }
 
+/* Blue layout content box — the mirror of .box-grey10 for the "Blue layout"
+   composition in Foundation §1 (Rich Blue box, Grey 10 type). Added when
+   building archetype 12, which is the first page to need a Blue-layout
+   content box distinct from a page-background pattern-blue strip. */
+.box-blue {
+  background: var(--rich-blue);
+  color: var(--grey-10);
+  border-radius: var(--radius-box);
+}
+.box-blue--sm { padding: var(--space-5); }
+.box-blue--md { padding: var(--space-6) var(--space-7); }
+.box-blue--lg { padding: var(--space-8) var(--space-9); }
+
+@media (max-width: 767px) {
+  .box-blue--md { padding: var(--space-5); }
+  .box-blue--lg { padding: var(--space-6) var(--space-5); }
+}
+
 /* =========================================================================
    Buttons — three levels, per Foundation §2b. Trailing arrow on secondary
    and tertiary only; the primary CTA stays arrow-free (a commitment, not a
