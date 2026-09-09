@@ -1,0 +1,239 @@
+/*
+  Yooz paid-search landing page system — shared design tokens
+  Source: Yooz Branding Guidelines (Sept 2025), transcribed via 00-FOUNDATION.md.
+
+  Status note: archetype 01 (Brand) — the page that is supposed to originate this
+  file plus /mockups/_system/components.html — has not been built yet in this
+  repo. This file was created while building archetype 07 (Capability,
+  /ad-invoice-approval) because that page cannot import tokens that don't exist.
+  Every value below is transcribed directly from 00-FOUNDATION.md section 1
+  (colour, type, buttons, patterns, layout compositions) — nothing here was
+  invented for the capability page. components.html (the live specimen sheet)
+  is NOT included in this pass; it still needs to be built, ideally as part of
+  archetype 01, and should reuse these custom properties rather than re-deriving
+  them. See /mockups/ad-invoice-approval/NOTES.md for detail.
+
+  Every later page should link this file rather than re-declare tokens:
+  <link rel="stylesheet" href="../_system/tokens.css">
+*/
+
+:root {
+  /* ---- Colour: Primary ---- */
+  --rich-blue: #14354E;   /* Pantone 534c — primary type, dark backgrounds */
+  --pink:      #E0185E;   /* Pantone 205c — accent, CTA fills, dot patterns */
+
+  /* ---- Colour: Secondary — rare, primarily in gradients ---- */
+  --teal: #00BFA5;
+  --blue: #006AFF;
+
+  /* ---- Colour: Neutrals — backgrounds and strokes only ---- */
+  --grey-100: #3C4857;
+  --grey-90:  #46515E;
+  --grey-80:  #616C7A;
+  --grey-70:  #A0A7AF;
+  --grey-60:  #CCCDD2;
+  --grey-50:  #DEDEE0;
+  --grey-40:  #E6E6E6;
+  --grey-30:  #EAEAEA;
+  --grey-20:  #F5F5F5;
+  --grey-10:  #FEFEFE;
+
+  /* ---- Brand gradient (Pink balanced with Rich Blue, optional Teal/Blue) ---- */
+  --gradient-brand: linear-gradient(135deg, var(--pink) 0%, var(--rich-blue) 70%);
+  --gradient-brand-teal: linear-gradient(135deg, var(--pink) 0%, var(--teal) 55%, var(--rich-blue) 100%);
+
+  /* ---- Type: Noto Sans, three weights only ---- */
+  --font-body: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --w-light: 300;
+  --w-regular: 400;
+  --w-semibold: 600;
+
+  /* ---- Fluid type scale ----
+     clamp(min, intercept + slope*vw, max), tuned so "min" lands at a 390px
+     viewport and "max" (the brand spec size) lands at 1440px+, per
+     00-FOUNDATION.md section 1's instruction to fluid-scale Display/H1 (and,
+     for the same reason, H2/H3) rather than let them overflow mobile. -2%
+     tracking and the stated line-heights hold at every size. */
+  --fs-display: clamp(2.5rem, 0.643rem + 7.62vw, 7.5rem);   /* 40px -> 120px */
+  --fs-h1:      clamp(2.25rem, 1.136rem + 4.57vw, 5.25rem); /* 36px -> 84px */
+  --fs-h2:      clamp(2rem, 1.257rem + 3.05vw, 4rem);       /* 32px -> 64px */
+  --fs-h3:      clamp(1.75rem, 1.286rem + 1.9vw, 3rem);     /* 28px -> 48px */
+  --fs-h4: 2rem;        /* 32px — fits mobile as-is */
+  --fs-h5: 1.5rem;      /* 24px */
+  --fs-p-lg: 1.375rem;  /* 22px */
+  --fs-p: 1.0625rem;    /* 17px */
+  --fs-list: 1rem;      /* 16px */
+  --fs-p-sm-bold: 1rem; /* 16px */
+  --fs-tagline: 0.875rem; /* 14px */
+  --fs-cta: 1.0625rem;  /* 17px */
+
+  --tracking-tight: -0.02em;
+  --tracking-tighter: -0.01em;
+  --tracking-normal: 0em;
+
+  /* ---- Layout ---- */
+  --content-max: 1320px;
+  --gutter: clamp(20px, 4vw, 64px);
+  --radius-box: 4px;
+  --radius-pill: 999px;
+
+  /* ---- Focus ---- */
+  --focus-ring: 0 0 0 2px var(--grey-10), 0 0 0 4px var(--pink);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ==================== Type scale utility classes ==================== */
+
+.t-display { font: var(--w-light) var(--fs-display)/0.9 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-h1      { font: var(--w-light) var(--fs-h1)/1.1 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-h2      { font: var(--w-light) var(--fs-h2)/1.0 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-h3      { font: var(--w-light) var(--fs-h3)/1.1 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-h4      { font: var(--w-light) var(--fs-h4)/1.2 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-h5      { font: var(--w-light) var(--fs-h5)/1.2 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-p-lg    { font: var(--w-light) var(--fs-p-lg)/1.5 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-p       { font: var(--w-regular) var(--fs-p)/1.5 var(--font-body); letter-spacing: var(--tracking-tighter); }
+.t-p-dense { font: var(--w-regular) var(--fs-p)/1.5 var(--font-body); letter-spacing: var(--tracking-tighter); } /* Regular substitute for List item / dense data per departure note */
+.t-list    { font: var(--w-light) var(--fs-list)/1.5 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-p-sm-bold { font: var(--w-semibold) var(--fs-p-sm-bold)/1.0 var(--font-body); letter-spacing: var(--tracking-tighter); }
+.t-tagline { font: var(--w-light) var(--fs-tagline)/1.5 var(--font-body); letter-spacing: var(--tracking-tight); }
+.t-cta     { font: var(--w-semibold) var(--fs-cta)/1.5 var(--font-body); letter-spacing: var(--tracking-normal); }
+
+/* Eyebrow: Pink, SemiBold, small, sentence case — never tracked-out caps */
+.eyebrow {
+  color: var(--pink);
+  font: var(--w-semibold) 0.9375rem/1.4 var(--font-body);
+  letter-spacing: var(--tracking-tighter);
+  text-transform: none;
+}
+
+/* Two-tone H1 clause split */
+.h1-tone-blue { color: var(--rich-blue); }
+.h1-tone-pink { color: var(--pink); }
+
+/* ==================== Buttons ==================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 28px;
+  border-radius: var(--radius-pill);
+  font: var(--w-semibold) var(--fs-cta)/1 var(--font-body);
+  letter-spacing: var(--tracking-normal);
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  min-height: 44px;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary {
+  background: var(--pink);
+  color: var(--grey-10);
+}
+.btn-primary:hover { background: #c21351; }
+.btn-secondary {
+  background: var(--grey-10);
+  color: var(--pink);
+  border-color: var(--pink);
+}
+.btn-secondary:hover { background: var(--grey-20); }
+.btn-tertiary {
+  background: transparent;
+  color: var(--pink);
+  padding: 4px 0;
+  border-radius: 0;
+  min-height: auto;
+}
+.btn-tertiary .arrow { transition: transform 0.15s ease; }
+.btn-tertiary:hover .arrow { transform: translateX(3px); }
+
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* ==================== Dot patterns ==================== */
+
+.pattern-bg {
+  background-color: var(--grey-20);
+  background-image: radial-gradient(var(--pink) 1.2px, transparent 1.2px);
+  background-size: 24px 24px; /* "600% spacing" relative to a 4px dot unit */
+  background-position: 0 0;
+  position: relative;
+}
+.pattern-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.4;
+}
+.pattern-pink {
+  background-color: var(--grey-10);
+  background-image: radial-gradient(var(--pink) 1.4px, transparent 1.4px);
+  background-size: 16px 16px; /* 400% spacing, full opacity dots */
+}
+.pattern-blue {
+  background-color: var(--rich-blue);
+  background-image: radial-gradient(var(--grey-80) 1.2px, transparent 1.2px);
+  background-size: 24px 24px; /* 600% spacing */
+}
+
+/* ==================== Layout compositions ==================== */
+
+.box-grey10 {
+  background: var(--grey-10);
+  border-radius: var(--radius-box);
+  color: var(--rich-blue);
+}
+.box-blue {
+  background: var(--rich-blue);
+  border-radius: var(--radius-box);
+  color: var(--grey-10);
+}
+.box-blue .btn-secondary { background: transparent; color: var(--grey-10); border-color: var(--grey-10); }
+.box-blue .btn-tertiary { color: var(--grey-10); }
+
+/* ==================== Z device (signature mark) ====================
+   Stacked-invoice silhouette, anchored bottom-left in hero contexts,
+   top-right with a darker wash in secondary contexts. Geometry only —
+   fill is a placeholder gradient until real graded photography exists. */
+
+.z-shape {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 22%, 32% 22%, 100% 78%, 100% 100%, 0% 100%, 0% 78%, 68% 78%, 0% 22%);
+}
+.z-anchor-bottom-left { align-items: flex-end; justify-content: flex-start; }
+.z-anchor-top-right { align-items: flex-start; justify-content: flex-end; }
+
+/* ==================== Labelled image / screenshot placeholders ==================== */
+
+.placeholder-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-brand);
+  border-radius: var(--radius-box);
+  color: var(--grey-10);
+  text-align: center;
+  padding: 24px;
+  min-height: 200px;
+}
+.placeholder-caption {
+  display: block;
+  margin-top: 10px;
+  color: var(--grey-90);
+}
+
+/* ==================== Container ==================== */
+
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
