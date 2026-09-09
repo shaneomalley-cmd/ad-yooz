@@ -1,0 +1,345 @@
+/* ============================================================
+   Yooz paid-search landing page system — shared design tokens
+   Source: Yooz Branding Guidelines (Sept 2025), transcribed in
+   00-FOUNDATION.md. Do not edit values here per-page; every
+   archetype page imports this file rather than re-deriving tokens.
+   ============================================================ */
+
+:root {
+  /* ---- Colour --------------------------------------------- */
+  --rich-blue: #14354E;   /* Pantone 534c — primary type, dark backgrounds */
+  --pink:      #E0185E;   /* Pantone 205c — accent, CTA fills, dot patterns */
+  --teal:      #00BFA5;   /* secondary — gradients only */
+  --blue:      #006AFF;   /* secondary — gradients only */
+
+  --grey-100: #3C4857;
+  --grey-90:  #46515E;
+  --grey-80:  #616C7A;
+  --grey-70:  #A0A7AF;
+  --grey-60:  #CCCDD2;
+  --grey-50:  #DEDEE0;
+  --grey-40:  #E6E6E6;
+  --grey-30:  #EAEAEA;
+  --grey-20:  #F5F5F5;
+  --grey-10:  #FEFEFE;
+
+  --pink-on-grey10-strong: rgba(224, 24, 94, 1);
+  --pink-on-grey10-40:     rgba(224, 24, 94, 0.4);
+  --grey80-100:            rgba(97, 108, 122, 1);
+
+  /* ---- Type scale — fluid clamp(), min ~390px, brand size at >=1440px ---- */
+  --font-display: clamp(2.75rem, 1.55rem + 6.0vw, 7.5rem);   /* 44px  -> 120px */
+  --font-h1:      clamp(2.25rem, 1.45rem + 4.0vw, 5.25rem);  /* 36px  -> 84px  */
+  --font-h2:      clamp(2rem,    1.35rem + 3.2vw, 4rem);     /* 32px  -> 64px  */
+  --font-h3:      clamp(1.75rem, 1.3rem  + 2.3vw, 3rem);     /* 28px  -> 48px  */
+  --font-h4:      clamp(1.375rem,1.15rem + 1.1vw, 2rem);     /* 22px  -> 32px  */
+  --font-h5:      clamp(1.25rem, 1.1rem  + 0.6vw, 1.5rem);   /* 20px  -> 24px  */
+  --font-p-lg:    clamp(1.125rem,1.05rem + 0.3vw, 1.375rem); /* 18px  -> 22px  */
+  --font-p:       1.0625rem; /* 17px — static per brand table */
+  --font-list:    1rem;      /* 16px */
+  --font-p-sm-b:  1rem;      /* 16px semibold */
+  --font-tagline: 0.875rem;  /* 14px */
+  --font-cta:     1.0625rem; /* 17px */
+
+  --lh-display: 0.9;
+  --lh-h1: 1.1;
+  --lh-h2: 1;
+  --lh-h3: 1.1;
+  --lh-h4: 1.2;
+  --lh-h5: 1.2;
+  --lh-p-lg: 1.5;
+  --lh-p: 1.5;
+  --lh-list: 1.5;
+  --lh-p-sm-b: 1;
+  --lh-tagline: 1.5;
+  --lh-cta: 1.5;
+
+  --ls-tight: -0.02em; /* headings */
+  --ls-body:  -0.01em; /* paragraph */
+  --ls-normal: 0em;    /* CTA label */
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+
+  /* ---- Spacing ---------------------------------------------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 24px;  --space-6: 32px;  --space-7: 48px;  --space-8: 64px;
+  --space-9: 96px;  --space-10: 128px;
+
+  --radius-pill: 999px;
+  --radius-box: 4px;
+
+  --content-max: 1200px;
+
+  --focus-ring: 0 0 0 2px var(--grey-10), 0 0 0 4px var(--pink);
+
+  color-scheme: light;
+}
+
+/* ============================================================
+   Reset + base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: 'Noto Sans', system-ui, -apple-system, sans-serif;
+  font-weight: var(--weight-regular);
+  font-size: var(--font-p);
+  line-height: var(--lh-p);
+  letter-spacing: var(--ls-body);
+  color: var(--rich-blue);
+  background: var(--grey-10);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font-family: inherit; }
+
+/* Accessibility floor: visible keyboard focus, Pink 2px outline, 2px offset */
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ============================================================
+   Type scale utility classes
+   ============================================================ */
+.t-display { font-size: var(--font-display); line-height: var(--lh-display); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-h1 { font-size: var(--font-h1); line-height: var(--lh-h1); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-h2 { font-size: var(--font-h2); line-height: var(--lh-h2); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-h3 { font-size: var(--font-h3); line-height: var(--lh-h3); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-h4 { font-size: var(--font-h4); line-height: var(--lh-h4); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-h5 { font-size: var(--font-h5); line-height: var(--lh-h5); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-p-lg { font-size: var(--font-p-lg); line-height: var(--lh-p-lg); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-p { font-size: var(--font-p); line-height: var(--lh-p); letter-spacing: var(--ls-body); font-weight: var(--weight-regular); margin: 0; }
+.t-list { font-size: var(--font-list); line-height: var(--lh-list); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+.t-p-sm-b { font-size: var(--font-p-sm-b); line-height: var(--lh-p-sm-b); letter-spacing: var(--ls-body); font-weight: var(--weight-semibold); margin: 0; }
+.t-tagline { font-size: var(--font-tagline); line-height: var(--lh-tagline); letter-spacing: var(--ls-tight); font-weight: var(--weight-light); margin: 0; }
+
+/* Dense data blocks: step up list items to Regular per brand departure #1 */
+.t-list-dense { font-size: var(--font-list); line-height: var(--lh-list); letter-spacing: var(--ls-body); font-weight: var(--weight-regular); margin: 0; }
+
+/* Two-tone H1/H2 helper — split falls on a clause boundary */
+.tone-blue { color: var(--rich-blue); }
+.tone-pink { color: var(--pink); }
+
+/* ============================================================
+   Dot patterns
+   ============================================================ */
+.pattern-bg {
+  background-color: var(--grey-20);
+  background-image: radial-gradient(var(--pink-on-grey10-40) 1.5px, transparent 1.6px);
+  background-size: 36px 36px; /* 600% spacing */
+}
+.pattern-pink {
+  background-color: var(--grey-10);
+  background-image: radial-gradient(var(--pink-on-grey10-strong) 1.5px, transparent 1.6px);
+  background-size: 24px 24px; /* 400% spacing */
+}
+.pattern-blue {
+  background-color: var(--rich-blue);
+  background-image: radial-gradient(var(--grey80-100) 1.5px, transparent 1.6px);
+  background-size: 36px 36px; /* 600% spacing */
+}
+
+/* ============================================================
+   Grey 10 bounding box — the brand's structural device
+   ============================================================ */
+.box {
+  background: var(--grey-10);
+  border-radius: var(--radius-box);
+}
+.box--inset-sm { padding: var(--space-5); }
+.box--inset-md { padding: var(--space-7); }
+.box--inset-lg { padding: var(--space-9); }
+
+/* ============================================================
+   Eyebrow
+   ============================================================ */
+.eyebrow {
+  display: inline-block;
+  color: var(--pink);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-tagline);
+  line-height: var(--lh-tagline);
+  letter-spacing: var(--ls-tight);
+  text-transform: none; /* sentence case, never all-caps */
+}
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--grey-10);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-4);
+}
+.eyebrow-pill .num { color: var(--rich-blue); font-weight: var(--weight-semibold); }
+.eyebrow-pill .label { color: var(--pink); font-weight: var(--weight-semibold); }
+
+/* ============================================================
+   Numbered marker (sequences only — e.g. Purchase>Capture>...)
+   ============================================================ */
+.marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--pink);
+  color: var(--pink);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-p);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-cta);
+  line-height: var(--lh-cta);
+  letter-spacing: var(--ls-normal);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  transition: opacity 0.15s ease;
+}
+.btn:hover { opacity: 0.88; }
+
+.btn-primary {
+  background: var(--pink);
+  color: var(--grey-10);
+}
+.btn-secondary {
+  background: var(--grey-10);
+  color: var(--pink);
+  border: 1px solid var(--pink);
+}
+.btn-tertiary {
+  background: transparent;
+  color: var(--pink);
+  padding: var(--space-1) 0;
+  border-radius: 0;
+  min-height: auto;
+}
+.btn-tertiary .arrow { transition: transform 0.15s ease; }
+.btn-tertiary:hover .arrow { transform: translateX(3px); }
+
+/* ============================================================
+   Form fields
+   ============================================================ */
+.field-group { display: flex; flex-direction: column; gap: var(--space-2); }
+.field-label {
+  font-size: var(--font-tagline);
+  font-weight: var(--weight-semibold);
+  color: var(--rich-blue);
+}
+.field-input {
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--grey-60);
+  border-radius: var(--radius-box);
+  background: var(--grey-10);
+  font-family: inherit;
+  font-size: var(--font-p);
+  color: var(--rich-blue);
+}
+.field-input:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+/* ============================================================
+   Header / Footer
+   ============================================================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  background: var(--grey-10);
+  border-bottom: 1px solid var(--grey-30);
+}
+.site-header .wordmark {
+  font-size: var(--font-h5);
+  font-weight: var(--weight-light);
+  color: var(--rich-blue);
+  text-decoration: none;
+  letter-spacing: var(--ls-tight);
+}
+.site-header nav { display: flex; gap: var(--space-6); align-items: center; }
+.site-header nav a {
+  font-size: var(--font-p);
+  color: var(--rich-blue);
+  text-decoration: none;
+}
+@media (max-width: 480px) {
+  .site-header { padding: var(--space-3) var(--space-4); flex-wrap: wrap; row-gap: var(--space-2); }
+  .site-header nav { gap: var(--space-4); }
+  .site-header nav a { font-size: var(--font-tagline); }
+}
+
+.site-footer {
+  background: var(--rich-blue);
+  color: var(--grey-10);
+  padding: var(--space-7) var(--space-6);
+}
+.site-footer a { color: var(--grey-10); text-decoration: underline; }
+.site-footer .footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  font-size: var(--font-tagline);
+  margin-top: var(--space-4);
+}
+.site-footer .footer-address {
+  font-size: var(--font-tagline);
+  color: var(--grey-60);
+  margin-top: var(--space-4);
+}
+
+/* ============================================================
+   Placeholder image slot
+   ============================================================ */
+.img-placeholder {
+  width: 100%;
+  background: linear-gradient(135deg, var(--rich-blue), var(--pink));
+  color: var(--grey-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-5);
+  font-size: var(--font-tagline);
+  font-weight: var(--weight-light);
+  min-height: 240px;
+  border-radius: var(--radius-box);
+}
+
+/* ============================================================
+   Layout helpers
+   ============================================================ */
+.wrap { max-width: var(--content-max); margin: 0 auto; padding-left: var(--space-6); padding-right: var(--space-6); }
+@media (max-width: 480px) {
+  .wrap { padding-left: var(--space-4); padding-right: var(--space-4); }
+}

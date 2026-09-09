@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yooz landing page system — component specimen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .spec-section { padding: var(--space-8) 0; border-bottom: 1px solid var(--grey-30); }
+  .spec-section .wrap > h2 { margin-bottom: var(--space-6); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; margin-bottom: var(--space-5); }
+  .swatch { width: 96px; }
+  .swatch .chip { height: 56px; border-radius: var(--radius-box); border: 1px solid var(--grey-40); }
+  .swatch p { font-size: var(--font-tagline); margin: var(--space-2) 0 0; }
+  .pattern-tile { width: 220px; height: 140px; border-radius: var(--radius-box); border: 1px solid var(--grey-40); }
+  .box-demo { border: 1px dashed var(--grey-50); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="https://getyooz.com">Yooz</a>
+  <nav aria-label="Primary">
+    <a href="https://getyooz.com/pricing">Pricing</a>
+    <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+  </nav>
+</header>
+
+<main class="wrap" style="padding-top: var(--space-7);">
+  <p class="eyebrow">Shared system</p>
+  <h1 class="t-h1">Component specimen sheet</h1>
+  <p class="t-p" style="max-width:640px;color:var(--grey-100);">
+    Every archetype page imports <code>tokens.css</code> and reuses the
+    patterns on this page rather than re-deriving them. This specimen is a
+    first draft — reconcile it against archetype 01 (Brand) when that page
+    is built, per the note in <code>/mockups/ad-invoice-automation/NOTES.md</code>.
+  </p>
+</main>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Type scale</h2>
+    <p class="t-display">Display</p>
+    <p class="t-h1">Heading 1</p>
+    <p class="t-h2">Heading 2</p>
+    <p class="t-h3">Heading 3</p>
+    <p class="t-h4">Heading 4</p>
+    <p class="t-h5">Heading 5</p>
+    <p class="t-p-lg">Paragraph large</p>
+    <p class="t-p">Paragraph</p>
+    <p class="t-list">List item</p>
+    <p class="t-p-sm-b">Paragraph small bold</p>
+    <p class="t-tagline">Tagline</p>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Colour</h2>
+    <div class="row">
+      <div class="swatch"><div class="chip" style="background:var(--rich-blue);"></div><p>Rich Blue</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--pink);"></div><p>Pink</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--teal);"></div><p>Teal</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--blue);"></div><p>Blue</p></div>
+    </div>
+    <div class="row">
+      <div class="swatch"><div class="chip" style="background:var(--grey-100);"></div><p>Grey 100</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--grey-80);"></div><p>Grey 80</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--grey-60);"></div><p>Grey 60</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--grey-40);"></div><p>Grey 40</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--grey-20);"></div><p>Grey 20</p></div>
+      <div class="swatch"><div class="chip" style="background:var(--grey-10);border:1px solid var(--grey-40);"></div><p>Grey 10</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Dot patterns</h2>
+    <div class="row">
+      <div class="pattern-tile pattern-bg"></div>
+      <div class="pattern-tile pattern-pink"></div>
+      <div class="pattern-tile pattern-blue"></div>
+    </div>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Buttons</h2>
+    <div class="row" style="align-items:center;">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
+      <a class="btn btn-tertiary" href="#">Read our mini-eBook
+        <span class="material-symbols-outlined arrow" aria-hidden="true" style="font-size:18px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Grey 10 bounding box</h2>
+    <div class="row">
+      <div class="box box-demo box--inset-sm" style="width:160px;">Small inset</div>
+      <div class="box box-demo box--inset-md" style="width:220px;">Medium inset</div>
+      <div class="box box-demo box--inset-lg" style="width:280px;">Large inset</div>
+    </div>
+  </div>
+</section>
+
+<section class="spec-section">
+  <div class="wrap">
+    <h2 class="t-h3">Form field</h2>
+    <div class="field-group" style="max-width:320px;">
+      <label class="field-label" for="spec-email">Work email</label>
+      <input class="field-input" type="email" id="spec-email" placeholder="you@company.com">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="https://getyooz.com" style="color:var(--grey-10);">Yooz</a>
+    <div class="footer-links">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </div>
+    <p class="footer-address">{{COMPANY_PHYSICAL_ADDRESS}}</p>
+  </div>
+</footer>
+
+</body>
+</html>
