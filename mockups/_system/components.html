@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yooz Landing Page System — Component Specimen</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* Specimen-sheet-only styling — not part of the shared token set */
+  .specimen { padding-block: var(--space-8); border-bottom: 1px solid var(--grey-40); }
+  .specimen__title { margin: 0 0 var(--space-6); }
+  .specimen__row { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-start; }
+  .specimen-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--grey-80);
+    margin-bottom: var(--space-2);
+  }
+  .swatch { width: 100%; }
+  .swatch__chip { height: 72px; border-radius: var(--radius-sm); border: 1px solid var(--grey-40); }
+  .swatch__name { font-size: 14px; margin-top: var(--space-2); }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-5); }
+  .pattern-swatch { height: 160px; border-radius: var(--radius-sm); border: 1px solid var(--grey-40); }
+  .z-demo { width: 260px; background: var(--grey-30); border-radius: var(--radius-sm); overflow: hidden; }
+  .btn-demo-row { display: flex; flex-wrap: wrap; gap: var(--space-5); align-items: center; }
+  .form-demo { max-width: 420px; }
+  nav.toc { position: sticky; top: 90px; }
+  .layout { display: grid; grid-template-columns: 200px 1fr; gap: var(--space-7); align-items: start; }
+  .layout > * { min-width: 0; }
+  .toc ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+  .toc a { font-size: 14px; color: var(--rich-blue); }
+  .toc a:hover { color: var(--pink); }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_wordmark_click">Yooz</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+      <a href="https://getyooz.com/pricing">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" style="padding-block: var(--space-8);">
+  <p class="eyebrow">Shared design system</p>
+  <h1 class="text-h1">Component specimen sheet</h1>
+  <p class="text-para" style="max-width: 640px;">
+    Live reference for every token and component in <code>tokens.css</code>.
+    Archetype pages link this stylesheet and reuse these patterns rather
+    than re-deriving them. This page itself is not a paid-search landing
+    page and carries <code>noindex</code>.
+  </p>
+
+  <div class="layout" style="margin-top: var(--space-8);">
+    <nav class="toc" aria-label="On this page">
+      <ul>
+        <li><a href="#colour">Colour</a></li>
+        <li><a href="#type">Type scale</a></li>
+        <li><a href="#patterns">Dot patterns</a></li>
+        <li><a href="#z">The Z device</a></li>
+        <li><a href="#boxes">Grey 10 box</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#forms">Form fields</a></li>
+        <li><a href="#chrome">Header / footer</a></li>
+      </ul>
+    </nav>
+
+    <div>
+
+      <section id="colour" class="specimen">
+        <h2 class="text-h3 specimen__title">Colour</h2>
+        <p class="text-para">60% background / 30% type / 10% accent. Pink never carries body copy, small labels, or dense table text (4.67:1 — AA normal / AAA large only).</p>
+        <div class="swatch-grid" style="margin-top: var(--space-5);">
+          <div class="swatch"><div class="swatch__chip" style="background:var(--rich-blue)"></div><p class="swatch__name">Rich Blue <code>#14354E</code></p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--pink)"></div><p class="swatch__name">Pink <code>#E0185E</code></p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--teal)"></div><p class="swatch__name">Teal <code>#00BFA5</code></p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--blue)"></div><p class="swatch__name">Blue <code>#006AFF</code></p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-100)"></div><p class="swatch__name">Grey 100</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-80)"></div><p class="swatch__name">Grey 80</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-60)"></div><p class="swatch__name">Grey 60</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-40)"></div><p class="swatch__name">Grey 40</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-20)"></div><p class="swatch__name">Grey 20</p></div>
+          <div class="swatch"><div class="swatch__chip" style="background:var(--grey-10); border:1px solid var(--grey-40);"></div><p class="swatch__name">Grey 10</p></div>
+        </div>
+      </section>
+
+      <section id="type" class="specimen">
+        <h2 class="text-h3 specimen__title">Type scale</h2>
+        <span class="specimen-label">Display — 120→40px fluid, Light</span>
+        <p class="text-display">Lean Financial Operations</p>
+        <span class="specimen-label">Heading 1 — 84→38px fluid, Light, two-tone split</span>
+        <p class="text-h1">Purchase-to-pay, <em>without the manual work</em></p>
+        <span class="specimen-label">Heading 2</span>
+        <p class="text-h2">Built for finance teams</p>
+        <span class="specimen-label">Heading 3</span>
+        <p class="text-h3">One platform, six stages</p>
+        <span class="specimen-label">Heading 4</span>
+        <p class="text-h4">Supporting subhead, Rich Blue Light</p>
+        <span class="specimen-label">Heading 5</span>
+        <p class="text-h5">Smaller section head</p>
+        <span class="specimen-label">Paragraph Large</span>
+        <p class="text-para-lg">Used for hero subheads that need more air than body copy.</p>
+        <span class="specimen-label">Paragraph — Regular, the default body style</span>
+        <p class="text-para">Standard body copy sits here, at 17px Regular with tight -1% tracking, kept under 80 characters per line.</p>
+        <span class="specimen-label">List item — Regular by default (departure, see NOTES.md); --light modifier for hero-only lists</span>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap: var(--space-2);">
+          <li class="text-list-item">▸ Regular weight — safe inside tables and spec grids</li>
+          <li class="text-list-item text-list-item--light">▸ Light modifier — hero/marketing lists on Grey 10/20 only</li>
+        </ul>
+        <span class="specimen-label">Paragraph Small Bold</span>
+        <p class="text-para-sm-bold">Used for compact emphasis, e.g. table headers.</p>
+        <span class="specimen-label">Tagline</span>
+        <p class="text-tagline">Used for image captions and micro-copy.</p>
+        <span class="specimen-label">Eyebrow</span>
+        <p class="eyebrow">Discover Financial Operations Automation for ambitious companies</p>
+        <span class="specimen-label">In-page section eyebrow</span>
+        <p class="section-eyebrow"><span class="section-eyebrow__number">04</span><span class="section-eyebrow__label">The breakthrough</span></p>
+      </section>
+
+      <section id="patterns" class="specimen">
+        <h2 class="text-h3 specimen__title">Dot patterns</h2>
+        <p class="text-para">Built as CSS radial-gradient tiles, not raster images. Spacing percentages from the brand doc are translated to background-size tiles (see comment in tokens.css).</p>
+        <div class="swatch-grid" style="margin-top: var(--space-5);">
+          <div><div class="pattern-swatch pattern-bg"></div><p class="swatch__name">Pattern BG — general page backgrounds</p></div>
+          <div><div class="pattern-swatch pattern-pink"></div><p class="swatch__name">Pattern Pink — single-strip callouts</p></div>
+          <div><div class="pattern-swatch pattern-blue"></div><p class="swatch__name">Pattern Blue — Rich Blue background elements</p></div>
+        </div>
+      </section>
+
+      <section id="z" class="specimen">
+        <h2 class="text-h3 specimen__title">The Z device</h2>
+        <p class="text-para">Placeholder geometry only — flat Rich Blue→Pink gradient fill, correct anchoring and aspect ratio. Real photography is graded (desaturate → curves → pink/teal gradient map → noise) and cut to this same silhouette in production.</p>
+        <div class="specimen__row" style="margin-top: var(--space-5);">
+          <figure class="z-demo z-frame z-frame--hero" role="img" aria-label="Hero placeholder: graded cutout subject, Z anchored bottom-left, facing inward toward the copy">
+            <div class="z-shape-wrap"><div class="z-shape"></div></div>
+            <figcaption class="z-frame__caption text-tagline">HERO — Z anchored bottom-left</figcaption>
+          </figure>
+          <figure class="z-demo z-frame z-frame--secondary" role="img" aria-label="Secondary placeholder: Z anchored top-right with darkened Rich Blue wash">
+            <div class="z-shape-wrap"><div class="z-shape"></div></div>
+            <figcaption class="z-frame__caption text-tagline">SECONDARY — Z anchored top-right</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="boxes" class="specimen">
+        <h2 class="text-h3 specimen__title">Grey 10 bounding box</h2>
+        <p class="text-para">The brand's structural device on a patterned ground. Vary size/inset by importance — don't chop every section into identically-sized cards.</p>
+        <div class="pattern-bg" style="padding: var(--space-7); margin-top: var(--space-5); border-radius: var(--radius-sm);">
+          <div class="box-grey10 box-grey10--sm" style="margin-bottom: var(--space-5);"><p class="text-para-sm-bold">Small — inline callouts, form cards</p></div>
+          <div class="box-grey10 box-grey10--md" style="margin-bottom: var(--space-5);"><p class="text-para-sm-bold">Medium — standard content section</p></div>
+          <div class="box-grey10 box-grey10--lg"><p class="text-para-sm-bold">Large — hero content box, the page's primary claim</p></div>
+        </div>
+      </section>
+
+      <section id="buttons" class="specimen">
+        <h2 class="text-h3 specimen__title">Buttons</h2>
+        <p class="text-para">Primary carries the page's one conversion action and stays arrow-free. Secondary and tertiary use the trailing arrow.</p>
+        <div class="btn-demo-row" style="margin-top: var(--space-5);">
+          <button class="btn btn-primary" data-yooz-event="specimen_primary">Book a demo</button>
+          <button class="btn btn-secondary" data-yooz-event="specimen_secondary">Calculate your cost per invoice <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></button>
+          <a class="btn btn-tertiary" href="#" data-yooz-event="specimen_tertiary">Read our growth-focussed mini-eBook <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
+          <button class="btn btn-primary" disabled>Disabled state</button>
+        </div>
+      </section>
+
+      <section id="forms" class="specimen">
+        <h2 class="text-h3 specimen__title">Form fields</h2>
+        <form class="form-demo" style="margin-top: var(--space-5);">
+          <div class="field">
+            <label for="spec-email">Work email</label>
+            <input id="spec-email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="spec-erp">ERP</label>
+            <select id="spec-erp">
+              <option>Select your ERP</option>
+              <option>SAP</option>
+              <option>Sage Intacct</option>
+              <option>Microsoft Dynamics</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="spec-invalid">Company (error state demo)</label>
+            <input id="spec-invalid" type="text" aria-invalid="true" aria-describedby="spec-invalid-err">
+            <span id="spec-invalid-err" class="field-error">Company name is required.</span>
+          </div>
+          <p class="field-hint">All inputs ≥ 44px tap target height; labels always visible, never placeholder-only.</p>
+        </form>
+      </section>
+
+      <section id="chrome" class="specimen" style="border-bottom:none;">
+        <h2 class="text-h3 specimen__title">Header / footer</h2>
+        <p class="text-para">Persistent on every archetype page — required for Quality Score's transparency/navigability check.</p>
+        <div style="border:1px solid var(--grey-40); border-radius: var(--radius-sm); overflow:hidden; margin-top: var(--space-5);">
+          <header class="site-header" style="position:static;">
+            <div class="container site-header__bar">
+              <a class="site-header__wordmark" href="https://getyooz.com">Yooz</a>
+              <nav class="site-header__nav" aria-label="Primary demo">
+                <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+                <a href="https://getyooz.com/pricing">Pricing</a>
+              </nav>
+            </div>
+          </header>
+          <footer class="site-footer">
+            <div class="container site-footer__row">
+              <div class="site-footer__links">
+                <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+                <a href="https://getyooz.com/terms">Terms</a>
+                <a href="https://getyooz.com/contact">Contact</a>
+              </div>
+              <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
