@@ -37,6 +37,12 @@
      No hero section on this page at all, per the brief: the calculator
      itself is the first screen, not a pitch that precedes it. */
 
+  /* This page carries several long, unbroken {{TOKEN}} placeholders in the
+     benchmark and assumptions copy. Defensive page-wide wrap rule so a
+     token substitution can never introduce a horizontal-overflow bug —
+     same pattern as /ad-ap-comparison. */
+  main { overflow-wrap: anywhere; }
+
   .calc-section { padding-block: var(--space-7); }
   .calc-intro { max-width: 68ch; margin-bottom: var(--space-6); }
   .calc-intro .eyebrow { margin-bottom: var(--space-2); }

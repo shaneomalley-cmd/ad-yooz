@@ -63,6 +63,21 @@ reconcile its `tokens.css` output against this one — this file should be
 treated as a draft of the shared system, not the final word, and archetype
 01 should supersede it (or confirm it matches) rather than the two forking.
 
+**Reconciled.** Archetype 01 (Brand, `/ad-yooz`) has since shipped and its
+`tokens.css`/`components.html` are the system of record — a later branch
+briefly deleted `tokens.css` entirely, which is how this page ended up
+shipped against the draft naming below with no shared stylesheet backing
+it at all. This page has now been rewritten onto archetype 01's actual
+classes and variables (`.container` not `.wrap`; `.text-h1`/`.text-para`
+etc. not `.t-h1`/`.t-p`; `.box-grey10`/`.box-grey10--lg` not `.box`/
+`.box-lg`; `.section-eyebrow` not `.section-kicker`; `--weight-semibold`
+not `--wt-semibold`; the two-tone H1 via a plain `<em>` span, matching
+`/ad-yooz`, not `.tone-blue`/`.tone-pink`; the header/footer markup now
+matches `/mockups/_system/components.html`'s `.site-header__bar`/
+`.site-footer__row` structure). Content and section order are unchanged —
+only the class/variable references and the header/footer/hero-image
+markup were corrected to match the real shared system.
+
 ## QS checklist confirmation (`00-FOUNDATION.md` §3)
 
 1. **Query echo in H1** — "AP automation software" appears verbatim as the
@@ -126,18 +141,22 @@ treated as a draft of the shared system, not the final word, and archetype
 
 ## Verified in-browser (Chromium, 1440px and 390px)
 
-Rendered the file directly and screenshotted both breakpoints. Fixed one
-real defect found this way: the `{{PRIMARY_DIFFERENTIATOR_HEADLINE}}` token
-has no natural break point and was overflowing its Grey 10 box before
-`overflow-wrap: anywhere` was added to the heading/paragraph utility
-classes in `tokens.css` (now wraps correctly at both breakpoints — this
-fix applies to every archetype that imports `tokens.css`, not just this
-page). One rendering artifact is environment-only, not a code defect: this
-sandbox has no outbound access to Google Fonts, so Noto Sans falls back to
-a system sans-serif and the Material Symbols icons render as their literal
-ligature text (e.g. "document_scanner") instead of glyphs in the local
-screenshot — expected to resolve wherever the page has real internet
-access to `fonts.googleapis.com`.
+Rendered the file directly and screenshotted both breakpoints, both before
+and after the reconciliation above. Fixed two real defects found this way,
+both page-local (not shared `tokens.css` changes): the
+`{{PRIMARY_DIFFERENTIATOR_HEADLINE}}` token has no natural break point and
+was overflowing the hero's Grey 10 box, running under the Z image — fixed
+with `min-width: 0` on the hero grid's children plus `overflow-wrap:
+anywhere` on `.hero__h1`. The same unbroken-token problem also showed up
+at 390px in the customer-quote and ERP-logo cards, fixed with a page-wide
+`main { overflow-wrap: anywhere; }`, matching the defensive rule
+`/ad-ap-comparison` already carries for the same reason. One rendering
+artifact is environment-only, not a code defect: this sandbox has no
+outbound access to Google Fonts, so Noto Sans falls back to a system
+sans-serif and the Material Symbols icons render as their literal ligature
+text (e.g. "document_scanner") instead of glyphs in the local screenshot —
+expected to resolve wherever the page has real internet access to
+`fonts.googleapis.com`.
 
 ## Open questions
 
