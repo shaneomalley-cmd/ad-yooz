@@ -1,5 +1,54 @@
 # Build notes — `/ad-ap-automation` (Archetype 02 — Solution)
 
+## Rebuild note (structural only — copy unchanged)
+
+This page was originally built before archetype 01 existed, against a
+draft `tokens.css` authored ad hoc for this page (see the superseded
+"Shared system — provenance flag" section below). Archetype 01 has since
+shipped the real `/mockups/_system/tokens.css` and `components.html`, and
+this page's markup/CSS did not match it — it referenced classes
+(`.wrap`, `.box`, `.t-h1`, `.tone-blue`/`.tone-pink`, `.section-kicker`,
+`material-symbols-outlined`) and custom properties (`--fs-h3`, `--wt-*`,
+`--lh-*`) that don't exist in the real system, and loaded Material Symbols
+**Outlined** instead of the brand-specified **Rounded** set.
+
+This pass rebuilds the markup and CSS to use `ad-yooz/index.html` (the
+reference implementation) as the pattern to follow: `.container` instead
+of `.wrap`, `.box-grey10`/`.box-grey10--sm|md|lg` instead of `.box`,
+`.text-h1`–`.text-h5`/`.text-para`/`.text-para-lg` instead of `.t-*`, an
+`<em>` inside the heading instead of `.tone-pink` spans, the canonical
+`.section-eyebrow`/`.section-eyebrow__number`/`.section-eyebrow__label`
+instead of the unstyled `.section-kicker`/`.num`/`.label`, `.icon` +
+Material Symbols Rounded instead of `material-symbols-outlined`, and the
+shared `.site-header`/`.site-footer` chrome instead of page-local
+`.wordmark`/`.site-nav` classes. Two content bugs were fixed as part of
+this pass (not a copy rewrite): "Yooz runs the **brand's** full AP cycle"
+→ "Yooz runs the full AP cycle" in the "How it works" intro, and the
+section eyebrows — previously two unstyled adjacent spans that rendered
+concatenated as e.g. "02How it works" — are now the two-element
+`.section-eyebrow` pattern with `var(--space-3)` between them. All other
+headlines, section copy, capability descriptions and form fields are
+unchanged from the previous build.
+
+Layout rules that aren't part of the shared system (the hero grid, the
+3-step/capability/proof grids, the demo form grid) remain page-specific
+`<style>` rules, per Foundation §6 — same pattern `ad-yooz/index.html`
+uses for its own hero/proof/booking sections — but now built on
+`var(--space-N)` spacing tokens throughout instead of ad hoc rem values.
+
+Verified in-browser (Chromium via Playwright, proxied) at 1440px and
+390px: no horizontal overflow, header nav collapses to the CTA only under
+768px per `tokens.css`, and the untranslated `{{DIFFERENTIATOR}}`/quote
+tokens — which have no natural break point — no longer push the layout
+wide now that `main { overflow-wrap: anywhere; }` is set locally (real
+copy won't need this once the tokens are resolved). One rendering
+artifact is environment-only: this sandbox's headless Chromium does not
+apply the Material Symbols ligature substitution even though the font
+file itself fetches successfully (verified with an isolated test page),
+so icons render as their literal name text instead of glyphs — the same
+gap the original build's NOTES flagged for Google Fonts generally.
+Expected to resolve in a normal browser with standard internet access.
+
 ## Design plan (written before code, per `00-FOUNDATION.md` §5)
 
 **Layout concept.** Primary brand composition: Pattern BG page ground, Grey 10

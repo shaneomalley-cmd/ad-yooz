@@ -1,5 +1,23 @@
 # Build notes — `/ad-ap-automation-enterprise` (Archetype 02 — Enterprise variant)
 
+## Rebuild note (structural only — copy unchanged)
+
+Same rebuild as the parent `/ad-ap-automation` page (see its `NOTES.md`
+for the full rationale): this file previously used a draft class/token
+vocabulary (`.wrap`, `.box`, `.t-h1`, `.tone-blue`/`.tone-pink`,
+`.section-kicker`, `material-symbols-outlined`, undefined custom
+properties like `--fs-h3`) that predated and didn't match the real
+`/mockups/_system/tokens.css`. Rebuilt against `ad-yooz/index.html` as
+the reference: `.container`, `.box-grey10`/`--sm|md|lg`,
+`.text-h1`–`.text-h5`/`.text-para`/`.text-para-lg`, an `<em>` for the
+two-tone headline split, `.section-eyebrow` (fixing the same
+number+label concatenation bug as the parent page), `.icon` + Material
+Symbols **Rounded** (was Outlined), and the shared `.site-header`/
+`.site-footer` chrome. No section copy, stats, quotes or form fields
+were changed. Verified in-browser at 1440px/390px: no horizontal
+overflow; the same environment-only Material Symbols ligature gap noted
+on the parent page applies here too.
+
 ## Design plan
 
 Per `02-solution.md`: "the same archetype with the proof swapped... Only

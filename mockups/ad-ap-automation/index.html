@@ -6,11 +6,10 @@
 <title>AP Automation Software | Yooz</title>
 <meta name="description" content="AP automation software that {{PRIMARY_DIFFERENTIATOR_META_CLAUSE}}. See how Yooz compares. Book a demo.">
 <link rel="canonical" href="https://getyooz.com/ad-ap-automation">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-<link rel="stylesheet" href="../_system/tokens.css">
+<meta property="og:title" content="AP Automation Software | Yooz">
+<meta property="og:description" content="AP automation software that {{PRIMARY_DIFFERENTIATOR_META_CLAUSE}}. See how Yooz compares. Book a demo.">
+<meta property="og:url" content="https://getyooz.com/ad-ap-automation">
+<meta property="og:type" content="website">
 
 <!--
   AD-TO-PAGE CONTINUITY — ad headlines this page must stay consistent with.
@@ -41,139 +40,146 @@
   reflected in the meta description clause and in NOTES.md's QS checklist.
 -->
 
-<style>
-  /* Archetype-02-specific layout. Tokens, colour, type, buttons, dot patterns,
-     the Z frame, forms and header/footer all come from tokens.css. */
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
 
-  /* ---- Hero ---------------------------------------------------------- */
-  .hero { position: relative; overflow: hidden; }
+<style>
+  /* Page-specific layout — everything reusable lives in tokens.css */
+
+  .header-cluster { display: flex; align-items: center; gap: var(--space-6); }
+
+  /* Hero */
+  .hero { padding-block: var(--space-8); }
   .hero__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: clamp(1.5rem, 2vw, 3rem);
-    align-items: stretch;
-    padding-top: clamp(2.5rem, 2rem + 2vw, 4.5rem);
-    padding-bottom: clamp(2.5rem, 2rem + 2vw, 4.5rem);
+    gap: var(--space-8);
+    align-items: center;
   }
-  .hero__copy { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
-  .hero__h1 { max-width: 16ch; }
-  .hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: .5rem; }
-  .hero__image { min-height: 420px; }
-  .hero__image .z-caption { position: absolute; left: 0; right: 0; bottom: 0; }
-  .hero__image { position: relative; }
+  .hero__grid > * { min-width: 0; }
+  .hero__box { max-width: 640px; }
 
-  @media (max-width: 960px) {
+  /* Untranslated {{TOKEN}} placeholders (differentiator, customer quotes,
+     stats) have no natural break point and will overflow their box; real
+     copy won't need this, but it protects the mockup in the meantime. */
+  main { overflow-wrap: anywhere; }
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+  }
+  .hero__image { justify-self: end; width: 100%; max-width: 460px; }
+
+  @media (max-width: 1023px) {
     .hero__grid { grid-template-columns: 1fr; }
-    .hero__image { order: -1; min-height: 260px; }
+    .hero__box { max-width: none; }
+  }
+  @media (max-width: 767px) {
+    .hero__image { max-width: none; aspect-ratio: 16 / 6; }
   }
 
-  /* ---- 3-step process ------------------------------------------------- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-  .step-card { display: flex; flex-direction: column; gap: 1rem; }
-  .step-card .num {
+  /* Section eyebrow number + label appear elsewhere in tokens.css already;
+     only spacing/rhythm around sections lives here. */
+  .section { padding-block: var(--space-7); }
+
+  /* How it works — 3 steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-6); }
+  .step-card { display: flex; flex-direction: column; gap: var(--space-3); }
+  .step-card__num {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 3rem; height: 3rem; border-radius: 50%;
+    width: 48px; height: 48px; border-radius: 50%;
     background: var(--rich-blue); color: var(--grey-10);
-    font-size: 1.125rem; font-weight: var(--wt-semibold);
+    font-size: 18px; font-weight: var(--weight-semibold);
   }
-  .step-card .stages { color: var(--grey-80); font-size: .9375rem; }
-  @media (max-width: 860px) {
-    .steps { grid-template-columns: 1fr; }
-  }
+  .step-card__stages { color: var(--grey-80); font-size: 15px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
 
-  /* ---- Capability grid -------------------------------------------------- */
-  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .cap-card { display: flex; flex-direction: column; gap: .85rem; }
-  .cap-card .icon {
+  /* Capability grid */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-6); }
+  .cap-card { display: flex; flex-direction: column; gap: var(--space-3); }
+  .cap-card__icon {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 2.75rem; height: 2.75rem; border-radius: 10px;
+    width: 44px; height: 44px; border-radius: 10px;
     background: var(--grey-20); color: var(--pink);
-    font-family: 'Material Symbols Outlined'; font-size: 1.5rem;
+    font-size: 24px;
   }
   @media (max-width: 960px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) { .cap-grid { grid-template-columns: 1fr; } }
 
-  /* ---- ERP connector logos ------------------------------------------------ */
+  /* ERP connector logos */
   .erp-strip { text-align: center; }
-  .erp-logos {
-    margin-top: 2rem;
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem;
-  }
+  .erp-logos { margin-top: var(--space-5); display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); }
   .erp-logo {
     aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center;
-    border: 1.5px dashed var(--grey-60); border-radius: 12px;
-    font-size: .8125rem; color: var(--grey-80); text-align: center; padding: .5rem;
+    border: 1.5px dashed var(--grey-60); border-radius: var(--radius-sm);
+    font-size: 13px; color: var(--grey-80); text-align: center; padding: var(--space-2);
   }
   @media (max-width: 860px) { .erp-logos { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 480px) { .erp-logos { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ---- Customer proof ------------------------------------------------------ */
-  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
-  .proof-card { display: flex; flex-direction: column; gap: 1.25rem; justify-content: space-between; }
-  .proof-card .quote { font-size: var(--fs-p-lg); line-height: var(--lh-p-lg); font-weight: var(--wt-light); color: var(--rich-blue); }
-  .proof-card .who { display: flex; align-items: center; gap: .75rem; }
-  .proof-card .avatar { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--grey-30); flex: none; }
-  .proof-card .who strong { display: block; font-size: .9375rem; }
-  .proof-card .who span { display: block; font-size: .8125rem; color: var(--grey-80); }
+  /* Customer proof */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-6); }
+  .proof-card { display: flex; flex-direction: column; gap: var(--space-5); justify-content: space-between; }
+  .proof-card__who { display: flex; align-items: center; gap: var(--space-3); }
+  .proof-card__avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--grey-30); flex: none; }
+  .proof-card__who strong { display: block; font-size: 15px; }
+  .proof-card__who span { display: block; font-size: 13px; color: var(--grey-80); }
   @media (max-width: 960px) { .proof-grid { grid-template-columns: 1fr; } }
 
-  /* ---- Demo form section --------------------------------------------------- */
-  .demo-section { position: relative; }
-  .demo-grid {
-    display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
-    gap: clamp(1.5rem, 3vw, 3.5rem); align-items: start;
-  }
-  .demo-grid .pitch { color: var(--grey-10); display: flex; flex-direction: column; gap: 1.25rem; }
-  .demo-grid .pitch ul { display: flex; flex-direction: column; gap: .75rem; margin-top: .5rem; }
-  .demo-grid .pitch li { display: flex; gap: .65rem; align-items: flex-start; font-size: var(--fs-list); color: var(--grey-40); }
-  .demo-grid .pitch li::before {
+  /* Demo form section */
+  .demo-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: start; }
+  .demo-grid__pitch { color: var(--grey-10); display: flex; flex-direction: column; gap: var(--space-5); }
+  .demo-grid__pitch ul { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-2); list-style: none; }
+  .demo-grid__pitch li { display: flex; gap: var(--space-3); align-items: flex-start; font-size: 16px; color: var(--grey-40); }
+  .demo-grid__pitch li::before {
     content: ''; width: 8px; height: 8px; border-radius: 50%;
-    background: var(--pink); margin-top: .55rem; flex: none;
+    background: var(--pink); margin-top: 7px; flex: none;
   }
-  .demo-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .demo-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
   .demo-form-grid .field--full { grid-column: 1 / -1; }
-  .demo-form .disclaimer { font-size: .8125rem; color: var(--grey-80); margin-top: 1rem; }
+  .demo-form__disclaimer { font-size: 13px; color: var(--grey-80); margin-top: var(--space-4); }
+  .field .req { color: var(--pink); margin-left: 2px; }
+  .field-optional { color: var(--grey-80); font-weight: var(--weight-regular); }
   @media (max-width: 960px) { .demo-grid { grid-template-columns: 1fr; } }
   @media (max-width: 540px) { .demo-form-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
-  <div class="site-header__inner">
-    <a class="wordmark" href="https://getyooz.com" data-yooz-event="header_logo_click">
-      <span class="mark" aria-hidden="true"></span>
-      <span class="name">Yooz</span>
-    </a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="https://getyooz.com/product" data-yooz-event="nav_product">Product</a>
-      <a href="https://getyooz.com/the-lean-advantage" data-yooz-event="nav_lean_advantage">The Lean Advantage</a>
-      <a href="https://getyooz.com/pricing" data-yooz-event="nav_pricing">Pricing</a>
-      <a href="https://getyooz.com/resources" data-yooz-event="nav_resources">Resources</a>
-    </nav>
-    <div class="header-actions">
+  <div class="container site-header__bar">
+    <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_logo_click">Yooz</a>
+    <div class="header-cluster">
+      <nav class="site-header__nav" aria-label="Primary">
+        <a href="https://getyooz.com/product" data-yooz-event="nav_product">Product</a>
+        <a href="https://getyooz.com/the-lean-advantage" data-yooz-event="nav_lean_advantage">The Lean Advantage</a>
+        <a href="https://getyooz.com/pricing" data-yooz-event="nav_pricing">Pricing</a>
+        <a href="https://getyooz.com/resources" data-yooz-event="nav_resources">Resources</a>
+      </nav>
       <a class="btn btn-primary" href="#demo-form" data-yooz-event="header_cta_book_demo">Book a demo</a>
     </div>
   </div>
 </header>
 
-<main id="main">
+<main>
 
   <!-- 1. HERO + DIFFERENTIATOR ============================================ -->
-  <section class="hero pattern-bg">
-    <div class="wrap hero__grid">
-      <div class="hero__copy box box-lg">
+  <section class="hero pattern-bg" aria-labelledby="hero-heading">
+    <div class="container hero__grid">
+      <div class="box-grey10 box-grey10--lg hero__box">
         <p class="eyebrow">Comparing AP automation platforms today</p>
-        <h1 class="t-h1 hero__h1">
-          <span class="tone-blue">AP automation software</span>
-          <span class="tone-pink">{{PRIMARY_DIFFERENTIATOR_HEADLINE}}</span>
+        <h1 id="hero-heading" class="text-h1">
+          AP automation software <em>{{PRIMARY_DIFFERENTIATOR_HEADLINE}}</em>
         </h1>
-        <p class="t-h4" style="font-weight:300;">
+        <p class="text-h4" style="margin-top: var(--space-4);">
           Purchase to Pay, matched to how your finance team actually works —
           not a bolt-on to your ERP.
         </p>
-        <p class="t-p">
+        <p class="text-para" style="margin-top: var(--space-4);">
           Yooz automates the full AP cycle for teams evaluating a platform
           switch: intake from any channel, parallel approvals, and a direct
           sync into your existing financial system.
@@ -182,54 +188,51 @@
           <a class="btn btn-primary" href="#demo-form" data-yooz-event="hero_cta_book_demo">Book a demo</a>
           <a class="btn btn-secondary" href="/ad-ap-comparison" data-yooz-event="hero_cta_comparison_guide">
             Get the comparison guide
-            <span class="arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span>
           </a>
         </div>
       </div>
-      <div class="hero__image z-frame" role="img" aria-label="Placeholder: graded hero cutout, subject facing inward, Z anchored bottom-left">
-        <p class="z-caption t-tagline" style="color:var(--grey-10);">
-          HERO — graded cutout, subject facing inward, Z anchored bottom-left
-        </p>
-      </div>
+      <figure class="hero__image z-frame z-frame--hero" role="img" aria-label="Placeholder: graded hero cutout, subject facing inward, Z anchored bottom-left">
+        <div class="z-shape-wrap"><div class="z-shape"></div></div>
+        <figcaption class="z-frame__caption text-tagline">HERO — graded cutout, subject facing inward, Z anchored bottom-left</figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- 2. HOW IT WORKS IN 3 STEPS =========================================== -->
-  <section class="section">
-    <div class="wrap">
-      <span class="section-kicker"><span class="num">02</span><span class="label">How it works</span></span>
-      <h2 class="t-h2" style="max-width:22ch;">
-        <span class="tone-blue">Three steps, not six systems.</span>
-      </h2>
-      <p class="t-p" style="max-width:60ch; margin-top:1rem;">
-        Yooz runs the brand's full AP cycle underneath a simpler front door —
+  <section class="section" aria-labelledby="how-it-works-heading">
+    <div class="container">
+      <p class="section-eyebrow"><span class="section-eyebrow__number">02</span><span class="section-eyebrow__label">How it works</span></p>
+      <h2 id="how-it-works-heading" class="text-h2" style="max-width: 22ch;">Three steps, not six systems.</h2>
+      <p class="text-para" style="max-width: 60ch; margin-top: var(--space-4);">
+        Yooz runs the full AP cycle underneath a simpler front door —
         so your team sees three moves, not a six-stage workflow diagram.
       </p>
       <div class="steps">
-        <div class="step-card box box-md">
-          <span class="num">01</span>
-          <h3 class="t-h5">Capture</h3>
-          <p class="stages">Purchase &rarr; Capture</p>
-          <p class="t-p">
+        <div class="step-card box-grey10 box-grey10--md">
+          <span class="step-card__num">01</span>
+          <h3 class="text-h5">Capture</h3>
+          <p class="step-card__stages">Purchase &rarr; Capture</p>
+          <p class="text-para">
             Invoices and POs arrive from any channel — email, drag &amp; drop,
             mobile, scan, sFTP, e-invoicing, fetcher or API — and are read,
             not just scanned.
           </p>
         </div>
-        <div class="step-card box box-md">
-          <span class="num">02</span>
-          <h3 class="t-h5">Review &amp; approve</h3>
-          <p class="stages">Review &rarr; Approve</p>
-          <p class="t-p">
+        <div class="step-card box-grey10 box-grey10--md">
+          <span class="step-card__num">02</span>
+          <h3 class="text-h5">Review &amp; approve</h3>
+          <p class="step-card__stages">Review &rarr; Approve</p>
+          <p class="text-para">
             Exceptions route to the right person automatically; approvals run
             in parallel instead of a single slow chain.
           </p>
         </div>
-        <div class="step-card box box-md">
-          <span class="num">03</span>
-          <h3 class="t-h5">Pay &amp; export</h3>
-          <p class="stages">Pay &rarr; Export</p>
-          <p class="t-p">
+        <div class="step-card box-grey10 box-grey10--md">
+          <span class="step-card__num">03</span>
+          <h3 class="text-h5">Pay &amp; export</h3>
+          <p class="step-card__stages">Pay &rarr; Export</p>
+          <p class="text-para">
             Payment executes and the record exports straight into your
             financial system — no rekeying, no reconciliation backlog.
           </p>
@@ -239,54 +242,50 @@
   </section>
 
   <!-- 3. CAPABILITY GRID ==================================================== -->
-  <section class="section pattern-bg">
-    <div class="wrap">
-      <span class="section-kicker"><span class="num">03</span><span class="label">What's inside</span></span>
-      <h2 class="t-h2" style="max-width:24ch;">
-        <span class="tone-blue">Depth where the other tabs are shallow.</span>
-      </h2>
+  <section class="section pattern-bg" aria-labelledby="capabilities-heading">
+    <div class="container">
+      <p class="section-eyebrow"><span class="section-eyebrow__number">03</span><span class="section-eyebrow__label">What's inside</span></p>
+      <h2 id="capabilities-heading" class="text-h2" style="max-width: 24ch;">Depth where the other tabs are shallow.</h2>
       <div class="cap-grid">
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">document_scanner</span>
-          <h3 class="t-h5">AI document reading</h3>
-          <p class="t-p">Line-item extraction, not just OCR — {{STAT_EXTRACTION_ACCURACY}} field accuracy on complex invoices.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">document_scanner</span>
+          <h3 class="text-h5">AI document reading</h3>
+          <p class="text-para">Line-item extraction, not just OCR — {{STAT_EXTRACTION_ACCURACY}} field accuracy on complex invoices.</p>
         </div>
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">inbox</span>
-          <h3 class="t-h5">Multi-channel capture</h3>
-          <p class="t-p">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API — one intake queue.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">inbox</span>
+          <h3 class="text-h5">Multi-channel capture</h3>
+          <p class="text-para">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API — one intake queue.</p>
         </div>
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">alt_route</span>
-          <h3 class="t-h5">Parallel approval routing</h3>
-          <p class="t-p">Rules-based routing across departments and thresholds, running side by side instead of in sequence.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">alt_route</span>
+          <h3 class="text-h5">Parallel approval routing</h3>
+          <p class="text-para">Rules-based routing across departments and thresholds, running side by side instead of in sequence.</p>
         </div>
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">rule</span>
-          <h3 class="t-h5">3-way match</h3>
-          <p class="t-p">PO, receipt and invoice reconciled automatically before an invoice ever reaches a human queue.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">rule</span>
+          <h3 class="text-h5">3-way match</h3>
+          <p class="text-para">PO, receipt and invoice reconciled automatically before an invoice ever reaches a human queue.</p>
         </div>
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">sync_alt</span>
-          <h3 class="t-h5">250+ ERP &amp; financial system exports</h3>
-          <p class="t-p">Native sync, not a CSV export — connects directly into the system you already run.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">sync_alt</span>
+          <h3 class="text-h5">250+ ERP &amp; financial system exports</h3>
+          <p class="text-para">Native sync, not a CSV export — connects directly into the system you already run.</p>
         </div>
-        <div class="cap-card box box-sm">
-          <span class="icon material-symbols-outlined" aria-hidden="true">history_edu</span>
-          <h3 class="t-h5">Full audit trail</h3>
-          <p class="t-p">Every capture, edit and approval timestamped and attributable — built for a real audit, not a demo.</p>
+        <div class="cap-card box-grey10 box-grey10--sm">
+          <span class="cap-card__icon icon" aria-hidden="true">history_edu</span>
+          <h3 class="text-h5">Full audit trail</h3>
+          <p class="text-para">Every capture, edit and approval timestamped and attributable — built for a real audit, not a demo.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 4. ERP CONNECTOR LOGOS ================================================== -->
-  <section class="section erp-strip">
-    <div class="wrap">
-      <h2 class="t-h3">
-        <span class="tone-blue">Connects to the system you already run</span>
-      </h2>
-      <p class="t-p" style="max-width:50ch; margin:.75rem auto 0;">
+  <section class="section erp-strip" aria-labelledby="erp-heading">
+    <div class="container">
+      <h2 id="erp-heading" class="text-h3">Connects to the system you already run</h2>
+      <p class="text-para" style="max-width: 50ch; margin: var(--space-3) auto 0;">
         Native, two-way sync into 250+ financial systems — six of the most
         requested shown below.
       </p>
@@ -302,37 +301,35 @@
   </section>
 
   <!-- 5. CUSTOMER PROOF ======================================================== -->
-  <section class="section pattern-bg">
-    <div class="wrap">
-      <span class="section-kicker"><span class="num">05</span><span class="label">Proof, not promises</span></span>
-      <h2 class="t-h2" style="max-width:22ch;">
-        <span class="tone-blue">Teams at your scale, already running on Yooz.</span>
-      </h2>
+  <section class="section pattern-bg" aria-labelledby="proof-heading">
+    <div class="container">
+      <p class="section-eyebrow"><span class="section-eyebrow__number">05</span><span class="section-eyebrow__label">Proof, not promises</span></p>
+      <h2 id="proof-heading" class="text-h2" style="max-width: 22ch;">Teams at your scale, already running on Yooz.</h2>
       <div class="proof-grid">
-        <article class="proof-card box box-md">
-          <p class="quote">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_1}}&rdquo;</p>
-          <div class="who">
-            <span class="avatar" aria-hidden="true"></span>
+        <article class="proof-card box-grey10 box-grey10--md">
+          <p class="text-para-lg">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_1}}&rdquo;</p>
+          <div class="proof-card__who">
+            <span class="proof-card__avatar" aria-hidden="true"></span>
             <div>
               <strong>{{CUSTOMER_NAME_ENTERPRISE_1}}</strong>
               <span>{{CUSTOMER_TITLE_1}}, {{CUSTOMER_COMPANY_1}}</span>
             </div>
           </div>
         </article>
-        <article class="proof-card box box-md">
-          <p class="quote">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_2}}&rdquo;</p>
-          <div class="who">
-            <span class="avatar" aria-hidden="true"></span>
+        <article class="proof-card box-grey10 box-grey10--md">
+          <p class="text-para-lg">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_2}}&rdquo;</p>
+          <div class="proof-card__who">
+            <span class="proof-card__avatar" aria-hidden="true"></span>
             <div>
               <strong>{{CUSTOMER_NAME_ENTERPRISE_2}}</strong>
               <span>{{CUSTOMER_TITLE_2}}, {{CUSTOMER_COMPANY_2}}</span>
             </div>
           </div>
         </article>
-        <article class="proof-card box box-md">
-          <p class="quote">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_3}}&rdquo;</p>
-          <div class="who">
-            <span class="avatar" aria-hidden="true"></span>
+        <article class="proof-card box-grey10 box-grey10--md">
+          <p class="text-para-lg">&ldquo;{{CUSTOMER_QUOTE_ENTERPRISE_3}}&rdquo;</p>
+          <div class="proof-card__who">
+            <span class="proof-card__avatar" aria-hidden="true"></span>
             <div>
               <strong>{{CUSTOMER_NAME_ENTERPRISE_3}}</strong>
               <span>{{CUSTOMER_TITLE_3}}, {{CUSTOMER_COMPANY_3}}</span>
@@ -344,12 +341,12 @@
   </section>
 
   <!-- 6. DEMO FORM ============================================================== -->
-  <section class="section demo-section pattern-blue" id="demo-form">
-    <div class="wrap demo-grid">
-      <div class="pitch">
-        <p class="eyebrow" style="color:var(--pink);">See it on your own invoices</p>
-        <h2 class="t-h2" style="color:var(--grey-10);">Book a demo</h2>
-        <p class="t-p-lg" style="color:var(--grey-40); font-weight:300;">
+  <section class="section pattern-blue" id="demo-form" aria-labelledby="demo-heading">
+    <div class="container demo-grid">
+      <div class="demo-grid__pitch">
+        <p class="eyebrow">See it on your own invoices</p>
+        <h2 id="demo-heading" class="text-h2" style="color: var(--grey-10);">Book a demo</h2>
+        <p class="text-para-lg" style="color: var(--grey-40);">
           20 minutes, on a sample of your own invoice mix and your ERP —
           not a canned walkthrough.
         </p>
@@ -360,7 +357,7 @@
         </ul>
       </div>
 
-      <form class="box box-lg demo-form" data-yooz-event="demo_form_submit" novalidate>
+      <form class="box-grey10 box-grey10--lg demo-form" data-yooz-event="demo_form_submit" novalidate>
         <div class="demo-form-grid">
           <div class="field">
             <label for="fname">First name<span class="req" aria-hidden="true">*</span></label>
@@ -406,10 +403,10 @@
             <input type="tel" id="phone" name="phone" autocomplete="tel">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1.5rem;" data-yooz-event="demo_form_submit_button">
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-6);" data-yooz-event="demo_form_submit_button">
           Book a demo
         </button>
-        <p class="disclaimer">
+        <p class="demo-form__disclaimer">
           By submitting, you agree to Yooz's <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>.
         </p>
       </form>
@@ -419,23 +416,18 @@
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <div class="site-footer__top">
-      <a class="wordmark" href="https://getyooz.com">
-        <span class="mark" aria-hidden="true"></span>
-        <span class="name" style="color:var(--grey-10);">Yooz</span>
-      </a>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="https://getyooz.com/privacy-policy" data-yooz-event="footer_privacy">Privacy Policy</a>
-        <a href="https://getyooz.com/terms" data-yooz-event="footer_terms">Terms</a>
-        <a href="https://getyooz.com/contact" data-yooz-event="footer_contact">Contact</a>
-        <a href="/ad-ap-comparison" data-yooz-event="footer_comparison_guide">Compare AP platforms</a>
-      </nav>
+  <div class="container site-footer__row">
+    <div>
+      <a class="site-header__wordmark" href="https://getyooz.com" style="color: var(--grey-10);">Yooz</a>
+      <p class="site-footer__address">&copy; 2026 Yooz. All rights reserved.</p>
+      <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Yooz. All rights reserved.</span>
-      <span>{{COMPANY_ADDRESS}}</span>
-    </div>
+    <nav class="site-footer__links" aria-label="Footer">
+      <a href="https://getyooz.com/privacy-policy" data-yooz-event="footer_privacy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms" data-yooz-event="footer_terms">Terms</a>
+      <a href="https://getyooz.com/contact" data-yooz-event="footer_contact">Contact</a>
+      <a href="/ad-ap-comparison" data-yooz-event="footer_comparison_guide">Compare AP platforms</a>
+    </nav>
   </div>
 </footer>
 
