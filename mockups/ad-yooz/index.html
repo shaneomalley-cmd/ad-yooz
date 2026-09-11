@@ -60,6 +60,14 @@
     justify-self: end;
     width: 100%;
     max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  /* Caption sits below the Z shape, in flow, rather than overlaid in white
+     text on top of it — legible regardless of where the gradient lands. */
+  .hero__image-caption {
+    color: var(--grey-90);
   }
 
   @media (max-width: 1023px) {
@@ -71,7 +79,8 @@
      outright, so the booking CTA stays inside the first two mobile screens
      per Foundation §3.5 — this archetype's whole brief is brevity. */
   @media (max-width: 767px) {
-    .hero__image { max-width: none; aspect-ratio: 16 / 6; }
+    .hero__image { max-width: none; }
+    .hero__image .z-frame { aspect-ratio: 16 / 6; }
   }
 
   /* Proof strip — Pattern Pink single-strip callout */
@@ -123,7 +132,7 @@
   }
 
   /* Booking section */
-  .booking { padding-block: var(--space-9); }
+  .booking { padding-block: var(--space-7); }
   .booking__box { max-width: 880px; margin-inline: auto; text-align: center; }
   .scheduler-embed {
     margin-top: var(--space-6);
@@ -155,7 +164,7 @@
   .booking__fallback[open] summary { margin-bottom: var(--space-4); }
 
   /* FAQ */
-  .faq { padding-block: var(--space-9); }
+  .faq { padding-block: var(--space-7); }
   .faq__box { max-width: 760px; margin-inline: auto; }
   .faq__item {
     border-bottom: 1px solid var(--grey-40);
@@ -209,9 +218,11 @@
           <a class="btn btn-tertiary" href="https://getyooz.com/pricing" data-yooz-event="hero_pricing_link_click">See pricing <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
         </div>
       </div>
-      <figure class="hero__image z-frame z-frame--hero" role="img" aria-label="Graded cutout product photography, subject facing inward, Z anchored bottom-left">
-        <div class="z-shape-wrap"><div class="z-shape"></div></div>
-        <figcaption class="z-frame__caption text-tagline">HERO — graded cutout, subject facing inward, Z anchored bottom-left</figcaption>
+      <figure class="hero__image" role="img" aria-label="Graded cutout product photography, subject facing inward, Z anchored bottom-left">
+        <div class="z-frame z-frame--hero">
+          <div class="z-shape-wrap"><div class="z-shape"></div></div>
+        </div>
+        <figcaption class="hero__image-caption text-tagline">HERO — graded cutout, subject facing inward, Z anchored bottom-left</figcaption>
       </figure>
     </div>
   </section>
