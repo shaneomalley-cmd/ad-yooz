@@ -50,9 +50,29 @@
   --space-8: 64px;
   --space-9: 96px;
 
-  /* ---- Layout ---- */
+  /* ---- Vertical rhythm — from 00-FOUNDATION.md "Layout system: container,
+     grid and spacing". section-y-lg has no matching step in the scale
+     above (it sits past --space-9), so it's a literal value. ---- */
+  --section-y: var(--space-9);      /* between major sections */
+  --section-y-lg: 128px;            /* around hero and final CTA */
+
+  /* ---- Layout: container. Base padding is unchanged (--container-pad
+     already equalled --gutter's 24px); --gutter-md/--gutter-lg are new,
+     from 00-FOUNDATION.md, and give the container more inset at tablet/
+     desktop widths instead of a flat 24px at every size. ---- */
   --container-max: 1200px;
-  --container-pad: var(--space-5);
+  --gutter: var(--space-5);         /* 24px — 390px viewport */
+  --gutter-md: 40px;                /* 768px+ */
+  --gutter-lg: 64px;                /* 1200px+ */
+  --container-pad: var(--gutter);
+
+  /* ---- Layout: grid — 12/8/4-column grid per 00-FOUNDATION.md; page
+     skeletons stay page-local (Foundation §6), this is just the shared
+     gap value so they agree. ---- */
+  --grid-gap: var(--space-5);
+
+  /* ---- Border ---- */
+  --border-hairline: 1px solid var(--grey-50);
 
   /* ---- Radii ---- */
   --radius-pill: 999px;
@@ -124,6 +144,14 @@ ul { margin: 0; padding: 0; }
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--container-pad);
+}
+
+@media (min-width: 768px) {
+  .container { padding-inline: var(--gutter-md); }
+}
+
+@media (min-width: 1200px) {
+  .container { padding-inline: var(--gutter-lg); }
 }
 
 /* =========================================================================
