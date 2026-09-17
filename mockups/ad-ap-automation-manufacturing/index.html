@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  AD-TO-PAGE CONTINUITY — Campaign 08 FIT – Industry, ad group Manufacturing
+  (build priority 9). Copy team: paste the live RSA headlines/descriptions
+  below so the hero copy is confirmed to keep restating the ad's promise.
+  Head keywords this H1 must echo: "ap automation for manufacturing",
+  "manufacturing accounts payable automation", "accounts payable software
+  for manufacturing".
+  {{AD_HEADLINE_1}}
+  {{AD_HEADLINE_2}}
+  {{AD_HEADLINE_3}}
+  {{AD_DESCRIPTION_1}}
+  {{AD_DESCRIPTION_2}}
+-->
+
+<title>AP Automation for Manufacturing | Yooz</title>
+<meta name="description" content="AP automation for manufacturing built around goods receipts and three-way match. See the workflow, then book a demo.">
+<link rel="canonical" href="https://getyooz.com/en-us/ad-ap-automation-manufacturing">
+<meta property="og:title" content="AP Automation for Manufacturing | Yooz">
+<meta property="og:description" content="AP automation for manufacturing built around goods receipts and three-way match. See the workflow, then book a demo.">
+<meta property="og:url" content="https://getyooz.com/en-us/ad-ap-automation-manufacturing">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+
+<style>
+  /* Page-specific layout only — everything reusable lives in tokens.css.
+     Shared structure with /ad-ap-automation-healthcare; vertical-specific
+     rules are limited to copy, not layout. */
+
+  /* Mobile-safety net: several tokens/CTAs below contain long
+     underscore-joined {{PLACEHOLDER}} strings or dynamic case-study
+     titles with no natural break point. Without this, a single such
+     token can force its container past the 390px viewport. */
+  main { overflow-wrap: anywhere; }
+  .btn-tertiary { white-space: normal; text-align: left; max-width: 100%; }
+  figure { margin: 0; }
+  #hero-heading { hyphens: auto; }
+
+  .hero { padding-block: var(--space-8); }
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+  .hero__grid > * { min-width: 0; }
+  .hero__box { max-width: 720px; }
+  @media (min-width: 768px) {
+    /* Narrower horizontal padding than the shared box-grey10--lg default
+       (which was tuned for a shorter H1 on the brand page) — this
+       archetype's H1 needs the extra column width to avoid mid-word
+       wraps on "automation"/"manufacturing"-length terms. */
+    .hero__box { padding: var(--space-8) var(--space-6); }
+  }
+  .hero__ctas {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+  }
+  .hero__image { justify-self: end; width: 100%; max-width: 420px; }
+
+  @media (max-width: 1023px) {
+    .hero__grid { grid-template-columns: minmax(0, 1fr); }
+    .hero__box { max-width: none; }
+  }
+  @media (max-width: 767px) {
+    .hero__image { max-width: none; aspect-ratio: 16 / 6; }
+  }
+
+  /* 2. Their specific workflow */
+  .workflow { padding-block: var(--space-9); }
+  .workflow__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+    margin-top: var(--space-7);
+  }
+  @media (max-width: 900px) {
+    .workflow__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  .workflow__list { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-5); }
+  .workflow__list li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .workflow__list .dot {
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 9px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+  .workflow__screenshot { aspect-ratio: 16 / 11; width: 100%; }
+
+  /* 3. Industry proof */
+  .proof { padding-block: var(--space-8); }
+  .proof__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .proof__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  .proof__quote { font-size: 24px; }
+  .proof__quote blockquote {
+    margin: 0;
+    font-weight: var(--weight-light);
+    line-height: 1.3;
+  }
+  .proof__quote cite {
+    display: block;
+    font-style: normal;
+    margin-top: var(--space-4);
+  }
+  .proof__logos { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .proof__logo {
+    height: 40px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--grey-30);
+    border-radius: var(--radius-sm);
+    color: var(--grey-90);
+    font-size: 12px;
+    padding-inline: var(--space-3);
+  }
+
+  /* 4. Product — the six-stage sequence, generic across every fit page */
+  .product { padding-block: var(--space-9); }
+  .product__head { max-width: 680px; margin-bottom: var(--space-7); }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-7);
+  }
+  @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .product-grid { grid-template-columns: minmax(0, 1fr); } }
+  .stage { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .stage__marker {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--grey-20);
+    color: var(--rich-blue);
+    font-weight: var(--weight-semibold);
+    font-size: 14px;
+  }
+  .stage h3 { margin: 0 0 var(--space-1); }
+  .stage p { margin: 0; color: var(--grey-100); }
+  .product__screenshot { aspect-ratio: 16 / 9; width: 100%; }
+
+  /* 5. Form */
+  .form-section { padding-block: var(--space-9); }
+  .form-section__box { max-width: 620px; margin-inline: auto; text-align: center; }
+  .form-section__lede { margin-top: var(--space-4); }
+  .demo-form {
+    margin-top: var(--space-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-4);
+    text-align: left;
+  }
+  .demo-form .field--full { grid-column: 1 / -1; }
+  @media (max-width: 560px) {
+    .demo-form { grid-template-columns: minmax(0, 1fr); }
+  }
+  .demo-form__actions { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); margin-top: var(--space-2); }
+  .demo-form__fineprint { color: var(--grey-80); font-size: 14px; }
+  .form-section__secondary { margin-top: var(--space-6); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_wordmark_click">Yooz</a>
+    <nav class="site-header__nav" aria-label="Primary">
+      <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+      <a href="https://getyooz.com/pricing" data-yooz-event="header_pricing_click">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. Industry-named hero -->
+  <section class="hero pattern-bg" aria-labelledby="hero-heading">
+    <div class="container hero__grid">
+      <div class="box-grey10 box-grey10--lg hero__box">
+        <p class="eyebrow">Built for manufacturing AP teams</p>
+        <h1 id="hero-heading" class="text-h1">AP automation for manufacturing</h1>
+        <p class="text-h4" style="margin-top: var(--space-4);">Built around goods receipts and three-way match — exceptions routed through your existing approval chain, automatically.</p>
+        <p class="text-para" style="margin-top: var(--space-4); max-width: 52ch;">
+          Yooz reconciles the purchase order, the goods receipt, and the
+          invoice before an exception ever reaches an approver — not a
+          generic invoice tool with a factory floor photo swapped in.
+        </p>
+        <div class="hero__ctas">
+          <a class="btn btn-primary" href="#demo-form" data-yooz-event="hero_book_demo_click">Book a demo</a>
+          <a class="btn btn-tertiary" href="#workflow" data-yooz-event="hero_see_workflow_click">See the manufacturing workflow <span class="icon btn__arrow" aria-hidden="true">arrow_downward</span></a>
+        </div>
+      </div>
+      <figure class="hero__image z-frame z-frame--hero" role="img" aria-label="Graded cutout product photography, manufacturing finance team, subject facing inward, Z anchored bottom-left">
+        <div class="z-shape-wrap"><div class="z-shape"></div></div>
+        <figcaption class="z-frame__caption text-tagline">HERO — graded cutout, manufacturing finance team, Z anchored bottom-left</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2. Their specific workflow -->
+  <section class="workflow" id="workflow" aria-labelledby="workflow-heading">
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow__number">02</span>
+        <span class="section-eyebrow__label">How it actually works in manufacturing AP</span>
+      </div>
+      <h2 id="workflow-heading" class="text-h2">Built for three-way match, not two</h2>
+      <p class="text-para-lg" style="max-width: 680px; margin-top: var(--space-4); color: var(--grey-100);">
+        Manufacturing AP doesn't stop at matching an invoice to a PO. What
+        actually landed on the dock has to reconcile against both before
+        anything moves to approval.
+      </p>
+
+      <div class="workflow__grid">
+        <div>
+          <ul class="workflow__list">
+            <li><span class="dot" aria-hidden="true"></span><span class="text-list-item"><strong>{{DOCTYPE_MANUFACTURING_1 — goods receipts, verify with vertical SME}}:</strong> what was actually received on the shop floor, captured and matched — not assumed to equal what was ordered.</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span class="text-list-item"><strong>{{DOCTYPE_MANUFACTURING_2 — three-way match against production POs, verify with vertical SME}}:</strong> PO, receipt, and invoice reconciled automatically before an approver ever sees the exception.</span></li>
+            <li><span class="dot" aria-hidden="true"></span><span class="text-list-item"><strong>{{APPROVAL_CHAIN_MANUFACTURING — verify with vertical SME}}:</strong> routed through your existing plant and finance approval chain — the same sign-off path you already use.</span></li>
+          </ul>
+        </div>
+        <figure class="image-placeholder workflow__screenshot" role="img" aria-label="Screenshot placeholder: three-way match exception, PO / receipt / invoice side by side">
+          <figcaption class="text-tagline">SCREENSHOT — three-way match exception, PO / receipt / invoice side by side</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Industry proof -->
+  <section class="proof pattern-pink" aria-labelledby="proof-heading">
+    <div class="container">
+      <h2 id="proof-heading" class="visually-hidden">Manufacturing customer proof</h2>
+      <div class="proof__grid">
+        <div class="box-grey10 box-grey10--md proof__quote">
+          <blockquote>{{CUSTOMER_QUOTE_MANUFACTURING}}</blockquote>
+          <cite class="text-para-sm-bold">{{CUSTOMER_MANUFACTURING_1}}</cite>
+        </div>
+        <div>
+          <p class="text-para-sm-bold" style="margin-bottom: var(--space-4);">Trusted by AP teams at manufacturers and plants across North America</p>
+          <div class="proof__logos" aria-label="Manufacturing customer logos">
+            <div class="proof__logo">{{CUSTOMER_LOGO_MANUFACTURING_1}}</div>
+            <div class="proof__logo">{{CUSTOMER_LOGO_MANUFACTURING_2}}</div>
+            <div class="proof__logo">{{CUSTOMER_MANUFACTURING_2}}</div>
+          </div>
+          <a class="btn btn-tertiary" href="{{CASE_STUDY_MANUFACTURING_URL}}" style="margin-top: var(--space-5);" data-yooz-event="proof_case_study_click">
+            Read the {{CASE_STUDY_MANUFACTURING}} case study
+            <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Product -->
+  <section class="product" aria-labelledby="product-heading">
+    <div class="container">
+      <div class="product__head">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow__number">03</span>
+          <span class="section-eyebrow__label">What happens after the invoice lands</span>
+        </div>
+        <h2 id="product-heading" class="text-h2">One workflow, six stages, no manual entry</h2>
+        <p class="text-para" style="margin-top: var(--space-4); color: var(--grey-100);">
+          Every invoice moves through the same automated path, from
+          however it arrives to however your ERP needs it.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <div class="stage"><span class="stage__marker" aria-hidden="true">1</span><div><h3 class="text-h5">Purchase</h3><p class="text-para">Matched against the production PO it was ordered under.</p></div></div>
+        <div class="stage"><span class="stage__marker" aria-hidden="true">2</span><div><h3 class="text-h5">Capture</h3><p class="text-para">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher or API.</p></div></div>
+        <div class="stage"><span class="stage__marker" aria-hidden="true">3</span><div><h3 class="text-h5">Review</h3><p class="text-para">Three-way match exceptions flagged before an approver sees them.</p></div></div>
+        <div class="stage"><span class="stage__marker" aria-hidden="true">4</span><div><h3 class="text-h5">Approve</h3><p class="text-para">Routed through your existing plant and finance approval chain.</p></div></div>
+        <div class="stage"><span class="stage__marker" aria-hidden="true">5</span><div><h3 class="text-h5">Pay</h3><p class="text-para">Scheduled against terms, with the audit trail intact.</p></div></div>
+        <div class="stage"><span class="stage__marker" aria-hidden="true">6</span><div><h3 class="text-h5">Export</h3><p class="text-para">Synced to your ERP — Yooz exports to more than 250 financial systems.</p></div></div>
+      </div>
+
+      <figure class="image-placeholder product__screenshot" role="img" aria-label="Screenshot placeholder: three-way match reconciliation dashboard">
+        <figcaption class="text-tagline">SCREENSHOT — three-way match reconciliation dashboard</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. Form -->
+  <section class="form-section pattern-bg" id="demo-form" aria-labelledby="form-heading">
+    <div class="container">
+      <div class="box-grey10 box-grey10--lg form-section__box">
+        <h2 id="form-heading" class="text-h2">See it on your production POs</h2>
+        <p class="text-para form-section__lede">Tell us a bit about your team and we'll show you the manufacturing workflow live.</p>
+
+        <form class="demo-form" data-yooz-event="form-demo-request">
+          <div class="field">
+            <label for="mfg-first">First name</label>
+            <input id="mfg-first" name="first_name" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="mfg-last">Last name</label>
+            <input id="mfg-last" name="last_name" type="text" autocomplete="family-name" required>
+          </div>
+          <div class="field field--full">
+            <label for="mfg-email">Work email</label>
+            <input id="mfg-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field field--full">
+            <label for="mfg-company">Company</label>
+            <input id="mfg-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field field--full">
+            <label for="mfg-volume">ERP or monthly invoice volume</label>
+            <input id="mfg-volume" name="erp_or_volume" type="text">
+          </div>
+          <div class="field field--full">
+            <label for="mfg-phone">Phone <span class="field-hint">(optional)</span></label>
+            <input id="mfg-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="demo-form__actions">
+            <button class="btn btn-primary" type="submit" data-yooz-event="form_submit_book_demo">Book a demo</button>
+            <p class="demo-form__fineprint">By submitting, you agree to Yooz's <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>.</p>
+          </div>
+        </form>
+
+        <div class="form-section__secondary">
+          <a class="btn btn-tertiary" href="{{CASE_STUDY_MANUFACTURING_URL}}" data-yooz-event="form_secondary_case_study_click">
+            Or read the {{CASE_STUDY_MANUFACTURING}} case study
+            <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__row">
+    <div>
+      <a class="site-header__wordmark" href="https://getyooz.com" style="color: var(--grey-10);">Yooz</a>
+      <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
+    </div>
+    <div class="site-footer__links">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
