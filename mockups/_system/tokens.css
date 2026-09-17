@@ -393,6 +393,20 @@ ul { margin: 0; padding: 0; }
   .box-grey10--lg { padding: var(--space-6) var(--space-5); }
 }
 
+/* Blue layout composition (Foundation §1 layout table): Pattern BG ground,
+   a Rich Blue content box, Grey 10 type, Pink CTA. Used for a page's final
+   CTA/closing box so it reads as a distinct "last stop," not another
+   Grey 10 card. */
+.box-rich-blue {
+  background: var(--rich-blue);
+  color: var(--grey-10);
+  border-radius: var(--radius-box);
+  padding: var(--space-7) var(--space-8);
+}
+@media (max-width: 767px) {
+  .box-rich-blue { padding: var(--space-5); }
+}
+
 /* =========================================================================
    Buttons — three levels, per Foundation §2b. Trailing arrow on secondary
    and tertiary only; the primary CTA stays arrow-free (a commitment, not a

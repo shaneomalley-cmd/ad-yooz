@@ -1,5 +1,59 @@
 # Notes — `/ad-yooz` (Archetype 01, Brand)
 
+## 2026-09-17 update — compliance-driven rebuild
+
+The page was rebuilt end-to-end against a detailed content/compliance
+brief (`yooz-brand-lp-update.txt`) that supersedes several decisions
+below. Summary of what changed; everything under "Original build notes"
+that isn't restated here (page weight, Z-device geometry as a *general
+system* asset, dot-pattern spacing math) still stands.
+
+**Section order changed** to the brief's required sequence: Hero (with the
+booking widget embedded directly in it, not a separate section) → proof
+strip → What You'll See in the Demo → Pricing → Reviews → Already a Yooz
+Customer? (hidden — no destinations configured) → FAQ (five items, plus a
+sixth competitor item hidden pending a comparison URL) → final CTA →
+footer.
+
+**H1 changed** from "Yooz AP Automation Software" to "Yooz AP Automation:
+Pick a Time to See It in Action" per the brief's exact required copy —
+this replaces item 1 of the old Quality Score checklist below; the query
+echo is now carried by "Yooz AP Automation" plus "getyooz" still only in
+the wordmark/footer link target (the open question about this is now
+moot, since the brief specifies this exact H1 and doesn't ask for a
+literal "getyooz" mention).
+
+**Everything unresolved is now `landingPageConfig`-gated**, not a
+`{{TOKEN}}`. See `PLACEHOLDERS.md` for the full field-by-field manifest.
+The customer-logo placeholders, the fake G2 badge, the Z hero-image
+placeholder, and the old manually-toggled `<details>` scheduler fallback
+are all removed — the scheduler/fallback swap is now real config-driven
+JS (see `initScheduler()` in `index.html`), and the hero has no image
+slot at all right now (see "Open questions").
+
+**The old Quality Score checklist, page-weight figure, and "Departures"
+list below describe the pre-rebuild page** and are kept for project
+history, not as current status. A fresh pass would need to re-measure
+page weight (now heavier: a documented config object plus ~150 lines of
+gating JS) and re-verify the QS checklist against the new H1/meta.
+
+**New open item**: `media.heroImagePath` has no layout to render into.
+The brief asks for the booking widget in the hero's right column and,
+separately, for the hero image area to collapse to full width when unset
+— it doesn't specify how a real hero image and the booking widget would
+share that space once one is supplied. Needs a design decision before
+`media.heroImagePath` is wired up.
+
+**Fallback-form submission is intentionally inert today.** No
+`submissionEndpoint`, HubSpot `portalId`, or `formId` is configured, so
+submitting the form calls `preventDefault()`, logs a console warning, and
+shows no success message — never a fabricated confirmation. This page
+should not take real paid traffic until one of those is wired in.
+
+---
+
+## Original build notes (pre-rebuild)
+
 ## Design plan (written before code, per Foundation §5)
 
 **Composition:** Primary layout — Pattern BG page ground, Grey 10 content

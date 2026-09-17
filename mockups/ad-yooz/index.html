@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--
-  AD-TO-PAGE CONTINUITY — Campaign 01 BRAND, ad groups: Yooz core / Yooz
-  evaluation / Yooz vs competitor. Copy team: paste the live RSA headlines
-  and descriptions below so the hero copy is confirmed to keep restating
-  the same promise the ad made. Head keywords this H1 must echo: "yooz",
-  "yooz ap automation", "yooz software", "getyooz".
-  {{AD_HEADLINE_1}}
-  {{AD_HEADLINE_2}}
-  {{AD_HEADLINE_3}}
-  {{AD_DESCRIPTION_1}}
-  {{AD_DESCRIPTION_2}}
+  TODO(paid-media): insert the current Campaign 01 Brand RSA export
+  (headlines and descriptions) here for ad-to-page continuity review.
+  Do not fabricate headline or description text.
 -->
 
-<title>Yooz AP Automation Software | Book a Demo</title>
-<meta name="description" content="Yooz AP automation software connects to 250+ financial systems. See pricing or book a live demo with our team today.">
+<!--
+  TODO(seo): this project has no established indexing-directive rule for
+  paid-search landing pages. Confirm index/noindex + follow/nofollow
+  against current SEO policy before launch and add the appropriate
+  <meta name="robots"> tag here. Not assumed in this build.
+-->
+
+<title>Yooz AP Automation | Pricing, Reviews & Live Demo</title>
+<meta name="description" content="See Yooz AP automation, explore document-volume pricing, read customer review insights, and book a personalized demonstration with our team.">
 <link rel="canonical" href="https://getyooz.com/en-us/ad-yooz">
-<meta property="og:title" content="Yooz AP Automation Software | Book a Demo">
-<meta property="og:description" content="Yooz AP automation software connects to 250+ financial systems. See pricing or book a live demo with our team today.">
+<meta property="og:title" content="Yooz AP Automation | Pricing, Reviews &amp; Live Demo">
+<meta property="og:description" content="See Yooz AP automation, explore document-volume pricing, read customer review insights, and book a personalized demonstration with our team.">
 <meta property="og:url" content="https://getyooz.com/en-us/ad-yooz">
 <meta property="og:type" content="website">
 
@@ -33,130 +33,152 @@
 <style>
   /* Page-specific layout — everything reusable lives in tokens.css */
 
-  .hero {
-    padding-block: var(--space-8);
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
   }
+
+  .hero { padding-block: var(--space-8); }
   .hero__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
     gap: var(--space-8);
-    align-items: center;
+    align-items: start;
   }
   .hero__grid > * { min-width: 0; }
-  .hero__box {
-    max-width: 620px;
-  }
-  .hero__ctas {
-    display: flex;
-    align-items: center;
-    gap: var(--space-6);
-    flex-wrap: wrap;
-    margin-top: var(--space-6);
-  }
-  .hero__price-signal {
-    margin-top: var(--space-4);
-  }
-  .hero__image {
-    justify-self: end;
-    width: 100%;
-    max-width: 420px;
-  }
+  .hero__box { max-width: 620px; }
 
   @media (max-width: 1023px) {
     .hero__grid { grid-template-columns: 1fr; }
     .hero__box { max-width: none; }
   }
 
-  /* Below 768px the hero image is cut to a short strip rather than removed
-     outright, so the booking CTA stays inside the first two mobile screens
-     per Foundation §3.5 — this archetype's whole brief is brevity. */
-  @media (max-width: 767px) {
-    .hero__image { max-width: none; aspect-ratio: 16 / 6; }
+  /* Booking widget — lives in the hero's right-hand column on desktop,
+     directly after the hero introduction on mobile (natural DOM order,
+     no reordering needed since there is no competing hero image today). */
+  .booking-widget__status {
+    font-size: 14px;
+    color: var(--grey-90);
+    min-height: 1.2em;
   }
+  .booking-widget__scheduler { margin-top: var(--space-5); }
+  .booking-widget__scheduler iframe {
+    width: 100%;
+    min-height: 480px;
+    border: none;
+    border-radius: var(--radius-sm);
+  }
+  .booking-widget__fallback { margin-top: var(--space-5); }
+  .booking-widget__fallback h3 { margin: 0 0 var(--space-3); }
 
-  /* Proof strip — Pattern Pink single-strip callout */
-  .proof {
-    padding-block: var(--space-6);
-  }
+  /* Proof strip — text-first, no logo wall */
+  .proof { padding-block: var(--space-6); }
   .proof__row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-6);
   }
-  .proof__logos {
+  .proof__reviews {
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-6);
-    align-items: center;
+    padding: 0;
+    margin: 0;
   }
-  .proof__logo {
-    height: 32px;
-    min-width: 96px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--grey-30);
-    border-radius: var(--radius-sm);
-    color: var(--grey-90);
-    font-size: 12px;
-    padding-inline: var(--space-3);
-  }
-  .proof__g2 {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    white-space: nowrap;
-  }
-  .proof__g2-badge {
-    width: 56px;
-    height: 56px;
-    border-radius: var(--radius-sm);
-    background: var(--grey-30);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    text-align: center;
-    color: var(--grey-90);
-  }
+  .proof__reviews li { display: flex; align-items: center; gap: var(--space-3); }
 
-  /* Booking section */
-  .booking { padding-block: var(--space-9); }
-  .booking__box { max-width: 880px; margin-inline: auto; text-align: center; }
-  .scheduler-embed {
-    margin-top: var(--space-6);
-    aspect-ratio: 16 / 10;
-    background: var(--grey-20);
-    border: 1px dashed var(--grey-70);
-    border-radius: var(--radius-sm);
+  /* Demo preview */
+  .demo-preview { padding-block: var(--space-9); }
+  .demo-preview__box { max-width: 760px; }
+  .demo-preview__list {
+    list-style: none;
     display: flex;
     flex-direction: column;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+    padding: 0;
+  }
+  .demo-preview__list li { position: relative; padding-left: 28px; }
+  .demo-preview__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+  .demo-media { margin-top: var(--space-6); }
+  .demo-media__video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    max-width: 560px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--grey-30);
+  }
+  .demo-media__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-3);
-    box-shadow: var(--shadow-float);
+    width: 100%;
+    height: 100%;
   }
-  .scheduler-embed .icon { font-size: 40px; color: var(--grey-70); }
-  .booking__fallback {
-    margin-top: var(--space-6);
-    text-align: left;
-    max-width: 480px;
-    margin-inline: auto;
+  .demo-media__play img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .demo-media__play .icon { position: relative; z-index: 1; font-size: 56px; color: var(--grey-10); text-shadow: 0 2px 8px rgba(20,53,78,0.5); }
+  .demo-media__video video { width: 100%; height: 100%; display: block; }
+  .demo-media__stills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
   }
-  .booking__fallback summary {
-    cursor: pointer;
-    font-weight: var(--weight-semibold);
-    color: var(--pink);
-    font-size: 16px;
-    padding: var(--space-2) 0;
+  .demo-media__stills img { max-width: 260px; border-radius: var(--radius-sm); }
+
+  /* Pricing */
+  .pricing { padding-block: var(--space-9); }
+  .pricing__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-block: var(--space-6);
   }
-  .booking__fallback[open] summary { margin-bottom: var(--space-4); }
+  @media (max-width: 639px) {
+    .pricing__cards { grid-template-columns: 1fr; }
+  }
+  .pricing__cta-row { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; margin-top: var(--space-5); }
+
+  /* Reviews */
+  .reviews { padding-block: var(--space-9); }
+  .reviews__box { max-width: 760px; }
+  .reviews__platforms {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    padding: 0;
+    margin: var(--space-6) 0 0;
+  }
+  .reviews__platforms li { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+
+  /* Existing customer */
+  .existing-customer { padding-block: var(--space-7); }
+  .existing-customer__links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    padding: 0;
+    margin: var(--space-4) 0 0;
+  }
+  .existing-customer__links a { font-weight: var(--weight-semibold); color: var(--pink); }
 
   /* FAQ */
   .faq { padding-block: var(--space-9); }
-  .faq__box { max-width: 760px; margin-inline: auto; }
+  .faq__box { max-width: 760px; }
   .faq__item {
     border-bottom: 1px solid var(--grey-40);
     padding-block: var(--space-5);
@@ -177,143 +199,344 @@
   .faq__item summary .icon { transition: transform var(--transition-fast); flex-shrink: 0; }
   .faq__item[open] summary .icon { transform: rotate(180deg); }
   .faq__item p { margin-top: var(--space-4); }
+
+  /* Final CTA */
+  .final-cta { padding-block: var(--space-9); }
+  .final-cta__box { max-width: 640px; }
+  .final-cta__ctas { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-top: var(--space-6); }
 </style>
 </head>
 <body>
+
+<!--
+  ============================================================================
+  Configuration object — the single source of truth for every unresolved
+  integration and time-sensitive proof point on this page. Every field
+  defaults to null/false. A component tied to an incomplete field renders
+  nothing (not a placeholder, not an empty card) until real values are
+  supplied here. Update this object, not the markup below, when a real
+  scheduler, review data, logo asset, or destination URL becomes available.
+  ============================================================================
+-->
+<script>
+  var landingPageConfig = {
+    booking: {
+      schedulerEnabled: false,          // true once a tested scheduler is wired in
+      schedulerEmbedUrl: null,          // the scheduler's embeddable booking URL
+      schedulerProvider: null,          // e.g. "Chili Piper", "HubSpot Meetings"
+      immediateCalendarInvite: false,   // true only once tested to consistently deliver one
+      displaysAssignedSpecialist: false,// true only if the scheduler itself shows a named rep
+      supportsErpBasedAssignment: false,// true only if ERP-based routing is implemented
+      supportsPricingConversationTag: false,
+      pricingConversationUrl: null      // a distinct booking destination tagged for pricing conversations
+    },
+
+    fallbackForm: {
+      enabled: true,
+      portalId: null,                   // HubSpot portal ID, if the fallback becomes a HubSpot embed
+      formId: null,                     // HubSpot form ID
+      submissionEndpoint: null,         // custom form POST target, if not using HubSpot
+      privacyPolicyUrl: null            // verified Yooz Privacy Policy URL
+    },
+
+    reviews: {
+      g2: {
+        enabled: false,
+        rating: null,
+        reviewCount: null,
+        verifiedDate: null,
+        profileUrl: null,
+        approvedBadgePath: null
+      },
+      capterra: {
+        enabled: false,
+        rating: null,
+        reviewCount: null,
+        easeOfUseRating: null,
+        customerServiceRating: null,
+        verifiedDate: null,
+        profileUrl: null
+      },
+      trustRadius: {
+        enabled: false,
+        profileUrl: null
+      },
+      gartnerPeerInsights: {
+        enabled: false,
+        profileUrl: null
+      }
+    },
+
+    // Not part of the brief's example object, but the same gated pattern:
+    // the optional competitor FAQ only renders once a live comparison page
+    // and its verified URL exist.
+    competitorComparison: {
+      enabled: false,
+      url: null
+    },
+
+    customerDestinations: {
+      loginUrl: null,
+      supportUrl: null,
+      helpCenterUrl: null
+    },
+
+    media: {
+      heroImagePath: null,
+      demoVideoPath: null,
+      demoVideoPosterPath: null,
+      demoStillPaths: []
+    },
+
+    company: {
+      publicAddressConfirmed: false,
+      publicAddress:
+        "Yooz, Inc. · 8840 Cypress Waters Blvd, Suite 250 · Coppell, TX 75019 · United States"
+    }
+  };
+</script>
 
 <header class="site-header">
   <div class="container site-header__bar">
     <a class="site-header__wordmark" href="https://getyooz.com" data-yooz-event="header_wordmark_click">Yooz</a>
     <nav class="site-header__nav" aria-label="Primary">
-      <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
       <a href="https://getyooz.com/pricing" data-yooz-event="header_pricing_click">Pricing</a>
+      <a id="nav-login-link" href="#" data-yooz-event="header_login_click" hidden>Log in</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-  <!-- 1. Hero + CTA — Primary layout: Pattern BG, Grey 10 content box, Rich Blue type, Pink CTA -->
+  <!-- 1. Hero with primary CTA and booking calendar -->
   <section class="hero pattern-bg" aria-labelledby="hero-heading">
     <div class="container hero__grid">
+
       <div class="box-grey10 box-grey10--lg hero__box">
         <p class="eyebrow">Trusted by finance teams across North America</p>
-        <h1 id="hero-heading" class="text-h1">Yooz AP Automation Software</h1>
-        <p class="text-h4" style="margin-top: var(--space-4);">Purchase-to-pay automation connected to more than 250 financial systems</p>
-        <p class="text-para" style="margin-top: var(--space-4); max-width: 46ch;">
-          See how Yooz automates invoice capture, approval, and payment —
-          then book time with our team below.
-        </p>
-        <div class="hero__ctas">
-          <a class="btn btn-primary" href="#book-a-demo" data-yooz-event="hero_book_demo_click">Book a demo</a>
-          <a class="btn btn-tertiary" href="https://getyooz.com/pricing" data-yooz-event="hero_pricing_link_click">See pricing <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span></a>
+        <h1 id="hero-heading" class="text-h1">Yooz AP Automation: Pick a Time to See It in Action</h1>
+        <p class="text-h4" style="margin-top: var(--space-4);">7,000+ customers, 600,000+ users, and connections with more than 250 ERP and financial systems.</p>
+        <p class="text-para" style="margin-top: var(--space-4); max-width: 52ch;">Yooz software supports supplier-invoice capture, coding, matching, approval workflows, payment, and accounting export around the financial system your team already uses.</p>
+        <p class="text-para" style="margin-top: var(--space-3); max-width: 52ch;">Pricing is based on document volume with unlimited users. Final commercial scope can reflect integrations, services, configuration, activated capabilities, and add-ons.</p>
+        <p class="text-para" style="margin-top: var(--space-3); max-width: 52ch;">Choose an available time to see how Yooz could fit your financial system and approval process.</p>
+        <!--
+          media.heroImagePath is unset, so no hero image slot is rendered at
+          all (not hidden-and-empty) — the two content columns simply take
+          the width. Revisit layout once a real, approved hero image and
+          its intended placement alongside the booking column are supplied.
+        -->
+      </div>
+
+      <div class="box-grey10 box-grey10--md" id="booking" aria-labelledby="booking-heading">
+        <h2 id="booking-heading" class="text-h4">Book a 20-minute demo</h2>
+        <p class="text-para" id="booking-microcopy">Choose an available time to request a personalized Yooz demonstration.</p>
+        <p class="booking-widget__status" id="scheduler-status" role="status" aria-live="polite"></p>
+
+        <div class="booking-widget__scheduler" id="scheduler-container" hidden></div>
+
+        <div class="booking-widget__fallback" id="fallback-form-wrap">
+          <!--
+            No fallbackForm.submissionEndpoint or HubSpot portalId/formId is
+            configured yet, so this form is not wired to a live destination.
+            It stays visible and fillable (never fabricated as "submitted
+            successfully") until one is supplied — see #fallback-form submit
+            handler below.
+          -->
+          <h3 class="text-h5">Request a demo time</h3>
+          <p class="text-para">Tell us a little about your organization and a Yooz representative will contact you to coordinate a personalized demonstration.</p>
+          <form id="fallback-form" novalidate>
+            <div class="field">
+              <label for="ff-name">Full name</label>
+              <input id="ff-name" name="full_name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="ff-email">Work email</label>
+              <input id="ff-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="ff-company">Company</label>
+              <input id="ff-company" name="company" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="ff-erp">ERP or accounting system</label>
+              <input id="ff-erp" name="erp" type="text" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="ff-volume">Monthly supplier invoice volume</label>
+              <select id="ff-volume" name="invoice_volume">
+                <option value="">Select a range</option>
+                <option value="under_250">Under 250</option>
+                <option value="250_500">250–500</option>
+                <option value="500_2000">500–2,000</option>
+                <option value="2000_10000">2,000–10,000</option>
+                <option value="10000_plus">10,000+</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" type="submit" data-yooz-event="fallback_form_submit_click">Request a demo time</button>
+            <p class="field-hint" id="fallback-form-status" role="status" aria-live="polite"></p>
+            <p class="field-hint">We use this information to schedule and prepare your demonstration. Your information will be handled in accordance with the <span id="privacy-policy-text">Yooz Privacy Policy</span>.</p>
+          </form>
         </div>
       </div>
-      <figure class="hero__image z-frame z-frame--hero" role="img" aria-label="Graded cutout product photography, subject facing inward, Z anchored bottom-left">
-        <div class="z-shape-wrap"><div class="z-shape"></div></div>
-        <figcaption class="z-frame__caption text-tagline">HERO — graded cutout, subject facing inward, Z anchored bottom-left</figcaption>
-      </figure>
+
     </div>
   </section>
 
-  <!-- 2. Short proof strip — Pattern Pink single-strip callout -->
+  <!-- 2. Text-first proof strip -->
   <section class="proof pattern-pink" aria-label="Customer proof">
     <div class="container proof__row">
-      <div class="proof__logos" aria-label="Customer logos">
-        <div class="proof__logo">{{CUSTOMER_LOGO_1}}</div>
-        <div class="proof__logo">{{CUSTOMER_LOGO_2}}</div>
-        <div class="proof__logo">{{CUSTOMER_LOGO_3}}</div>
-        <div class="proof__logo">{{CUSTOMER_LOGO_4}}</div>
-        <div class="proof__logo">{{CUSTOMER_LOGO_5}}</div>
-        <div class="proof__logo">{{CUSTOMER_LOGO_6}}</div>
-      </div>
-      <div class="proof__g2">
-        <div class="proof__g2-badge">G2<br>badge</div>
-        <p class="text-para-sm-bold">{{G2_RATING}} / 5 on G2<br><span class="text-tagline" style="color:var(--grey-90); font-weight:400;">from {{G2_REVIEW_COUNT}} reviews</span></p>
+      <p class="text-para-sm-bold">Connects with 250+ ERP and financial systems · 600,000+ users</p>
+      <ul class="proof__reviews" id="proof-review-tiles">
+        <li id="proof-g2" hidden></li>
+        <li id="proof-capterra" hidden></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. What the visitor will see in the demo -->
+  <section class="demo-preview" aria-labelledby="demo-preview-heading">
+    <div class="container demo-preview__box">
+      <h2 id="demo-preview-heading" class="text-h2">What You'll See in the Demo</h2>
+      <p class="text-para">This is a product demonstration, not a category presentation. A Yooz specialist can walk through capture, coding, matching, approval workflows, exception handling, and ERP export using a workflow relevant to your organization. The exact demonstration scope will depend on your ERP and requirements.</p>
+      <ul class="demo-preview__list">
+        <li class="text-list-item">How Yooz handles invoice formats representative of your document mix</li>
+        <li class="text-list-item">How approval workflows can be configured around your organization</li>
+        <li class="text-list-item">How approved invoice information and supporting documents can be exchanged with your financial system</li>
+      </ul>
+      <p class="text-para">Bring the invoice scenario or process exception you most want to discuss. That will make the demonstration more useful.</p>
+
+      <div class="demo-media" id="demo-media" hidden>
+        <div class="demo-media__video" id="demo-video-wrap" hidden>
+          <button type="button" class="demo-media__play" id="demo-video-trigger" aria-label="Play a short Yooz product preview video">
+            <img id="demo-video-poster" alt="" hidden>
+            <span class="icon" aria-hidden="true">play_circle</span>
+          </button>
+        </div>
+        <div class="demo-media__stills" id="demo-stills" hidden></div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Booking calendar -->
-  <section class="booking pattern-bg" id="book-a-demo" aria-labelledby="booking-heading">
-    <div class="container booking__box">
-      <h2 id="booking-heading" class="text-h2">Book a demo</h2>
-      <p class="text-para" style="margin-top: var(--space-4);">Pick a time that works — no forms, no waiting for a callback.</p>
+  <!-- 4. Yooz pricing -->
+  <section class="pricing pattern-bg" aria-labelledby="pricing-heading">
+    <div class="container">
+      <h2 id="pricing-heading" class="text-h2">Yooz Pricing, in Plain Terms</h2>
+      <p class="text-para">Yooz provides a free-trial path and subscription pricing based on document volume.</p>
 
-      <figure class="scheduler-embed" role="img" aria-label="Placeholder for the live scheduling calendar embed">
-        <span class="icon" aria-hidden="true">calendar_month</span>
-        <figcaption class="text-tagline">SCHEDULER EMBED — 3-column week view, 30-min slots</figcaption>
-      </figure>
+      <div class="pricing__cards">
+        <div class="box-grey10 box-grey10--sm">
+          <h3 class="text-h4">Free Trial</h3>
+          <p class="text-para">A 15-day free trial in a production environment is currently advertised. Available functionality depends on the trial configuration.</p>
+        </div>
+        <div class="box-grey10 box-grey10--sm">
+          <h3 class="text-h4">Gold Edition</h3>
+          <p class="text-para">Gold Edition uses document-volume subscription pricing with unlimited users. Final commercial scope can reflect your ERP connection, organizations or locations, activated add-ons, implementation services, workflow complexity, purchasing requirements, and payment capabilities.</p>
+        </div>
+      </div>
 
-      <details class="booking__fallback">
-        <summary data-yooz-event="booking_fallback_toggle">Calendar not loading? Book by form instead</summary>
-        <form data-yooz-event="booking_fallback_form_submit">
-          <div class="field">
-            <label for="fb-email">Work email</label>
-            <input id="fb-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="fb-first">First name</label>
-            <input id="fb-first" name="first_name" type="text" autocomplete="given-name" required>
-          </div>
-          <div class="field">
-            <label for="fb-last">Last name</label>
-            <input id="fb-last" name="last_name" type="text" autocomplete="family-name" required>
-          </div>
-          <div class="field">
-            <label for="fb-company">Company</label>
-            <input id="fb-company" name="company" type="text" autocomplete="organization" required>
-          </div>
-          <div class="field">
-            <label for="fb-erp">ERP or monthly invoice volume</label>
-            <input id="fb-erp" name="erp_or_volume" type="text">
-          </div>
-          <button class="btn btn-primary" type="submit" data-yooz-event="booking_fallback_form_submit_click">Book a demo</button>
-        </form>
-      </details>
+      <p class="text-para">Yooz does not present one universal per-invoice rate on this page because commercial scope depends on document volume and the selected configuration. Prospects can ask to begin the conversation with pricing.</p>
+
+      <div class="pricing__cta-row">
+        <a class="btn btn-secondary" id="pricing-cta" href="#booking" data-yooz-event="pricing_ask_about_pricing_click">Ask About Pricing</a>
+      </div>
     </div>
   </section>
 
-  <!-- 4. FAQ -->
+  <!-- 5. Yooz reviews -->
+  <section class="reviews" aria-labelledby="reviews-heading">
+    <div class="container reviews__box">
+      <h2 id="reviews-heading" class="text-h2">Yooz Reviews: What Customers Say</h2>
+      <p class="text-para">Reviewers discuss invoice capture, reductions in manual entry, approval workflows, ease of use, ERP connectivity, configuration, and reporting.</p>
+      <p class="text-para">Some reviewers describe an initial configuration or tuning period while settings are aligned with their documents and workflows. Reporting and dashboard flexibility is another topic prospective customers may wish to assess during evaluation.</p>
+      <p class="text-para">Ask about these points during the demonstration and test representative document and workflow scenarios during evaluation.</p>
+
+      <ul class="reviews__platforms" id="review-platform-tiles">
+        <li id="platform-g2" hidden></li>
+        <li id="platform-capterra" hidden></li>
+        <li id="platform-trustradius" hidden></li>
+        <li id="platform-gartner" hidden></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. Already a Yooz customer? -->
+  <section class="existing-customer pattern-bg" aria-labelledby="existing-customer-heading" id="existing-customer-section" hidden>
+    <div class="container">
+      <h2 id="existing-customer-heading" class="text-h3">Already a Yooz Customer?</h2>
+      <p class="text-para">Looking for your existing Yooz service or support resources? Use the links below.</p>
+      <ul class="existing-customer__links">
+        <li><a id="link-login" href="#" data-yooz-event="existing_customer_login_click" hidden>Log in</a></li>
+        <li><a id="link-support" href="#" data-yooz-event="existing_customer_support_click" hidden>Support</a></li>
+        <li><a id="link-help" href="#" data-yooz-event="existing_customer_help_click" hidden>Help Center</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7. FAQ -->
   <section class="faq" aria-labelledby="faq-heading">
     <div class="container faq__box">
       <h2 id="faq-heading" class="text-h2">Frequently asked questions</h2>
 
       <details class="faq__item">
-        <summary>Which ERPs and financial systems does Yooz connect to?<span class="icon" aria-hidden="true">expand_more</span></summary>
-        <p class="text-para">Yooz exports to more than 250 financial systems, with multi-channel capture across email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API.</p>
+        <summary>How Much Does Yooz Cost?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para">Yooz uses subscription pricing based on document volume with unlimited users. Final commercial scope can also reflect integrations, services, configuration, activated capabilities, and add-ons. A 15-day free trial in a production environment is currently advertised, with available functionality depending on the trial configuration. Ask about pricing when you book and the team can discuss the scope relevant to your organization.</p>
       </details>
 
       <details class="faq__item">
-        <summary>How long does implementation take?<span class="icon" aria-hidden="true">expand_more</span></summary>
-        <p class="text-para">{{IMPLEMENTATION_TIMELINE_BENCHMARK}} — your account team will confirm an exact timeline against your ERP and approval structure during the demo.</p>
+        <summary>Does Yooz Integrate with My ERP?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para">Yooz provides connection options for more than 250 ERP and financial systems. Current Yooz materials include environments such as Sage, Sage Intacct, NetSuite, Microsoft Dynamics, QuickBooks, Acumatica, CDK, Karmak, and Tekion. Available data exchanges, document access, matching behavior, payment feedback, and other capabilities depend on the connected system and configuration. Name your financial system when you book so the team can address the relevant connection approach.</p>
       </details>
 
       <details class="faq__item">
-        <summary>What does Yooz cost?<span class="icon" aria-hidden="true">expand_more</span></summary>
-        <p class="text-para">Pricing depends on invoice volume and modules. See <a href="https://getyooz.com/pricing" data-yooz-event="faq_pricing_link_click">current pricing</a>, or bring your numbers to the demo for an exact quote.</p>
+        <summary>What Do Yooz Reviews Say?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para"><span id="faq3-dynamic-prefix"></span>Reviewers discuss invoice capture, manual-entry reduction, approval workflows, ease of use, ERP connectivity, configuration, and reporting. Some reviewers describe an initial configuration or tuning period while settings are aligned with their documents and workflows. Use the current review-platform links on this page to examine the latest ratings and feedback.</p>
       </details>
 
       <details class="faq__item">
-        <summary>Is Yooz secure and compliant?<span class="icon" aria-hidden="true">expand_more</span></summary>
-        <p class="text-para">{{SOC2_CERTIFICATION_STATUS}} {{GDPR_COMPLIANCE_STATEMENT}}</p>
+        <summary>How Long Does Implementation Take?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para">Yooz uses different implementation paths depending on project scope. Eligible standard deployments can follow the fixed-scope ReadyToYooz Starter framework. More complex projects use an Extended framework covering discovery, design, integration, configuration, validation, training, user acceptance testing, go-live coordination, and hypercare. Timing depends on ERP access, data complexity, workflow requirements, optional capabilities, testing, and stakeholder availability. Your project plan is confirmed after those requirements are reviewed.</p>
       </details>
 
       <details class="faq__item">
-        <summary>Can I see Yooz before I buy?<span class="icon" aria-hidden="true">expand_more</span></summary>
-        <p class="text-para">Yes — <a href="#book-a-demo" data-yooz-event="faq_book_demo_link_click">book a live demo</a> with our team, scheduled directly from this page.</p>
+        <summary>Is Yooz Secure and Compliant?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para">Yooz production-platform controls are audited under SOC 1 Type 2. The opinion letter is available through Yooz's security-document process, and the full report may be provided subject to confidentiality requirements. Where Yooz processes customer data that includes personal data, Yooz complies with applicable personal-data protection obligations, including the GDPR.</p>
+      </details>
+
+      <details class="faq__item" id="faq-competitor" hidden>
+        <summary>How Does Yooz Compare with Other AP Automation Providers?<span class="icon" aria-hidden="true">expand_more</span></summary>
+        <p class="text-para">AP automation providers emphasize different combinations of workflow, ERP connectivity, supplier onboarding, payments, reporting, and controls. Visit the <a id="faq-competitor-link" href="#">dedicated comparison page</a> for a more detailed evaluation.</p>
       </details>
 
     </div>
   </section>
 
+  <!-- 8. Final booking CTA -->
+  <section class="final-cta pattern-bg" aria-labelledby="final-cta-heading">
+    <div class="container">
+      <div class="box-rich-blue final-cta__box">
+        <h2 id="final-cta-heading" class="text-h2">Ready to See Yooz in Action?</h2>
+        <p class="text-para">Choose a time for a personalized demonstration, or use the fallback form if no suitable time is available.</p>
+        <div class="final-cta__ctas">
+          <a class="btn btn-primary" href="#booking" id="final-cta-primary" data-yooz-event="final_cta_book_demo_click">Book a 20-Minute Demo</a>
+          <a class="btn btn-secondary" href="#booking" id="final-cta-secondary" data-yooz-event="final_cta_ask_pricing_click">Ask About Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
+<!-- 9. Legal footer -->
 <footer class="site-footer">
   <div class="container site-footer__row">
     <div>
       <a class="site-header__wordmark" href="https://getyooz.com" style="color: var(--grey-10);">Yooz</a>
-      <p class="site-footer__address">{{COMPANY_ADDRESS}}</p>
+      <p class="site-footer__address" id="footer-address" hidden></p>
+      <!--
+        company.publicAddressConfirmed is false, so no address renders here.
+        TODO(legal/ops): confirm the correct current public footer address,
+        then set company.publicAddress + publicAddressConfirmed: true above.
+      -->
     </div>
     <div class="site-footer__links">
       <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
@@ -322,6 +545,248 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  "use strict";
+  var cfg = landingPageConfig;
+
+  function isCompleteReviewPlatform(p, requireVerifiedDate) {
+    if (!p || !p.enabled || !p.rating || !p.reviewCount || !p.profileUrl) return false;
+    if (requireVerifiedDate && !p.verifiedDate) return false;
+    return true;
+  }
+
+  function makeReviewLink(url, label) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.className = 'btn btn-tertiary';
+    a.setAttribute('aria-label', label + ' (opens in a new tab)');
+    return a;
+  }
+
+  // ---- Proof strip review tiles (strict: rating + count + verified date + URL) ----
+  function renderProofTile(li, platformName, p) {
+    if (!isCompleteReviewPlatform(p, true)) return;
+    li.textContent = '';
+    var text = document.createElement('span');
+    text.className = 'text-para-sm-bold';
+    text.textContent = platformName + ': ' + p.rating + '/5 (' + p.reviewCount + ' reviews)';
+    var link = makeReviewLink(p.profileUrl, 'View Yooz reviews on ' + platformName);
+    link.textContent = 'View on ' + platformName;
+    li.appendChild(text);
+    li.appendChild(link);
+    li.hidden = false;
+  }
+  renderProofTile(document.getElementById('proof-g2'), 'G2', cfg.reviews.g2);
+  renderProofTile(document.getElementById('proof-capterra'), 'Capterra', cfg.reviews.capterra);
+
+  // ---- Reviews section platform tiles ----
+  function renderRatedTile(li, platformName, p, requireVerifiedDate) {
+    if (isCompleteReviewPlatform(p, requireVerifiedDate)) {
+      li.textContent = '';
+      var text = document.createElement('span');
+      text.className = 'text-para-sm-bold';
+      text.textContent = platformName + ': ' + p.rating + '/5 (' + p.reviewCount + ' reviews)';
+      var link = makeReviewLink(p.profileUrl, 'View Yooz reviews on ' + platformName);
+      link.innerHTML = 'View on ' + platformName + ' <span class="icon btn__arrow" aria-hidden="true">arrow_forward</span>';
+      li.appendChild(text);
+      li.appendChild(link);
+      li.hidden = false;
+    } else if (p && p.enabled && p.profileUrl) {
+      li.textContent = '';
+      var neutral = makeReviewLink(p.profileUrl, 'View the Yooz listing on ' + platformName);
+      neutral.textContent = 'View the Yooz listing on ' + platformName;
+      li.appendChild(neutral);
+      li.hidden = false;
+    }
+  }
+  renderRatedTile(document.getElementById('platform-g2'), 'G2', cfg.reviews.g2, true);
+  renderRatedTile(document.getElementById('platform-capterra'), 'Capterra', cfg.reviews.capterra, true);
+  renderRatedTile(document.getElementById('platform-trustradius'), 'TrustRadius', cfg.reviews.trustRadius, false);
+  renderRatedTile(document.getElementById('platform-gartner'), 'Gartner Peer Insights', cfg.reviews.gartnerPeerInsights, false);
+
+  // ---- FAQ 3 dynamic review prefix ----
+  (function wireFaqReviewPrefix() {
+    var parts = [];
+    if (isCompleteReviewPlatform(cfg.reviews.g2, true)) {
+      parts.push('G2: ' + cfg.reviews.g2.rating + '/5 (' + cfg.reviews.g2.reviewCount + ' reviews)');
+    }
+    if (isCompleteReviewPlatform(cfg.reviews.capterra, true)) {
+      parts.push('Capterra: ' + cfg.reviews.capterra.rating + '/5 (' + cfg.reviews.capterra.reviewCount + ' reviews)');
+    }
+    var el = document.getElementById('faq3-dynamic-prefix');
+    if (parts.length && el) { el.textContent = parts.join(' · ') + '. '; }
+  })();
+
+  // ---- Optional competitor FAQ ----
+  if (cfg.competitorComparison.enabled && cfg.competitorComparison.url) {
+    var faqCompetitor = document.getElementById('faq-competitor');
+    var faqCompetitorLink = document.getElementById('faq-competitor-link');
+    faqCompetitorLink.href = cfg.competitorComparison.url;
+    faqCompetitor.hidden = false;
+  }
+
+  // ---- Pricing-conversation routing (pricing section + final CTA secondary) ----
+  function wirePricingCta(link) {
+    if (cfg.booking.supportsPricingConversationTag && cfg.booking.pricingConversationUrl) {
+      link.textContent = 'Talk Pricing Instead';
+      link.href = cfg.booking.pricingConversationUrl;
+    }
+  }
+  wirePricingCta(document.getElementById('pricing-cta'));
+  wirePricingCta(document.getElementById('final-cta-secondary'));
+
+  // ---- Existing-customer destinations ----
+  (function wireCustomerDestinations() {
+    var dest = cfg.customerDestinations;
+    var links = [
+      { id: 'link-login', url: dest.loginUrl },
+      { id: 'link-support', url: dest.supportUrl },
+      { id: 'link-help', url: dest.helpCenterUrl }
+    ];
+    var anyVisible = false;
+    links.forEach(function (item) {
+      var el = document.getElementById(item.id);
+      if (item.url) {
+        el.href = item.url;
+        el.hidden = false;
+        anyVisible = true;
+      }
+    });
+    var navLogin = document.getElementById('nav-login-link');
+    if (dest.loginUrl) {
+      navLogin.href = dest.loginUrl;
+      navLogin.hidden = false;
+    }
+    if (anyVisible) {
+      document.getElementById('existing-customer-section').hidden = false;
+    }
+  })();
+
+  // ---- Demo preview media (Section: What You'll See in the Demo) ----
+  (function wireDemoMedia() {
+    var media = cfg.media;
+    var container = document.getElementById('demo-media');
+
+    if (media.demoVideoPath) {
+      var videoWrap = document.getElementById('demo-video-wrap');
+      var trigger = document.getElementById('demo-video-trigger');
+      var poster = document.getElementById('demo-video-poster');
+      if (media.demoVideoPosterPath) {
+        poster.src = media.demoVideoPosterPath;
+        poster.hidden = false;
+      }
+      trigger.addEventListener('click', function () {
+        var video = document.createElement('video');
+        video.src = media.demoVideoPath;
+        video.controls = true;
+        video.setAttribute('playsinline', '');
+        videoWrap.textContent = '';
+        videoWrap.appendChild(video);
+        video.play();
+      });
+      videoWrap.hidden = false;
+      container.hidden = false;
+    } else if (media.demoStillPaths && media.demoStillPaths.length) {
+      var stills = document.getElementById('demo-stills');
+      media.demoStillPaths.slice(0, 3).forEach(function (path) {
+        var img = document.createElement('img');
+        img.src = path;
+        img.loading = 'lazy';
+        img.alt = 'Yooz product screenshot';
+        stills.appendChild(img);
+      });
+      stills.hidden = false;
+      container.hidden = false;
+    }
+  })();
+
+  // ---- Footer address ----
+  if (cfg.company.publicAddressConfirmed && cfg.company.publicAddress) {
+    var addr = document.getElementById('footer-address');
+    addr.textContent = cfg.company.publicAddress;
+    addr.hidden = false;
+  }
+
+  // ---- Fallback form privacy-policy link ----
+  if (cfg.fallbackForm.privacyPolicyUrl) {
+    var privacyText = document.getElementById('privacy-policy-text');
+    var privacyLink = document.createElement('a');
+    privacyLink.href = cfg.fallbackForm.privacyPolicyUrl;
+    privacyLink.textContent = 'Yooz Privacy Policy';
+    privacyText.replaceWith(privacyLink);
+  }
+
+  // ---- Fallback form submission ----
+  // No functioning submissionEndpoint or HubSpot portalId/formId is
+  // configured yet. The form stays usable and fillable; submitting it
+  // does not claim success, since nothing is actually received today.
+  // Wire a real destination in landingPageConfig.fallbackForm before
+  // this page takes paid traffic.
+  document.getElementById('fallback-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = document.getElementById('fallback-form-status');
+    if (cfg.fallbackForm.submissionEndpoint) {
+      // A real endpoint is configured — submit and reflect the outcome.
+      fetch(cfg.fallbackForm.submissionEndpoint, {
+        method: 'POST',
+        body: new FormData(e.target)
+      }).then(function (res) {
+        status.textContent = res.ok
+          ? 'Thanks. A Yooz representative will be in touch to coordinate your demonstration.'
+          : 'Something went wrong submitting this form. Please try again.';
+      }).catch(function () {
+        status.textContent = 'Something went wrong submitting this form. Please try again.';
+      });
+    } else {
+      console.warn('[landingPageConfig] fallbackForm has no submissionEndpoint or HubSpot portalId/formId configured — this submission was not sent anywhere.');
+    }
+  });
+
+  // ---- Scheduler (async, progressive enhancement over the fallback form) ----
+  function initScheduler() {
+    var booking = cfg.booking;
+    var status = document.getElementById('scheduler-status');
+    var container = document.getElementById('scheduler-container');
+    var fallbackWrap = document.getElementById('fallback-form-wrap');
+    var microcopy = document.getElementById('booking-microcopy');
+
+    if (!booking.schedulerEnabled || !booking.schedulerEmbedUrl || !booking.schedulerProvider) {
+      return; // fallback form (already visible) remains the primary path
+    }
+
+    if (booking.immediateCalendarInvite) {
+      microcopy.textContent = 'Pick a slot and receive your calendar confirmation.';
+    }
+
+    status.textContent = 'Loading scheduler…';
+    container.hidden = false;
+
+    var iframe = document.createElement('iframe');
+    iframe.title = 'Book a 20-minute Yooz demo';
+    iframe.loading = 'lazy';
+    iframe.addEventListener('load', function () {
+      status.textContent = '';
+      fallbackWrap.hidden = true;
+    });
+    iframe.addEventListener('error', function () {
+      status.textContent = "The scheduler couldn't be loaded. Use the form below to request a time.";
+      container.hidden = true;
+      fallbackWrap.hidden = false;
+    });
+    iframe.src = booking.schedulerEmbedUrl;
+    container.appendChild(iframe);
+  }
+  if (document.readyState === 'complete') {
+    initScheduler();
+  } else {
+    window.addEventListener('load', initScheduler);
+  }
+})();
+</script>
 
 </body>
 </html>
