@@ -1,202 +1,605 @@
-/* ============================================================
-   Yooz paid-search landing page system — shared design tokens
-   Source of truth: 00-FOUNDATION.md (Yooz Branding Guidelines,
-   Sept 2025). Import once per page:
-     <link rel="stylesheet" href="../_system/tokens.css">
+/*
+  Yooz paid-search landing page system — design tokens
+  Source: Yooz Branding Guidelines (Sept 2025), transcribed in 00-FOUNDATION.md.
+  Every later archetype page links this file rather than redefining tokens.
+  Fonts are NOT @import-ed here (blocks render) — load Noto Sans + Material
+  Symbols Rounded from each page's <head> with font-display: swap:
 
-   AUTHORING NOTE: archetype 01 (Brand) is the archetype the
-   system spec (00-FOUNDATION.md §6) assigns to originate this
-   file and its companion /mockups/_system/components.html
-   specimen sheet. Neither existed in this repo yet when
-   archetype 13 was built, so this file was authored now,
-   directly from §1/§2b of the foundation doc, to unblock 13.
-   Treat it as a first draft: when 01 is built for real, reconcile
-   rather than fork — every later page should keep importing this
-   single file. components.html (the visual specimen sheet) is
-   still outstanding; see NOTES.md in each archetype-13 page.
-   ============================================================ */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,0,0&display=swap" rel="stylesheet">
+*/
 
-:root{
+:root {
   /* ---- Colour: primary ---- */
-  --rich-blue:#14354E;   /* Pantone 534c */
-  --pink:#E0185E;        /* Pantone 205c */
+  --rich-blue: #14354E;   /* Pantone 534c — primary type, dark backgrounds */
+  --pink:      #E0185E;   /* Pantone 205c — accent, CTA fills, dot patterns */
 
-  /* ---- Colour: secondary (gradients only) ---- */
-  --teal:#00BFA5;
-  --blue:#006AFF;
+  /* ---- Colour: secondary — rare, primarily in gradients ---- */
+  --teal: #00BFA5;
+  --blue: #006AFF;
 
-  /* ---- Colour: neutrals (backgrounds/strokes only) ---- */
-  --grey-100:#3C4857;
-  --grey-90:#46515E;
-  --grey-80:#616C7A;
-  --grey-70:#A0A7AF;
-  --grey-60:#CCCDD2;
-  --grey-50:#DEDEE0;
-  --grey-40:#E6E6E6;
-  --grey-30:#EAEAEA;
-  --grey-20:#F5F5F5;
-  --grey-10:#FEFEFE;
+  /* ---- Colour: neutrals — backgrounds and strokes only ---- */
+  --grey-100: #3C4857;
+  --grey-90:  #46515E;
+  --grey-80:  #616C7A;
+  --grey-70:  #A0A7AF;
+  --grey-60:  #CCCDD2;
+  --grey-50:  #DEDEE0;
+  --grey-40:  #E6E6E6;
+  --grey-30:  #EAEAEA;
+  --grey-20:  #F5F5F5;
+  --grey-10:  #FEFEFE;
 
-  /* ---- Type family ---- */
-  --font:'Noto Sans', -apple-system, 'Segoe UI', Arial, sans-serif;
+  /* ---- Typeface ---- */
+  --font-sans: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-icon: 'Material Symbols Rounded';
 
-  /* Fluid scale, 390px -> 1440px, holding -2% tracking on display/
-     headings and the brand line-heights. Formula: clamp(mobileSize,
-     intercept + slope*vw, desktopSize) solved so the two named
-     breakpoints land exactly on the brand's mobile-minimum and
-     desktop spec sizes. See NOTES.md for the two archetype pages
-     that import this file for the accepted departures. */
-  --display: clamp(2.5rem, 0.643rem + 7.62vw, 7.5rem);   /* 40 -> 120px */
-  --h1:      clamp(2.5rem, 1.479rem + 4.19vw, 5.25rem);  /* 40 -> 84px  */
-  --h2:      clamp(2rem,   1.257rem + 3.05vw, 4rem);     /* 32 -> 64px  */
-  --h3:      clamp(1.625rem, 1.114rem + 2.10vw, 3rem);   /* 26 -> 48px  */
-  --h4:      clamp(1.375rem, 1.143rem + 0.95vw, 2rem);   /* 22 -> 32px  */
-  --h5:      clamp(1.1875rem, 1.071rem + 0.48vw, 1.5rem);/* 19 -> 24px  */
-  --p-lg:    clamp(1.125rem, 1.032rem + 0.38vw, 1.375rem);/* 18 -> 22px */
-  --p:       17px;
-  --list:    16px;
-  --p-sm-bold: 16px;
-  --tagline: 14px;
-  --cta:     17px;
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-semibold: 600;
 
-  --tracking-tight: -0.02em;
-  --tracking-body:  -0.01em;
+  /* ---- Spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
 
-  /* ---- Layout ---- */
-  --max-width-content: 1200px;
-  --max-width-reading: 740px;  /* keeps body copy under ~80ch at 17px */
-  --radius-box:  4px;          /* the Grey10 bounding box, brand's structural device */
+  /* ---- Vertical rhythm — from 00-FOUNDATION.md "Layout system: container,
+     grid and spacing". section-y-lg has no matching step in the scale
+     above (it sits past --space-9), so it's a literal value. ---- */
+  --section-y: var(--space-9);      /* between major sections */
+  --section-y-lg: 128px;            /* around hero and final CTA */
+
+  /* ---- Layout: container. Base padding is unchanged (--container-pad
+     already equalled --gutter's 24px); --gutter-md/--gutter-lg are new,
+     from 00-FOUNDATION.md, and give the container more inset at tablet/
+     desktop widths instead of a flat 24px at every size. ---- */
+  --container-max: 1200px;
+  --gutter: var(--space-5);         /* 24px — 390px viewport */
+  --gutter-md: 40px;                /* 768px+ */
+  --gutter-lg: 64px;                /* 1200px+ */
+  --container-pad: var(--gutter);
+
+  /* ---- Layout: grid — 12/8/4-column grid per 00-FOUNDATION.md; page
+     skeletons stay page-local (Foundation §6), this is just the shared
+     gap value so they agree. ---- */
+  --grid-gap: var(--space-5);
+
+  /* ---- Border ---- */
+  --border-hairline: 1px solid var(--grey-50);
+
+  /* ---- Radii ---- */
   --radius-pill: 999px;
-  --space-section: clamp(48px, 6vw, 96px);
+  --radius-box:  20px;
+  --radius-sm:   8px;
 
-  /* ---- Focus ---- */
+  /* ---- Elevation — used sparingly; the brand's structural device is the
+     Grey 10 box on a patterned ground, not card shadows. Reserve this for
+     the one or two elements per page that are genuinely floating above the
+     page (e.g. the scheduler embed). ---- */
+  --shadow-float: 0 12px 32px rgba(20, 53, 78, 0.14);
+
+  /* ---- Motion ---- */
+  --transition-fast: 150ms ease;
+
+  /* ---- Focus ring — accessibility floor ---- */
   --focus-ring: 2px solid var(--pink);
-  --focus-offset: 2px;
+  --focus-ring-offset: 2px;
 }
 
-*,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  *,*::before,*::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition-fast: 0ms; }
 }
 
-body{
-  margin:0;
-  font-family:var(--font);
-  font-weight:400;
-  font-size:var(--p);
-  line-height:1.5;
-  letter-spacing:var(--tracking-body);
-  color:var(--rich-blue);
-  background:var(--grey-10);
-  -webkit-font-smoothing:antialiased;
+/* =========================================================================
+   Reset — minimal, not a full normalize
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
-h1,h2,h3,h4,h5{ font-family:var(--font); font-weight:300; letter-spacing:var(--tracking-tight); margin:0; color:var(--rich-blue); text-wrap:balance; }
-h1{ font-size:var(--h1); line-height:1.1; }
-h2{ font-size:var(--h2); line-height:1.05; }
-h3{ font-size:var(--h3); line-height:1.1; }
-h4{ font-size:var(--h4); line-height:1.2; }
-h5{ font-size:var(--h5); line-height:1.2; }
-p{ margin:0; }
-.p-large{ font-size:var(--p-lg); font-weight:300; line-height:1.5; }
-ul,ol{ margin:0; padding:0; list-style:none; }
-img{ max-width:100%; display:block; }
-a{ color:inherit; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-regular);
+  color: var(--rich-blue);
+  background: var(--grey-20);
+}
 
-:focus-visible{ outline:var(--focus-ring); outline-offset:var(--focus-offset); }
+img, svg { display: block; max-width: 100%; }
 
-.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-.skip-link{ position:absolute; left:-999px; top:0; background:var(--rich-blue); color:var(--grey-10); padding:12px 20px; z-index:1000; border-radius:0 0 8px 0; text-decoration:none; font-weight:600; }
-.skip-link:focus{ left:0; }
+a { color: inherit; text-decoration: none; }
 
-.container{ max-width:var(--max-width-content); margin-inline:auto; padding-inline:24px; }
-@media (max-width:480px){ .container{ padding-inline:20px; } }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
 
-/* Flex/grid items default to a content-based automatic minimum size, which
-   causes exactly the kind of narrow-viewport horizontal blowout QS
-   requirement 5 forbids ("no horizontal scroll at 390px"). Every page
-   importing this file gets a safe floor on its own flex/grid item
-   patterns; pages should still verify at 390px rather than rely on this
-   alone. */
-.site-header .container > *,
-.newsletter-card > *,
-.form-inline > *,
-.grid-2 > *{ min-width:0; }
+ul { margin: 0; padding: 0; }
 
-/* ---- Eyebrow (brand §2b: Pink, SemiBold, small, sentence case) ---- */
-.eyebrow{ display:inline-block; color:var(--pink); font-weight:600; font-size:var(--tagline); letter-spacing:var(--tracking-tight); margin-bottom:12px; }
-.eyebrow-pill{ display:inline-flex; align-items:center; gap:8px; background:var(--grey-10); border-radius:var(--radius-pill); padding:6px 14px 6px 6px; font-size:var(--tagline); font-weight:600; color:var(--rich-blue); }
-.eyebrow-pill .num{ display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--pink); color:var(--grey-10); font-size:12px; flex:none; }
+/* Visible keyboard focus everywhere — brand accessibility floor */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+}
 
-/* ---- Two-tone headline (brand §2b) ---- */
-.tone-blue{ color:var(--rich-blue); font-weight:300; }
-.tone-pink{ color:var(--pink); font-weight:600; }
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
-/* ---- Buttons (brand §2b) ---- */
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font); font-weight:600; font-size:var(--cta); letter-spacing:0; text-decoration:none; cursor:pointer; border-radius:var(--radius-pill); padding:14px 28px; min-height:44px; border:1px solid transparent; line-height:1.2; }
-.btn-primary{ background:var(--pink); color:var(--grey-10); }
-.btn-primary:hover{ background:#c11552; }
-.btn-secondary{ background:var(--grey-10); color:var(--pink); border-color:var(--pink); }
-.btn-secondary:hover{ background:var(--grey-20); }
-.btn-tertiary{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; padding:4px 0; color:var(--pink); font-weight:600; font-size:var(--cta); text-decoration:none; cursor:pointer; }
-.btn-tertiary .arrow{ display:inline-block; transition:transform .15s ease; }
-.btn-tertiary:hover .arrow{ transform:translateX(3px); }
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
 
-/* ---- Grey10 bounding box — the brand's structural device ---- */
-.box{ background:var(--grey-10); border-radius:var(--radius-box); }
-.box-sm{ padding:24px; }
-.box-md{ padding:40px; }
-.box-lg{ padding:64px; }
+@media (min-width: 768px) {
+  .container { padding-inline: var(--gutter-md); }
+}
 
-/* ---- Dot patterns (brand §1). "Spacing" read as dot pitch; exact
-   pitch is a placeholder pending the real brand asset — flagged in
-   each page's NOTES.md. ---- */
-.pattern-bg{ background-color:var(--grey-20); background-image:radial-gradient(rgba(224,24,94,.4) 2px, transparent 2.5px); background-size:48px 48px; }
-.pattern-pink{ background-color:var(--grey-10); background-image:radial-gradient(var(--pink) 2px, transparent 2.5px); background-size:32px 32px; }
-.pattern-blue{ background-color:var(--rich-blue); background-image:radial-gradient(var(--grey-80) 2px, transparent 2.5px); background-size:48px 48px; }
+@media (min-width: 1200px) {
+  .container { padding-inline: var(--gutter-lg); }
+}
 
-/* ---- Image / graded-photography placeholder (brand §1, imagery policy) ---- */
-.img-placeholder{ position:relative; border-radius:var(--radius-box); overflow:hidden; background:linear-gradient(135deg, var(--rich-blue) 0%, var(--pink) 100%); aspect-ratio:16/10; display:flex; align-items:flex-end; }
-.img-placeholder .caption{ background:rgba(20,53,78,.72); color:var(--grey-10); font-size:var(--tagline); font-weight:300; padding:10px 14px; width:100%; }
+/* =========================================================================
+   Type scale
+   Fluid clamp() per Foundation §1: Display/H1 (and, proportionally, H2–H5)
+   do not fit a 390px viewport at their brand size, so each scales from a
+   reduced mobile minimum up to the exact brand size at 1440px+. Tracking
+   and line-height hold constant across the fluid range — only size moves.
+   Paragraph-tier sizes (22px and below) fit mobile as specified and are
+   NOT fluid-scaled.
+   ========================================================================= */
 
-/* ---- Link / concept cards ---- */
-.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-@media (max-width:640px){ .grid-2{ grid-template-columns:1fr; } }
-.link-card{ display:flex; flex-direction:column; gap:8px; padding:24px; border:1px solid var(--grey-40); border-radius:var(--radius-box); text-decoration:none; color:var(--rich-blue); background:var(--grey-10); }
-.link-card:hover{ border-color:var(--pink); }
-.link-card .card-eyebrow{ font-size:var(--tagline); color:var(--pink); font-weight:600; }
-.link-card h5{ margin:0; }
-.link-card p{ font-size:15px; color:var(--grey-90); line-height:1.5; }
+.text-display {
+  font-weight: var(--weight-light);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.5rem, calc(2.5rem + (100vw - 390px) * 0.4762), 7.5rem); /* 40px → 120px */
+}
 
-/* ---- Form (email-only, low-awareness archetypes) ---- */
-.form-inline{ display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; }
-.form-field{ display:flex; flex-direction:column; gap:6px; flex:1 1 240px; }
-.form-field label{ font-size:var(--p-sm-bold); font-weight:600; }
-.form-field input{ font-family:var(--font); font-size:var(--p); padding:12px 16px; border:1px solid var(--grey-60); border-radius:var(--radius-box); background:var(--grey-10); color:var(--rich-blue); min-height:44px; }
-.form-field input:focus-visible{ outline:var(--focus-ring); outline-offset:var(--focus-offset); }
-.form-note{ font-size:13px; color:var(--grey-90); margin-top:8px; }
+.text-h1 {
+  font-weight: var(--weight-light);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.375rem, calc(2.375rem + (100vw - 390px) * 0.2619), 5.25rem); /* 38px → 84px */
+}
 
-/* ---- Header / footer (brand transparency requirement) ---- */
-.site-header{ border-bottom:1px solid var(--grey-40); background:var(--grey-10); position:relative; z-index:10; }
-.site-header .container{ display:flex; align-items:center; justify-content:space-between; padding-block:18px; gap:16px; flex-wrap:wrap; }
-.wordmark{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:20px; color:var(--rich-blue); text-decoration:none; }
-.wordmark .mark{ width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg, var(--pink), var(--rich-blue) 70%); flex:none; }
-.site-nav{ display:flex; gap:28px; align-items:center; flex-wrap:wrap; }
-.site-nav a{ font-size:var(--p-sm-bold); font-weight:600; color:var(--rich-blue); text-decoration:none; }
-.site-nav a:hover{ color:var(--pink); }
+.text-h2 {
+  font-weight: var(--weight-light);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, calc(2rem + (100vw - 390px) * 0.1905), 4rem); /* 32px → 64px */
+}
 
-.site-footer{ background:var(--rich-blue); color:var(--grey-10); }
-.site-footer .container{ padding-block:40px; display:flex; flex-direction:column; gap:16px; }
-.site-footer a{ color:var(--grey-60); text-decoration:none; }
-.site-footer a:hover{ color:var(--grey-10); }
-.footer-links{ display:flex; gap:24px; flex-wrap:wrap; font-size:var(--tagline); }
-.footer-legal{ color:var(--grey-70); font-size:var(--tagline); }
+.text-h3 {
+  font-weight: var(--weight-light);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, calc(1.75rem + (100vw - 390px) * 0.1143), 3rem); /* 28px → 48px */
+}
 
-/* Icons: brand system is Material Symbols (Google Fonts), no mixed
-   icon sets. Not force-loaded here — pages with negligible icon use
-   (this system's guide archetype included) draw arrows/chevrons as
-   inline SVG or the unicode glyphs the brand's own tertiary-link
-   examples use, to keep weight down. Pages with real icon needs
-   should add the Material Symbols stylesheet link themselves. */
+.text-h4 {
+  font-weight: var(--weight-light);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, calc(1.5rem + (100vw - 390px) * 0.0381), 2rem); /* 24px → 32px */
+}
+
+.text-h5 {
+  font-weight: var(--weight-light);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.25rem, calc(1.25rem + (100vw - 390px) * 0.0190), 1.5rem); /* 20px → 24px */
+}
+
+.text-para-lg {
+  font-weight: var(--weight-light);
+  font-size: 22px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.text-para {
+  font-weight: var(--weight-regular);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* Departure from brand scale (flagged in NOTES.md): Light 300 below 24px is
+   a legibility risk. List items default to Regular here; use the --light
+   modifier only on Grey 10/20 grounds in hero-style contexts, never inside
+   dense data blocks (tables, spec grids, timelines). */
+.text-list-item {
+  font-weight: var(--weight-regular);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+.text-list-item--light { font-weight: var(--weight-light); }
+
+.text-para-sm-bold {
+  font-weight: var(--weight-semibold);
+  font-size: 16px;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+
+.text-tagline {
+  font-weight: var(--weight-light);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.text-cta {
+  font-weight: var(--weight-semibold);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* Two-tone headline — the brand's signature hero treatment. Split on a
+   clause boundary; the Pink span carries the part of the sentence that
+   matters. Use a single-tone H1 (omit the span, or override its color)
+   when the headline is a verbatim query echo that shouldn't be broken. */
+.text-h1 em, .text-h2 em, .text-h3 em {
+  font-style: normal;
+  color: var(--pink);
+}
+
+/* Eyebrow — Pink, SemiBold, small, sentence case. Never all-caps/tracked. */
+.eyebrow {
+  display: inline-block;
+  color: var(--pink);
+  font-weight: var(--weight-semibold);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin-bottom: var(--space-3);
+}
+
+/* In-page section eyebrow: numbered pill + label, per Foundation §2b */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.section-eyebrow__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding-inline: var(--space-3);
+  background: var(--grey-10);
+  color: var(--rich-blue);
+  border-radius: var(--radius-pill);
+  font-weight: var(--weight-semibold);
+  font-size: 14px;
+}
+.section-eyebrow__label {
+  color: var(--pink);
+  font-weight: var(--weight-semibold);
+  font-size: 14px;
+}
+
+/* =========================================================================
+   Dot patterns
+   The brand spec gives spacing as a percentage of the dot's own cell — a
+   design-tool convention, not a CSS unit. Translated here to background-size
+   tiles: a 3px-radius dot in a 8px cell scaled by that percentage (400% =
+   32px tile, 600% = 48px tile). Documented so a port to production can
+   re-derive the same ratio from a different dot size.
+   ========================================================================= */
+
+.pattern-bg {
+  background-color: var(--grey-20);
+  background-image: radial-gradient(circle at center, rgba(224, 24, 94, 0.4) 3px, transparent 3px);
+  background-size: 48px 48px; /* Pattern BG — Pink dots @ 40%, 600% spacing */
+}
+
+.pattern-pink {
+  background-color: var(--grey-10);
+  background-image: radial-gradient(circle at center, var(--pink) 3px, transparent 3px);
+  background-size: 32px 32px; /* Pattern Pink — Pink dots @ 100%, 400% spacing */
+}
+
+.pattern-blue {
+  background-color: var(--rich-blue);
+  background-image: radial-gradient(circle at center, var(--grey-80) 3px, transparent 3px);
+  background-size: 48px 48px; /* Pattern Blue — Grey 80 dots @ 100%, 600% spacing */
+}
+
+/* =========================================================================
+   The Z — signature device (stacked invoices)
+   Placeholder policy (Foundation §1, imagery): render correct Z geometry and
+   gradient, flat Rich Blue→Pink fill, no attempt at graded photography.
+   .z-shape is the geometry; .z-frame positions/anchors it and carries the
+   accessible label + visible caption.
+   ========================================================================= */
+
+.z-shape {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 22%, 32% 22%,
+    100% 78%, 100% 100%, 0% 100%, 0% 78%,
+    68% 78%, 0% 22%
+  );
+  background: linear-gradient(135deg, var(--rich-blue), var(--pink));
+  width: 100%;
+  height: 100%;
+}
+
+.z-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+/* Hero placement: anchored bottom-left, extruding beyond the frame,
+   facing inward (i.e. mirrored) toward the copy on the left. */
+.z-frame--hero .z-shape-wrap {
+  position: absolute;
+  left: 4%;
+  bottom: -6%;
+  width: 62%;
+  height: 70%;
+  transform: scaleX(-1);
+}
+
+/* Secondary placement: top-right, with a darker Rich Blue wash over the
+   image so a pink gradient map would read more strongly against it. */
+.z-frame--secondary .z-shape-wrap {
+  position: absolute;
+  right: -6%;
+  top: -8%;
+  width: 46%;
+  height: 52%;
+}
+.z-frame--secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(20, 53, 78, 0.55), transparent 45%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.z-frame__caption {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-3);
+  z-index: 2;
+  color: var(--grey-10);
+  text-shadow: 0 1px 6px rgba(20, 53, 78, 0.6);
+}
+.z-frame--secondary .z-frame__caption { color: var(--rich-blue); text-shadow: none; }
+
+/* Flat screenshot / photography placeholder frame (non-Z imagery slots) */
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  min-height: 220px;
+  background: linear-gradient(135deg, var(--rich-blue), var(--pink));
+  border-radius: var(--radius-sm);
+  color: var(--grey-10);
+}
+.image-placeholder figcaption { text-shadow: 0 1px 6px rgba(20, 53, 78, 0.6); }
+
+/* =========================================================================
+   Grey 10 bounding box — the brand's structural device. Vary size/inset by
+   the content's importance rather than using identical cards everywhere.
+   ========================================================================= */
+
+.box-grey10 {
+  background: var(--grey-10);
+  border-radius: var(--radius-box);
+}
+.box-grey10--sm { padding: var(--space-5); }
+.box-grey10--md { padding: var(--space-6) var(--space-7); }
+.box-grey10--lg { padding: var(--space-8) var(--space-9); }
+
+@media (max-width: 767px) {
+  .box-grey10--md { padding: var(--space-5); }
+  .box-grey10--lg { padding: var(--space-6) var(--space-5); }
+}
+
+/* Blue layout content box — the mirror of .box-grey10 for the "Blue layout"
+   composition in Foundation §1 (Rich Blue box, Grey 10 type). Added when
+   building archetype 12, which is the first page to need a Blue-layout
+   content box distinct from a page-background pattern-blue strip. */
+.box-blue {
+  background: var(--rich-blue);
+  color: var(--grey-10);
+  border-radius: var(--radius-box);
+}
+.box-blue--sm { padding: var(--space-5); }
+.box-blue--md { padding: var(--space-6) var(--space-7); }
+.box-blue--lg { padding: var(--space-8) var(--space-9); }
+
+@media (max-width: 767px) {
+  .box-blue--md { padding: var(--space-5); }
+  .box-blue--lg { padding: var(--space-6) var(--space-5); }
+}
+
+/* =========================================================================
+   Buttons — three levels, per Foundation §2b. Trailing arrow on secondary
+   and tertiary only; the primary CTA stays arrow-free (a commitment, not a
+   nudge).
+   ========================================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  font-weight: var(--weight-semibold);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--pink);
+  color: var(--grey-10);
+}
+.btn-primary:hover { background: #C21351; }
+.btn-primary:disabled { background: var(--grey-50); color: var(--grey-80); cursor: not-allowed; }
+
+.btn-secondary {
+  background: var(--grey-10);
+  color: var(--pink);
+  border: 1px solid var(--pink);
+  padding: calc(var(--space-3) - 1px) calc(var(--space-6) - 1px);
+}
+.btn-secondary:hover { background: var(--grey-20); }
+
+.btn-tertiary {
+  background: none;
+  padding: var(--space-2) 0;
+  color: var(--pink);
+  min-height: 0;
+  border-radius: 0;
+}
+.btn-tertiary:hover { text-decoration: underline; }
+.btn-tertiary .btn__arrow { transition: transform var(--transition-fast); }
+.btn-tertiary:hover .btn__arrow { transform: translateX(3px); }
+
+.icon {
+  font-family: var(--font-icon);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+}
+
+.btn__arrow { font-size: 18px; }
+
+/* =========================================================================
+   Forms
+   ========================================================================= */
+
+.field { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+
+.field label {
+  font-weight: var(--weight-semibold);
+  font-size: 16px;
+  line-height: 1.0;
+  color: var(--rich-blue);
+}
+
+.field input,
+.field select {
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--grey-60);
+  border-radius: var(--radius-sm);
+  background: var(--grey-10);
+  color: var(--rich-blue);
+  font-family: var(--font-sans);
+  font-size: 17px;
+}
+
+.field input:hover, .field select:hover { border-color: var(--grey-80); }
+
+.field-hint {
+  font-size: 14px;
+  color: var(--grey-90);
+}
+
+.field-error {
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--pink);
+}
+
+.field input[aria-invalid="true"], .field select[aria-invalid="true"] {
+  border-color: var(--pink);
+}
+
+/* =========================================================================
+   Header / footer — shared across every archetype
+   ========================================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--grey-10);
+  border-bottom: 1px solid var(--grey-40);
+}
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+.site-header__wordmark {
+  font-weight: var(--weight-semibold);
+  font-size: 22px;
+  color: var(--rich-blue);
+}
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.site-header__nav a {
+  font-weight: var(--weight-semibold);
+  font-size: 16px;
+  color: var(--rich-blue);
+}
+.site-header__nav a:hover { color: var(--pink); }
+
+@media (max-width: 767px) {
+  .site-header__nav { display: none; }
+}
+
+.site-footer {
+  background: var(--rich-blue);
+  color: var(--grey-10);
+  padding-block: var(--space-8);
+}
+.site-footer a { color: var(--grey-10); }
+.site-footer a:hover { color: var(--pink); }
+.site-footer__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  font-size: 14px;
+}
+.site-footer__address {
+  font-size: 14px;
+  color: var(--grey-60);
+  margin-top: var(--space-5);
+}
