@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accounts Payable Software: 4 Ways to Automate AP | Yooz</title>
+<meta name="description" content="Accounts payable software already comes with your ERP. See when it's enough, when it isn't, and how a dedicated AP layer compares on real cost.">
+
+<!--
+  AD-TO-PAGE CONTINUITY — copy team, paste the actual Campaign 03 (CATEGORY –
+  Function-Named) RSA headlines here so above-fold copy can be checked against
+  what the ad promised. All four ad groups in this campaign land here.
+  Head keywords this page's H1/subhead must echo: accounts payable software,
+  ap software, accounts payable platform, accounts payable system,
+  accounts payable management software, ap processing software.
+  - {{AD_HEADLINE_1}}
+  - {{AD_HEADLINE_2}}
+  - {{AD_HEADLINE_3}}
+  - {{AD_DESCRIPTION_1}}
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..600,0,0&display=swap">
+
+<style>
+  /* ==========================================================
+     TOKENS — Yooz Brand Guidelines, Sept 2025.
+     Built self-contained: /mockups/_system/tokens.css does not
+     exist yet (archetype 01 — Brand — has not been built). Every
+     value below is copied verbatim from 00-FOUNDATION.md so this
+     file can be reconciled into the shared system mechanically
+     once it lands. See NOTES.md.
+     ========================================================== */
+  :root{
+    /* Primary */
+    --rich-blue:#14354E;
+    --pink:#E0185E;
+    /* Secondary — gradients only */
+    --teal:#00BFA5;
+    --blue:#006AFF;
+    /* Neutrals */
+    --grey-100:#3C4857;
+    --grey-90:#46515E;
+    --grey-80:#616C7A;
+    --grey-70:#A0A7AF;
+    --grey-60:#CCCDD2;
+    --grey-50:#DEDEE0;
+    --grey-40:#E6E6E6;
+    --grey-30:#EAEAEA;
+    --grey-20:#F5F5F5;
+    --grey-10:#FEFEFE;
+
+    --font:"Noto Sans", -apple-system, "Segoe UI", sans-serif;
+
+    /* Fluid type scale — clamp(min@390px, preferred, max@1440px+),
+       approximated from the brand's fixed scale per Foundation §1
+       ("Display at 120px and H1 at 84px do not fit a mobile
+       viewport... build a fluid scale"). Extended to H2–H4 as well:
+       64px/48px/32px desktop sizes also overflow a 390px viewport,
+       so the same fluid principle is applied throughout, holding
+       the brand's -2% tracking and stated line-heights. Flagged
+       as a deliberate departure in NOTES.md. */
+    --fs-h1: clamp(2.5rem, 1.6rem + 4vw, 5.25rem);      /* ~40px → 84px */
+    --fs-h2: clamp(2rem, 1.4rem + 2.6vw, 4rem);         /* ~32px → 64px */
+    --fs-h3: clamp(1.75rem, 1.35rem + 1.8vw, 3rem);     /* ~28px → 48px */
+    --fs-h4: clamp(1.375rem, 1.15rem + 1vw, 2rem);      /* ~22px → 32px */
+    --fs-h5: clamp(1.125rem, 1.02rem + 0.45vw, 1.5rem); /* ~18px → 24px */
+    --fs-para-lg: clamp(1.0625rem, 1rem + 0.28vw, 1.375rem); /* 17px → 22px */
+    --fs-para: 1.0625rem;      /* 17px */
+    --fs-list: 1rem;           /* 16px */
+    --fs-small-bold: 1rem;     /* 16px */
+    --fs-tagline: 0.875rem;    /* 14px */
+    --fs-cta: 1.0625rem;       /* 17px */
+
+    --max: 1280px;
+    --radius-box: 20px;
+    --radius-pill: 999px;
+    --space-section: clamp(56px, 8vw, 104px);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;
+    background:var(--grey-10);
+    color:var(--rich-blue);
+    font-family:var(--font);
+    font-weight:400;
+    font-size:var(--fs-para);
+    line-height:1.5;
+    letter-spacing:-0.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  h1,h2,h3,h4,h5{font-family:var(--font);font-weight:300;margin:0;color:var(--rich-blue);letter-spacing:-0.02em}
+  h1{font-size:var(--fs-h1);line-height:1.1}
+  h2{font-size:var(--fs-h2);line-height:1.0}
+  h3{font-size:var(--fs-h3);line-height:1.1}
+  h4{font-size:var(--fs-h4);line-height:1.2}
+  h5{font-size:var(--fs-h5);line-height:1.2}
+
+  .container{max-width:var(--max);margin-inline:auto;padding-inline:24px}
+  @media (max-width:600px){ .container{padding-inline:20px} }
+  section{padding-block:var(--space-section)}
+
+  :focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--rich-blue);color:var(--grey-10);padding:12px 18px;border-radius:0 0 10px 0;z-index:200;font-weight:600;text-decoration:none}
+  .skip-link:focus{left:0}
+
+  .material-symbols-rounded{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';font-feature-settings:'liga'}
+
+  /* ---------- Dot patterns (Foundation §1, "Layout patterns") ---------- */
+  .pattern-bg{
+    background-color:var(--grey-20);
+    background-image:radial-gradient(rgba(224,24,94,0.4) 2px, transparent 2px);
+    background-size:40px 40px;
+  }
+  .pattern-pink{
+    background-color:var(--grey-10);
+    background-image:radial-gradient(var(--pink) 2px, transparent 2px);
+    background-size:28px 28px;
+  }
+  .pattern-blue{
+    background-color:var(--rich-blue);
+    background-image:radial-gradient(var(--grey-80) 2px, transparent 2px);
+    background-size:40px 40px;
+  }
+
+  /* ---------- Grey 10 bounding box — the brand's structural device ---------- */
+  .box{background:var(--grey-10);border-radius:var(--radius-box);min-width:0}
+  .box-bordered{border:1px solid var(--grey-40)}
+
+  /* ---------- Eyebrows ---------- */
+  .eyebrow{
+    display:inline-block;font-family:var(--font);font-weight:600;
+    font-size:var(--fs-tagline);letter-spacing:-0.02em;color:var(--pink);
+    margin-bottom:16px;
+  }
+  .eyebrow-pill{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--grey-10);border:1px solid var(--grey-40);
+    border-radius:var(--radius-pill);padding:6px 18px 6px 6px;
+    margin-bottom:22px;
+  }
+  .eyebrow-pill .num{
+    display:flex;align-items:center;justify-content:center;
+    width:28px;height:28px;border-radius:50%;background:var(--pink);
+    color:var(--grey-10);font-weight:600;font-size:13px;flex:none;
+  }
+  .eyebrow-pill .lbl{font-weight:600;font-size:var(--fs-tagline);color:var(--rich-blue)}
+
+  /* ---------- Buttons — primary / secondary / tertiary (Foundation §2b) ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:var(--font);font-weight:600;font-size:var(--fs-cta);
+    padding:16px 30px;border-radius:var(--radius-pill);border:2px solid transparent;
+    text-decoration:none;cursor:pointer;min-height:52px;line-height:1.5;
+    transition:background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn-primary{background:var(--pink);color:var(--grey-10)}
+  .btn-primary:hover{background:#C4104F}
+  .btn-secondary{background:var(--grey-10);color:var(--pink);border-color:var(--pink)}
+  .btn-secondary:hover{background:#FCE8EF}
+  .btn-tertiary{
+    display:inline-flex;align-items:center;gap:6px;
+    background:none;border:none;padding:0;min-height:auto;
+    color:var(--pink);font-weight:600;font-size:var(--fs-cta);text-decoration:none;
+  }
+  .btn-tertiary .material-symbols-rounded{font-size:20px;transition:transform .15s ease}
+  .btn-tertiary:hover .material-symbols-rounded{transform:translateX(3px)}
+  @media (prefers-reduced-motion: reduce){
+    .btn, .btn-tertiary .material-symbols-rounded{transition:none}
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{border-bottom:1px solid var(--grey-40);background:var(--grey-10);position:relative;z-index:10}
+  .header-row{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--font);font-weight:600;font-size:22px;color:var(--rich-blue);text-decoration:none}
+  .logo-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg, var(--pink), var(--rich-blue) 70%);flex:none}
+  .header-nav a{font-weight:600;font-size:var(--fs-para);text-decoration:none;color:var(--rich-blue)}
+  .header-nav a:hover{color:var(--pink)}
+
+  /* ---------- Media placeholder (Foundation §1, "Imagery — placeholder policy") ---------- */
+  .media-placeholder{display:flex;flex-direction:column;gap:10px}
+  .media-frame{
+    position:relative;border-radius:var(--radius-box);overflow:hidden;
+    background:linear-gradient(150deg, var(--rich-blue) 0%, var(--pink) 100%);
+  }
+  .media-frame.z-shape{aspect-ratio:4/5}
+  .media-frame.screenshot{aspect-ratio:16/10;background:var(--grey-20);border:1px dashed var(--grey-60)}
+  .media-frame.screenshot .caption-inline{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:24px;color:var(--grey-80);font-size:var(--fs-tagline);
+  }
+  .media-caption{font-size:var(--fs-tagline);font-weight:300;color:var(--grey-90);line-height:1.5}
+
+  /* ---------- Hero ---------- */
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  @media (max-width:960px){ .hero-grid{grid-template-columns:1fr;gap:40px} }
+  .hero-box{padding:clamp(32px,4vw,56px)}
+  .hero h1{margin-bottom:22px}
+  .hero h1 .a{color:var(--rich-blue)}
+  .hero h1 .b{color:var(--pink)}
+  .subtitle-h4{
+    font-family:var(--font);font-weight:300;font-size:var(--fs-h4);line-height:1.3;
+    color:var(--rich-blue);margin-bottom:14px;
+  }
+  .hero p.body{font-size:var(--fs-para-lg);line-height:1.5;color:var(--rich-blue);max-width:52ch;margin-bottom:28px}
+  .hero .actions{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+
+  /* ---------- Four-option block (Inframe layout) ---------- */
+  .section-head{max-width:68ch;margin-bottom:44px}
+  .section-head .intro{margin-top:14px;font-size:var(--fs-para-lg);color:var(--rich-blue);opacity:.85;max-width:70ch}
+
+  .option-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media (max-width:1100px){ .option-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:600px){ .option-grid{grid-template-columns:1fr} }
+  .option-card{
+    padding:28px 24px;display:flex;flex-direction:column;gap:16px;
+    border:1px solid var(--grey-40);
+  }
+  .option-card .icon-tile{
+    width:48px;height:48px;border-radius:12px;background:var(--grey-20);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .option-card .icon-tile .material-symbols-rounded{font-size:24px;color:var(--rich-blue)}
+  .option-card h3{font-size:var(--fs-h5);font-weight:600;line-height:1.25}
+  .option-card .desc{font-size:var(--fs-list);font-weight:400;color:var(--rich-blue);opacity:.9;line-height:1.5}
+  .option-card .fit-row{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:8px;border-top:1px solid var(--grey-30)}
+  .option-card .fit-row .line{display:flex;gap:8px;font-size:.9rem;font-weight:400;line-height:1.45}
+  .option-card .fit-row .tag{font-weight:600;flex:none}
+  .option-card .fit-row .good .tag{color:var(--teal)}
+  .option-card .fit-row .watch .tag{color:var(--pink)}
+  .option-grid-note{margin-top:24px;font-size:var(--fs-tagline);color:var(--grey-90);max-width:70ch}
+
+  /* ---------- List with pink bullets (Foundation §1, "In-page section pattern") ---------- */
+  .pink-list{display:flex;flex-direction:column;gap:12px;margin:24px 0 30px}
+  .pink-list li{display:flex;gap:12px;font-size:var(--fs-list);font-weight:400;line-height:1.5;color:var(--rich-blue)}
+  .pink-list li::before{
+    content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--pink);
+    margin-top:8px;
+  }
+
+  /* ---------- Two-column section (copy + list) ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  @media (max-width:900px){ .split{grid-template-columns:1fr;gap:36px} }
+
+  /* ---------- Product / process stage strip ---------- */
+  .stage-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:16px}
+  @media (max-width:1100px){ .stage-strip{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width:600px){ .stage-strip{grid-template-columns:1fr} }
+  .stage{
+    padding:22px 18px;border:1px solid var(--grey-40);display:flex;flex-direction:column;gap:10px;
+  }
+  .stage .num{font-size:var(--fs-tagline);font-weight:600;color:var(--pink)}
+  .stage h3{font-size:1.05rem;font-weight:600;line-height:1.3}
+  .stage p{font-size:.92rem;font-weight:400;color:var(--rich-blue);opacity:.9;line-height:1.5}
+  .product-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:12px}
+  @media (max-width:900px){ .product-layout{grid-template-columns:1fr} }
+
+  /* ---------- Cost-per-invoice callout (Pattern Pink strip) ---------- */
+  .cost-strip{text-align:center}
+  .cost-strip .container{padding-block:8px}
+  .cost-row{display:flex;justify-content:center;align-items:center;gap:clamp(24px,6vw,72px);flex-wrap:wrap;margin-top:12px}
+  .cost-figure{display:flex;flex-direction:column;align-items:center;gap:8px;max-width:280px}
+  .cost-figure .amount.token{font-size:clamp(.85rem,2.6vw,1.15rem);padding:12px 18px}
+  .cost-figure .label{font-size:var(--fs-list);font-weight:600;color:var(--rich-blue)}
+  .cost-vs{font-family:var(--font);font-weight:300;font-size:1.4rem;color:var(--grey-80)}
+
+  /* ---------- Comparison table ---------- */
+  .table-wrap{margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius-box);border:1px solid var(--grey-40)}
+  .swipe-hint{display:none;font-size:var(--fs-tagline);color:var(--grey-90);margin-bottom:10px;font-weight:600}
+  @media (max-width:768px){ .swipe-hint{display:block} }
+  table.compare{border-collapse:collapse;width:100%;min-width:640px;background:var(--grey-10)}
+  table.compare caption{text-align:left;padding:18px 22px;font-size:var(--fs-h5);font-weight:600}
+  table.compare th,table.compare td{
+    text-align:left;padding:16px 22px;font-size:var(--fs-list);font-weight:400;
+    border-top:1px solid var(--grey-30);vertical-align:top;line-height:1.45;
+  }
+  table.compare thead th{
+    font-weight:600;background:var(--grey-20);border-top:none;
+    position:sticky;top:0;
+  }
+  table.compare th[scope="row"]{
+    font-weight:600;background:var(--grey-10);position:sticky;left:0;
+    border-right:1px solid var(--grey-30);min-width:200px;
+  }
+  table.compare td.concede{color:var(--grey-90)}
+  table.compare td.wins{color:var(--rich-blue)}
+  table.compare td .material-symbols-rounded{font-size:18px;vertical-align:-4px;margin-right:4px}
+  table.compare td.wins .material-symbols-rounded{color:var(--teal)}
+  table.compare td.concede .material-symbols-rounded{color:var(--grey-70)}
+
+  /* ---------- Placeholder token — Foundation §2 claims discipline: every
+     {{TOKEN}} renders as a visibly-unfilled chip, never as plain body copy,
+     so it can't accidentally read as a real claim. ---------- */
+  code.token{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.82em;font-weight:600;color:var(--pink);
+    background:var(--grey-20);border:1px dashed var(--pink);border-radius:6px;
+    padding:2px 7px;overflow-wrap:anywhere;white-space:normal;
+  }
+
+  /* ---------- Customer proof card ---------- */
+  .proof-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;margin-top:48px;align-items:stretch}
+  @media (max-width:900px){ .proof-grid{grid-template-columns:1fr} }
+  .quote-card{padding:clamp(28px,4vw,40px);border:1px solid var(--grey-40);display:flex;flex-direction:column;gap:18px}
+  .quote-card .quote-mark{font-size:32px;color:var(--pink)}
+  .quote-card blockquote{margin:0;font-size:var(--fs-para-lg);font-weight:300;line-height:1.5;color:var(--rich-blue);overflow-wrap:anywhere}
+  .quote-card .attr{font-size:var(--fs-small-bold);font-weight:600}
+  .quote-card .attr span{font-weight:400;opacity:.75;display:block;margin-top:2px}
+  .quote-card .migration-tag{
+    display:inline-flex;align-self:flex-start;align-items:center;gap:8px;flex-wrap:wrap;
+    background:var(--grey-20);border-radius:var(--radius-pill);padding:8px 16px;
+    font-size:.85rem;font-weight:600;overflow-wrap:anywhere;max-width:100%;
+  }
+  .quote-card .attr span{overflow-wrap:anywhere}
+  .badge-card{padding:clamp(24px,3vw,32px);border:1px solid var(--grey-40);display:flex;flex-direction:column;gap:18px;justify-content:center}
+  .badge-card .stat-line{display:flex;align-items:baseline;gap:10px}
+  .badge-card .stat-line .val.token{font-size:1rem;padding:8px 12px}
+  .badge-card .stat-line .lbl{font-size:var(--fs-list);font-weight:400}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px}
+  .badge-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:var(--radius-pill);background:var(--grey-20);border:1px solid var(--grey-40);font-size:.82rem;font-weight:600}
+  .badge-chip .material-symbols-rounded{font-size:16px;color:var(--rich-blue)}
+
+  /* ---------- Form section ---------- */
+  .form-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  @media (max-width:900px){ .form-layout{grid-template-columns:1fr;gap:36px} }
+  .form-card{padding:clamp(28px,4vw,44px);border:1px solid var(--grey-40)}
+  .form-card h3{font-size:var(--fs-h5);font-weight:600;margin-bottom:8px}
+  .form-card .form-sub{font-size:var(--fs-para);color:var(--rich-blue);opacity:.85;margin-bottom:24px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+  .field label{font-size:.85rem;font-weight:600;color:var(--rich-blue)}
+  .field input,.field select{
+    min-height:50px;border-radius:10px;border:1px solid var(--grey-50);
+    padding:0 14px;font-family:var(--font);font-size:var(--fs-para);color:var(--rich-blue);
+    background:var(--grey-10);
+  }
+  .field input:focus,.field select:focus{border-color:var(--pink)}
+  .form-card .btn-primary{width:100%;margin-top:6px}
+  .form-microcopy{display:flex;gap:8px;align-items:flex-start;margin-top:16px;font-size:.85rem;color:var(--rich-blue);opacity:.75}
+  .form-microcopy .material-symbols-rounded{font-size:18px;color:var(--teal);flex:none;margin-top:1px}
+
+  .secondary-path{padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:14px}
+  .secondary-path .icon-tile{width:52px;height:52px;border-radius:12px;background:var(--grey-10);display:flex;align-items:center;justify-content:center}
+  .secondary-path .icon-tile .material-symbols-rounded{font-size:26px;color:var(--rich-blue)}
+  .secondary-path h3{font-size:var(--fs-h5);font-weight:600}
+  .secondary-path p{font-size:var(--fs-para);opacity:.9;line-height:1.5}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--grey-40);padding-block:36px;font-size:.9rem;background:var(--grey-10)}
+  .footer-row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap}
+  .footer-links a{text-decoration:none;opacity:.85;font-weight:600}
+  .footer-links a:hover{text-decoration:underline}
+  .footer-address{opacity:.65;font-size:.82rem;max-width:36ch;line-height:1.5}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="logo" href="https://www.getyooz.com/" aria-label="Yooz home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      Yooz
+    </a>
+    <nav class="header-nav" aria-label="Primary">
+      <a href="https://www.getyooz.com/pricing">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- ============ 1. Hero — framed as the problem, not the product (Primary layout) ============ -->
+  <section class="pattern-bg">
+    <div class="container hero-grid">
+      <div class="box hero-box">
+        <span class="eyebrow">Before you buy another accounting module</span>
+        <h1>
+          <span class="a">Your ERP already sells you accounts payable software.</span>
+          <span class="b">Here's what it doesn't do.</span>
+        </h1>
+        <p class="subtitle-h4">Every ERP ships an AP module. Most finance teams still process invoices by hand.</p>
+        <p class="body">See an honest breakdown of your four options for closing that gap — including where your native module is already enough — before you look at anything Yooz sells.</p>
+        <div class="actions">
+          <a class="btn-tertiary" href="#four-options" data-yooz-event="hero_scroll_to_options">
+            See the four options
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_downward</span>
+          </a>
+        </div>
+      </div>
+      <figure class="media-placeholder">
+        <div class="media-frame z-shape" role="img" aria-label="Photograph placeholder: an AP clerk reviewing a stack of paper invoices, Z device anchored bottom-left, subject facing inward toward the copy"></div>
+        <figcaption class="media-caption">HERO — graded cutout, subject reviewing a paper invoice stack, Z anchored bottom-left, facing inward</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 2. The four options (Inframe layout) ============ -->
+  <section id="four-options" class="pattern-bg">
+    <div class="container">
+      <div class="eyebrow-pill"><span class="num">02</span><span class="lbl">Compare your options</span></div>
+      <div class="section-head">
+        <h2>Four ways to close the AP gap</h2>
+        <p class="intro">Whatever accounts payable system you land on, it's one of these four. Laid out here at equal weight, including the one Yooz doesn't sell.</p>
+      </div>
+
+      <div class="option-grid">
+        <div class="box option-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">account_balance</span></div>
+          <h3>Your ERP's native AP module</h3>
+          <p class="desc">The AP entry-and-payment screen that came bundled with your accounting system or ERP.</p>
+          <div class="fit-row">
+            <p class="line good"><span class="tag">Good fit:</span> one entity, one ERP, low invoice volume, simple approvals.</p>
+            <p class="line watch"><span class="tag">Watch for:</span> manual entry, approvals that can't reach outside finance, no fraud or duplicate-payment screening.</p>
+          </div>
+        </div>
+
+        <div class="box option-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">handshake</span></div>
+          <h3>Outsourcing AP</h3>
+          <p class="desc">A bookkeeping firm or outsourced AP provider processes invoices and payments for you.</p>
+          <div class="fit-row">
+            <p class="line good"><span class="tag">Good fit:</span> you want AP off your team's plate and can accept less day-to-day visibility.</p>
+            <p class="line watch"><span class="tag">Watch for:</span> per-invoice fees that scale with volume, and less control over timing and vendor relationships.</p>
+          </div>
+        </div>
+
+        <div class="box option-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">person_add</span></div>
+          <h3>Hiring more AP staff</h3>
+          <p class="desc">Add headcount to keep pace with a growing stack of invoices, using the process you already have.</p>
+          <div class="fit-row">
+            <p class="line good"><span class="tag">Good fit:</span> the volume spike is temporary, or the process itself isn't the bottleneck.</p>
+            <p class="line watch"><span class="tag">Watch for:</span> cost scales with volume, and manual-entry errors and late payments don't go away — they just get more hands.</p>
+          </div>
+        </div>
+
+        <div class="box option-card">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">bolt</span></div>
+          <h3>A dedicated AP automation layer</h3>
+          <p class="desc">Software that sits on top of your existing ERP to capture, route, and reconcile invoices automatically.</p>
+          <div class="fit-row">
+            <p class="line good"><span class="tag">Good fit:</span> volume, entity count, or approval complexity has outgrown a native module or extra hands.</p>
+            <p class="line watch"><span class="tag">Watch for:</span> it's a new system to connect and learn — less manual work in exchange for setup time.</p>
+          </div>
+        </div>
+      </div>
+      <p class="option-grid-note">This page argues for the fourth option in the section below — but if the first one already covers what you need, the honest answer is to stay on it.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. Why a dedicated layer wins ============ -->
+  <section>
+    <div class="container split">
+      <div>
+        <div class="eyebrow-pill"><span class="num">03</span><span class="lbl">The honest case</span></div>
+        <h2 style="font-size:var(--fs-h3)">Where a dedicated layer starts to pay for itself</h2>
+        <p class="body" style="margin-top:18px;max-width:56ch">A native module and an extra hire can both work — for a while. Yooz doesn't replace your ERP; it layers on top of it, so the accounting system you already run stays the system of record while the AP-specific work gets automated. It connects to more than 250 financial systems, so a later ERP change doesn't mean rebuilding your AP process from scratch.</p>
+      </div>
+      <div>
+        <p class="body" style="font-weight:600;margin-bottom:4px;max-width:none">A dedicated layer is worth the setup when any of these is true:</p>
+        <ul class="pink-list">
+          <li>You run more than one entity, subsidiary, or ERP and need one AP process across all of them.</li>
+          <li>Approvals need to route to managers or department heads outside the finance team.</li>
+          <li>Your invoice volume has outgrown what manual entry or a native module can keep up with.</li>
+          <li>You need a searchable audit trail and duplicate-payment or fraud screening your ERP wasn't built to provide.</li>
+        </ul>
+        <a class="btn-tertiary" href="#how-it-works" data-yooz-event="why_layer_wins_to_product">
+          See how Yooz works
+          <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. Product ============ -->
+  <section id="how-it-works" class="pattern-bg">
+    <div class="container">
+      <div class="eyebrow-pill"><span class="num">04</span><span class="lbl">How it works</span></div>
+      <div class="section-head">
+        <h2>One layer, six stages, your existing ERP</h2>
+        <p class="intro">Yooz sits on top of the accounts payable system you already run — it doesn't ask you to replace it.</p>
+      </div>
+
+      <div class="product-layout">
+        <div>
+          <div class="stage-strip">
+            <div class="box stage"><span class="num">01</span><h3>Purchase</h3><p>PO created and matched automatically when the invoice arrives.</p></div>
+            <div class="box stage"><span class="num">02</span><h3>Capture</h3><p>Invoices captured from email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher or API.</p></div>
+            <div class="box stage"><span class="num">03</span><h3>Review</h3><p>Data extracted and validated against the PO and vendor record — no manual keying.</p></div>
+            <div class="box stage"><span class="num">04</span><h3>Approve</h3><p>Routed for approval by role, amount, or department — including outside finance.</p></div>
+            <div class="box stage"><span class="num">05</span><h3>Pay</h3><p>Payment scheduled and released through your existing payment method.</p></div>
+            <div class="box stage"><span class="num">06</span><h3>Export</h3><p>Synced back to your ERP automatically — one of 250+ supported financial systems.</p></div>
+          </div>
+        </div>
+        <figure class="media-placeholder">
+          <div class="media-frame screenshot">
+            <span class="caption-inline">SCREENSHOT — invoice approval queue, parallel approval visible</span>
+          </div>
+          <figcaption class="media-caption">SCREENSHOT — invoice approval queue, parallel approval visible</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. Proof ============ -->
+  <section class="pattern-pink cost-strip">
+    <div class="container">
+      <div class="eyebrow-pill"><span class="num">05</span><span class="lbl">Proof</span></div>
+      <h2 style="font-size:var(--fs-h3)">What switching actually costs</h2>
+      <div class="cost-row">
+        <div class="cost-figure">
+          <code class="token amount">{{PRICE_PER_INVOICE_NATIVE}}</code>
+          <span class="label">avg. cost per invoice — native ERP module</span>
+        </div>
+        <span class="cost-vs">vs.</span>
+        <div class="cost-figure">
+          <code class="token amount">{{PRICE_PER_INVOICE_YOOZ}}</code>
+          <span class="label">avg. cost per invoice — with Yooz</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="swipe-hint">← Swipe to compare →</p>
+      <div class="table-wrap">
+        <table class="compare">
+          <caption>Native ERP module vs. Yooz — an honest read</caption>
+          <thead>
+            <tr>
+              <th scope="col">Capability</th>
+              <th scope="col">Native ERP module</th>
+              <th scope="col">Yooz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Cost per invoice</th>
+              <td><code class="token">{{PRICE_PER_INVOICE_NATIVE}}</code></td>
+              <td><code class="token">{{PRICE_PER_INVOICE_YOOZ}}</code></td>
+            </tr>
+            <tr>
+              <th scope="row">Multi-entity / multi-ERP support</th>
+              <td class="concede"><span class="material-symbols-rounded" aria-hidden="true">remove</span>Only within that one ERP</td>
+              <td class="wins"><span class="material-symbols-rounded" aria-hidden="true">check</span>Yes — across 250+ financial systems</td>
+            </tr>
+            <tr>
+              <th scope="row">Approval routing outside finance</th>
+              <td class="concede"><span class="material-symbols-rounded" aria-hidden="true">remove</span>Limited or manual (email, spreadsheets)</td>
+              <td class="wins"><span class="material-symbols-rounded" aria-hidden="true">check</span>Built in, by role, amount, or department</td>
+            </tr>
+            <tr>
+              <th scope="row">Duplicate &amp; fraud screening</th>
+              <td class="concede"><span class="material-symbols-rounded" aria-hidden="true">remove</span>Basic or none</td>
+              <td class="wins"><span class="material-symbols-rounded" aria-hidden="true">check</span>Automatic on every invoice</td>
+            </tr>
+            <tr>
+              <th scope="row">Audit trail</th>
+              <td class="concede"><span class="material-symbols-rounded" aria-hidden="true">remove</span>Tied to that ERP's own records</td>
+              <td class="wins"><span class="material-symbols-rounded" aria-hidden="true">check</span>Full capture-to-pay trail, exportable</td>
+            </tr>
+            <tr>
+              <th scope="row">Setup effort</th>
+              <td class="wins"><span class="material-symbols-rounded" aria-hidden="true">check</span>Already installed — zero setup</td>
+              <td class="concede"><span class="material-symbols-rounded" aria-hidden="true">remove</span>Implementation required to connect your ERP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="proof-grid">
+        <div class="box quote-card">
+          <span class="material-symbols-rounded quote-mark" aria-hidden="true">format_quote</span>
+          <blockquote><code class="token">{{CUSTOMER_MIGRATED_FROM_NATIVE_AP_QUOTE}}</code></blockquote>
+          <p class="attr"><code class="token">{{CUSTOMER_MIGRATED_NAME}}</code><span><code class="token">{{CUSTOMER_MIGRATED_TITLE}}</code>, <code class="token">{{CUSTOMER_MIGRATED_COMPANY}}</code></span></p>
+          <span class="migration-tag">
+            <span class="material-symbols-rounded" aria-hidden="true">sync_alt</span>
+            Moved from <code class="token">{{CUSTOMER_MIGRATED_PRIOR_ERP_MODULE}}</code> to Yooz
+          </span>
+        </div>
+        <div class="box badge-card">
+          <div class="stat-line">
+            <code class="token val">{{G2_RATING}}</code>
+            <span class="lbl">on G2, from <code class="token">{{G2_REVIEW_COUNT}}</code> reviews</span>
+          </div>
+          <div class="badge-row" aria-label="Review site recognition">
+            <span class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>G2</span>
+            <span class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>TrustRadius</span>
+            <span class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>Capterra</span>
+            <span class="badge-chip"><span class="material-symbols-rounded" aria-hidden="true">star</span>Software Advice</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. Form ============ -->
+  <section class="pattern-bg" id="demo-form">
+    <div class="container">
+      <div class="eyebrow-pill"><span class="num">06</span><span class="lbl">Get started</span></div>
+      <div class="form-layout">
+        <div class="box form-card">
+          <h3>See Yooz on your own invoices</h3>
+          <p class="form-sub">A specialist walks through your ERP, your volume, and where a dedicated layer would actually help.</p>
+          <form data-yooz-form="demo-request-category">
+            <div class="field">
+              <label for="f-email">Work email</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="f-firstname">First name</label>
+              <input type="text" id="f-firstname" name="firstname" required autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input type="text" id="f-company" name="company" required autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-erp">Current ERP or accounting system</label>
+              <select id="f-erp" name="erp" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Sage</option>
+                <option>Microsoft Dynamics 365</option>
+                <option>Oracle NetSuite</option>
+                <option>QuickBooks</option>
+                <option>SAP</option>
+                <option>Other / not sure</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" data-yooz-event="primary_demo_request">Book a demo</button>
+          </form>
+          <p class="form-microcopy">
+            <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+            A specialist reaches out within one business day to schedule your live demo.
+          </p>
+        </div>
+
+        <div class="box secondary-path">
+          <div class="icon-tile"><span class="material-symbols-rounded" aria-hidden="true">calculate</span></div>
+          <h3>Not ready for a demo?</h3>
+          <p>Get your own cost-per-invoice number first, using your real volume and current process — no email required to see the estimate.</p>
+          <a class="btn-tertiary" href="/ad-ap-roi" data-yooz-event="secondary_roi_calculator">
+            Calculate your cost per invoice
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div class="footer-address">
+      Yooz<br>
+      <code class="token">{{COMPANY_PHYSICAL_ADDRESS}}</code><br>
+      &copy; 2026 Yooz. All rights reserved.
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://www.getyooz.com/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://www.getyooz.com/terms-of-use">Terms</a></li>
+      <li><a href="https://www.getyooz.com/contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
