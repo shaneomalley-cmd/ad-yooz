@@ -1,0 +1,292 @@
+<!--
+  AD HEADLINE CONTINUITY — copy team: confirm this page's above-fold promise
+  stays consistent with the live RSA headlines for ad group "Dynamics 365"
+  in Campaign 07 FIT – ERP. Slots below for the copy team to fill from the
+  actual account; do not ship with these blank.
+    Headline 1: {{AD_HEADLINE_DYNAMICS_1}}
+    Headline 2: {{AD_HEADLINE_DYNAMICS_2}}
+    Headline 3: {{AD_HEADLINE_DYNAMICS_3}}
+    Description 1: {{AD_DESCRIPTION_DYNAMICS_1}}
+  This ad group also carries the secondary term "d365 invoice automation"
+  (lower volume, same page) — woven into section 2's intro below rather
+  than given a separate section, per the brief's instruction not to build
+  ERP × capability content.
+  Page promise this build assumes: "Dynamics 365 AP automation that posts
+  directly into F&O or Business Central — see the connector before you
+  book a call."
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dynamics 365 AP Automation | Yooz</title>
+<meta name="description" content="Dynamics 365 AP automation and D365 invoice automation that connects natively. See the field-level sync and book a demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../_system/tokens.css">
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal;
+    font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none;
+    white-space: nowrap; word-wrap: normal; direction: ltr;
+    -webkit-font-feature-settings: 'liga'; font-feature-settings: 'liga';
+  }
+
+  .hero { padding: var(--space-9) 0 var(--space-8); }
+  .hero__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--space-8); align-items: center; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-6); }
+  .hero__image { min-height: 420px; }
+  .trust-row { display: flex; flex-wrap: wrap; gap: var(--space-6); margin-top: var(--space-7); align-items: center; }
+  .trust-row .fact { display: flex; gap: var(--space-2); align-items: baseline; }
+  .trust-row .fact strong { color: var(--rich-blue); font-size: var(--font-sm-bold); }
+
+  .section { padding: var(--space-9) 0; }
+  .section__intro { max-width: 640px; margin-bottom: var(--space-6); }
+
+  .screens-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  .screens-grid .image-slot { min-height: 260px; }
+  .module-card { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-5); }
+  .module-card .material-symbols-outlined { color: var(--pink); font-size: 32px; flex-shrink: 0; }
+  .module-card > div { min-width: 0; }
+
+  .customer-box { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--space-6); align-items: center; }
+  .customer-logo { height: 64px; width: 160px; background: var(--grey-30); border-radius: var(--radius-field); display: flex; align-items: center; justify-content: center; }
+  .customer-quote { font-size: var(--font-h5); font-weight: var(--w-light); letter-spacing: var(--ls-tight); color: var(--rich-blue); }
+
+  .cap-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
+  .cap-item .material-symbols-outlined { color: var(--pink); font-size: 28px; margin-bottom: var(--space-3); }
+
+  .stages { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+  .stage { display: flex; align-items: center; gap: var(--space-2); }
+  .stage .n { font-weight: var(--w-semibold); color: var(--pink); font-size: var(--font-sm-bold); }
+  .stage .arrow { color: var(--grey-60); }
+
+  .form-section .box { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); align-items: start; }
+  .form-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 var(--space-4); }
+  .form-grid .field--full { grid-column: 1 / -1; }
+
+  @media (max-width: 1024px) {
+    .hero__grid { grid-template-columns: minmax(0, 1fr); }
+    .hero__image { order: -1; min-height: 300px; }
+    .cap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .form-section .box { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .screens-grid { grid-template-columns: minmax(0, 1fr); }
+    .customer-box { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .module-card { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  }
+  @media (max-width: 390px) {
+    .cap-grid, .form-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<a class="visually-hidden" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="https://getyooz.com">y<span class="pink">ooz</span></a>
+    <nav aria-label="Primary">
+      <a href="https://getyooz.com/the-lean-advantage" class="p" style="margin-right:var(--space-6)">The Lean Advantage</a>
+      <a href="https://getyooz.com/pricing" class="p">Pricing</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. ERP-named hero -->
+  <section class="hero pattern-bg">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">Built for teams already running Dynamics 365</span>
+        <h1 class="h1 h1-split">
+          <span class="tone-blue">Dynamics 365 AP automation</span>
+          <span class="tone-pink">that connects natively, not bolted on.</span>
+        </h1>
+        <p class="h4" style="font-weight:var(--w-light);margin-top:var(--space-5)">See the exact fields that sync before you book a call.</p>
+        <p class="p mt-4">Yooz connects to both Dynamics 365 Finance &amp;
+        Operations and Business Central — vendor master, main accounts and
+        purchase order data move both ways, and posted invoices land back
+        in Dynamics without re-keying.</p>
+        <div class="hero__actions">
+          <button class="btn btn-primary" data-yooz-event="cta_primary_demo_hero">Book a demo</button>
+          <a class="btn btn-secondary" href="#connector" data-yooz-event="cta_secondary_view_connector">See the connector <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="trust-row">
+          <div class="fact"><span class="material-symbols-outlined" style="color:var(--pink);font-size:20px">sync_alt</span><span class="p">Exports to <strong>250+ financial systems</strong></span></div>
+        </div>
+      </div>
+      <div class="image-slot image-slot--z hero__image">
+        <div class="image-slot__caption">HERO — graded cutout, subject facing inward, Z anchored bottom-left, Dynamics 365 UI chrome visible in background layer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Connector and screenshots -->
+  <section class="section" id="connector">
+    <div class="container">
+      <span class="eyebrow-numbered"><span class="num">01</span><span class="label">The connector</span></span>
+      <div class="section__intro">
+        <h2 class="h2">What D365 invoice automation actually looks like</h2>
+        <p class="p mt-4">Not a promise — a screenshot. This is Yooz running
+        against a live Dynamics 365 environment, not a mocked-up diagram.</p>
+      </div>
+      <div class="screens-grid">
+        <div class="image-slot">
+          <div class="image-slot__caption">{{SCREENSHOT_INSIDE_DYNAMICS365}} — posted vendor invoice in Dynamics 365 Finance &amp; Operations with main account and dimensions</div>
+        </div>
+        <div class="image-slot">
+          <div class="image-slot__caption">{{SCREENSHOT_INSIDE_DYNAMICS365}} — invoice approval queue matched against an open Dynamics 365 purchase order</div>
+        </div>
+      </div>
+      <div class="box box--sm module-card">
+        <span class="material-symbols-outlined">sync</span>
+        <div>
+          <span class="p-sm-bold">Works with F&amp;O and Business Central</span>
+          <p class="p mt-4" style="margin-top:var(--space-2)">Same field-level sync across both Dynamics 365 editions — no separate connector to rebuild if you move between them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. What syncs both ways -->
+  <section class="section pattern-bg">
+    <div class="container">
+      <span class="eyebrow-numbered"><span class="num">02</span><span class="label">Field-level sync</span></span>
+      <div class="section__intro">
+        <h2 class="h2">What syncs both ways, and how often</h2>
+        <p class="p mt-4">The question under "will this work with what we
+        already run" is really this table. Every row is a field Dynamics
+        365 and Yooz keep in agreement — not a one-time import.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="sync-table">
+          <caption class="visually-hidden">Dynamics 365 field-level sync detail</caption>
+          <thead>
+            <tr><th scope="col">Field</th><th scope="col">Direction</th><th scope="col">Frequency</th><th scope="col">Detail</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vendor master</td><td class="list-item--dense">Dynamics 365 → Yooz</td><td class="list-item--dense">{{SYNC_FIELDS_DYNAMICS365 — frequency}}</td><td class="list-item--dense">Vendor records and banking data by legal entity</td></tr>
+            <tr><td>Main accounts &amp; dimensions</td><td class="list-item--dense">Dynamics 365 → Yooz</td><td class="list-item--dense">{{SYNC_FIELDS_DYNAMICS365 — frequency}}</td><td class="list-item--dense">Chart of accounts and financial dimensions for coding at capture</td></tr>
+            <tr><td>Purchase orders</td><td class="list-item--dense">Dynamics 365 → Yooz</td><td class="list-item--dense">{{SYNC_FIELDS_DYNAMICS365 — frequency}}</td><td class="list-item--dense">Open PO lines for 2- and 3-way match</td></tr>
+            <tr><td>Posted vendor invoice</td><td class="list-item--dense">Yooz → Dynamics 365</td><td class="list-item--dense">{{SYNC_FIELDS_DYNAMICS365 — frequency}}</td><td class="list-item--dense">Approved invoice posts with dimension coding and approval trail attached</td></tr>
+            <tr><td>Payment status</td><td class="list-item--dense">Bidirectional</td><td class="list-item--dense">{{SYNC_FIELDS_DYNAMICS365 — frequency}}</td><td class="list-item--dense">Payment run status reconciled back to the originating invoice</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Named customer on Dynamics 365 -->
+  <section class="section">
+    <div class="container">
+      <div class="box box--lg customer-box">
+        <div class="customer-logo"><span class="tagline">{{CUSTOMER_LOGO_DYNAMICS365}}</span></div>
+        <div>
+          <p class="customer-quote">{{CUSTOMER_QUOTE_DYNAMICS365 — quote on replacing manual invoice entry into Dynamics 365}}</p>
+          <p class="p-sm-bold mt-4">{{CUSTOMER_NAME_DYNAMICS365}}, {{CUSTOMER_TITLE_DYNAMICS365}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Capability block -->
+  <section class="section pattern-bg">
+    <div class="container">
+      <span class="eyebrow-numbered"><span class="num">03</span><span class="label">Built for Dynamics 365 specifically</span></span>
+      <div class="section__intro">
+        <h2 class="h2">Capabilities that only matter if you run Dynamics 365</h2>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-item box box--sm">
+          <span class="material-symbols-outlined">account_tree</span>
+          <p class="p-sm-bold">Legal-entity aware</p>
+          <p class="p mt-4">Invoices route and post against the correct legal entity, currency and intercompany rules.</p>
+        </div>
+        <div class="cap-item box box--sm">
+          <span class="material-symbols-outlined">tune</span>
+          <p class="p-sm-bold">Financial dimensions carried through</p>
+          <p class="p mt-4">Coding preserves the financial dimension structure your Dynamics 365 reporting already depends on.</p>
+        </div>
+        <div class="cap-item box box--sm">
+          <span class="material-symbols-outlined">switch_account</span>
+          <p class="p-sm-bold">One connector, both editions</p>
+          <p class="p mt-4">F&amp;O and Business Central share the same sync behavior, so a future migration doesn't mean a new integration project.</p>
+        </div>
+      </div>
+      <div class="stages" aria-label="Yooz process stages">
+        <div class="stage"><span class="n">01</span><span class="p-sm-bold">Purchase</span></div>
+        <span class="arrow material-symbols-outlined">arrow_forward</span>
+        <div class="stage"><span class="n">02</span><span class="p-sm-bold">Capture</span></div>
+        <span class="arrow material-symbols-outlined">arrow_forward</span>
+        <div class="stage"><span class="n">03</span><span class="p-sm-bold">Review</span></div>
+        <span class="arrow material-symbols-outlined">arrow_forward</span>
+        <div class="stage"><span class="n">04</span><span class="p-sm-bold">Approve</span></div>
+        <span class="arrow material-symbols-outlined">arrow_forward</span>
+        <div class="stage"><span class="n">05</span><span class="p-sm-bold">Pay</span></div>
+        <span class="arrow material-symbols-outlined">arrow_forward</span>
+        <div class="stage"><span class="n">06</span><span class="p-sm-bold">Export</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Form -->
+  <section class="section form-section layout-blue pattern-blue">
+    <div class="container">
+      <div class="box box--lg">
+        <div>
+          <span class="eyebrow" style="color:var(--pink)">See it running on your Dynamics 365 environment</span>
+          <h2 class="h2" style="color:var(--grey-10)">Book a demo</h2>
+          <p class="p mt-4" style="color:var(--grey-40)">30 minutes, on your Dynamics 365 data where possible.
+          The technical check before the conversation starts.</p>
+          <p class="mt-6"><a class="btn btn-tertiary" href="{{INTEGRATION_ONE_PAGER_URL}}" data-yooz-event="link_secondary_integration_onepager" style="color:var(--pink)">Download the Dynamics 365 integration one-pager <span class="material-symbols-outlined">arrow_forward</span></a></p>
+        </div>
+        <form data-yooz-event="form_primary_demo_request">
+          <div class="form-grid">
+            <div class="field"><label for="fname">First name</label><input id="fname" name="fname" type="text" required></div>
+            <div class="field"><label for="lname">Last name</label><input id="lname" name="lname" type="text" required></div>
+            <div class="field field--full"><label for="email">Work email</label><input id="email" name="email" type="email" required></div>
+            <div class="field field--full"><label for="company">Company</label><input id="company" name="company" type="text" required></div>
+            <div class="field field--full"><label for="volume">Monthly invoice volume</label>
+              <select id="volume" name="volume" required>
+                <option value="">Select a range</option>
+                <option>Under 500</option>
+                <option>500–2,000</option>
+                <option>2,000–10,000</option>
+                <option>10,000+</option>
+              </select>
+            </div>
+            <div class="field field--full"><label for="phone">Phone <span class="tagline">(optional)</span></label><input id="phone" name="phone" type="tel"></div>
+          </div>
+          <button class="btn btn-primary mt-4" type="submit" style="width:100%;justify-content:center" data-yooz-event="cta_primary_demo_submit">Book a demo</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <a class="wordmark" href="https://getyooz.com" style="color:var(--grey-10)">y<span class="pink">ooz</span></a>
+      <p class="site-footer__legal mt-4">{{BUSINESS_ADDRESS}}</p>
+    </div>
+    <nav aria-label="Footer" class="stack gap-2">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
