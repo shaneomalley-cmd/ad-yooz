@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<!--
+  AD-TO-PAGE CONTINUITY
+  ─────────────────────
+  Campaign 09 DISPLACEMENT · ad group "tipalti alternative[s]" (+ adjacent
+  groups: tipalti pricing, tipalti ap automation, tipalti vs ramp, tipalti
+  vs stampli). Copy team: paste the exact live RSA headlines here before
+  this page ships, so the above-fold copy can be checked against them.
+
+    - {{AD_HEADLINE_1}}
+    - {{AD_HEADLINE_2}}
+    - {{AD_HEADLINE_3}}
+    - {{AD_HEADLINE_4}}
+    - {{AD_DESCRIPTION_1}}
+    - {{AD_DESCRIPTION_2}}
+
+  This page's current above-fold promise: "Tipalti alternative" (query
+  echo) + "migrate without the reset" (differentiator) + de-risked
+  migration path before any CTA. Whatever the live ad headlines say,
+  this hero copy needs to keep restating the same promise, not a new one.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tipalti Alternative for AP Automation | Yooz</title>
+<meta name="description" content="Compare Yooz to Tipalti and see the migration path before you switch. Honest feature comparison, real timeline, real risk.">
+<meta name="robots" content="noindex, follow">
+<!-- noindex per Foundation §5/Displacement "do not publish as a blog post" —
+     this is a dedicated paid-landing URL, not meant to compete for organic
+     rank against the brand's own SEO pages; flip to index if marketing
+     decides otherwise. See NOTES.md. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..600,0..1,-50..200" rel="stylesheet">
+<style>
+  /* ====================================================================
+     Tokens — mirrors /mockups/_system/tokens.css exactly, inlined so
+     this file stays self-contained and openable on its own. A port to
+     the shared stylesheet is mechanical: delete this block, add
+     <link rel="stylesheet" href="../_system/tokens.css">.
+     ==================================================================== */
+  :root {
+    --rich-blue: #14354E;
+    --pink:      #E0185E;
+    --teal:      #00BFA5;
+    --blue:      #006AFF;
+    --grey-100:  #3C4857;
+    --grey-90:   #46515E;
+    --grey-80:   #616C7A;
+    --grey-70:   #A0A7AF;
+    --grey-60:   #CCCDD2;
+    --grey-50:   #DEDEE0;
+    --grey-40:   #E6E6E6;
+    --grey-30:   #EAEAEA;
+    --grey-20:   #F5F5F5;
+    --grey-10:   #FEFEFE;
+
+    --gradient-brand-simple: linear-gradient(135deg, var(--rich-blue) 0%, var(--pink) 100%);
+
+    --font: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-semibold: 600;
+
+    --fs-display: clamp(2.75rem, 1.4rem + 6.5vw, 7.5rem);
+    --fs-h1:      clamp(2.25rem, 1.3rem + 4.5vw, 5.25rem);
+    --fs-h2:      clamp(2rem, 1.3rem + 3.3vw, 4rem);
+    --fs-h3:      clamp(1.75rem, 1.3rem + 2.1vw, 3rem);
+    --fs-h4:      2rem;
+    --fs-h5:      1.5rem;
+    --fs-para-lg: 1.375rem;
+    --fs-para:    1.0625rem;
+    --fs-list:    1rem;
+    --fs-small-bold: 1rem;
+    --fs-tagline: 0.875rem;
+    --fs-cta:     1.0625rem;
+
+    --ls-tight: -0.02em;
+    --ls-slight: -0.01em;
+    --ls-normal: 0em;
+
+    --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+    --space-4: 1rem; --space-5: 1.5rem; --space-6: 2rem;
+    --space-7: 3rem; --space-8: 4rem; --space-9: 6rem; --space-10: 8rem;
+
+    --content-max: 1200px;
+    --radius-pill: 999px;
+    --radius-box: 4px;
+
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration: 220ms;
+
+    --focus-ring: 2px solid var(--pink);
+    --focus-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) { :root { --duration: 0ms; } }
+
+  /* ==================================================================== */
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--rich-blue);
+    background: var(--grey-10);
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: anywhere; /* long {{TOKEN}} placeholders have no spaces to wrap on */
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; left: var(--space-4); top: -100px;
+    background: var(--pink); color: var(--grey-10);
+    padding: var(--space-3) var(--space-5); border-radius: var(--radius-box);
+    z-index: 100; text-decoration: none; font-weight: var(--weight-semibold);
+    transition: top var(--duration) var(--ease);
+  }
+  .skip-link:focus { top: var(--space-4); }
+
+  .wrap { max-width: var(--content-max); margin: 0 auto; padding: 0 var(--space-6); }
+
+  /* ---- type ---- */
+  .t-h1 { font: var(--weight-light) var(--fs-h1)/1.1 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-h2 { font: var(--weight-light) var(--fs-h2)/1 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-h3 { font: var(--weight-light) var(--fs-h3)/1.1 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-h4 { font: var(--weight-light) var(--fs-h4)/1.2 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-h5 { font: var(--weight-light) var(--fs-h5)/1.2 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-para-lg { font: var(--weight-light) var(--fs-para-lg)/1.5 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-para { font: var(--weight-regular) var(--fs-para)/1.5 var(--font); letter-spacing: var(--ls-slight); margin: 0; max-width: 62ch; }
+  .t-list { font: var(--weight-light) var(--fs-list)/1.5 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-list-dense { font: var(--weight-regular) var(--fs-list)/1.5 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+  .t-small-bold { font: var(--weight-semibold) var(--fs-small-bold)/1 var(--font); letter-spacing: var(--ls-slight); margin: 0; }
+  .t-tagline { font: var(--weight-light) var(--fs-tagline)/1.5 var(--font); letter-spacing: var(--ls-tight); margin: 0; }
+
+  .headline-blue { color: var(--rich-blue); }
+  .headline-pink { color: var(--pink); }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    font: var(--weight-semibold) var(--fs-tagline)/1.5 var(--font);
+    letter-spacing: var(--ls-slight); color: var(--pink); margin: 0 0 var(--space-4);
+  }
+  .eyebrow-pill {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    background: var(--grey-10); border-radius: var(--radius-pill);
+    padding: var(--space-1) var(--space-4); margin: 0 0 var(--space-4);
+  }
+  .eyebrow-pill .num { font: var(--weight-semibold) var(--fs-tagline)/1.5 var(--font); color: var(--rich-blue); }
+  .eyebrow-pill .label { font: var(--weight-semibold) var(--fs-tagline)/1.5 var(--font); color: var(--pink); }
+
+  /* ---- buttons ---- */
+  .btn {
+    font: var(--weight-semibold) var(--fs-cta)/1 var(--font);
+    letter-spacing: var(--ls-normal);
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    min-height: 44px; padding: 0.9em 1.75em; border-radius: var(--radius-pill);
+    border: none; cursor: pointer; text-decoration: none;
+    transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  }
+  .btn-primary { background: var(--pink); color: var(--grey-10); }
+  .btn-primary:hover { box-shadow: 0 6px 20px rgba(224,24,94,0.28); }
+  .btn-secondary { background: var(--grey-10); color: var(--pink); border: 1.5px solid var(--pink); }
+  .btn-secondary:hover { background: #FFF5F8; }
+  .btn-secondary .arrow::after { content: "\2192"; margin-left: var(--space-1); }
+  .btn-tertiary {
+    background: none; color: var(--pink); padding: 0.25em 0; min-height: 0;
+    border-radius: 0; font: var(--weight-semibold) var(--fs-cta)/1.5 var(--font);
+    display: inline-flex; align-items: center; gap: var(--space-1);
+  }
+  .btn-tertiary .arrow { transition: transform var(--duration) var(--ease); }
+  .btn-tertiary:hover .arrow { transform: translateX(3px); }
+
+  /* ---- dot patterns ---- */
+  .pattern-bg {
+    background-color: var(--grey-20);
+    background-image: radial-gradient(rgba(224,24,94,0.4) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+  .pattern-pink {
+    background-color: var(--grey-10);
+    background-image: radial-gradient(var(--pink) 1.5px, transparent 1.5px);
+    background-size: 16px 16px;
+  }
+  .pattern-blue {
+    background-color: var(--rich-blue);
+    background-image: radial-gradient(var(--grey-80) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  .box-10 { background: var(--grey-10); border-radius: var(--radius-box); }
+
+  /* ---- header ---- */
+  .site-header {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--grey-10);
+    border-bottom: 1px solid var(--grey-40);
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: var(--space-4); padding-bottom: var(--space-4);
+  }
+  .wordmark { display: flex; align-items: center; gap: var(--space-2); text-decoration: none; }
+  .wordmark svg { display: block; }
+  .wordmark-text {
+    font: var(--weight-semibold) 1.25rem/1 var(--font);
+    color: var(--rich-blue); letter-spacing: var(--ls-slight);
+  }
+  .header-cta { display: flex; align-items: center; gap: var(--space-5); }
+  .header-tel { font: var(--weight-regular) 0.9375rem/1.4 var(--font); color: var(--rich-blue); text-decoration: none; display: none; }
+  @media (min-width: 900px) { .header-tel { display: inline; } }
+
+  /* ---- hero ---- */
+  .hero { padding: var(--space-9) 0 var(--space-8); }
+  .hero .wrap {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8);
+    align-items: center;
+  }
+  .hero-copy .t-h1 { margin-bottom: var(--space-5); }
+  .hero-diff {
+    display: flex; gap: var(--space-3); align-items: flex-start;
+    background: var(--grey-10); border-left: 3px solid var(--pink);
+    padding: var(--space-4) var(--space-5); margin: 0 0 var(--space-5);
+    border-radius: 0 var(--radius-box) var(--radius-box) 0;
+  }
+  .hero-diff .material-symbols-rounded { color: var(--pink); font-size: 22px; flex: none; margin-top: 2px; }
+  .hero-para { margin-bottom: var(--space-6); }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; margin-bottom: var(--space-4); }
+  .hero-microcopy { display: flex; align-items: center; gap: var(--space-2); color: var(--grey-90); }
+  .hero-microcopy .material-symbols-rounded { font-size: 18px; color: var(--pink); }
+
+  .hero-visual { position: relative; }
+  .z-figure {
+    position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius-box);
+    background: var(--gradient-brand-simple); overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .z-figure svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .z-caption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: rgba(20,53,78,0.82); color: var(--grey-10);
+    padding: var(--space-3) var(--space-4);
+    font: var(--weight-regular) var(--fs-tagline)/1.4 var(--font);
+  }
+  .hero-stat-card {
+    position: absolute; right: -8%; top: -8%; width: 58%;
+    background: var(--grey-10); border-radius: var(--radius-box);
+    box-shadow: 0 20px 40px rgba(20,53,78,0.18);
+    padding: var(--space-5); border-top: 3px solid var(--pink);
+  }
+  .hero-stat-card .t-small-bold { color: var(--pink); display: block; margin-bottom: var(--space-2); }
+
+  /* ---- section shell ---- */
+  section { padding: var(--space-9) 0; }
+  .section-head { max-width: 66ch; margin-bottom: var(--space-7); }
+  .section-head .t-h2 { margin: var(--space-4) 0 var(--space-5); }
+
+  /* ---- comparison table ---- */
+  .compare-wrap { border-radius: var(--radius-box); overflow: hidden; box-shadow: 0 1px 0 var(--grey-40); }
+  .compare-scroll { overflow-x: auto; }
+  table.compare { width: 100%; border-collapse: collapse; min-width: 640px; background: var(--grey-10); }
+  table.compare caption { text-align: left; padding: var(--space-4) var(--space-5); }
+  table.compare th, table.compare td {
+    text-align: left; padding: var(--space-4) var(--space-5); vertical-align: top;
+    font: var(--weight-regular) 1rem/1.5 var(--font); letter-spacing: var(--ls-tight);
+  }
+  table.compare thead th {
+    background: var(--rich-blue); color: var(--grey-10);
+    font: var(--weight-semibold) 1rem/1.4 var(--font);
+    position: sticky; top: 0;
+  }
+  table.compare thead th.col-yooz { background: var(--rich-blue); color: var(--grey-10); position: relative; }
+  table.compare thead th.col-yooz::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--pink);
+  }
+  table.compare tbody th { width: 26%; font: var(--weight-semibold) 1rem/1.4 var(--font); color: var(--rich-blue); }
+  table.compare tbody tr:nth-child(even) { background: var(--grey-20); }
+  table.compare td.col-yooz { background: rgba(224,24,94,0.05); border-left: 2px solid var(--pink); }
+  table.compare tr.concede td.col-yooz,
+  table.compare tr.concede th { border-top: 2px solid var(--pink); border-bottom: 2px solid var(--pink); }
+  table.compare tr.concede td.col-yooz:last-child,
+  table.compare tr.concede td:last-child { border-right: 2px solid var(--pink); }
+  .concede-tag {
+    display: inline-block; font: var(--weight-semibold) 0.75rem/1.4 var(--font);
+    color: var(--pink); background: rgba(224,24,94,0.1); border-radius: var(--radius-pill);
+    padding: 2px 10px; margin-bottom: var(--space-2);
+  }
+  .fn { color: var(--grey-80); font-weight: var(--weight-semibold); text-decoration: none; margin-left: 2px; }
+  .fn:hover { color: var(--pink); }
+  .verified-line {
+    display: flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-4) var(--space-5); background: var(--grey-20);
+    border-top: 1px solid var(--grey-40);
+    font: var(--weight-regular) var(--fs-tagline)/1.5 var(--font); color: var(--grey-90);
+  }
+  .verified-line .material-symbols-rounded { font-size: 18px; color: var(--rich-blue); }
+  .fn-list { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+  .fn-list li { font: var(--weight-regular) 0.875rem/1.6 var(--font); color: var(--grey-90); }
+  .fn-list a { color: var(--pink); font-weight: var(--weight-semibold); }
+
+  @media (max-width: 768px) {
+    .compare-scroll { display: none; }
+    .compare-cards { display: grid; gap: var(--space-4); }
+    .compare-card { background: var(--grey-10); border-radius: var(--radius-box); border: 1px solid var(--grey-40); overflow: hidden; }
+    .compare-card.concede { border-color: var(--pink); }
+    .compare-card-label {
+      position: sticky; top: 56px; z-index: 5;
+      background: var(--rich-blue); color: var(--grey-10);
+      font: var(--weight-semibold) 0.9375rem/1.4 var(--font);
+      padding: var(--space-3) var(--space-4);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+    }
+    .compare-card-row { padding: var(--space-4); border-top: 1px solid var(--grey-30); }
+    .compare-card-row.yooz { background: rgba(224,24,94,0.05); border-left: 3px solid var(--pink); }
+    .compare-card-row .who { display: block; font: var(--weight-semibold) 0.8125rem/1.4 var(--font); color: var(--grey-80); margin-bottom: var(--space-1); }
+    .compare-card-row.yooz .who { color: var(--pink); }
+  }
+  @media (min-width: 769px) { .compare-cards { display: none; } }
+
+  /* ---- migration timeline ---- */
+  .timeline { display: grid; gap: var(--space-5); counter-reset: phase; margin-top: var(--space-7); }
+  @media (min-width: 900px) { .timeline { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); } }
+  .phase {
+    background: var(--grey-10); border-radius: var(--radius-box);
+    padding: var(--space-5); border-top: 3px solid var(--grey-40); position: relative;
+  }
+  .phase .phase-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%; background: var(--grey-20);
+    color: var(--rich-blue); font: var(--weight-semibold) 0.9375rem/1 var(--font);
+    margin-bottom: var(--space-4);
+  }
+  .phase .t-h5 { margin-bottom: var(--space-2); font-size: 1.125rem; }
+  .phase .duration {
+    display: inline-block; margin-top: var(--space-3);
+    font: var(--weight-semibold) 0.8125rem/1.4 var(--font); color: var(--pink);
+  }
+  .total-duration {
+    margin-top: var(--space-6); display: flex; align-items: center; gap: var(--space-3);
+    padding: var(--space-4) var(--space-5); background: var(--rich-blue); color: var(--grey-10);
+    border-radius: var(--radius-box);
+  }
+  .total-duration .material-symbols-rounded { color: var(--pink); }
+
+  .checklist-capture {
+    margin-top: var(--space-8); padding: var(--space-6);
+    display: grid; gap: var(--space-5); align-items: center;
+  }
+  @media (min-width: 700px) { .checklist-capture { grid-template-columns: 1.3fr 1fr; } }
+  .checklist-capture form { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+  .checklist-capture .field-inline { flex: 1 1 220px; }
+  .checklist-capture input[type="email"] {
+    width: 100%; font: var(--weight-regular) var(--fs-para)/1.3 var(--font);
+    color: var(--rich-blue); background: var(--grey-10); border: 1.5px solid var(--grey-50);
+    border-radius: var(--radius-box); padding: 0.85em 1em; min-height: 44px;
+  }
+
+  /* ---- customer proof ---- */
+  .proof-card {
+    background: var(--grey-10); border-radius: var(--radius-box);
+    padding: var(--space-7); border: 1px dashed var(--grey-60);
+    display: grid; gap: var(--space-4); max-width: 760px;
+  }
+  .proof-pending {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    color: var(--grey-80); font: var(--weight-semibold) 0.8125rem/1.4 var(--font);
+    background: var(--grey-20); border-radius: var(--radius-pill); padding: 4px 12px; width: fit-content;
+  }
+  .proof-pending .material-symbols-rounded { font-size: 16px; }
+
+  /* ---- form ---- */
+  .form-section { background: var(--rich-blue); color: var(--grey-10); }
+  .form-section .t-h3, .form-section .eyebrow { color: var(--grey-10); }
+  .form-section .eyebrow { color: var(--pink); }
+  .form-section .t-para { color: var(--grey-40); }
+  .form-grid { display: grid; gap: var(--space-7); align-items: start; }
+  @media (min-width: 900px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+  .demo-form-card {
+    background: var(--grey-10); border-radius: var(--radius-box);
+    padding: var(--space-7); color: var(--rich-blue);
+  }
+  .form-row { display: grid; gap: var(--space-4); margin-bottom: var(--space-4); }
+  @media (min-width: 560px) { .form-row.two { grid-template-columns: 1fr 1fr; } }
+  .field { display: flex; flex-direction: column; gap: var(--space-2); }
+  .field label { font: var(--weight-semibold) 0.8125rem/1.3 var(--font); color: var(--rich-blue); }
+  .field .optional { font-weight: var(--weight-regular); color: var(--grey-80); }
+  .field input, .field select {
+    font: var(--weight-regular) var(--fs-para)/1.3 var(--font); color: var(--rich-blue);
+    background: var(--grey-10); border: 1.5px solid var(--grey-50); border-radius: var(--radius-box);
+    padding: 0.85em 1em; min-height: 44px; width: 100%;
+  }
+  .form-legal { margin-top: var(--space-4); color: var(--grey-80); }
+  .form-legal a { color: var(--pink); font-weight: var(--weight-semibold); }
+  .why-list { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-3); }
+  .why-list li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .why-list .material-symbols-rounded { color: var(--pink); font-size: 20px; flex: none; margin-top: 2px; }
+
+  /* ---- footer ---- */
+  footer.site-footer { background: var(--grey-20); border-top: 1px solid var(--grey-40); padding: var(--space-8) 0 var(--space-6); }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-6); margin-bottom: var(--space-6); }
+  .footer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-6); }
+  .footer-links a { text-decoration: none; font: var(--weight-regular) 0.9375rem/1.5 var(--font); color: var(--grey-100); }
+  .footer-links a:hover { color: var(--pink); }
+  .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3);
+    padding-top: var(--space-5); border-top: 1px solid var(--grey-40);
+    font: var(--weight-regular) 0.8125rem/1.5 var(--font); color: var(--grey-80); }
+
+  @media (max-width: 1024px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-visual { max-width: 420px; margin: 0 auto; }
+    .hero-stat-card { position: static; width: 100%; margin-top: var(--space-4); box-shadow: none; border: 1px solid var(--grey-40); }
+    .z-figure { aspect-ratio: 16/9; }
+  }
+  @media (max-width: 390px) {
+    .wrap { padding: 0 var(--space-4); }
+    .hero { padding: var(--space-7) 0 var(--space-6); }
+    section { padding: var(--space-7) 0; }
+    .hero-ctas .btn, .hero-ctas .btn-secondary { width: 100%; }
+    .site-header .header-cta .btn { padding: 0.75em 1.1em; font-size: 0.9375rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="https://getyooz.com" data-yooz-event="nav-logo-home">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+        <rect width="28" height="28" rx="4" fill="#14354E"/>
+        <path d="M8 20 L14 8 L20 20" stroke="#E0185E" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark-text">yooz</span>
+    </a>
+    <div class="header-cta">
+      <a class="header-tel" href="tel:{{PHONE_NUMBER}}">{{PHONE_NUMBER_DISPLAY}}</a>
+      <a class="btn btn-primary" href="#demo-form" data-yooz-event="cta-book-demo-header">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Named comparison hero -->
+  <section class="hero pattern-bg" aria-labelledby="hero-heading">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">For AP teams evaluating a move off Tipalti</p>
+        <h1 id="hero-heading" class="t-h1">
+          <span class="headline-blue">A Tipalti alternative</span>
+          <span class="headline-pink"> built to migrate without the reset.</span>
+        </h1>
+        <div class="hero-diff">
+          <span class="material-symbols-rounded" aria-hidden="true">compare_arrows</span>
+          <p class="t-para-lg" style="max-width:none;">
+            Tipalti is built around global mass payouts. Yooz is built around
+            the full purchase-to-pay cycle — capture through payment, in one
+            system.
+          </p>
+        </div>
+        <p class="t-para hero-para">
+          Switching AP platforms is usually the reason teams stay somewhere
+          they don't love. Yooz runs alongside your existing Tipalti workflows
+          during a defined migration window, so nothing goes dark mid-cycle
+          and your team cuts over on a schedule you set, not one your vendor
+          sets for you.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#demo-form" data-yooz-event="cta-book-demo-hero-primary">Book a demo</a>
+          <a class="btn btn-secondary" href="#migration-checklist" data-yooz-event="cta-migration-checklist-hero-secondary">
+            <span>Get the migration checklist</span><span class="arrow"></span>
+          </a>
+        </div>
+        <p class="t-tagline hero-microcopy">
+          <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+          See your migration timeline before you commit to anything.
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <figure class="z-figure">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="hero-img-caption">
+            <defs>
+              <linearGradient id="zgrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#14354E"/>
+                <stop offset="100%" stop-color="#E0185E"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#zgrad)"/>
+            <path d="M60 120 H340 L110 380 H340" stroke="#FEFEFE" stroke-opacity="0.35" stroke-width="26" fill="none" stroke-linecap="square"/>
+          </svg>
+          <figcaption id="hero-img-caption" class="z-caption">
+            HERO — graded cutout, AP lead reviewing a Tipalti export
+            mapped into the Yooz capture inbox; Z anchored bottom-left,
+            subject facing inward toward the copy.
+          </figcaption>
+        </figure>
+        <div class="hero-stat-card">
+          <span class="t-small-bold">Typical migration window</span>
+          <span class="t-h4" style="font-size:2rem;">{{MIGRATION_DURATION_WEEKS}} weeks</span>
+          <span class="t-tagline" style="color:var(--grey-90);">Tipalti workflows run in parallel the whole time.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Honest feature table -->
+  <section aria-labelledby="compare-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow-pill"><span class="num">02</span><span class="label">Yooz vs. Tipalti, honestly</span></p>
+        <h2 id="compare-heading" class="t-h2">Where each platform actually wins</h2>
+        <p class="t-para">
+          Tipalti and Yooz are not solving identical problems. This table
+          says so plainly, including the one row where Tipalti is the
+          better-built tool — so the rows where Yooz pulls ahead are worth
+          trusting.
+        </p>
+      </div>
+
+      <div class="compare-wrap box-10">
+        <div class="compare-scroll" role="region" aria-label="Feature comparison table, scroll to see all columns" tabindex="0">
+          <table class="compare">
+            <caption class="visually-hidden">Feature comparison: Tipalti vs. Yooz</caption>
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col">Tipalti</th>
+                <th scope="col" class="col-yooz">Yooz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Invoice capture channels</th>
+                <td>{{COMPETITOR_FEATURE_TIPALTI_CAPTURE_CHANNELS}}<a class="fn" href="#fn1" id="fnref1">[1]</a></td>
+                <td class="col-yooz">Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API<a class="fn" href="#fn2" id="fnref2">[2]</a></td>
+              </tr>
+              <tr>
+                <th scope="row">ERP / accounting integrations</th>
+                <td>{{COMPETITOR_FEATURE_TIPALTI_ERP_COUNT}}<a class="fn" href="#fn3" id="fnref3">[3]</a></td>
+                <td class="col-yooz">250+ financial systems<a class="fn" href="#fn4" id="fnref4">[4]</a></td>
+              </tr>
+              <tr class="concede">
+                <th scope="row">
+                  <span class="concede-tag">Tipalti wins here</span><br>
+                  Global mass payouts &amp; multi-currency supplier pay
+                </th>
+                <td>{{COMPETITOR_FEATURE_TIPALTI_GLOBAL_PAYOUTS}}<a class="fn" href="#fn5" id="fnref5">[5]</a></td>
+                <td class="col-yooz">
+                  {{YOOZ_FEATURE_GLOBAL_PAYOUTS_FIT}}<a class="fn" href="#fn6" id="fnref6">[6]</a><br>
+                  <span class="t-tagline" style="color:var(--grey-90);">If mass payouts to a large international
+                  contractor base is your primary need, Tipalti may be the
+                  better fit — see {{COMPETITOR_WINS_ROW}} note below.</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Purchase-to-pay coverage (PO match, approval, payment)</th>
+                <td>{{COMPETITOR_FEATURE_TIPALTI_P2P_COVERAGE}}<a class="fn" href="#fn7" id="fnref7">[7]</a></td>
+                <td class="col-yooz">{{YOOZ_FEATURE_P2P_COVERAGE}}<a class="fn" href="#fn8" id="fnref8">[8]</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Typical implementation timeline</th>
+                <td>{{COMPETITOR_TIPALTI_IMPLEMENTATION_WEEKS}}<a class="fn" href="#fn9" id="fnref9">[9]</a></td>
+                <td class="col-yooz">{{YOOZ_IMPLEMENTATION_WEEKS}}<a class="fn" href="#fn10" id="fnref10">[10]</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Pricing model</th>
+                <td>{{COMPETITOR_TIPALTI_PRICING_MODEL}}<a class="fn" href="#fn11" id="fnref11">[11]</a></td>
+                <td class="col-yooz">{{PRICE_PER_INVOICE_BENCHMARK}}<a class="fn" href="#fn12" id="fnref12">[12]</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Approval workflow configurability</th>
+                <td>{{COMPETITOR_TIPALTI_APPROVAL_CONFIG}}<a class="fn" href="#fn13" id="fnref13">[13]</a></td>
+                <td class="col-yooz">{{YOOZ_FEATURE_APPROVAL_CONFIG}}<a class="fn" href="#fn14" id="fnref14">[14]</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Dedicated support for teams switching from Tipalti</th>
+                <td>—</td>
+                <td class="col-yooz">{{YOOZ_MIGRATION_SUPPORT_DETAIL}}<a class="fn" href="#fn15" id="fnref15">[15]</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile: stacked cards, sticky attribute label -->
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="compare-card-label">Invoice capture channels</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_FEATURE_TIPALTI_CAPTURE_CHANNELS}}<a class="fn" href="#fn1">[1]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher and API<a class="fn" href="#fn2">[2]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">ERP / accounting integrations</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_FEATURE_TIPALTI_ERP_COUNT}}<a class="fn" href="#fn3">[3]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>250+ financial systems<a class="fn" href="#fn4">[4]</a></div>
+          </div>
+          <div class="compare-card concede">
+            <div class="compare-card-label">Global mass payouts &amp; multi-currency supplier pay <span class="concede-tag" style="margin:0;">Tipalti wins</span></div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_FEATURE_TIPALTI_GLOBAL_PAYOUTS}}<a class="fn" href="#fn5">[5]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{YOOZ_FEATURE_GLOBAL_PAYOUTS_FIT}}<a class="fn" href="#fn6">[6]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">Purchase-to-pay coverage</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_FEATURE_TIPALTI_P2P_COVERAGE}}<a class="fn" href="#fn7">[7]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{YOOZ_FEATURE_P2P_COVERAGE}}<a class="fn" href="#fn8">[8]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">Implementation timeline</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_TIPALTI_IMPLEMENTATION_WEEKS}}<a class="fn" href="#fn9">[9]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{YOOZ_IMPLEMENTATION_WEEKS}}<a class="fn" href="#fn10">[10]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">Pricing model</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_TIPALTI_PRICING_MODEL}}<a class="fn" href="#fn11">[11]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{PRICE_PER_INVOICE_BENCHMARK}}<a class="fn" href="#fn12">[12]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">Approval workflow configurability</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>{{COMPETITOR_TIPALTI_APPROVAL_CONFIG}}<a class="fn" href="#fn13">[13]</a></div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{YOOZ_FEATURE_APPROVAL_CONFIG}}<a class="fn" href="#fn14">[14]</a></div>
+          </div>
+          <div class="compare-card">
+            <div class="compare-card-label">Dedicated Tipalti-switch support</div>
+            <div class="compare-card-row"><span class="who">Tipalti</span>—</div>
+            <div class="compare-card-row yooz"><span class="who">Yooz</span>{{YOOZ_MIGRATION_SUPPORT_DETAIL}}<a class="fn" href="#fn15">[15]</a></div>
+          </div>
+        </div>
+
+        <p class="verified-line">
+          <span class="material-symbols-rounded" aria-hidden="true">verified</span>
+          Last verified: {{DATE}} · owner: {{TABLE_OWNER}} · review cadence: {{TABLE_REVIEW_CADENCE}}
+        </p>
+      </div>
+
+      <ol class="fn-list" aria-label="Footnote sources for the comparison table">
+        <li id="fn1"><a href="#fnref1">↑</a> [1] {{SOURCE_TIPALTI_CAPTURE_CHANNELS}} — dated, needs substantiation.</li>
+        <li id="fn3"><a href="#fnref3">↑</a> [3] {{SOURCE_TIPALTI_ERP_COUNT}} — dated, needs substantiation.</li>
+        <li id="fn5"><a href="#fnref5">↑</a> [5] {{SOURCE_TIPALTI_GLOBAL_PAYOUTS}} — dated, needs substantiation.</li>
+        <li id="fn7"><a href="#fnref7">↑</a> [7] {{SOURCE_TIPALTI_P2P_COVERAGE}} — dated, needs substantiation.</li>
+        <li id="fn9"><a href="#fnref9">↑</a> [9] {{SOURCE_TIPALTI_IMPLEMENTATION_WEEKS}} — dated, needs substantiation.</li>
+        <li id="fn11"><a href="#fnref11">↑</a> [11] {{SOURCE_TIPALTI_PRICING_MODEL}} — dated, needs substantiation.</li>
+        <li id="fn13"><a href="#fnref13">↑</a> [13] {{SOURCE_TIPALTI_APPROVAL_CONFIG}} — dated, needs substantiation.</li>
+        <li><span class="visually-hidden">Yooz-column footnotes 2, 4, 6, 8, 10, 12, 14, 15 cite internal product/legal sources — see PLACEHOLDERS.md.</span></li>
+      </ol>
+
+      <a class="btn-tertiary" href="#migration-heading" data-yooz-event="link-methodology-tertiary" style="margin-top:var(--space-5);">
+        <span>Read how we scope a migration before you ask</span><span class="arrow" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. Migration path and timeline -->
+  <section class="pattern-bg" aria-labelledby="migration-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow-pill"><span class="num">03</span><span class="label">Your migration, mapped</span></p>
+        <h2 id="migration-heading" class="t-h2">What switching from Tipalti actually looks like</h2>
+        <p class="t-para">
+          No hard cutover on day one. Your Tipalti workflows keep running
+          while Yooz stands up alongside them, so the switch happens on a
+          schedule your team controls.
+        </p>
+      </div>
+
+      <ol class="timeline" style="list-style:none; padding:0;">
+        <li class="phase box-10">
+          <span class="phase-num">01</span>
+          <h3 class="t-h5">{{MIGRATION_PHASE_1}}</h3>
+          <p class="t-list-dense">{{MIGRATION_PHASE_1_DESCRIPTION}}</p>
+          <span class="duration">{{MIGRATION_PHASE_1_WEEKS}}</span>
+        </li>
+        <li class="phase box-10">
+          <span class="phase-num">02</span>
+          <h3 class="t-h5">{{MIGRATION_PHASE_2}}</h3>
+          <p class="t-list-dense">{{MIGRATION_PHASE_2_DESCRIPTION}}</p>
+          <span class="duration">{{MIGRATION_PHASE_2_WEEKS}}</span>
+        </li>
+        <li class="phase box-10">
+          <span class="phase-num">03</span>
+          <h3 class="t-h5">{{MIGRATION_PHASE_3}}</h3>
+          <p class="t-list-dense">{{MIGRATION_PHASE_3_DESCRIPTION}}</p>
+          <span class="duration">{{MIGRATION_PHASE_3_WEEKS}}</span>
+        </li>
+        <li class="phase box-10">
+          <span class="phase-num">04</span>
+          <h3 class="t-h5">{{MIGRATION_PHASE_4}}</h3>
+          <p class="t-list-dense">{{MIGRATION_PHASE_4_DESCRIPTION}}</p>
+          <span class="duration">{{MIGRATION_PHASE_4_WEEKS}}</span>
+        </li>
+      </ol>
+
+      <p class="total-duration">
+        <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+        <span class="t-small-bold" style="color:var(--grey-10);">
+          Typical end-to-end migration: {{MIGRATION_DURATION_WEEKS}} weeks, Tipalti stays live throughout.
+        </span>
+      </p>
+
+      <div id="migration-checklist" class="checklist-capture box-10 pattern-pink">
+        <div>
+          <h3 class="t-h4" style="font-size:1.75rem;">Want the full checklist first?</h3>
+          <p class="t-para">
+            Every phase above, broken into the exact tasks and owners —
+            yours or ours — for a Tipalti-to-Yooz migration. No demo
+            required to get it.
+          </p>
+        </div>
+        <form data-yooz-event="form-migration-checklist-secondary" aria-label="Get the migration checklist">
+          <div class="field-inline field">
+            <label for="checklist-email">Work email</label>
+            <input type="email" id="checklist-email" name="email" required autocomplete="email">
+          </div>
+          <div style="align-self:flex-end;">
+            <button type="submit" class="btn btn-primary" style="margin-top:var(--space-2);">Send me the checklist</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Customer who switched -->
+  <section aria-labelledby="proof-heading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow-pill"><span class="num">04</span><span class="label">Proof it works</span></p>
+        <h2 id="proof-heading" class="t-h2">A team that made the switch from Tipalti</h2>
+      </div>
+
+      <div class="proof-card">
+        <span class="proof-pending">
+          <span class="material-symbols-rounded" aria-hidden="true">pending</span>
+          Not yet available
+        </span>
+        <p class="t-para-lg" style="max-width:none; color:var(--grey-90);">
+          {{CUSTOMER_SWITCHED_FROM_TIPALTI}} — no named Tipalti switcher is
+          confirmed for use on this page yet. Per brief: do not substitute a
+          generic Yooz customer here. This slot ships empty until customer
+          marketing/legal clears a named reference.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Form -->
+  <section class="form-section" id="demo-form" aria-labelledby="form-heading">
+    <div class="wrap">
+      <div class="form-grid">
+        <div>
+          <p class="eyebrow">Ready when you are</p>
+          <h2 id="form-heading" class="t-h3">Book a demo built around your Tipalti migration</h2>
+          <p class="t-para">
+            We'll walk through your current Tipalti setup, map it to Yooz,
+            and give you a real migration estimate — not a generic product
+            tour.
+          </p>
+          <ul class="why-list">
+            <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span class="t-list" style="color:var(--grey-10);">See your specific migration phases and timeline</span></li>
+            <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span class="t-list" style="color:var(--grey-10);">Ask about the row where Tipalti wins, directly</span></li>
+            <li><span class="material-symbols-rounded" aria-hidden="true">check_circle</span><span class="t-list" style="color:var(--grey-10);">No pressure to commit before you've seen the plan</span></li>
+          </ul>
+        </div>
+
+        <div class="demo-form-card">
+          <form data-yooz-event="form-book-demo-primary" aria-label="Book a demo">
+            <div class="form-row two">
+              <div class="field">
+                <label for="fname">First name</label>
+                <input type="text" id="fname" name="first_name" required autocomplete="given-name">
+              </div>
+              <div class="field">
+                <label for="lname">Last name</label>
+                <input type="text" id="lname" name="last_name" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Work email</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row two">
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" required autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="volume">Monthly invoice volume</label>
+                <select id="volume" name="invoice_volume" required>
+                  <option value="">Select one</option>
+                  <option value="lt500">Under 500</option>
+                  <option value="500-2000">500 – 2,000</option>
+                  <option value="2000-10000">2,000 – 10,000</option>
+                  <option value="gt10000">10,000+</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="phone">Phone <span class="optional">(optional)</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Book a demo</button>
+            <p class="t-tagline form-legal">
+              By submitting, you agree to Yooz's <a href="https://getyooz.com/en-us/privacy-policy">Privacy Policy</a>.
+              We'll never share your Tipalti account details with anyone.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="wordmark" href="https://getyooz.com" data-yooz-event="footer-logo-home">
+        <svg width="24" height="24" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+          <rect width="28" height="28" rx="4" fill="#14354E"/>
+          <path d="M8 20 L14 8 L20 20" stroke="#E0185E" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="wordmark-text">yooz</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="https://getyooz.com/en-us/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://getyooz.com/en-us/terms-of-use">Terms</a></li>
+        <li><a href="https://getyooz.com/en-us/contact">Contact</a></li>
+        <li><a href="https://getyooz.com/en-us/pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <address style="font-style:normal;">{{BUSINESS_ADDRESS}}</address>
+      <span>&copy; {{CURRENT_YEAR}} Yooz. All rights reserved. Tipalti is a trademark of its respective owner; Yooz is not affiliated with Tipalti.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
