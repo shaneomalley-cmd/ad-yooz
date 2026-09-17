@@ -1,0 +1,355 @@
+<!--
+  AD HEADLINES THIS PAGE MUST STAY CONSISTENT WITH — copy team: fill in
+  from the live Campaign 05 RSAs before shipping.
+    - {{AD_HEADLINE_1}}
+    - {{AD_HEADLINE_2}}
+    - {{AD_HEADLINE_3}}
+  Campaign: 05 CATEGORY – Invoice Root (build priority 6)
+  Ad groups landing here: Invoice Automation Software / Invoice Processing
+  Software / Invoice Management Software (all three, ring-fenced, bid-capped)
+-->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Automation Software for AP Teams | Yooz</title>
+<meta name="description" content="Invoice automation software built for AP teams processing {{VOLUME_THRESHOLD}}+ supplier invoices a month. See if Yooz fits your volume.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+<link rel="stylesheet" href="../_system/tokens.css">
+<style>
+  /* ---- Page-specific styles only. Everything shared lives in tokens.css. ---- */
+
+  /* Stark hero: a single H1 (query-echo + qualifier, doing both jobs at
+     once) is the only thing competing for attention on this screen.
+     Departure from the standard hero pattern documented in NOTES.md. */
+  .qualifier-hero {
+    padding: var(--space-9) 0 var(--space-8);
+    text-align: center;
+  }
+  .qualifier-hero .eyebrow { display: block; margin-bottom: var(--space-5); }
+  .qualifier-hero h1 {
+    /* Set at the brand's H2 scale per the archetype brief: "the
+       qualifying statement set in H2 (64px Light, Rich Blue)".
+       Kept as a single <h1> element for the one-H1 accessibility floor
+       and the required QS keyword echo. */
+    font-size: var(--font-h2);
+    line-height: var(--lh-h2);
+    letter-spacing: var(--ls-tight);
+    font-weight: var(--weight-light);
+    color: var(--rich-blue);
+    max-width: 920px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+  }
+  .qualifier-hero .sub {
+    max-width: 640px;
+    margin: var(--space-5) auto 0;
+    color: var(--grey-100);
+  }
+  .qualifier-hero .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-6);
+    margin-top: var(--space-7);
+    flex-wrap: wrap;
+  }
+
+  /* "Not for you if" — Pattern Pink single-strip callout */
+  .not-for-you {
+    padding: var(--space-8) 0;
+  }
+  .not-for-you .inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .not-for-you h2 {
+    color: var(--rich-blue);
+    font-size: var(--font-h3);
+    line-height: var(--lh-h3);
+    font-weight: var(--weight-light);
+    margin: 0 0 var(--space-5);
+  }
+  .not-for-you ul {
+    list-style: none;
+    margin: 0 0 var(--space-6);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .not-for-you li {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    font-size: var(--font-p-lg);
+    line-height: var(--lh-p-lg);
+    font-weight: var(--weight-light);
+    color: var(--rich-blue);
+  }
+  .not-for-you li .dot {
+    color: var(--pink);
+    font-weight: var(--weight-semibold);
+    line-height: var(--lh-p-lg);
+    flex-shrink: 0;
+  }
+  .not-for-you .exit {
+    border-top: 1px solid var(--grey-40);
+    padding-top: var(--space-5);
+  }
+  .not-for-you .exit p {
+    color: var(--grey-100);
+    margin: 0 0 var(--space-3);
+  }
+
+  /* Product — the six-stage sequence */
+  .product {
+    padding: var(--space-9) 0;
+  }
+  .product .head { max-width: 700px; margin: 0 0 var(--space-7); }
+  .product .head h2 { margin: var(--space-4) 0; }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+  @media (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .product-grid { grid-template-columns: 1fr; }
+  }
+  .stage {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .stage .marker { flex-shrink: 0; }
+  .stage h3 {
+    font-size: var(--font-h5);
+    font-weight: var(--weight-light);
+    color: var(--rich-blue);
+    margin: 0 0 var(--space-1);
+  }
+  .stage p { color: var(--grey-100); font-size: var(--font-p); margin: 0; }
+
+  .screenshot-frame { aspect-ratio: 16 / 10; }
+
+  /* Proof — volume / team-size language, no logos */
+  .proof {
+    padding: var(--space-8) 0;
+    background: var(--grey-20);
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  @media (max-width: 760px) {
+    .proof-grid { grid-template-columns: 1fr; }
+  }
+  .proof-tile {
+    text-align: left;
+    min-width: 0;
+  }
+  .proof-tile .stat {
+    font-size: var(--font-h3);
+    font-weight: var(--weight-light);
+    color: var(--rich-blue);
+    margin: 0 0 var(--space-2);
+    overflow-wrap: break-word;
+  }
+  .proof-tile p { color: var(--grey-100); margin: 0; }
+
+  /* Form */
+  .form-section {
+    padding: var(--space-9) 0;
+  }
+  .form-box {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .form-box h2 { margin-bottom: var(--space-4); }
+  .form-box .lede { color: var(--grey-100); margin-bottom: var(--space-6); }
+  .demo-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: left;
+  }
+  .demo-form .actions-row {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-2);
+  }
+  .demo-form .fine-print {
+    text-align: center;
+    color: var(--grey-80);
+    font-size: var(--font-tagline);
+    margin-top: var(--space-2);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="https://getyooz.com">Yooz</a>
+  <nav aria-label="Primary">
+    <a href="https://getyooz.com/pricing">Pricing</a>
+    <a href="https://getyooz.com/the-lean-advantage">The Lean Advantage</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- 1. Qualifying statement -->
+  <section class="qualifier-hero pattern-bg" aria-labelledby="qualifier-h1">
+    <div class="wrap">
+      <span class="eyebrow">Before you request a demo</span>
+      <h1 id="qualifier-h1">
+        Invoice automation software built for AP teams processing
+        <span class="tone-pink">{{VOLUME_THRESHOLD}}+ supplier invoices a month.</span>
+      </h1>
+      <p class="t-p-lg sub">
+        Yooz automates the Purchase → Capture → Review → Approve → Pay → Export
+        workflow for accounts payable teams receiving supplier invoices —
+        not for teams sending invoices to their own customers.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#demo-form" data-yooz-event="cta-primary-book-demo">
+          Book a demo
+        </a>
+        <a class="btn btn-tertiary" href="#not-for-you" data-yooz-event="cta-tertiary-see-not-for-you">
+          See who this isn't for
+          <span class="material-symbols-outlined arrow" aria-hidden="true" style="font-size:18px;">arrow_downward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. "This is not for you if..." — explicit disqualifier block -->
+  <section class="not-for-you pattern-pink" id="not-for-you" aria-labelledby="not-for-you-h2">
+    <div class="wrap inner">
+      <h2 id="not-for-you-h2">This isn't for you if:</h2>
+      <ul>
+        <li><span class="dot" aria-hidden="true">&#9679;</span><span>You need to <strong>send</strong> invoices to your own customers. Yooz automates invoices you <em>receive</em> from suppliers (accounts payable) — not billing or accounts receivable.</span></li>
+        <li><span class="dot" aria-hidden="true">&#9679;</span><span>You process fewer than <strong>{{VOLUME_THRESHOLD}}</strong> supplier invoices a month. Below that volume the automation overhead outweighs the manual-entry time it saves.</span></li>
+        <li><span class="dot" aria-hidden="true">&#9679;</span><span>You need a full procure-to-pay suite covering sourcing, contracts and supplier management. Yooz is purpose-built for AP capture-through-payment, not the wider procurement stack.</span></li>
+      </ul>
+      <div class="exit">
+        <p>Looking to bill your own customers instead of paying suppliers?</p>
+        <a class="btn btn-tertiary" href="{{URL_AR_BILLING_REDIRECT}}" data-yooz-event="qualifier-redirect-ar">
+          Find AR &amp; billing software
+          <span class="material-symbols-outlined arrow" aria-hidden="true" style="font-size:18px;">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Product -->
+  <section class="product" aria-labelledby="product-h2">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow-pill"><span class="num">01</span><span class="label">Still with us? Here's what it does</span></span>
+        <h2 id="product-h2" class="t-h2">One workflow, six stages, no manual entry</h2>
+        <p class="t-p" style="color:var(--grey-100);">
+          Every supplier invoice moves through the same automated path,
+          from however it arrives to however your ERP needs it.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <div class="stage">
+          <span class="marker" aria-hidden="true">1</span>
+          <div><h3>Purchase</h3><p>PO matching against what was actually ordered.</p></div>
+        </div>
+        <div class="stage">
+          <span class="marker" aria-hidden="true">2</span>
+          <div><h3>Capture</h3><p>Email, drag &amp; drop, mobile, scan, sFTP, e-invoicing, fetcher or API.</p></div>
+        </div>
+        <div class="stage">
+          <span class="marker" aria-hidden="true">3</span>
+          <div><h3>Review</h3><p>Data extraction and exception flagging before it reaches an approver.</p></div>
+        </div>
+        <div class="stage">
+          <span class="marker" aria-hidden="true">4</span>
+          <div><h3>Approve</h3><p>Routed automatically to the right approver on your existing rules.</p></div>
+        </div>
+        <div class="stage">
+          <span class="marker" aria-hidden="true">5</span>
+          <div><h3>Pay</h3><p>Payment scheduled against terms, with the audit trail intact.</p></div>
+        </div>
+        <div class="stage">
+          <span class="marker" aria-hidden="true">6</span>
+          <div><h3>Export</h3><p>Synced to your ERP — Yooz exports to more than 250 financial systems.</p></div>
+        </div>
+      </div>
+
+      <div class="img-placeholder screenshot-frame" role="img" aria-label="Screenshot placeholder: invoice approval queue, parallel approval visible">
+        SCREENSHOT — invoice approval queue, parallel approval visible
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Proof: volume + team-size language, not logos -->
+  <section class="proof" aria-labelledby="proof-h2">
+    <div class="wrap">
+      <h2 id="proof-h2" class="t-h3" style="margin-bottom: var(--space-6);">Sized for AP teams, not solo billing</h2>
+      <div class="proof-grid">
+        <div class="proof-tile">
+          <p class="stat">{{VOLUME_THRESHOLD}}+</p>
+          <p>supplier invoices a month is where AP teams typically start seeing payback on automation.</p>
+        </div>
+        <div class="proof-tile">
+          <p class="stat">{{TEAM_SIZE_BAND}}</p>
+          <p>-person AP teams are the typical buying team we work with on this workflow.</p>
+        </div>
+        <div class="proof-tile">
+          <p class="stat">250+</p>
+          <p>financial systems Yooz exports to, so approved invoices land in the ERP you already run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Form -->
+  <section class="form-section pattern-bg" id="demo-form" aria-labelledby="form-h2">
+    <div class="wrap form-box box box--inset-lg">
+      <h2 id="form-h2" class="t-h3">See Yooz on your invoice volume</h2>
+      <p class="lede t-p">One field. We'll follow up to confirm this is the right fit before scheduling.</p>
+      <form class="demo-form" data-yooz-event="form-demo-request">
+        <div class="field-group">
+          <label class="field-label" for="work-email">Work email</label>
+          <input class="field-input" type="email" id="work-email" name="work-email" required autocomplete="email" placeholder="you@company.com">
+        </div>
+        <div class="actions-row">
+          <button class="btn btn-primary" type="submit" data-yooz-event="form-submit-book-demo">Book a demo</button>
+        </div>
+        <p class="fine-print">By submitting, you agree to Yooz's <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="https://getyooz.com" style="color:var(--grey-10);">Yooz</a>
+    <div class="footer-links">
+      <a href="https://getyooz.com/privacy-policy">Privacy Policy</a>
+      <a href="https://getyooz.com/terms">Terms</a>
+      <a href="https://getyooz.com/contact">Contact</a>
+    </div>
+    <p class="footer-address">{{COMPANY_PHYSICAL_ADDRESS}}</p>
+  </div>
+</footer>
+
+</body>
+</html>
